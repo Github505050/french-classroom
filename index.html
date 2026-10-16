@@ -154,6 +154,7 @@ body.classroom-locked #auth-gate{display:flex}
 <div id="account-modal" class="account-overlay hidden" hidden role="dialog" aria-modal="true" aria-label="Classroom account"><section class="account-sheet"><button id="account-close" class="account-close" type="button" aria-label="Close account panel">×</button><div class="account-symbol" aria-hidden="true">✦</div><div id="account-body"><h2>My account</h2><p>Loading…</p></div></section></div>
 <script>
 'use strict';
+setTimeout(()=>{if(document.body.classList.contains('auth-checking')){const loading=document.getElementById('auth-loading');if(loading)loading.innerHTML='<span class="auth-loading-mark">FR</span><span style="max-width:320px;text-align:center;padding:12px">Connection is taking longer than expected. Check your internet connection, then refresh this page.</span>'; }},12000);
 window.classroomBonjour=()=>{const el=document.getElementById('bonjour-screen');if(!el)return;el.classList.add('visible');setTimeout(()=>el.classList.remove('visible'),1150)};
 const state={config:null,weeks:[],week:0,day:0,section:'home',showLesson:true,cardIndex:0,cardFlipped:false,listenDay:0,listeningData:{weeks:[]}};
 const recorderState={recorder:null,stream:null,key:null,chunks:[],clips:new Map()};
