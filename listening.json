@@ -1,0 +1,44 @@
+{
+  "weeks": [
+    {
+      "weekId": "week1",
+      "days": [
+        {
+          "day": 1,
+          "title": "Day 1 listening",
+          "videos": []
+        },
+        {
+          "day": 2,
+          "title": "Day 2 listening",
+          "videos": []
+        },
+        {
+          "day": 3,
+          "title": "Day 3 listening",
+          "videos": []
+        },
+        {
+          "day": 4,
+          "title": "Day 4 listening",
+          "videos": []
+        },
+        {
+          "day": 5,
+          "title": "Day 5 listening",
+          "videos": []
+        },
+        {
+          "day": 6,
+          "title": "Day 6 listening",
+          "videos": []
+        },
+        {
+          "day": 7,
+          "title": "Day 7 listening",
+          "videos": []
+        }
+      ]
+    }
+  ]
+}
