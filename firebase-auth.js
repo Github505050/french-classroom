@@ -1,6 +1,6 @@
 import { firebaseConfig } from './firebase-config.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut, updateProfile, updatePassword, reauthenticateWithCredential, EmailAuthProvider, deleteUser } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signOut, updateProfile, updatePassword, reauthenticateWithCredential, EmailAuthProvider, deleteUser } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 import { getFirestore, doc, getDoc, setDoc, getDocs, collection, serverTimestamp, deleteDoc } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 
 const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
@@ -28,6 +28,7 @@ const BLOCKED_EMAIL_DOMAINS=new Set(["mailinator.com","guerrillamail.com","guerr
 function disposableEmail(email){const domain=String(email).toLowerCase().trim().split('@')[1]||'';return BLOCKED_EMAIL_DOMAINS.has(domain)}
 let signupMode=false;const extra=document.getElementById('gate-signup-extra'),confirmWrap=document.getElementById('gate-confirm-wrap');
 const profilesCache=new Map();
+const forgot=document.getElementById('gate-forgot');forgot?.addEventListener('click',async()=>{const email=document.getElementById('gate-email').value.trim();if(!email)return gateStatus('Enter your email address first.');try{await sendPasswordResetEmail(auth,email);gateStatus('If an account exists for that email, password reset instructions have been sent.')}catch(e){gateStatus(friendly(e))}});
 const toggle=document.getElementById('gate-signup-toggle'),submit=document.getElementById('gate-submit'),resend=document.getElementById('gate-verify-resend'),refresh=document.getElementById('gate-verify-refresh');
 function signinUi(note=''){
  signupMode=false;extra.hidden=true;confirmWrap.hidden=true;submit.textContent='Sign in';toggle.textContent='Create a student account';
