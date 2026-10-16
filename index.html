@@ -254,6 +254,20 @@ function bind(){document.querySelectorAll('[data-continue-day]').forEach(x=>x.on
 async function init(){try{const config=await fetch('config.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Cannot read config.json');return r.json()});const weeks=await Promise.all(config.weeks.map(u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Cannot read '+u);return r.json()})));let listeningData={weeks:[]};try{const r=await fetch('listening.json',{cache:'no-store'});if(r.ok)listeningData=await r.json()}catch{}state.listeningData=listeningData;state.config=config;state.weeks=weeks;state.day=Math.max(0,week().days.findIndex(released));$('brand').textContent=config.siteTitle||'Mon Espace Français';$('welcome').textContent=config.welcome||'';$('headline').textContent='Bonjour et bienvenue !';render()}catch(e){$('main').innerHTML=panel(`<h2>Setup needed</h2><p>This website loads lesson files. Open it using a local web server or upload the whole folder to a static hosting service.</p><p class="small muted">Details: ${esc(e.message)}</p>`)}}
 init();
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(err => console.warn('Offline app setup:', err)));
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('./sw.js', {updateViaCache:'none'});
+      const checkUpdates = () => {
+        if (navigator.onLine && document.visibilityState === 'visible') {
+          registration.update().catch(err => console.warn('Background update check:', err));
+        }
+      };
+      checkUpdates();
+      document.addEventListener('visibilitychange', checkUpdates);
+      window.addEventListener('online', checkUpdates);
+      setInterval(checkUpdates, 30 * 60 * 1000);
+      // Never force-reload: lessons, typed answers and recordings must not be interrupted.
+    } catch(err) { console.warn('Offline app setup:', err); }
+  });
 }
 </script><script type="module" src="./firebase-auth.js"></script></body></html>
