@@ -51,12 +51,13 @@ form.addEventListener('submit',async e=>{
    document.getElementById('gate-password').value='';
    signinUi('Verification email sent. Click the link in your inbox, then come back and sign in using your password.');
   }else{
+   freshSignIn=true;
    const result=await signInWithEmailAndPassword(auth,email,password);
    await result.user.reload();
    await result.user.getIdToken(true);
    await handleAuthState(result.user);
   }
- }catch(err){gateStatus(friendly(err))}finally{submit.disabled=false}
+ }catch(err){freshSignIn=false;gateStatus(friendly(err))}finally{submit.disabled=false}
 });
 if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;
 function show(){modal.hidden=false;modal.classList.remove('hidden');trigger.setAttribute('aria-expanded','true');paint()}
@@ -92,22 +93,60 @@ document.addEventListener('click',async e=>{
  if(e.target.closest('#teacher-reload'))window.classroomLoadStudents?.();
 });
 
-let first=true;let initialAuthCheck=true;
-async function handleAuthState(u){const isInitial=initialAuthCheck;initialAuthCheck=false;const attempt=++session;clearTimeout(writeTimer);cloudEnabled=false;
- if(!u){if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;if(user||localStorage.getItem(STORAGE_USER))leaveLocal();user=null;role='student';window.classroomSetTeacherRole?.(false);document.body.classList.add('classroom-locked');document.body.classList.remove('auth-checking');trigger.textContent='Account';gateStatus('Sign in or create your student account.');return}
- await u.reload().catch(()=>{});await u.getIdToken(true).catch(()=>{});
- let isTeacher=false;try{const r=await getDoc(doc(db,'roles',u.uid));isTeacher=r.data()?.role==='teacher'}catch(e){console.warn('Role check:',e)}
- if(!u.emailVerified && !isTeacher){document.body.classList.add('classroom-locked');document.body.classList.remove('auth-checking');await signOut(auth);signinUi('Your email is not verified. Open the verification link in your inbox, then sign in again with your password.');return}
- if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;
- if(user?.uid!==u.uid)migrateLocal(u.uid);
- user=u;role='student';
- role=isTeacher?'teacher':'student';window.classroomSetTeacherRole?.(isTeacher);
- try{const pending=JSON.parse(localStorage.getItem('classroom_pending_profile_'+u.uid)||'null');const data={email:u.email||'',lastSeen:serverTimestamp()};if(pending){data.name=pending.fullName;data.dob=pending.dob;}await setDoc(doc(db,'profiles',u.uid),data,{merge:true});if(pending)localStorage.removeItem('classroom_pending_profile_'+u.uid)}catch(err){console.warn('Profile not saved:',err)}
- try{await loadCloud(false)}catch(err){console.warn('Progress sync:',err);cloudEnabled=false}
- if(attempt!==session)return;
- if(!modal.hidden)hide();document.body.classList.remove('auth-checking','classroom-locked');trigger.textContent='My account';if(!isInitial)window.classroomBonjour?.();
- window.classroomRefresh?.();
- if(role==='teacher'&&first){first=false;window.classroomGoTeacher()}else first=false;
- gateStatus('');
+let first=true;let freshSignIn=false;let authBusy=false;
+async function handleAuthState(u){
+ if(authBusy)return;
+ authBusy=true;
+ try{
+  clearTimeout(writeTimer);cloudEnabled=false;
+  if(!u){
+   if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;
+   if(user||localStorage.getItem(STORAGE_USER))leaveLocal();
+   user=null;role='student';window.classroomSetTeacherRole?.(false);
+   document.body.classList.add('classroom-locked');document.body.classList.remove('auth-checking');
+   trigger.textContent='Account';gateStatus('Sign in or create your student account.');
+   return;
+  }
+  // Avoid calling getIdToken(true) on every restored session: that may cause additional
+  // authentication callbacks and keep the loading gate visible.
+  let isTeacher=false;
+  try{const r=await getDoc(doc(db,'roles',u.uid));isTeacher=r.data()?.role==='teacher'}
+  catch(e){console.warn('Role lookup:',e)}
+  if(!u.emailVerified&&!isTeacher){
+   try{await u.reload()}catch(e){console.warn('Verification check:',e)}
+   if(!u.emailVerified){
+    document.body.classList.add('classroom-locked');document.body.classList.remove('auth-checking');
+    await signOut(auth);
+    signinUi('Your email is not verified. Open the verification link, then sign in again with your password.');
+    return;
+   }
+  }
+  if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;
+  if(user?.uid!==u.uid)migrateLocal(u.uid);
+  user=u;role=isTeacher?'teacher':'student';
+  window.classroomSetTeacherRole?.(isTeacher);
+  // Show the app without waiting for Firestore progress synchronization.
+  if(!modal.hidden)hide();
+  document.body.classList.remove('auth-checking','classroom-locked');
+  trigger.textContent='My account';
+  if(freshSignIn){freshSignIn=false;window.classroomBonjour?.()}
+  window.classroomRefresh?.();
+  if(role==='teacher'&&first){first=false;window.classroomGoTeacher()}else first=false;
+  gateStatus('');
+  // Profile and progress sync are best-effort and must never hold up the dashboard.
+  try{
+   const pending=JSON.parse(localStorage.getItem('classroom_pending_profile_'+u.uid)||'null');
+   const data={email:u.email||'',lastSeen:serverTimestamp()};
+   if(pending){data.name=pending.fullName;data.dob=pending.dob}
+   await setDoc(doc(db,'profiles',u.uid),data,{merge:true});
+   if(pending)localStorage.removeItem('classroom_pending_profile_'+u.uid);
+  }catch(err){console.warn('Profile not saved:',err)}
+  try{await loadCloud(false)}catch(err){console.warn('Progress sync:',err);cloudEnabled=false}
+ }catch(e){
+  console.error('Authentication startup error:',e);
+  document.body.classList.remove('auth-checking');
+  if(!user)document.body.classList.add('classroom-locked');
+  gateStatus('Unable to finish signing in. Please try again.');
+ }finally{authBusy=false}
 }
 onAuthStateChanged(auth,handleAuthState);
