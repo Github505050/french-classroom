@@ -44,10 +44,10 @@ window.classroomLoadStudents=async()=>{if(role!=='teacher'||!user)return;listMes
 window.classroomGoTeacher=()=>{if(role!=='teacher')return;window.classroomSetSection?.('teacher');window.classroomLoadStudents()};
 let first=true;
 onAuthStateChanged(auth,async u=>{const attempt=++session;clearTimeout(writeTimer);cloudEnabled=false;
- if(!u){if(user)leaveLocal();user=null;role='student';document.body.classList.add('classroom-locked');trigger.textContent='Account';gateStatus('Sign in with the account your teacher created.');return}
+ if(!u){if(user||localStorage.getItem(STORAGE_USER))leaveLocal();user=null;role='student';window.classroomSetTeacherRole?.(false);document.body.classList.add('classroom-locked');trigger.textContent='Account';gateStatus('Sign in with the account your teacher created.');return}
  if(user?.uid!==u.uid)migrateLocal(u.uid);
  user=u;role='student';
- try{const roleDoc=await getDoc(doc(db,'roles',u.uid));role=roleDoc.data()?.role==='teacher'?'teacher':'student'}catch(err){console.warn('Role lookup:',err)}
+ try{const roleDoc=await getDoc(doc(db,'roles',u.uid));role=roleDoc.data()?.role==='teacher'?'teacher':'student';window.classroomSetTeacherRole?.(role==='teacher')}catch(err){console.warn('Role lookup:',err)}
  try{await setDoc(doc(db,'profiles',u.uid),{email:u.email||'',lastSeen:serverTimestamp()},{merge:true})}catch(err){console.warn('Profile not saved:',err)}
  try{await loadCloud(false)}catch(err){console.warn('Progress sync:',err);cloudEnabled=false}
  if(attempt!==session)return;
