@@ -1,6 +1,6 @@
 import { firebaseConfig } from './firebase-config.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 import { getFirestore, doc, getDoc, setDoc, getDocs, collection, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 
 const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
@@ -24,7 +24,20 @@ function migrateLocal(uid){const old=localStorage.getItem(STORAGE_USER);if(old==
 function leaveLocal(){const old=localStorage.getItem(STORAGE_USER);if(old)localStorage.setItem(BACKUP_PREFIX+old,JSON.stringify(entries()));clearEntries();localStorage.removeItem(STORAGE_USER)}
 function saveBackup(){if(user)localStorage.setItem(BACKUP_PREFIX+user.uid,JSON.stringify(entries()))}
 const gateStatus=t=>{message.textContent=t};
-form.addEventListener('submit',async e=>{e.preventDefault();const email=document.getElementById('gate-email').value,password=document.getElementById('gate-password').value,btn=document.getElementById('gate-submit');btn.disabled=true;gateStatus('Signing in…');try{await signInWithEmailAndPassword(auth,email,password);document.getElementById('gate-password').value=''}catch(err){gateStatus(friendly(err))}finally{btn.disabled=false}});
+let signupMode=false;
+const toggle=document.getElementById('gate-signup-toggle'),submit=document.getElementById('gate-submit'),resend=document.getElementById('gate-verify-resend'),refresh=document.getElementById('gate-verify-refresh');
+toggle.onclick=()=>{signupMode=!signupMode;submit.textContent=signupMode?'Create account':'Sign in';toggle.textContent=signupMode?'Already registered? Sign in':'Create a student account';gateStatus(signupMode?'Create your account, then verify your email to enter.':'')};
+form.addEventListener('submit',async e=>{
+ e.preventDefault();const email=document.getElementById('gate-email').value.trim(),password=document.getElementById('gate-password').value,btn=submit;
+ btn.disabled=true;gateStatus(signupMode?'Creating your account…':'Signing in…');
+ try{
+  if(signupMode){if(password.length<6)throw Error('Password must have at least 6 characters.');const created=await createUserWithEmailAndPassword(auth,email,password);await sendEmailVerification(created.user);gateStatus('Account created! Check your inbox and spam folder, open the verification link, then return here and select I verified my email.');resend.hidden=false;refresh.hidden=false;}
+  else await signInWithEmailAndPassword(auth,email,password);
+  document.getElementById('gate-password').value='';
+ }catch(err){gateStatus(friendly(err))}finally{btn.disabled=false}
+});
+resend.onclick=async()=>{if(!auth.currentUser)return gateStatus('Sign in first to resend verification.');resend.disabled=true;try{await sendEmailVerification(auth.currentUser);gateStatus('Verification email sent. Check your inbox and spam folder.')}catch(e){gateStatus(friendly(e))}finally{resend.disabled=false}};
+refresh.onclick=async()=>{if(!auth.currentUser)return gateStatus('Sign in first, then verify your email.');refresh.disabled=true;try{await auth.currentUser.reload();await auth.currentUser.getIdToken(true);await handleAuthState(auth.currentUser);if(!auth.currentUser.emailVerified)gateStatus('Your email is not verified yet. Open the link in the email and try again.')}catch(e){gateStatus(friendly(e))}finally{refresh.disabled=false}};
 function show(){modal.hidden=false;modal.classList.remove('hidden');trigger.setAttribute('aria-expanded','true');paint()}
 function hide(){modal.hidden=true;modal.classList.add('hidden');trigger.setAttribute('aria-expanded','false');trigger.focus()}
 trigger?.addEventListener('click',show);document.getElementById('account-close')?.addEventListener('click',hide);
@@ -43,8 +56,11 @@ window.classroomTeacherDashboard=()=>`<section class="teacher-dashboard"><div cl
 window.classroomLoadStudents=async()=>{if(role!=='teacher'||!user)return;listMessage='Refreshing…';window.classroomRefresh?.();try{const [profiles,progress]=await Promise.all([getDocs(collection(db,'profiles')),getDocs(collection(db,'progress'))]);const map=new Map();profiles.forEach(x=>{if(x.id!==user.uid)map.set(x.id,{uid:x.id,email:x.data().email||'',completed:0,progress:false})});progress.forEach(x=>{if(x.id===user.uid)return;const student=map.get(x.id)||{uid:x.id,email:'',completed:0,progress:false};student.progress=true;const vals=x.data().entries||{};student.completed=Object.entries(vals).filter(([k,v])=>/^frenchportal_v2_.*_completed$/.test(k)&&v==='yes').length;map.set(x.id,student)});students=[...map.values()].sort((a,b)=>a.email.localeCompare(b.email));listMessage=students.length?'Student records from Firestore.':'No students yet. Add an account in Firebase.'}catch(e){listMessage='Cannot load students: '+friendly(e)}window.classroomRefresh?.()};
 window.classroomGoTeacher=()=>{if(role!=='teacher')return;window.classroomSetSection?.('teacher');window.classroomLoadStudents()};
 let first=true;
-onAuthStateChanged(auth,async u=>{const attempt=++session;clearTimeout(writeTimer);cloudEnabled=false;
- if(!u){if(user||localStorage.getItem(STORAGE_USER))leaveLocal();user=null;role='student';window.classroomSetTeacherRole?.(false);document.body.classList.add('classroom-locked');trigger.textContent='Account';gateStatus('Sign in with the account your teacher created.');return}
+async function handleAuthState(u){const attempt=++session;clearTimeout(writeTimer);cloudEnabled=false;
+ if(!u){resend.hidden=true;refresh.hidden=true;toggle.hidden=false;if(user||localStorage.getItem(STORAGE_USER))leaveLocal();user=null;role='student';window.classroomSetTeacherRole?.(false);document.body.classList.add('classroom-locked');trigger.textContent='Account';gateStatus('Sign in with the account your teacher created.');return}
+ await u.reload().catch(()=>{});await u.getIdToken(true).catch(()=>{});
+ if(!u.emailVerified && u.uid!=='PrI9KUsVBIOXa1pTaFohStlqaqm2'){document.body.classList.add('classroom-locked');resend.hidden=false;refresh.hidden=false;toggle.hidden=true;submit.textContent='Sign in';gateStatus('Verify your email to enter the classroom. Check your inbox or spam, then choose I verified my email.');return}
+ resend.hidden=true;refresh.hidden=true;toggle.hidden=false;
  if(user?.uid!==u.uid)migrateLocal(u.uid);
  user=u;role='student';
  try{const roleDoc=await getDoc(doc(db,'roles',u.uid));role=roleDoc.data()?.role==='teacher'?'teacher':'student';window.classroomSetTeacherRole?.(role==='teacher')}catch(err){console.warn('Role lookup:',err)}
@@ -55,4 +71,5 @@ onAuthStateChanged(auth,async u=>{const attempt=++session;clearTimeout(writeTime
  window.classroomRefresh?.();
  if(role==='teacher'&&first){first=false;window.classroomGoTeacher()}else first=false;
  gateStatus('');
-});
+}
+onAuthStateChanged(auth,handleAuthState);
