@@ -29,3 +29,9 @@ Home displays a welcome message, the number of completed days, and four square n
 - Vocabulary and verb phrases have audio buttons using browser speech synthesis, preferring a France French female-sounding voice when available. Voice cannot be guaranteed across devices.
 - Speaking and Listening tabs intentionally contain placeholders only.
 - Saved score is shown next to the green check on completed day buttons.
+
+
+## Latest update
+- Restored sidebar navigation clicks for Home, Weekly Practice, Speaking, Listening, Resources.
+- Audio pronunciation uses compact 🔊 icon buttons with accessible labels instead of Listen text.
+- No change to existing lessons or stored progress keys.
