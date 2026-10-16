@@ -30,7 +30,7 @@ let signupMode=false;
 const toggle=document.getElementById('gate-signup-toggle'),submit=document.getElementById('gate-submit'),resend=document.getElementById('gate-verify-resend'),refresh=document.getElementById('gate-verify-refresh');
 function signinUi(note=''){
  signupMode=false;submit.textContent='Sign in';toggle.textContent='Create a student account';
- resend.hidden=true;refresh.hidden=true;toggle.hidden=false;gateStatus(note);
+ if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;gateStatus(note);
 }
 toggle.onclick=()=>{signupMode=!signupMode;submit.textContent=signupMode?'Create account':'Sign in';toggle.textContent=signupMode?'Already registered? Sign in':'Create a student account';gateStatus(signupMode?'Verify your email before signing in.':'')};
 form.addEventListener('submit',async e=>{
@@ -52,7 +52,7 @@ form.addEventListener('submit',async e=>{
   }
  }catch(err){gateStatus(friendly(err))}finally{submit.disabled=false}
 });
-resend.hidden=true;refresh.hidden=true;
+if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;
 function show(){modal.hidden=false;modal.classList.remove('hidden');trigger.setAttribute('aria-expanded','true');paint()}
 function hide(){modal.hidden=true;modal.classList.add('hidden');trigger.setAttribute('aria-expanded','false');trigger.focus()}
 trigger?.addEventListener('click',show);document.getElementById('account-close')?.addEventListener('click',hide);
@@ -88,11 +88,11 @@ document.addEventListener('click',async e=>{
 
 let first=true;
 async function handleAuthState(u){const attempt=++session;clearTimeout(writeTimer);cloudEnabled=false;
- if(!u){resend.hidden=true;refresh.hidden=true;toggle.hidden=false;if(user||localStorage.getItem(STORAGE_USER))leaveLocal();user=null;role='student';window.classroomSetTeacherRole?.(false);document.body.classList.add('classroom-locked');trigger.textContent='Account';gateStatus('Sign in or create your student account.');return}
+ if(!u){if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;if(user||localStorage.getItem(STORAGE_USER))leaveLocal();user=null;role='student';window.classroomSetTeacherRole?.(false);document.body.classList.add('classroom-locked');trigger.textContent='Account';gateStatus('Sign in or create your student account.');return}
  await u.reload().catch(()=>{});await u.getIdToken(true).catch(()=>{});
  let isTeacher=false;try{const r=await getDoc(doc(db,'roles',u.uid));isTeacher=r.data()?.role==='teacher'}catch(e){console.warn('Role check:',e)}
  if(!u.emailVerified && !isTeacher){document.body.classList.add('classroom-locked');await signOut(auth);signinUi('Your email is not verified. Open the verification link in your inbox, then sign in again with your password.');return}
- resend.hidden=true;refresh.hidden=true;toggle.hidden=false;
+ if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;
  if(user?.uid!==u.uid)migrateLocal(u.uid);
  user=u;role='student';
  role=isTeacher?'teacher':'student';window.classroomSetTeacherRole?.(isTeacher);
