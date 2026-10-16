@@ -92,12 +92,12 @@ document.addEventListener('click',async e=>{
  if(e.target.closest('#teacher-reload'))window.classroomLoadStudents?.();
 });
 
-let first=true;
-async function handleAuthState(u){const attempt=++session;clearTimeout(writeTimer);cloudEnabled=false;
- if(!u){if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;if(user||localStorage.getItem(STORAGE_USER))leaveLocal();user=null;role='student';window.classroomSetTeacherRole?.(false);document.body.classList.add('classroom-locked');trigger.textContent='Account';gateStatus('Sign in or create your student account.');return}
+let first=true;let initialAuthCheck=true;
+async function handleAuthState(u){const isInitial=initialAuthCheck;initialAuthCheck=false;const attempt=++session;clearTimeout(writeTimer);cloudEnabled=false;
+ if(!u){if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;if(user||localStorage.getItem(STORAGE_USER))leaveLocal();user=null;role='student';window.classroomSetTeacherRole?.(false);document.body.classList.add('classroom-locked');document.body.classList.remove('auth-checking');trigger.textContent='Account';gateStatus('Sign in or create your student account.');return}
  await u.reload().catch(()=>{});await u.getIdToken(true).catch(()=>{});
  let isTeacher=false;try{const r=await getDoc(doc(db,'roles',u.uid));isTeacher=r.data()?.role==='teacher'}catch(e){console.warn('Role check:',e)}
- if(!u.emailVerified && !isTeacher){document.body.classList.add('classroom-locked');await signOut(auth);signinUi('Your email is not verified. Open the verification link in your inbox, then sign in again with your password.');return}
+ if(!u.emailVerified && !isTeacher){document.body.classList.add('classroom-locked');document.body.classList.remove('auth-checking');await signOut(auth);signinUi('Your email is not verified. Open the verification link in your inbox, then sign in again with your password.');return}
  if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;
  if(user?.uid!==u.uid)migrateLocal(u.uid);
  user=u;role='student';
@@ -105,7 +105,7 @@ async function handleAuthState(u){const attempt=++session;clearTimeout(writeTime
  try{const pending=JSON.parse(localStorage.getItem('classroom_pending_profile_'+u.uid)||'null');const data={email:u.email||'',lastSeen:serverTimestamp()};if(pending){data.name=pending.fullName;data.dob=pending.dob;}await setDoc(doc(db,'profiles',u.uid),data,{merge:true});if(pending)localStorage.removeItem('classroom_pending_profile_'+u.uid)}catch(err){console.warn('Profile not saved:',err)}
  try{await loadCloud(false)}catch(err){console.warn('Progress sync:',err);cloudEnabled=false}
  if(attempt!==session)return;
- if(!modal.hidden)hide();document.body.classList.remove('classroom-locked');trigger.textContent='My account';window.classroomBonjour?.();
+ if(!modal.hidden)hide();document.body.classList.remove('auth-checking','classroom-locked');trigger.textContent='My account';if(!isInitial)window.classroomBonjour?.();
  window.classroomRefresh?.();
  if(role==='teacher'&&first){first=false;window.classroomGoTeacher()}else first=false;
  gateStatus('');
