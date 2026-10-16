@@ -7,7 +7,7 @@ const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
 const gate=document.getElementById('auth-gate'),form=document.getElementById('gate-form'),message=document.getElementById('gate-message');
 const trigger=document.getElementById('account-trigger'),modal=document.getElementById('account-modal'),body=document.getElementById('account-body');
 const STORAGE_USER='classroom_active_uid',BACKUP_PREFIX='classroom_backup_',LOCAL_GUEST='classroom_guest_backup';
-const PREFIX=/^frenchportal_v[12]_/;
+const PREFIX=/^(?:frenchportal_v[12]_|french_foundations_v1_)/;
 let user=null,role='student',cloudEnabled=false,writeTimer=null,session=0,students=[],listMessage='Loading students…';
 const html=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const friendly=e=>({'auth/invalid-credential':'Email or password is incorrect.','auth/invalid-email':'Enter a valid email address.','auth/too-many-requests':'Too many attempts. Try again later.','auth/operation-not-allowed':'Enable email/password in Firebase Console.','auth/unauthorized-domain':'Add github505050.github.io to Firebase authorized domains.','permission-denied':'Firestore permission denied. Check the published rules.'}[e?.code]||e?.message||'Something went wrong.');
