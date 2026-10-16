@@ -5,38 +5,87 @@
       "days": [
         {
           "day": 1,
-          "title": "Day 1 listening",
-          "videos": []
+          "title": "House Vocabulary for Beginners",
+          "videos": [
+            {
+              "title": "House Vocabulary for Beginners",
+              "url": "https://www.youtube.com/watch?v=UXMB6Ms_2Uw",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
         },
         {
           "day": 2,
-          "title": "Day 2 listening",
-          "videos": []
+          "title": "Everyday Conversation in Slow French",
+          "videos": [
+            {
+              "title": "Everyday Conversation in Slow French",
+              "url": "https://www.youtube.com/watch?v=aMx0d42wzBs",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
         },
         {
           "day": 3,
-          "title": "Day 3 listening",
-          "videos": []
+          "title": "How to Grocery Shop in French",
+          "videos": [
+            {
+              "title": "How to Grocery Shop in French",
+              "url": "https://www.youtube.com/watch?v=JFqUtnm161I",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
         },
         {
           "day": 4,
-          "title": "Day 4 listening",
-          "videos": []
+          "title": "Having Breakfast in Slow French",
+          "videos": [
+            {
+              "title": "Having Breakfast in Slow French",
+              "url": "https://www.youtube.com/watch?v=40IAXVvjSDA",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
         },
         {
           "day": 5,
-          "title": "Day 5 listening",
-          "videos": []
+          "title": "Morning Routine in Slow French",
+          "videos": [
+            {
+              "title": "Morning Routine in Slow French",
+              "url": "https://www.youtube.com/watch?v=tcF32PewZqY",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
         },
         {
           "day": 6,
-          "title": "Day 6 listening",
-          "videos": []
+          "title": "Picnic in Paris in Slow French",
+          "videos": [
+            {
+              "title": "Picnic in Paris in Slow French",
+              "url": "https://www.youtube.com/watch?v=9JkJeHeI7Ec",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
         },
         {
           "day": 7,
-          "title": "Day 7 listening",
-          "videos": []
+          "title": "How to Guess a Word's Gender",
+          "videos": [
+            {
+              "title": "How to Guess a Word's Gender",
+              "url": "https://www.youtube.com/results?search_query=Super+Easy+French+90+How+to+Guess+a+Words+Gender",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
         }
       ]
     }
