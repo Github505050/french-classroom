@@ -22,3 +22,10 @@ To preview locally (if needed): run `python -m http.server 8000` in this folder 
 
 ## Updated home page
 Home displays a welcome message, the number of completed days, and four square navigation tiles only. All lesson details, scoring, and practice stay in their own sections.
+
+
+## Updates in this build
+- Written responses are entered on the page and saved to the same browser. Validate checks answer-key equivalence; it is not AI grammar grading. Original creative sentences may require teacher review.
+- Vocabulary and verb phrases have audio buttons using browser speech synthesis, preferring a France French female-sounding voice when available. Voice cannot be guaranteed across devices.
+- Speaking and Listening tabs intentionally contain placeholders only.
+- Saved score is shown next to the green check on completed day buttons.
