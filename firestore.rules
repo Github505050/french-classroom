@@ -19,9 +19,26 @@ service cloud.firestore {
       allow get: if verifiedOwner(uid) || teacher();
       allow list: if teacher();
       allow create, update: if verifiedOwner(uid)
-        && request.resource.data.keys().hasOnly(['email','lastSeen'])
+        && request.resource.data.keys().hasOnly(['email','lastSeen','name','dob'])
         && request.resource.data.email == request.auth.token.email
-        && request.resource.data.email is string;
+        && request.resource.data.email is string
+        && (!('name' in request.resource.data) || (request.resource.data.name is string && request.resource.data.name.size() <= 70))
+        && (!('dob' in request.resource.data) || (request.resource.data.dob is string && request.resource.data.dob.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}
+      allow delete: if false;
+    }
+    match /progress/{uid} {
+      allow get: if verifiedOwner(uid) || teacher();
+      allow list: if teacher();
+      allow create, update: if verifiedOwner(uid)
+        && request.resource.data.keys().hasOnly(['entries','updatedAt'])
+        && request.resource.data.entries is map
+        && request.resource.data.size() < 500000;
+      allow delete: if verifiedOwner(uid);
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
+)));
       allow delete: if false;
     }
     match /progress/{uid} {
