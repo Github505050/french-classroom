@@ -19,12 +19,12 @@ service cloud.firestore {
       allow get: if verifiedOwner(uid) || teacher();
       allow list: if teacher();
       allow create, update: if verifiedOwner(uid)
-        && request.resource.data.keys().hasOnly(['email','lastSeen','name','dob'])
+        && request.resource.data.keys().hasOnly(['email','lastSeen','name','dob','avatar'])
         && request.resource.data.email == request.auth.token.email
         && request.resource.data.email is string
         && (!('name' in request.resource.data) || (request.resource.data.name is string && request.resource.data.name.size() <= 70))
         && (!('dob' in request.resource.data) || (request.resource.data.dob is string && request.resource.data.dob.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}
-      allow delete: if false;
+      allow delete: if verifiedOwner(uid) || (teacher() && request.auth.uid == uid);
     }
     match /progress/{uid} {
       allow get: if verifiedOwner(uid) || teacher();
