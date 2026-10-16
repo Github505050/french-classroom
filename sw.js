@@ -1,10 +1,10 @@
 // French Classroom PWA: cache the app shell, fetch updated lessons first.
-const CACHE_NAME = 'mon-francais-shell-v1';
-const CORE = ['./', './index.html', './config.json', './weeks/week1.json', './listening.json', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
+const CACHE_NAME = 'mon-francais-shell-v2';
+const CORE = ['./', './index.html', './config.json', './weeks/week1.json', './listening.json', './firebase-auth.js', './firebase-config.js', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(async cache => {
     await Promise.allSettled(CORE.map(url => cache.add(url)));
-    await self.skipWaiting();
+    // Wait for existing clients to finish; activate on next app launch.
   }));
 });
 self.addEventListener('activate', event => {
