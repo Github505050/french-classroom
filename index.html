@@ -43,6 +43,44 @@
 .home-v2-tile-name{font-weight:800;font-size:1.05rem;color:#1d3c50}.home-v2-tile-desc{font-size:.79rem;color:#728796;margin-top:3px}.home-v2-arrow{position:absolute;right:20px;top:20px;color:#8398a6}
 @media(max-width:580px){.home-v2{gap:13px}.home-v2-hero{border-radius:18px;padding:23px}.home-v2-hero h2{margin:23px 0 8px}.home-v2-hero-bottom{align-items:flex-end}.home-v2-continue{flex:1;gap:9px}.home-v2-next{padding:17px}.home-v2-grid{gap:10px}.home-v2-tile{min-height:145px;padding:15px}.home-v2-tile-name{font-size:.95rem}.home-v2-icon{margin-bottom:12px}}
 @media(max-width:360px){.home-v2-grid{grid-template-columns:1fr}.home-v2-tile{min-height:110px}.home-v2-hero-stat span{max-width:none}}
+
+/* Mobile-first refinement. Keep existing lesson markup and storage intact. */
+:root{--app-ink:#17364a;--app-teal:#167b7d;--app-bg:#f5f7fa}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--app-bg);color:var(--app-ink)}
+header{padding:19px max(18px,calc((100vw - 1120px)/2)) 19px;background:#112f46}
+header .brand{font-size:1.1rem;letter-spacing:-.02em}
+header .brand small{font-size:.65rem;letter-spacing:.1em}
+header h1,header p#Welcome{display:none}
+header #headline,header #welcome{display:none}
+header .tag{display:none}
+.panel,.home-v2-next,.home-v2-tile{box-shadow:0 4px 16px #193e5908}
+.navbtn{min-height:44px}
+.btn,button.day,button.listen-day{min-height:44px}
+:where(.panel,.tile,.practice,.home-v2-next){overflow-wrap:anywhere}
+@media(max-width:850px){
+ .layout{display:flex;flex-direction:column;gap:11px;padding:13px 14px 100px}
+ .sidebar{position:static;order:0;width:100%}
+ .sidebar .panel{margin:0;padding:6px;display:flex;gap:5px;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;border-radius:14px}
+ .navbtn{flex:0 0 auto;text-align:center;padding:10px 14px;font-size:.83rem}
+ .layout>main{order:1}
+ .panel{border-radius:17px}
+}
+@media(max-width:550px){
+ header{padding:17px 17px 16px}
+ .layout{padding:11px 10px 90px}
+ .sidebar .panel{border-radius:13px}
+ .panel{padding:16px;margin-bottom:12px}
+ .home-v2-hero{border-radius:18px}
+ .home-v2-next{border-radius:14px}
+ .home-v2-tile{border-radius:14px}
+ .days{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .day{min-width:0;min-height:82px}
+ .day span{font-size:.72rem}
+ input.field,textarea.field,select{font-size:16px}
+ .footer{padding:0 18px 32px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.home-v2-tile{transition:none}}
 </style></head><body>
 <header><div class="topline"><div class="brand">🇫🇷 <span id="brand">Mon Espace Français</span><small>YOUR PERSONAL FRENCH CLASSROOM</small></div><span class="tag">1 student · free learning portal</span></div><h1 id="headline">Bienvenue dans ton espace de français !</h1><p id="welcome">Your French learning and progress, in one place.</p></header>
 <div class="layout"><aside class="sidebar"><div class="panel" id="navigation"><button class="navbtn active" data-section="home">⌂ Home</button><button class="navbtn" data-section="lessons">▤ Weekly practice</button><button class="navbtn" data-section="speaking">🎙 Speaking</button><button class="navbtn" data-section="listening">🎧 Listening</button><button class="navbtn" data-section="resources">♧ Resources</button></div></aside><main><div id="main" aria-live="polite"></div></main></div><div class="footer">Daily scores and completion are saved on this device only. Clearing browser data or changing devices can erase them. No account is required.</div>
