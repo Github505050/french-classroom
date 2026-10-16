@@ -1,0 +1,16 @@
+{
+  "siteTitle": "Mon Espace Français",
+  "studentName": "Mon élève",
+  "timezone": "America/Toronto",
+  "welcome": "Bienvenue ! Choisis une leçon pour apprendre, pratiquer et réviser.",
+  "weeks": [
+    "weeks/week1.json"
+  ],
+  "resources": [
+    {
+      "title": "French pronunciation guide",
+      "description": "Optional external French pronunciation resource",
+      "url": "https://forvo.com/languages/fr/"
+    }
+  ]
+}

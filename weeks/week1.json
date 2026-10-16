@@ -1,0 +1,1082 @@
+{
+  "id": "week1",
+  "number": 2,
+  "title": "French A1 · Week 1",
+  "description": "Verbs, vocabulary and daily active-recall practice. Four lessons imported from the teacher’s original workbook; days 5–7 await syllabus content.",
+  "days": [
+    {
+      "short": "Home + speaking",
+      "title": "Parler & travailler",
+      "focus": "Say what you speak and where you work",
+      "verbs": [
+        {
+          "fr": "parler",
+          "en": "to speak"
+        },
+        {
+          "fr": "travailler",
+          "en": "to work"
+        }
+      ],
+      "vocab": [
+        [
+          "la maison",
+          "the house / home"
+        ],
+        [
+          "l’appartement",
+          "the apartment"
+        ],
+        [
+          "la chambre",
+          "the bedroom"
+        ],
+        [
+          "le salon",
+          "the living room"
+        ],
+        [
+          "la cuisine",
+          "the kitchen"
+        ]
+      ],
+      "explanation": "Regular -ER verbs: remove -er and add -e, -es, -e, -ons, -ez, -ent. For example: parl-er → je parle, nous parlons. The final -ent in ils/elles forms is not pronounced.",
+      "fixed": [
+        "Je parle français. — I speak French.",
+        "Je travaille à la maison. — I work at home."
+      ],
+      "recall": [
+        {
+          "prompt": "the house / home",
+          "answer": "la maison",
+          "tip": "",
+          "accept": [
+            "la maison"
+          ]
+        },
+        {
+          "prompt": "the apartment",
+          "answer": "l’appartement",
+          "tip": "",
+          "accept": [
+            "l’appartement"
+          ]
+        },
+        {
+          "prompt": "the bedroom",
+          "answer": "la chambre",
+          "tip": "",
+          "accept": [
+            "la chambre"
+          ]
+        },
+        {
+          "prompt": "the living room",
+          "answer": "le salon",
+          "tip": "",
+          "accept": [
+            "le salon"
+          ]
+        },
+        {
+          "prompt": "the kitchen",
+          "answer": "la cuisine",
+          "tip": "",
+          "accept": [
+            "la cuisine"
+          ]
+        },
+        {
+          "prompt": "I am (old verb être)",
+          "answer": "je suis",
+          "tip": "",
+          "accept": [
+            "je suis"
+          ]
+        },
+        {
+          "prompt": "I have (old verb avoir)",
+          "answer": "j’ai",
+          "tip": "",
+          "accept": [
+            "j’ai"
+          ]
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + parler",
+          "answer": "je parle",
+          "tip": "",
+          "accept": [
+            "je parle"
+          ]
+        },
+        {
+          "prompt": "nous + travailler",
+          "answer": "nous travaillons",
+          "tip": "",
+          "accept": [
+            "nous travaillons"
+          ]
+        },
+        {
+          "prompt": "tu + parler",
+          "answer": "tu parles",
+          "tip": "",
+          "accept": [
+            "tu parles"
+          ]
+        },
+        {
+          "prompt": "elle + travailler",
+          "answer": "elle travaille",
+          "tip": "",
+          "accept": [
+            "elle travaille"
+          ]
+        },
+        {
+          "prompt": "ils + parler",
+          "answer": "ils parlent",
+          "tip": "",
+          "accept": [
+            "ils parlent"
+          ]
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I speak French.",
+          "answer": "Je parle français.",
+          "tip": "",
+          "accept": [
+            "Je parle français."
+          ]
+        },
+        {
+          "prompt": "We work at home.",
+          "answer": "Nous travaillons à la maison.",
+          "tip": "",
+          "accept": [
+            "Nous travaillons à la maison."
+          ]
+        },
+        {
+          "prompt": "She speaks French.",
+          "answer": "Elle parle français.",
+          "tip": "",
+          "accept": [
+            "Elle parle français."
+          ]
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je parle français. → Change je to nous.",
+          "answer": "Nous parlons français.",
+          "tip": "",
+          "accept": [
+            "Nous parlons français."
+          ]
+        },
+        {
+          "prompt": "Il travaille à la maison. → Change il to elles.",
+          "answer": "Elles travaillent à la maison.",
+          "tip": "",
+          "accept": [
+            "Elles travaillent à la maison."
+          ]
+        }
+      ],
+      "oral": [
+        [
+          "Tu parles français ?",
+          "Oui, je parle français."
+        ],
+        [
+          "Tu travailles à la maison ?",
+          "Oui, je travaille à la maison."
+        ],
+        [
+          "Et ton ami, il parle français ?",
+          "Oui, il parle français."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence using parler.",
+          "Ils parlent français."
+        ],
+        [
+          "Write a NEW sentence using travailler.",
+          "Elle travaille à la maison."
+        ]
+      ],
+      "yesterday": "Review old structures: être, avoir, aller, articles and familiar objects.",
+      "conjugations": [
+        {
+          "name": "parler",
+          "forms": [
+            "je parle",
+            "tu parles",
+            "il / elle parle",
+            "nous parlons",
+            "vous parlez",
+            "ils / elles parlent"
+          ],
+          "meaning": "to speak"
+        },
+        {
+          "name": "travailler",
+          "forms": [
+            "je travaille",
+            "tu travailles",
+            "il / elle travaille",
+            "nous travaillons",
+            "vous travaillez",
+            "ils / elles travaillent"
+          ],
+          "meaning": "to work"
+        }
+      ],
+      "day": 1,
+      "status": "ready",
+      "releaseDate": null,
+      "flashcards": [
+        [
+          "I am",
+          "je suis"
+        ],
+        [
+          "I have",
+          "j’ai"
+        ],
+        [
+          "I go",
+          "je vais"
+        ],
+        [
+          "the house",
+          "la maison"
+        ],
+        [
+          "the apartment",
+          "l’appartement"
+        ]
+      ],
+      "flashcardsNote": "Day 1 uses earlier-course review as preceding-day vocabulary was not provided."
+    },
+    {
+      "short": "Home + opinions",
+      "title": "Habiter & aimer",
+      "focus": "Say where you live and what you like",
+      "verbs": [
+        {
+          "fr": "habiter",
+          "en": "to live"
+        },
+        {
+          "fr": "aimer",
+          "en": "to like"
+        }
+      ],
+      "vocab": [
+        [
+          "la table",
+          "the table"
+        ],
+        [
+          "la chaise",
+          "the chair"
+        ],
+        [
+          "la fenêtre",
+          "the window"
+        ],
+        [
+          "le lit",
+          "the bed"
+        ],
+        [
+          "la porte",
+          "the door"
+        ]
+      ],
+      "explanation": "The -ER endings stay the same. Before a vowel, je becomes j’: j’habite, j’aime. Use “J’habite dans un appartement” as a useful ready-made expression (“I live in an apartment”).",
+      "fixed": [
+        "J’habite dans un appartement. — I live in an apartment.",
+        "J’aime la chambre. — I like the bedroom."
+      ],
+      "recall": [
+        {
+          "prompt": "the table",
+          "answer": "la table",
+          "tip": "",
+          "accept": [
+            "la table"
+          ]
+        },
+        {
+          "prompt": "the chair",
+          "answer": "la chaise",
+          "tip": "",
+          "accept": [
+            "la chaise"
+          ]
+        },
+        {
+          "prompt": "the window",
+          "answer": "la fenêtre",
+          "tip": "",
+          "accept": [
+            "la fenêtre"
+          ]
+        },
+        {
+          "prompt": "the bed",
+          "answer": "le lit",
+          "tip": "",
+          "accept": [
+            "le lit"
+          ]
+        },
+        {
+          "prompt": "the door",
+          "answer": "la porte",
+          "tip": "",
+          "accept": [
+            "la porte"
+          ]
+        },
+        {
+          "prompt": "the kitchen (Day 1)",
+          "answer": "la cuisine",
+          "tip": "",
+          "accept": [
+            "la cuisine"
+          ]
+        },
+        {
+          "prompt": "We speak (Day 1)",
+          "answer": "nous parlons",
+          "tip": "",
+          "accept": [
+            "nous parlons"
+          ]
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + habiter",
+          "answer": "j’habite",
+          "tip": "",
+          "accept": [
+            "j’habite"
+          ]
+        },
+        {
+          "prompt": "tu + aimer",
+          "answer": "tu aimes",
+          "tip": "",
+          "accept": [
+            "tu aimes"
+          ]
+        },
+        {
+          "prompt": "nous + aimer",
+          "answer": "nous aimons",
+          "tip": "",
+          "accept": [
+            "nous aimons"
+          ]
+        },
+        {
+          "prompt": "elles + habiter",
+          "answer": "elles habitent",
+          "tip": "",
+          "accept": [
+            "elles habitent"
+          ]
+        },
+        {
+          "prompt": "il + travailler (Day 1)",
+          "answer": "il travaille",
+          "tip": "",
+          "accept": [
+            "il travaille"
+          ]
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I live in an apartment.",
+          "answer": "J’habite dans un appartement.",
+          "tip": "",
+          "accept": [
+            "J’habite dans un appartement."
+          ]
+        },
+        {
+          "prompt": "She likes the kitchen.",
+          "answer": "Elle aime la cuisine.",
+          "tip": "",
+          "accept": [
+            "Elle aime la cuisine."
+          ]
+        },
+        {
+          "prompt": "We like the house.",
+          "answer": "Nous aimons la maison.",
+          "tip": "",
+          "accept": [
+            "Nous aimons la maison."
+          ]
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "J’habite dans une maison. → Change je to ils.",
+          "answer": "Ils habitent dans une maison.",
+          "tip": "",
+          "accept": [
+            "Ils habitent dans une maison."
+          ]
+        },
+        {
+          "prompt": "Tu aimes la chambre. → Change tu to vous.",
+          "answer": "Vous aimez la chambre.",
+          "tip": "",
+          "accept": [
+            "Vous aimez la chambre."
+          ]
+        }
+      ],
+      "oral": [
+        [
+          "Tu habites dans une maison ou dans un appartement ?",
+          "J’habite dans un appartement."
+        ],
+        [
+          "Tu aimes la cuisine ?",
+          "Oui, j’aime la cuisine."
+        ],
+        [
+          "Tu aimes le salon ?",
+          "Oui, j’aime le salon."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence using habiter.",
+          "Nous habitons dans une maison."
+        ],
+        [
+          "Write a NEW sentence using aimer.",
+          "Elle aime le salon."
+        ]
+      ],
+      "yesterday": "Review Day 1: parler and travailler, plus la maison and la cuisine.",
+      "conjugations": [
+        {
+          "name": "habiter",
+          "forms": [
+            "j’habite",
+            "tu habites",
+            "il / elle habite",
+            "nous habitons",
+            "vous habitez",
+            "ils / elles habitent"
+          ],
+          "meaning": "to live"
+        },
+        {
+          "name": "aimer",
+          "forms": [
+            "j’aime",
+            "tu aimes",
+            "il / elle aime",
+            "nous aimons",
+            "vous aimez",
+            "ils / elles aiment"
+          ],
+          "meaning": "to like"
+        }
+      ],
+      "day": 2,
+      "status": "ready",
+      "releaseDate": null,
+      "flashcards": [
+        [
+          "the house / home",
+          "la maison"
+        ],
+        [
+          "the apartment",
+          "l’appartement"
+        ],
+        [
+          "the bedroom",
+          "la chambre"
+        ],
+        [
+          "the living room",
+          "le salon"
+        ],
+        [
+          "the kitchen",
+          "la cuisine"
+        ]
+      ]
+    },
+    {
+      "short": "Groceries + requests",
+      "title": "Chercher & demander",
+      "focus": "Look for everyday items and request them",
+      "verbs": [
+        {
+          "fr": "chercher",
+          "en": "to look for"
+        },
+        {
+          "fr": "demander",
+          "en": "to ask for / request"
+        }
+      ],
+      "vocab": [
+        [
+          "le pain",
+          "the bread"
+        ],
+        [
+          "le lait",
+          "the milk"
+        ],
+        [
+          "les œufs",
+          "the eggs"
+        ],
+        [
+          "l’épicerie",
+          "the grocery store"
+        ],
+        [
+          "le supermarché",
+          "the supermarket"
+        ]
+      ],
+      "explanation": "Both verbs are regular -ER verbs. “Je cherche le pain” means “I am looking for the bread.” “Je demande un livre” means “I ask for a book.” Continue using only the present tense.",
+      "fixed": [
+        "Je cherche le pain. — I am looking for bread.",
+        "Je demande un livre. — I ask for a book."
+      ],
+      "recall": [
+        {
+          "prompt": "the bread",
+          "answer": "le pain",
+          "tip": "",
+          "accept": [
+            "le pain"
+          ]
+        },
+        {
+          "prompt": "the milk",
+          "answer": "le lait",
+          "tip": "",
+          "accept": [
+            "le lait"
+          ]
+        },
+        {
+          "prompt": "the eggs",
+          "answer": "les œufs",
+          "tip": "",
+          "accept": [
+            "les œufs"
+          ]
+        },
+        {
+          "prompt": "the grocery store",
+          "answer": "l’épicerie",
+          "tip": "",
+          "accept": [
+            "l’épicerie"
+          ]
+        },
+        {
+          "prompt": "the supermarket",
+          "answer": "le supermarché",
+          "tip": "",
+          "accept": [
+            "le supermarché"
+          ]
+        },
+        {
+          "prompt": "the chair (Day 2)",
+          "answer": "la chaise",
+          "tip": "",
+          "accept": [
+            "la chaise"
+          ]
+        },
+        {
+          "prompt": "She likes (Day 2)",
+          "answer": "elle aime",
+          "tip": "",
+          "accept": [
+            "elle aime"
+          ]
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + chercher",
+          "answer": "je cherche",
+          "tip": "",
+          "accept": [
+            "je cherche"
+          ]
+        },
+        {
+          "prompt": "nous + demander",
+          "answer": "nous demandons",
+          "tip": "",
+          "accept": [
+            "nous demandons"
+          ]
+        },
+        {
+          "prompt": "tu + demander",
+          "answer": "tu demandes",
+          "tip": "",
+          "accept": [
+            "tu demandes"
+          ]
+        },
+        {
+          "prompt": "elles + chercher",
+          "answer": "elles cherchent",
+          "tip": "",
+          "accept": [
+            "elles cherchent"
+          ]
+        },
+        {
+          "prompt": "il + aimer (Day 2)",
+          "answer": "il aime",
+          "tip": "",
+          "accept": [
+            "il aime"
+          ]
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I am looking for bread.",
+          "answer": "Je cherche le pain.",
+          "tip": "",
+          "accept": [
+            "Je cherche le pain."
+          ]
+        },
+        {
+          "prompt": "She asks for a chair.",
+          "answer": "Elle demande une chaise.",
+          "tip": "",
+          "accept": [
+            "Elle demande une chaise."
+          ]
+        },
+        {
+          "prompt": "We are looking for milk.",
+          "answer": "Nous cherchons le lait.",
+          "tip": "",
+          "accept": [
+            "Nous cherchons le lait."
+          ]
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Tu cherches les œufs. → Change tu to nous.",
+          "answer": "Nous cherchons les œufs.",
+          "tip": "",
+          "accept": [
+            "Nous cherchons les œufs."
+          ]
+        },
+        {
+          "prompt": "Elle demande un livre. → Change elle to ils.",
+          "answer": "Ils demandent un livre.",
+          "tip": "",
+          "accept": [
+            "Ils demandent un livre."
+          ]
+        }
+      ],
+      "oral": [
+        [
+          "Tu cherches le pain ou le lait ?",
+          "Je cherche le pain."
+        ],
+        [
+          "Tu cherches les œufs ?",
+          "Oui, je cherche les œufs."
+        ],
+        [
+          "Tu demandes un livre ou une chaise ?",
+          "Je demande un livre."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence using chercher.",
+          "Elle cherche le lait."
+        ],
+        [
+          "Write a NEW sentence using demander.",
+          "Nous demandons une chaise."
+        ]
+      ],
+      "yesterday": "Review Days 1–2: one room noun and a sentence using aimer.",
+      "conjugations": [
+        {
+          "name": "chercher",
+          "forms": [
+            "je cherche",
+            "tu cherches",
+            "il / elle cherche",
+            "nous cherchons",
+            "vous cherchez",
+            "ils / elles cherchent"
+          ],
+          "meaning": "to look for"
+        },
+        {
+          "name": "demander",
+          "forms": [
+            "je demande",
+            "tu demandes",
+            "il / elle demande",
+            "nous demandons",
+            "vous demandez",
+            "ils / elles demandent"
+          ],
+          "meaning": "to ask for / request"
+        }
+      ],
+      "day": 3,
+      "status": "ready",
+      "releaseDate": null,
+      "flashcards": [
+        [
+          "the table",
+          "la table"
+        ],
+        [
+          "the chair",
+          "la chaise"
+        ],
+        [
+          "the window",
+          "la fenêtre"
+        ],
+        [
+          "the bed",
+          "le lit"
+        ],
+        [
+          "the door",
+          "la porte"
+        ]
+      ]
+    },
+    {
+      "short": "Food + media",
+      "title": "Regarder & écouter",
+      "focus": "Talk about watching and listening, and reuse food vocabulary",
+      "verbs": [
+        {
+          "fr": "regarder",
+          "en": "to watch / look at"
+        },
+        {
+          "fr": "écouter",
+          "en": "to listen to"
+        }
+      ],
+      "vocab": [
+        [
+          "le riz",
+          "the rice"
+        ],
+        [
+          "le poisson",
+          "the fish"
+        ],
+        [
+          "les légumes",
+          "the vegetables"
+        ],
+        [
+          "les fruits",
+          "the fruit / fruits"
+        ],
+        [
+          "le fromage",
+          "the cheese"
+        ]
+      ],
+      "explanation": "The -ER endings do not change. Before a vowel use j’: j’écoute. “Je regarde la télévision” and “J’écoute la musique” are useful chunks. To use food words naturally, also recycle aimer: “J’aime le riz.”",
+      "fixed": [
+        "Je regarde la télévision. — I watch television.",
+        "J’écoute la musique. — I listen to music.",
+        "J’aime le riz. — I like rice. (old verb)"
+      ],
+      "recall": [
+        {
+          "prompt": "the rice",
+          "answer": "le riz",
+          "tip": "",
+          "accept": [
+            "le riz"
+          ]
+        },
+        {
+          "prompt": "the fish",
+          "answer": "le poisson",
+          "tip": "",
+          "accept": [
+            "le poisson"
+          ]
+        },
+        {
+          "prompt": "the vegetables",
+          "answer": "les légumes",
+          "tip": "",
+          "accept": [
+            "les légumes"
+          ]
+        },
+        {
+          "prompt": "the fruit / fruits",
+          "answer": "les fruits",
+          "tip": "",
+          "accept": [
+            "les fruits"
+          ]
+        },
+        {
+          "prompt": "the cheese",
+          "answer": "le fromage",
+          "tip": "",
+          "accept": [
+            "le fromage"
+          ]
+        },
+        {
+          "prompt": "the bread (Day 3)",
+          "answer": "le pain",
+          "tip": "",
+          "accept": [
+            "le pain"
+          ]
+        },
+        {
+          "prompt": "We look for (Day 3)",
+          "answer": "nous cherchons",
+          "tip": "",
+          "accept": [
+            "nous cherchons"
+          ]
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + écouter",
+          "answer": "j’écoute",
+          "tip": "",
+          "accept": [
+            "j’écoute"
+          ]
+        },
+        {
+          "prompt": "vous + regarder",
+          "answer": "vous regardez",
+          "tip": "",
+          "accept": [
+            "vous regardez"
+          ]
+        },
+        {
+          "prompt": "nous + écouter",
+          "answer": "nous écoutons",
+          "tip": "",
+          "accept": [
+            "nous écoutons"
+          ]
+        },
+        {
+          "prompt": "elles + regarder",
+          "answer": "elles regardent",
+          "tip": "",
+          "accept": [
+            "elles regardent"
+          ]
+        },
+        {
+          "prompt": "tu + chercher (Day 3)",
+          "answer": "tu cherches",
+          "tip": "",
+          "accept": [
+            "tu cherches"
+          ]
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I watch television.",
+          "answer": "Je regarde la télévision.",
+          "tip": "",
+          "accept": [
+            "Je regarde la télévision."
+          ]
+        },
+        {
+          "prompt": "We listen to music.",
+          "answer": "Nous écoutons la musique.",
+          "tip": "",
+          "accept": [
+            "Nous écoutons la musique."
+          ]
+        },
+        {
+          "prompt": "She likes fish. (old verb aimer)",
+          "answer": "Elle aime le poisson.",
+          "tip": "",
+          "accept": [
+            "Elle aime le poisson."
+          ]
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je regarde les fruits. → Change je to elles.",
+          "answer": "Elles regardent les fruits.",
+          "tip": "",
+          "accept": [
+            "Elles regardent les fruits."
+          ]
+        },
+        {
+          "prompt": "Tu écoutes la musique. → Change tu to nous.",
+          "answer": "Nous écoutons la musique.",
+          "tip": "",
+          "accept": [
+            "Nous écoutons la musique."
+          ]
+        }
+      ],
+      "oral": [
+        [
+          "Tu regardes la télévision ?",
+          "Oui, je regarde la télévision."
+        ],
+        [
+          "Tu écoutes la musique ?",
+          "Oui, j’écoute la musique."
+        ],
+        [
+          "Tu aimes le fromage ou le poisson ?",
+          "J’aime le fromage."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence using regarder.",
+          "Nous regardons la télévision."
+        ],
+        [
+          "Write a NEW sentence using écouter.",
+          "Elle écoute la musique."
+        ]
+      ],
+      "yesterday": "Review Day 3 plus one verb from Day 1 or Day 2. No new grammar.",
+      "conjugations": [
+        {
+          "name": "regarder",
+          "forms": [
+            "je regarde",
+            "tu regardes",
+            "il / elle regarde",
+            "nous regardons",
+            "vous regardez",
+            "ils / elles regardent"
+          ],
+          "meaning": "to watch / look at"
+        },
+        {
+          "name": "écouter",
+          "forms": [
+            "j’écoute",
+            "tu écoutes",
+            "il / elle écoute",
+            "nous écoutons",
+            "vous écoutez",
+            "ils / elles écoutent"
+          ],
+          "meaning": "to listen to"
+        }
+      ],
+      "day": 4,
+      "status": "ready",
+      "releaseDate": null,
+      "flashcards": [
+        [
+          "the bread",
+          "le pain"
+        ],
+        [
+          "the milk",
+          "le lait"
+        ],
+        [
+          "the eggs",
+          "les œufs"
+        ],
+        [
+          "the grocery store",
+          "l’épicerie"
+        ],
+        [
+          "the supermarket",
+          "le supermarché"
+        ]
+      ]
+    },
+    {
+      "day": 5,
+      "status": "coming_soon",
+      "releaseDate": null,
+      "title": "Lesson not uploaded yet",
+      "short": "To be published",
+      "focus": "The teacher will add the lesson and assignments here."
+    },
+    {
+      "day": 6,
+      "status": "coming_soon",
+      "releaseDate": null,
+      "title": "Lesson not uploaded yet",
+      "short": "To be published",
+      "focus": "The teacher will add the lesson and assignments here."
+    },
+    {
+      "day": 7,
+      "status": "coming_soon",
+      "releaseDate": null,
+      "title": "Lesson not uploaded yet",
+      "short": "To be published",
+      "focus": "The teacher will add the lesson and assignments here."
+    }
+  ]
+}
