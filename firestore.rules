@@ -7,28 +7,48 @@ service cloud.firestore {
         && exists(/databases/$(database)/documents/roles/$(request.auth.uid))
         && get(/databases/$(database)/documents/roles/$(request.auth.uid)).data.role == 'teacher';
     }
+    function approvedStudent(uid) {
+      return signedIn() && request.auth.uid == uid
+        && request.auth.token.email_verified == true
+        && exists(/databases/$(database)/documents/enrollments/$(uid))
+        && get(/databases/$(database)/documents/enrollments/$(uid)).data.status == 'approved';
+    }
     match /roles/{uid} {
       allow get: if signedIn() && (request.auth.uid == uid || teacher());
       allow list: if teacher();
-      allow write: if false;
+      allow write: if false; // Teacher role is created manually by project owner.
     }
-    match /profiles/{uid} {
+    match /enrollments/{uid} {
       allow get: if signedIn() && (request.auth.uid == uid || teacher());
       allow list: if teacher();
-      allow create, update: if signedIn() && request.auth.uid == uid
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['status','email','createdAt'])
+        && request.resource.data.status == 'pending'
+        && request.resource.data.email == request.auth.token.email;
+      allow update: if teacher()
+        && resource.data.status in ['pending','approved','rejected']
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','reviewedAt'])
+        && request.resource.data.status in ['approved','rejected','pending'];
+      allow delete: if false;
+    }
+    match /profiles/{uid} {
+      allow get: if teacher() || approvedStudent(uid);
+      allow list: if teacher();
+      allow create, update: if (teacher() || approvedStudent(uid))
+        && request.auth.uid == uid
         && request.resource.data.keys().hasOnly(['email','lastSeen'])
-        && request.resource.data.email == request.auth.token.email
-        && request.resource.data.email is string;
+        && request.resource.data.email == request.auth.token.email;
       allow delete: if false;
     }
     match /progress/{uid} {
-      allow get: if signedIn() && (request.auth.uid == uid || teacher());
+      allow get: if teacher() || approvedStudent(uid);
       allow list: if teacher();
-      allow create, update: if signedIn() && request.auth.uid == uid
+      allow create, update: if (teacher() || approvedStudent(uid))
+        && request.auth.uid == uid
         && request.resource.data.keys().hasOnly(['entries','updatedAt'])
         && request.resource.data.entries is map
         && request.resource.data.size() < 500000;
-      allow delete: if signedIn() && request.auth.uid == uid;
+      allow delete: if (teacher() || approvedStudent(uid)) && request.auth.uid == uid;
     }
     match /{document=**} { allow read, write: if false; }
   }
