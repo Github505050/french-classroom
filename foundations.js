@@ -32,13 +32,42 @@ const norm=s=>String(s).trim().toLowerCase().normalize("NFC").replace(/[’]/g,"
 let selected=0, speechRate=.9;
 const get=k=>{try{return localStorage.getItem(prefix+k)||""}catch{return ""}};
 const set=(k,v)=>{try{localStorage.setItem(prefix+k,v);window.classroomCloud?.schedule?.()}catch{}};
-function voice(text){if(!('speechSynthesis' in window)){alert("Audio is unavailable in this browser.");return}
-const voices=speechSynthesis.getVoices();const v=voices.find(x=>x.lang.toLowerCase().replace('_','-')==="fr-ca")||voices.find(x=>x.lang.toLowerCase().replace('_','-')==="fr-fr")||voices.find(x=>x.lang.toLowerCase().startsWith("fr"));if(!v){alert("No French voice is installed on this device. Audio needs a French system voice.");return}
-speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.voice=v;u.lang=v.lang;u.rate=speechRate;speechSynthesis.speak(u)}
+let voiceLoading=false;
+function audioStatus(message){
+ const el=document.getElementById('foundation-audio-status');
+ if(el)el.textContent=message;
+}
+function frenchVoice(){
+ const voices=window.speechSynthesis.getVoices();
+ return voices.find(v=>/^fr-ca$/i.test(v.lang.replace('_','-')))
+ ||voices.find(v=>/^fr-fr$/i.test(v.lang.replace('_','-')))
+ ||voices.find(v=>/^fr(?:-|$)/i.test(v.lang));
+}
+function voice(text){
+ if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){
+  audioStatus('Audio is not supported in this browser. Please use a current version of Chrome, Edge or Safari.');
+  return;
+ }
+ const synth=window.speechSynthesis;
+ // Speech synthesis voices can load asynchronously. When no French voice is
+ // listed, allow the browser to resolve fr-CA / fr-FR instead of failing early.
+ const utterance=new SpeechSynthesisUtterance(text);
+ const chosen=frenchVoice();
+ if(chosen)utterance.voice=chosen;
+ utterance.lang=chosen?.lang||'fr-FR';
+ utterance.rate=speechRate;
+ utterance.onerror=e=>audioStatus('Audio could not play ('+(e.error||'unknown error')+'). Check your browser language voices and sound settings.');
+ utterance.onstart=()=>audioStatus('Playing French pronunciation…');
+ utterance.onend=()=>audioStatus('Playback finished.');
+ synth.cancel();
+ audioStatus(chosen?'Starting French audio…':'Trying French audio using the browser voice…');
+ synth.speak(utterance);
+ if(synth.paused)synth.resume();
+}
 function paint(){const done=lessons.filter((_,i)=>get(i+"_complete")==="1").length;const lesson=lessons[selected];const qs=lesson.questions;
 $('main').innerHTML='<section class="panel"><div class="eyebrow">START HERE · PRE-A1</div><div class="row"><h2>French Foundations · 14 Days</h2><span class="pill">'+done+' / 14 completed</span></div><p class="muted">Pronunciation first · Friendly beginner practice · Your A1 course stays unchanged.</p><div class="progress"><div class="bar" style="width:'+(done/14*100)+'%"></div></div><p class="small muted">Progress is saved on this device and synced to your student account when cloud sync is available.</p><div class="row"><strong>Foundation Week 1</strong><span class="small muted">Days 1–7</span></div><div class="days">'+lessons.slice(0,7).map((l,i)=>dayButton(l,i)).join('')+'</div><div class="row" style="margin-top:15px"><strong>Foundation Week 2</strong><span class="small muted">Days 8–14</span></div><div class="days">'+lessons.slice(7).map((l,i)=>dayButton(l,i+7)).join('')+'</div></section>'+
 '<section class="panel" id="foundation-lesson"><div class="eyebrow">DAY '+(selected+1)+' · '+lesson.time+' MINUTES</div><h2>'+esc(lesson.title)+'</h2><p>'+esc(lesson.goal)+'</p><h3>Learn</h3>'+lesson.notes.map(n=>'<div class="hint">'+esc(n)+'</div>').join('')+
-'<h3>Listen and repeat</h3><p class="small muted">Use a French voice on your device. Listen first, then repeat. Speaking aloud is optional.</p><button class="btn" id="foundation-slow" type="button" aria-pressed="'+(speechRate<.8)+'">'+(speechRate<.8?'✓ Slow playback':'Slow playback')+'</button><div class="grid">'+lesson.audio.map((t,i)=>'<div class="tile"><span>'+esc(t)+'</span> <button type="button" class="audio-btn" data-foundation-audio="'+i+'" aria-label="Play '+esc(t)+'">🔊</button></div>').join('')+'</div>'+
+'<h3>Listen and repeat</h3><p id="foundation-audio-status" class="small muted" role="status" aria-live="polite">Select 🔊 to hear a French example.</p><p class="small muted">Use a French voice on your device. Listen first, then repeat. Speaking aloud is optional.</p><button class="btn" id="foundation-slow" type="button" aria-pressed="'+(speechRate<.8)+'">'+(speechRate<.8?'✓ Slow playback':'Slow playback')+'</button><div class="grid">'+lesson.audio.map((t,i)=>'<div class="tile"><span>'+esc(t)+'</span> <button type="button" class="audio-btn" data-foundation-audio="'+i+'" aria-label="Play '+esc(t)+'">🔊</button></div>').join('')+'</div>'+
 '<h3 style="margin-top:20px">Practice · '+qs.length+' questions</h3><p class="small muted">Try before checking. Correct answers are explained when you check.</p>'+qs.map((q,i)=>'<div class="q"><label for="found-q-'+i+'"><strong>'+(i+1)+'. '+esc(q[0])+'</strong></label><input class="field" id="found-q-'+i+'" data-foundation-input="'+i+'" value="'+esc(get(selected+"_q_"+i))+'" autocomplete="off"><button type="button" class="btn" data-foundation-check="'+i+'">Check answer</button><div id="found-feedback-'+i+'" aria-live="polite"></div></div>').join('')+
 '<div class="hint"><strong>60-second no-notes recall</strong><p>'+esc(lesson.recall)+'</p></div><div class="row lesson-controls"><button type="button" id="foundation-complete" class="btn complete-btn">'+(get(selected+"_complete")==="1"?'✓ Day completed · Mark incomplete':'✓ Mark Day Complete')+'</button><button type="button" id="foundation-next" class="btn primary" '+(selected===13?'disabled':'')+'>Next day →</button></div>'+
 (selected===13?'<p class="muted small">20 / 24 correct is the recommended readiness target, not a gate. Continue to A1 when comfortable.</p>':'')+'</section>';
