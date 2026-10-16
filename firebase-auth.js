@@ -55,7 +55,7 @@ form.addEventListener('submit',async e=>{
    const result=await signInWithEmailAndPassword(auth,email,password);
    await result.user.reload();
    await result.user.getIdToken(true);
-   await handleAuthState(result.user);
+   // Auth observer opens the classroom once Firebase confirms the session.
   }
  }catch(err){freshSignIn=false;gateStatus(friendly(err))}finally{submit.disabled=false}
 });
@@ -93,9 +93,9 @@ document.addEventListener('click',async e=>{
  if(e.target.closest('#teacher-reload'))window.classroomLoadStudents?.();
 });
 
-let first=true;let freshSignIn=false;let authBusy=false;
+let first=true;let freshSignIn=false;let authBusy=false;let pendingAuthUser=undefined;
 async function handleAuthState(u){
- if(authBusy)return;
+ if(authBusy){pendingAuthUser=u;return}
  authBusy=true;
  try{
   clearTimeout(writeTimer);cloudEnabled=false;
@@ -147,6 +147,6 @@ async function handleAuthState(u){
   document.body.classList.remove('auth-checking');
   if(!user)document.body.classList.add('classroom-locked');
   gateStatus('Unable to finish signing in. Please try again.');
- }finally{authBusy=false}
+ }finally{authBusy=false;if(pendingAuthUser!==undefined){const next=pendingAuthUser;pendingAuthUser=undefined;queueMicrotask(()=>handleAuthState(next))}}
 }
 onAuthStateChanged(auth,handleAuthState);
