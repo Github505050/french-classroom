@@ -2,10 +2,10 @@
   "id": "week1",
   "number": 1,
   "title": "French A1 · Week 1",
-  "description": "Verbs, vocabulary and daily active-recall practice. Four lessons imported from the teacher’s original workbook; days 5–7 await syllabus content.",
+  "description": "French A1 Week 1: eight present-tense -ER priority verbs, 20 everyday nouns, daily active recall and speaking, Day 5 consolidation, Day 6 diagnostic revision, Day 7 articles/gender/plural and final assessment.",
   "days": [
     {
-      "short": "Home + speaking",
+      "short": "Home & speaking",
       "title": "Parler & travailler",
       "focus": "Say what you speak and where you work",
       "verbs": [
@@ -40,7 +40,7 @@
           "the kitchen"
         ]
       ],
-      "explanation": "Regular -ER verbs: remove -er and add -e, -es, -e, -ons, -ez, -ent. For example: parl-er → je parle, nous parlons. The final -ent in ils/elles forms is not pronounced.",
+      "explanation": "Pronouns and regular -ER: remove -er and add -e, -es, -e, -ons, -ez, -ent. Pronounce je parle and ils parlent with the same verb sound; -ent is normally silent. Parler français has no preposition; travailler à la maison is a useful fixed expression. Remember that nouns have gender. Common mistakes: ✗ je suis parle; ✗ tu parle; ✗ le maison. Vocabulary in context: la maison → Je travaille à la maison. l’appartement → Je suis dans l’appartement. la chambre → Je suis dans la chambre. le salon → Je suis dans le salon. la cuisine → Je suis dans la cuisine.",
       "fixed": [
         "Je parle français. — I speak French.",
         "Je travaille à la maison. — I work at home."
@@ -49,144 +49,110 @@
         {
           "prompt": "the house / home",
           "answer": "la maison",
-          "tip": "",
-          "accept": [
-            "la maison"
-          ]
+          "accept": [],
+          "explanation": "Maison is a feminine noun: la maison. Learn the article with the noun."
         },
         {
           "prompt": "the apartment",
           "answer": "l’appartement",
-          "tip": "",
-          "accept": [
-            "l’appartement"
-          ]
+          "accept": [],
+          "explanation": "Appartement is masculine, but le becomes l’ before a vowel: l’appartement."
         },
         {
           "prompt": "the bedroom",
           "answer": "la chambre",
-          "tip": "",
-          "accept": [
-            "la chambre"
-          ]
+          "accept": [],
+          "explanation": "Chambre is feminine: la chambre, not le chambre."
         },
         {
           "prompt": "the living room",
           "answer": "le salon",
-          "tip": "",
-          "accept": [
-            "le salon"
-          ]
+          "accept": [],
+          "explanation": "Salon is masculine: le salon."
         },
         {
           "prompt": "the kitchen",
           "answer": "la cuisine",
-          "tip": "",
-          "accept": [
-            "la cuisine"
-          ]
+          "accept": [],
+          "explanation": "Cuisine is feminine: la cuisine."
         },
         {
           "prompt": "I am (old verb être)",
           "answer": "je suis",
-          "tip": "",
-          "accept": [
-            "je suis"
-          ]
+          "accept": [],
+          "explanation": "Être in the present: je suis; do not use je es."
         },
         {
           "prompt": "I have (old verb avoir)",
           "answer": "j’ai",
-          "tip": "",
-          "accept": [
-            "j’ai"
-          ]
+          "accept": [],
+          "explanation": "Avoir in the present: j’ai. Je contracts to j’ before a vowel."
         }
       ],
       "drills": [
         {
           "prompt": "je + parler",
           "answer": "je parle",
-          "tip": "",
-          "accept": [
-            "je parle"
-          ]
+          "accept": [],
+          "explanation": "Parler is regular -ER: je takes -e → je parle."
         },
         {
           "prompt": "nous + travailler",
           "answer": "nous travaillons",
-          "tip": "",
-          "accept": [
-            "nous travaillons"
-          ]
+          "accept": [],
+          "explanation": "Travailler is regular -ER: nous takes -ons → nous travaillons."
         },
         {
           "prompt": "tu + parler",
           "answer": "tu parles",
-          "tip": "",
-          "accept": [
-            "tu parles"
-          ]
+          "accept": [],
+          "explanation": "With tu, a regular -ER verb takes -es → tu parles."
         },
         {
           "prompt": "elle + travailler",
           "answer": "elle travaille",
-          "tip": "",
-          "accept": [
-            "elle travaille"
-          ]
+          "accept": [],
+          "explanation": "With elle, a regular -ER verb takes -e → elle travaille."
         },
         {
           "prompt": "ils + parler",
           "answer": "ils parlent",
-          "tip": "",
-          "accept": [
-            "ils parlent"
-          ]
+          "accept": [],
+          "explanation": "With ils, a regular -ER verb ends -ent, normally silent → ils parlent."
         }
       ],
       "sentences": [
         {
           "prompt": "I speak French.",
           "answer": "Je parle français.",
-          "tip": "",
-          "accept": [
-            "Je parle français."
-          ]
+          "accept": [],
+          "explanation": "Say Je parle français. Do not add suis or de before français here."
         },
         {
           "prompt": "We work at home.",
           "answer": "Nous travaillons à la maison.",
-          "tip": "",
-          "accept": [
-            "Nous travaillons à la maison."
-          ]
+          "accept": [],
+          "explanation": "Nous requires -ons: travaillons. At home is à la maison."
         },
         {
           "prompt": "She speaks French.",
           "answer": "Elle parle français.",
-          "tip": "",
-          "accept": [
-            "Elle parle français."
-          ]
+          "accept": [],
+          "explanation": "Elle uses -e, not -es or -ent: elle parle."
         }
       ],
       "changes": [
         {
           "prompt": "Je parle français. → Change je to nous.",
           "answer": "Nous parlons français.",
-          "tip": "",
-          "accept": [
-            "Nous parlons français."
-          ]
+          "accept": [],
+          "explanation": "Change both the subject and ending: je parle → nous parlons."
         },
         {
           "prompt": "Il travaille à la maison. → Change il to elles.",
           "answer": "Elles travaillent à la maison.",
-          "tip": "",
-          "accept": [
-            "Elles travaillent à la maison."
-          ]
+          "accept": [],
+          "explanation": "Elles is plural; travailler ends -ent: elles travaillent."
         }
       ],
       "oral": [
@@ -201,6 +167,18 @@
         [
           "Et ton ami, il parle français ?",
           "Oui, il parle français."
+        ],
+        [
+          "Say in French (without reading): I speak French.",
+          "Je parle français."
+        ],
+        [
+          "Say in French: We work at home.",
+          "Nous travaillons à la maison."
+        ],
+        [
+          "Say in French: They speak French.",
+          "Ils parlent français."
         ]
       ],
       "exit": [
@@ -257,18 +235,18 @@
           "je vais"
         ],
         [
-          "the house",
-          "la maison"
+          "the door",
+          "la porte"
         ],
         [
-          "the apartment",
-          "l’appartement"
+          "the book",
+          "le livre"
         ]
       ],
-      "flashcardsNote": "Day 1 uses earlier-course review as preceding-day vocabulary was not provided."
+      "flashcardsNote": "From lessons before this workbook: être, avoir, aller, la porte, le livre. No new Day 1 vocabulary is introduced in these cards."
     },
     {
-      "short": "Home + opinions",
+      "short": "Home & opinions",
       "title": "Habiter & aimer",
       "focus": "Say where you live and what you like",
       "verbs": [
@@ -303,7 +281,7 @@
           "the door"
         ]
       ],
-      "explanation": "The -ER endings stay the same. Before a vowel, je becomes j’: j’habite, j’aime. Use “J’habite dans un appartement” as a useful ready-made expression (“I live in an apartment”).",
+      "explanation": "Reuse regular -ER endings for habiter and aimer; je becomes j’ before a vowel or silent h: j’habite, j’aime. Use habiter dans un appartement / dans une maison, and aimer + definite noun when expressing a general preference. Common mistakes: ✗ je habite; ✗ j’aimes; ✗ le chaise. Vocabulary in context: la table → La table est dans la cuisine. la chaise → La chaise est dans la chambre. la fenêtre → La fenêtre est dans le salon. le lit → Le lit est dans la chambre. la porte → Je suis à la porte.",
       "fixed": [
         "J’habite dans un appartement. — I live in an apartment.",
         "J’aime la chambre. — I like the bedroom."
@@ -312,144 +290,110 @@
         {
           "prompt": "the table",
           "answer": "la table",
-          "tip": "",
-          "accept": [
-            "la table"
-          ]
+          "accept": [],
+          "explanation": "Table is feminine, so la table."
         },
         {
           "prompt": "the chair",
           "answer": "la chaise",
-          "tip": "",
-          "accept": [
-            "la chaise"
-          ]
+          "accept": [],
+          "explanation": "Chaise is feminine, so la chaise."
         },
         {
           "prompt": "the window",
           "answer": "la fenêtre",
-          "tip": "",
-          "accept": [
-            "la fenêtre"
-          ]
+          "accept": [],
+          "explanation": "Fenêtre is feminine and keeps its accent: la fenêtre."
         },
         {
           "prompt": "the bed",
           "answer": "le lit",
-          "tip": "",
-          "accept": [
-            "le lit"
-          ]
+          "accept": [],
+          "explanation": "Lit is masculine, so le lit."
         },
         {
           "prompt": "the door",
           "answer": "la porte",
-          "tip": "",
-          "accept": [
-            "la porte"
-          ]
+          "accept": [],
+          "explanation": "Porte is feminine, so la porte."
         },
         {
           "prompt": "the kitchen (Day 1)",
           "answer": "la cuisine",
-          "tip": "",
-          "accept": [
-            "la cuisine"
-          ]
+          "accept": [],
+          "explanation": "Cuisine from Day 1 is feminine: la cuisine."
         },
         {
           "prompt": "We speak (Day 1)",
           "answer": "nous parlons",
-          "tip": "",
-          "accept": [
-            "nous parlons"
-          ]
+          "accept": [],
+          "explanation": "Parler with nous takes -ons: nous parlons."
         }
       ],
       "drills": [
         {
           "prompt": "je + habiter",
           "answer": "j’habite",
-          "tip": "",
-          "accept": [
-            "j’habite"
-          ]
+          "accept": [],
+          "explanation": "Because habiter begins with a silent h, je becomes j’: j’habite."
         },
         {
           "prompt": "tu + aimer",
           "answer": "tu aimes",
-          "tip": "",
-          "accept": [
-            "tu aimes"
-          ]
+          "accept": [],
+          "explanation": "Aimer with tu takes -es: tu aimes."
         },
         {
           "prompt": "nous + aimer",
           "answer": "nous aimons",
-          "tip": "",
-          "accept": [
-            "nous aimons"
-          ]
+          "accept": [],
+          "explanation": "Aimer with nous takes -ons: nous aimons."
         },
         {
           "prompt": "elles + habiter",
           "answer": "elles habitent",
-          "tip": "",
-          "accept": [
-            "elles habitent"
-          ]
+          "accept": [],
+          "explanation": "Habiter with elles takes -ent: elles habitent."
         },
         {
           "prompt": "il + travailler (Day 1)",
           "answer": "il travaille",
-          "tip": "",
-          "accept": [
-            "il travaille"
-          ]
+          "accept": [],
+          "explanation": "Recall yesterday’s -ER ending: il travaille, not il travaillent."
         }
       ],
       "sentences": [
         {
           "prompt": "I live in an apartment.",
           "answer": "J’habite dans un appartement.",
-          "tip": "",
-          "accept": [
-            "J’habite dans un appartement."
-          ]
+          "accept": [],
+          "explanation": "J’habite uses elision; dans un appartement is the taught chunk."
         },
         {
           "prompt": "She likes the kitchen.",
           "answer": "Elle aime la cuisine.",
-          "tip": "",
-          "accept": [
-            "Elle aime la cuisine."
-          ]
+          "accept": [],
+          "explanation": "Aimer with elle takes -e; cuisine is feminine: la cuisine."
         },
         {
           "prompt": "We like the house.",
           "answer": "Nous aimons la maison.",
-          "tip": "",
-          "accept": [
-            "Nous aimons la maison."
-          ]
+          "accept": [],
+          "explanation": "Nous aimons ends -ons, and la maison is feminine."
         }
       ],
       "changes": [
         {
           "prompt": "J’habite dans une maison. → Change je to ils.",
           "answer": "Ils habitent dans une maison.",
-          "tip": "",
-          "accept": [
-            "Ils habitent dans une maison."
-          ]
+          "accept": [],
+          "explanation": "Je → ils changes j’habite to ils habitent; une maison stays feminine."
         },
         {
           "prompt": "Tu aimes la chambre. → Change tu to vous.",
           "answer": "Vous aimez la chambre.",
-          "tip": "",
-          "accept": [
-            "Vous aimez la chambre."
-          ]
+          "accept": [],
+          "explanation": "Tu → vous changes tu aimes to vous aimez (-ez)."
         }
       ],
       "oral": [
@@ -464,6 +408,18 @@
         [
           "Tu aimes le salon ?",
           "Oui, j’aime le salon."
+        ],
+        [
+          "Say in French: I live in an apartment.",
+          "J’habite dans un appartement."
+        ],
+        [
+          "Say in French: She likes the kitchen.",
+          "Elle aime la cuisine."
+        ],
+        [
+          "Say in French, recalling Day 1: We speak French.",
+          "Nous parlons français."
         ]
       ],
       "exit": [
@@ -530,7 +486,7 @@
       ]
     },
     {
-      "short": "Groceries + requests",
+      "short": "Groceries & requests",
       "title": "Chercher & demander",
       "focus": "Look for everyday items and request them",
       "verbs": [
@@ -565,7 +521,7 @@
           "the supermarket"
         ]
       ],
-      "explanation": "Both verbs are regular -ER verbs. “Je cherche le pain” means “I am looking for the bread.” “Je demande un livre” means “I ask for a book.” Continue using only the present tense.",
+      "explanation": "Chercher + a thing takes a direct object: Je cherche le pain (not ✗ je cherche pour le pain). Demander + a thing means to request something: Elle demande une chaise. The definite le pain means particular bread; we will learn du pain later. Common mistakes: ✗ je cherche pour; ✗ nous demande; ✗ le épicerie. Vocabulary in context: le pain → Je cherche le pain. le lait → Elle cherche le lait. les œufs → Tu cherches les œufs. l’épicerie → Je cherche l’épicerie. le supermarché → Nous cherchons le supermarché.",
       "fixed": [
         "Je cherche le pain. — I am looking for bread.",
         "Je demande un livre. — I ask for a book."
@@ -574,144 +530,110 @@
         {
           "prompt": "the bread",
           "answer": "le pain",
-          "tip": "",
-          "accept": [
-            "le pain"
-          ]
+          "accept": [],
+          "explanation": "Pain is masculine: le pain."
         },
         {
           "prompt": "the milk",
           "answer": "le lait",
-          "tip": "",
-          "accept": [
-            "le lait"
-          ]
+          "accept": [],
+          "explanation": "Lait is masculine: le lait."
         },
         {
           "prompt": "the eggs",
           "answer": "les œufs",
-          "tip": "",
-          "accept": [
-            "les œufs"
-          ]
+          "accept": [],
+          "explanation": "Œufs is plural: les œufs; keep œ (or oe on keyboards only if teacher allows)."
         },
         {
           "prompt": "the grocery store",
           "answer": "l’épicerie",
-          "tip": "",
-          "accept": [
-            "l’épicerie"
-          ]
+          "accept": [],
+          "explanation": "Épicerie is feminine; la becomes l’ before the vowel é."
         },
         {
           "prompt": "the supermarket",
           "answer": "le supermarché",
-          "tip": "",
-          "accept": [
-            "le supermarché"
-          ]
+          "accept": [],
+          "explanation": "Supermarché is masculine: le supermarché; keep the final accent."
         },
         {
           "prompt": "the chair (Day 2)",
           "answer": "la chaise",
-          "tip": "",
-          "accept": [
-            "la chaise"
-          ]
+          "accept": [],
+          "explanation": "Chaise is feminine: la chaise (Day 2)."
         },
         {
           "prompt": "She likes (Day 2)",
           "answer": "elle aime",
-          "tip": "",
-          "accept": [
-            "elle aime"
-          ]
+          "accept": [],
+          "explanation": "Elle + aimer takes -e: elle aime (Day 2)."
         }
       ],
       "drills": [
         {
           "prompt": "je + chercher",
           "answer": "je cherche",
-          "tip": "",
-          "accept": [
-            "je cherche"
-          ]
+          "accept": [],
+          "explanation": "Regular -ER: je cherche (-e). Never insert pour after chercher for a direct object."
         },
         {
           "prompt": "nous + demander",
           "answer": "nous demandons",
-          "tip": "",
-          "accept": [
-            "nous demandons"
-          ]
+          "accept": [],
+          "explanation": "Regular -ER: nous demandons (-ons)."
         },
         {
           "prompt": "tu + demander",
           "answer": "tu demandes",
-          "tip": "",
-          "accept": [
-            "tu demandes"
-          ]
+          "accept": [],
+          "explanation": "Regular -ER: tu demandes (-es)."
         },
         {
           "prompt": "elles + chercher",
           "answer": "elles cherchent",
-          "tip": "",
-          "accept": [
-            "elles cherchent"
-          ]
+          "accept": [],
+          "explanation": "Regular -ER: elles cherchent (-ent, usually silent)."
         },
         {
           "prompt": "il + aimer (Day 2)",
           "answer": "il aime",
-          "tip": "",
-          "accept": [
-            "il aime"
-          ]
+          "accept": [],
+          "explanation": "Recall aimer: il aime (-e)."
         }
       ],
       "sentences": [
         {
-          "prompt": "I am looking for bread.",
+          "prompt": "I am looking for the bread (specific bread).",
           "answer": "Je cherche le pain.",
-          "tip": "",
-          "accept": [
-            "Je cherche le pain."
-          ]
+          "accept": [],
+          "explanation": "Je cherche le pain means you are looking for the specific bread; no pour."
         },
         {
           "prompt": "She asks for a chair.",
           "answer": "Elle demande une chaise.",
-          "tip": "",
-          "accept": [
-            "Elle demande une chaise."
-          ]
+          "accept": [],
+          "explanation": "Elle demande une chaise; chaise is feminine, so une."
         },
         {
-          "prompt": "We are looking for milk.",
+          "prompt": "We are looking for the milk (specific milk).",
           "answer": "Nous cherchons le lait.",
-          "tip": "",
-          "accept": [
-            "Nous cherchons le lait."
-          ]
+          "accept": [],
+          "explanation": "Nous cherchons le lait; nous needs -ons and lait is masculine."
         }
       ],
       "changes": [
         {
           "prompt": "Tu cherches les œufs. → Change tu to nous.",
           "answer": "Nous cherchons les œufs.",
-          "tip": "",
-          "accept": [
-            "Nous cherchons les œufs."
-          ]
+          "accept": [],
+          "explanation": "Tu cherches → nous cherchons; les œufs remains plural."
         },
         {
           "prompt": "Elle demande un livre. → Change elle to ils.",
           "answer": "Ils demandent un livre.",
-          "tip": "",
-          "accept": [
-            "Ils demandent un livre."
-          ]
+          "accept": [],
+          "explanation": "Elle demande → ils demandent; un livre stays singular."
         }
       ],
       "oral": [
@@ -726,6 +648,18 @@
         [
           "Tu demandes un livre ou une chaise ?",
           "Je demande un livre."
+        ],
+        [
+          "Say in French: She asks for a chair.",
+          "Elle demande une chaise."
+        ],
+        [
+          "Say in French: We are looking for the milk.",
+          "Nous cherchons le lait."
+        ],
+        [
+          "Say in French, recalling Day 2: I like the house.",
+          "J’aime la maison."
         ]
       ],
       "exit": [
@@ -792,7 +726,7 @@
       ]
     },
     {
-      "short": "Food + media",
+      "short": "Food & media",
       "title": "Regarder & écouter",
       "focus": "Talk about watching and listening, and reuse food vocabulary",
       "verbs": [
@@ -827,7 +761,7 @@
           "the cheese"
         ]
       ],
-      "explanation": "The -ER endings do not change. Before a vowel use j’: j’écoute. “Je regarde la télévision” and “J’écoute la musique” are useful chunks. To use food words naturally, also recycle aimer: “J’aime le riz.”",
+      "explanation": "Regarder and écouter normally take direct objects: regarder la télévision, écouter la radio. Je → j’écoute before a vowel. For general likes, aimer + article: J’aime le poisson. For the phrase écouter la musique, this can mean the specific music being discussed; the general expression écouter de la musique will be taught with partitive articles later. Common mistakes: ✗ je écoute; ✗ vous regardons; ✗ j’aime poisson. Vocabulary in context: le riz → J’aime le riz. le poisson → Elle aime le poisson. les légumes → Nous aimons les légumes. les fruits → Ils aiment les fruits. le fromage → Tu aimes le fromage ?",
       "fixed": [
         "Je regarde la télévision. — I watch television.",
         "J’écoute la musique. — I listen to music.",
@@ -837,144 +771,110 @@
         {
           "prompt": "the rice",
           "answer": "le riz",
-          "tip": "",
-          "accept": [
-            "le riz"
-          ]
+          "accept": [],
+          "explanation": "Riz is masculine: le riz (final z is normally silent)."
         },
         {
           "prompt": "the fish",
           "answer": "le poisson",
-          "tip": "",
-          "accept": [
-            "le poisson"
-          ]
+          "accept": [],
+          "explanation": "Poisson is masculine: le poisson."
         },
         {
           "prompt": "the vegetables",
           "answer": "les légumes",
-          "tip": "",
-          "accept": [
-            "les légumes"
-          ]
+          "accept": [],
+          "explanation": "Légumes is plural: les légumes, with é."
         },
         {
           "prompt": "the fruit / fruits",
           "answer": "les fruits",
-          "tip": "",
-          "accept": [
-            "les fruits"
-          ]
+          "accept": [],
+          "explanation": "Fruits is plural: les fruits."
         },
         {
           "prompt": "the cheese",
           "answer": "le fromage",
-          "tip": "",
-          "accept": [
-            "le fromage"
-          ]
+          "accept": [],
+          "explanation": "Fromage is masculine: le fromage."
         },
         {
           "prompt": "the bread (Day 3)",
           "answer": "le pain",
-          "tip": "",
-          "accept": [
-            "le pain"
-          ]
+          "accept": [],
+          "explanation": "Pain from Day 3 is masculine: le pain."
         },
         {
           "prompt": "We look for (Day 3)",
           "answer": "nous cherchons",
-          "tip": "",
-          "accept": [
-            "nous cherchons"
-          ]
+          "accept": [],
+          "explanation": "Chercher with nous takes -ons: nous cherchons."
         }
       ],
       "drills": [
         {
           "prompt": "je + écouter",
           "answer": "j’écoute",
-          "tip": "",
-          "accept": [
-            "j’écoute"
-          ]
+          "accept": [],
+          "explanation": "Before écouter, je becomes j’: j’écoute; keep é."
         },
         {
           "prompt": "vous + regarder",
           "answer": "vous regardez",
-          "tip": "",
-          "accept": [
-            "vous regardez"
-          ]
+          "accept": [],
+          "explanation": "Regarder with vous ends -ez: vous regardez."
         },
         {
           "prompt": "nous + écouter",
           "answer": "nous écoutons",
-          "tip": "",
-          "accept": [
-            "nous écoutons"
-          ]
+          "accept": [],
+          "explanation": "Écouter with nous ends -ons: nous écoutons."
         },
         {
           "prompt": "elles + regarder",
           "answer": "elles regardent",
-          "tip": "",
-          "accept": [
-            "elles regardent"
-          ]
+          "accept": [],
+          "explanation": "Regarder with elles ends -ent: elles regardent."
         },
         {
           "prompt": "tu + chercher (Day 3)",
           "answer": "tu cherches",
-          "tip": "",
-          "accept": [
-            "tu cherches"
-          ]
+          "accept": [],
+          "explanation": "Recall chercher with tu: tu cherches (-es)."
         }
       ],
       "sentences": [
         {
           "prompt": "I watch television.",
           "answer": "Je regarde la télévision.",
-          "tip": "",
-          "accept": [
-            "Je regarde la télévision."
-          ]
+          "accept": [],
+          "explanation": "Je regarde la télévision: direct object, no preposition after regarder."
         },
         {
-          "prompt": "We listen to music.",
+          "prompt": "We listen to the music (a particular piece of music).",
           "answer": "Nous écoutons la musique.",
-          "tip": "",
-          "accept": [
-            "Nous écoutons la musique."
-          ]
+          "accept": [],
+          "explanation": "Nous écoutons la musique refers to the music being discussed; écouter takes a direct object."
         },
         {
           "prompt": "She likes fish. (old verb aimer)",
           "answer": "Elle aime le poisson.",
-          "tip": "",
-          "accept": [
-            "Elle aime le poisson."
-          ]
+          "accept": [],
+          "explanation": "Elle aime le poisson: French uses the definite article after aimer for general likes."
         }
       ],
       "changes": [
         {
           "prompt": "Je regarde les fruits. → Change je to elles.",
           "answer": "Elles regardent les fruits.",
-          "tip": "",
-          "accept": [
-            "Elles regardent les fruits."
-          ]
+          "accept": [],
+          "explanation": "Je regarde → elles regardent; les fruits stays plural."
         },
         {
           "prompt": "Tu écoutes la musique. → Change tu to nous.",
           "answer": "Nous écoutons la musique.",
-          "tip": "",
-          "accept": [
-            "Nous écoutons la musique."
-          ]
+          "accept": [],
+          "explanation": "Tu écoutes → nous écoutons; keep the accent on écouter."
         }
       ],
       "oral": [
@@ -989,6 +889,18 @@
         [
           "Tu aimes le fromage ou le poisson ?",
           "J’aime le fromage."
+        ],
+        [
+          "Say in French: We watch television.",
+          "Nous regardons la télévision."
+        ],
+        [
+          "Say in French: She likes fish.",
+          "Elle aime le poisson."
+        ],
+        [
+          "Say in French, recalling Day 3: They are looking for the bread.",
+          "Ils cherchent le pain."
         ]
       ],
       "exit": [
@@ -1056,27 +968,718 @@
     },
     {
       "day": 5,
-      "status": "coming_soon",
+      "status": "ready",
       "releaseDate": null,
-      "title": "Lesson not uploaded yet",
-      "short": "To be published",
-      "focus": "The teacher will add the lesson and assignments here."
+      "short": "Mix eight verbs",
+      "title": "Construire des phrases — 8 verbes",
+      "focus": "Combine all eight -ER verbs into accurate, short everyday statements and answers.",
+      "yesterday": "Review Day 4: regarder, écouter, riz, poisson, légumes, fruits, fromage. Recycle older verbs on purpose.",
+      "explanation": "No new verb or vocabulary today. Reuse: parler, travailler, habiter, aimer, chercher, demander, regarder, écouter. Regular -ER endings: -e, -es, -e, -ons, -ez, -ent; use j’ with habiter, aimer, écouter. Common word order: subject + conjugated verb + object/place. Say Je parle français (not ✗ je parle de français). Say Je cherche le livre (not ✗ je cherche pour le livre). Practice without notes first; compare models afterward.",
+      "verbs": [],
+      "vocab": [],
+      "conjugations": [],
+      "fixed": [
+        "J’habite dans un appartement et je travaille à la maison. — I live in an apartment and work at home.",
+        "Elle regarde la télévision et j’écoute la musique. — She watches television and I listen to the music.",
+        "Elle aime les fruits. — She likes fruit."
+      ],
+      "flashcards": [
+        [
+          "I watch",
+          "je regarde"
+        ],
+        [
+          "I listen",
+          "j’écoute"
+        ],
+        [
+          "the vegetables",
+          "les légumes"
+        ],
+        [
+          "the fish",
+          "le poisson"
+        ],
+        [
+          "We like",
+          "nous aimons"
+        ]
+      ],
+      "recall": [
+        {
+          "prompt": "the window",
+          "answer": "la fenêtre",
+          "accept": [],
+          "explanation": "Fenêtre is feminine, and ê takes a circumflex."
+        },
+        {
+          "prompt": "the bread",
+          "answer": "le pain",
+          "accept": [],
+          "explanation": "Pain is masculine: le pain."
+        },
+        {
+          "prompt": "the cheese",
+          "answer": "le fromage",
+          "accept": [],
+          "explanation": "Fromage is masculine: le fromage."
+        },
+        {
+          "prompt": "the supermarket",
+          "answer": "le supermarché",
+          "accept": [],
+          "explanation": "Supermarché is masculine; the é accent matters."
+        },
+        {
+          "prompt": "I listen",
+          "answer": "j’écoute",
+          "accept": [],
+          "explanation": "Je shortens to j’ before écouter; keep é."
+        },
+        {
+          "prompt": "They work (masculine or mixed group)",
+          "answer": "ils travaillent",
+          "accept": [],
+          "explanation": "Ils takes the -ent ending on regular -ER verbs."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "nous + parler",
+          "answer": "nous parlons",
+          "accept": [],
+          "explanation": "The regular -ER ending for nous is -ons."
+        },
+        {
+          "prompt": "tu + habiter",
+          "answer": "tu habites",
+          "accept": [],
+          "explanation": "With tu, a regular -ER verb ends in -es."
+        },
+        {
+          "prompt": "elles + chercher",
+          "answer": "elles cherchent",
+          "accept": [],
+          "explanation": "Elles requires -ent for a regular -ER verb."
+        },
+        {
+          "prompt": "je + aimer",
+          "answer": "j’aime",
+          "accept": [],
+          "explanation": "Je becomes j’ before aimer, with an -e ending."
+        },
+        {
+          "prompt": "vous + écouter",
+          "answer": "vous écoutez",
+          "accept": [],
+          "explanation": "Vous takes -ez, and écouter keeps its accent."
+        },
+        {
+          "prompt": "il + demander",
+          "answer": "il demande",
+          "accept": [],
+          "explanation": "Il uses -e for regular -ER verbs."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I live in an apartment and I like the kitchen.",
+          "answer": "J’habite dans un appartement et j’aime la cuisine.",
+          "accept": [],
+          "explanation": "Both j’habite and j’aime use elision; la cuisine is feminine."
+        },
+        {
+          "prompt": "We are looking for the book.",
+          "answer": "Nous cherchons le livre.",
+          "accept": [],
+          "explanation": "Nous takes -ons and chercher takes a direct object (no pour)."
+        },
+        {
+          "prompt": "She works at home.",
+          "answer": "Elle travaille à la maison.",
+          "accept": [],
+          "explanation": "Elle takes -e; the everyday fixed expression is à la maison."
+        },
+        {
+          "prompt": "They watch television.",
+          "answer": "Ils regardent la télévision.",
+          "accept": [
+            "Elles regardent la télévision."
+          ],
+          "explanation": "Ils/elles takes -ent; télévision is feminine."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je parle français. → Change je to vous.",
+          "answer": "Vous parlez français.",
+          "accept": [],
+          "explanation": "Vous uses -ez and does not add any preposition after parler français."
+        },
+        {
+          "prompt": "Nous aimons le poisson. → Change nous to elle.",
+          "answer": "Elle aime le poisson.",
+          "accept": [],
+          "explanation": "Elle takes -e; le poisson stays masculine."
+        },
+        {
+          "prompt": "Elle écoute la musique. → Change elle to ils.",
+          "answer": "Ils écoutent la musique.",
+          "accept": [],
+          "explanation": "Ils takes -ent, usually silent."
+        },
+        {
+          "prompt": "Tu habites dans une maison. → Change tu to nous.",
+          "answer": "Nous habitons dans une maison.",
+          "accept": [],
+          "explanation": "Nous takes -ons; une maison is feminine."
+        }
+      ],
+      "oral": [
+        [
+          "Tu habites dans une maison ou dans un appartement ?",
+          "J’habite dans un appartement."
+        ],
+        [
+          "Tu aimes les fruits ?",
+          "Oui, j’aime les fruits."
+        ],
+        [
+          "Tu regardes la télévision à la maison ?",
+          "Oui, je regarde la télévision à la maison."
+        ],
+        [
+          "Say in French: They are looking for the book.",
+          "Ils cherchent le livre."
+        ],
+        [
+          "Say in French: We work at home.",
+          "Nous travaillons à la maison."
+        ],
+        [
+          "Say in French: I listen to the music.",
+          "J’écoute la musique."
+        ],
+        [
+          "Speak two different sentences: where you live and what you like.",
+          "J’habite dans une maison. J’aime la cuisine."
+        ],
+        [
+          "Ask your teacher in French: Do you speak French?",
+          "Tu parles français ?"
+        ]
+      ],
+      "exit": [
+        [
+          "Write one NEW sentence using chercher and a noun with an article.",
+          "Je cherche la chaise."
+        ],
+        [
+          "Write one NEW sentence using a plural subject and écouter.",
+          "Ils écoutent la musique."
+        ],
+        [
+          "Write TWO sentences about where you live and what you like.",
+          "J’habite dans un appartement. J’aime le salon."
+        ]
+      ]
     },
     {
       "day": 6,
-      "status": "coming_soon",
+      "status": "ready",
       "releaseDate": null,
-      "title": "Lesson not uploaded yet",
-      "short": "To be published",
-      "focus": "The teacher will add the lesson and assignments here."
+      "short": "Diagnostic & repair",
+      "title": "Test diagnostique — mémoire active",
+      "focus": "Identify weak verbs, noun articles and sentence order in a closed-notes practice test.",
+      "yesterday": "Recall Day 5 mixed practice. Do the first attempt without model answers or conjugation tables.",
+      "explanation": "No new grammar, verbs or vocabulary. Round 1: attempt recall and conjugations without notes. Round 2: build and transform sentences. Round 3: speak aloud, then inspect corrections. Teacher: sort errors into verb ending / article or gender / elision / word order / accent. Reuse the two weakest structures in three fresh oral sentences. This day is diagnostic, not a high-stakes pass/fail exam.",
+      "verbs": [],
+      "vocab": [],
+      "conjugations": [],
+      "fixed": [
+        "Je cherche la fenêtre. — I am looking for the window.",
+        "Ils travaillent à la maison. — They work at home.",
+        "Nous aimons le poisson. — We like fish."
+      ],
+      "flashcards": [
+        [
+          "We speak",
+          "nous parlons"
+        ],
+        [
+          "I live",
+          "j’habite"
+        ],
+        [
+          "the cheese",
+          "le fromage"
+        ],
+        [
+          "the bedroom",
+          "la chambre"
+        ],
+        [
+          "They look for",
+          "ils cherchent"
+        ]
+      ],
+      "recall": [
+        {
+          "prompt": "the bedroom",
+          "answer": "la chambre",
+          "accept": [],
+          "explanation": "Chambre is feminine: la chambre."
+        },
+        {
+          "prompt": "the chair",
+          "answer": "la chaise",
+          "accept": [],
+          "explanation": "Chaise is feminine: la chaise."
+        },
+        {
+          "prompt": "the supermarket",
+          "answer": "le supermarché",
+          "accept": [],
+          "explanation": "Supermarché is masculine and takes é."
+        },
+        {
+          "prompt": "the eggs",
+          "answer": "les œufs",
+          "accept": [],
+          "explanation": "Œufs is plural here; use les."
+        },
+        {
+          "prompt": "the cheese",
+          "answer": "le fromage",
+          "accept": [],
+          "explanation": "Fromage is masculine: le fromage."
+        },
+        {
+          "prompt": "I like",
+          "answer": "j’aime",
+          "accept": [],
+          "explanation": "Elide je before aimer, and write -e."
+        },
+        {
+          "prompt": "We are looking for",
+          "answer": "nous cherchons",
+          "accept": [],
+          "explanation": "Nous needs the -ons ending."
+        },
+        {
+          "prompt": "They listen (feminine group)",
+          "answer": "elles écoutent",
+          "accept": [],
+          "explanation": "Elles requires -ent, and écouter has é."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "ils + aimer",
+          "answer": "ils aiment",
+          "accept": [],
+          "explanation": "Ils takes -ent; no final -s on the verb."
+        },
+        {
+          "prompt": "nous + travailler",
+          "answer": "nous travaillons",
+          "accept": [],
+          "explanation": "Nous takes -ons."
+        },
+        {
+          "prompt": "je + habiter",
+          "answer": "j’habite",
+          "accept": [],
+          "explanation": "Je elides before the silent h of habiter."
+        },
+        {
+          "prompt": "vous + demander",
+          "answer": "vous demandez",
+          "accept": [],
+          "explanation": "Vous takes -ez."
+        },
+        {
+          "prompt": "tu + parler",
+          "answer": "tu parles",
+          "accept": [],
+          "explanation": "Tu takes -es."
+        },
+        {
+          "prompt": "elle + regarder",
+          "answer": "elle regarde",
+          "accept": [],
+          "explanation": "Elle takes -e."
+        },
+        {
+          "prompt": "nous + écouter",
+          "answer": "nous écoutons",
+          "accept": [],
+          "explanation": "Nous takes -ons; keep é."
+        },
+        {
+          "prompt": "je + chercher",
+          "answer": "je cherche",
+          "accept": [],
+          "explanation": "Je takes -e; chercher does not need pour before a direct object."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "They work at home.",
+          "answer": "Ils travaillent à la maison.",
+          "accept": [
+            "Elles travaillent à la maison."
+          ],
+          "explanation": "Ils/elles takes -ent; à la maison means at home."
+        },
+        {
+          "prompt": "She lives in a house.",
+          "answer": "Elle habite dans une maison.",
+          "accept": [],
+          "explanation": "Elle uses the -e ending; maison is feminine so une."
+        },
+        {
+          "prompt": "We like the vegetables.",
+          "answer": "Nous aimons les légumes.",
+          "accept": [],
+          "explanation": "Aimer with nous takes -ons; les légumes is plural."
+        },
+        {
+          "prompt": "I am looking for the door.",
+          "answer": "Je cherche la porte.",
+          "accept": [],
+          "explanation": "Chercher takes a direct object; porte is feminine."
+        },
+        {
+          "prompt": "You (plural/formal) watch television.",
+          "answer": "Vous regardez la télévision.",
+          "accept": [],
+          "explanation": "Vous takes -ez; no preposition after regarder."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je parle français. → Change je to elles.",
+          "answer": "Elles parlent français.",
+          "accept": [],
+          "explanation": "Elles takes -ent and parler français needs no preposition."
+        },
+        {
+          "prompt": "Nous cherchons la chaise. → Change nous to tu.",
+          "answer": "Tu cherches la chaise.",
+          "accept": [],
+          "explanation": "Tu needs -es."
+        },
+        {
+          "prompt": "Il aime le riz. → Change il to nous.",
+          "answer": "Nous aimons le riz.",
+          "accept": [],
+          "explanation": "Nous takes -ons."
+        },
+        {
+          "prompt": "Tu écoutes la musique. → Change tu to je.",
+          "answer": "J’écoute la musique.",
+          "accept": [],
+          "explanation": "Use j’ before écouter; je écoute is incorrect."
+        }
+      ],
+      "oral": [
+        [
+          "Say in French: I am looking for the window.",
+          "Je cherche la fenêtre."
+        ],
+        [
+          "Say in French: We like the house.",
+          "Nous aimons la maison."
+        ],
+        [
+          "Say in French: They listen to the music.",
+          "Ils écoutent la musique."
+        ],
+        [
+          "Tu habites où ?",
+          "J’habite dans un appartement."
+        ],
+        [
+          "Tu aimes le poisson ou les légumes ?",
+          "J’aime les légumes."
+        ],
+        [
+          "Say in French: She works at home.",
+          "Elle travaille à la maison."
+        ],
+        [
+          "Ask the teacher in French: Do you watch television?",
+          "Tu regardes la télévision ?"
+        ],
+        [
+          "Give three different present-tense sentences using three different verbs.",
+          "Je parle français. J’habite dans une maison. Je cherche le livre."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence with nous and a verb from the week.",
+          "Nous parlons français."
+        ],
+        [
+          "Write a NEW sentence with an article and a food word.",
+          "J’aime les fruits."
+        ],
+        [
+          "Write two short sentences, one with habiter and one with travailler.",
+          "J’habite dans un appartement. Je travaille à la maison."
+        ]
+      ]
     },
     {
       "day": 7,
-      "status": "coming_soon",
+      "status": "ready",
       "releaseDate": null,
-      "title": "Lesson not uploaded yet",
-      "short": "To be published",
-      "focus": "The teacher will add the lesson and assignments here."
+      "short": "Articles & final test",
+      "title": "Articles, genre et pluriel — bilan",
+      "focus": "Choose definite and indefinite articles accurately, use plural nouns and demonstrate independent Week 1 speaking.",
+      "yesterday": "Review Day 6 errors first: verb endings, gender/articles, j’ before a vowel, and noun accents.",
+      "explanation": "GRAMMAR: Articles tell us whether we mean a known/specific or general thing (le, la, l’, les) or a single/non-specific or plural countable thing (un, une, des). Masculine singular: le salon / un salon. Feminine singular: la maison / une maison. Before a vowel or silent h: l’appartement / un appartement; l’épicerie / une épicerie. Plural: les maisons / des maisons; most nouns add -s when plural (la chaise → les chaises). Gender remains even when l’ hides le or la. Use definite articles with aimer for a general preference: J’aime le poisson. Do not introduce partitives du/de la yet: Je cherche le pain refers to particular bread. Today: first learn the rule with examples, then take a closed-notes weekly test, then speak without reading.",
+      "verbs": [],
+      "vocab": [],
+      "conjugations": [],
+      "fixed": [
+        "Je cherche la maison. / Je cherche une maison. — I am looking for the house. / I am looking for a house.",
+        "J’habite dans un appartement. — I live in an apartment.",
+        "Je cherche des chaises. — I am looking for some chairs.",
+        "J’aime les légumes. — I like vegetables."
+      ],
+      "flashcards": [
+        [
+          "the house",
+          "la maison"
+        ],
+        [
+          "a house",
+          "une maison"
+        ],
+        [
+          "I am looking for the door",
+          "je cherche la porte"
+        ],
+        [
+          "They listen",
+          "ils écoutent"
+        ],
+        [
+          "the eggs",
+          "les œufs"
+        ]
+      ],
+      "recall": [
+        {
+          "prompt": "the house (definite)",
+          "answer": "la maison",
+          "accept": [],
+          "explanation": "Maison is feminine; the definite article is la."
+        },
+        {
+          "prompt": "a house",
+          "answer": "une maison",
+          "accept": [],
+          "explanation": "A singular indefinite feminine noun takes une."
+        },
+        {
+          "prompt": "the apartment (definite)",
+          "answer": "l’appartement",
+          "accept": [],
+          "explanation": "Appartement is masculine; le elides to l’ before a vowel."
+        },
+        {
+          "prompt": "an apartment",
+          "answer": "un appartement",
+          "accept": [],
+          "explanation": "Appartement is masculine even though the definite article is l’."
+        },
+        {
+          "prompt": "the grocery store (definite)",
+          "answer": "l’épicerie",
+          "accept": [],
+          "explanation": "Épicerie is feminine; la elides to l’."
+        },
+        {
+          "prompt": "a grocery store",
+          "answer": "une épicerie",
+          "accept": [],
+          "explanation": "Épicerie is feminine: une épicerie."
+        },
+        {
+          "prompt": "the eggs",
+          "answer": "les œufs",
+          "accept": [],
+          "explanation": "The definite plural article is les."
+        },
+        {
+          "prompt": "some eggs",
+          "answer": "des œufs",
+          "accept": [],
+          "explanation": "Indefinite plural countable nouns take des."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + habiter",
+          "answer": "j’habite",
+          "accept": [],
+          "explanation": "Before the silent h in habiter, use j’; ending -e."
+        },
+        {
+          "prompt": "vous + parler",
+          "answer": "vous parlez",
+          "accept": [],
+          "explanation": "Vous takes -ez."
+        },
+        {
+          "prompt": "elles + aimer",
+          "answer": "elles aiment",
+          "accept": [],
+          "explanation": "Elles takes -ent."
+        },
+        {
+          "prompt": "nous + regarder",
+          "answer": "nous regardons",
+          "accept": [],
+          "explanation": "Nous takes -ons."
+        },
+        {
+          "prompt": "tu + écouter",
+          "answer": "tu écoutes",
+          "accept": [],
+          "explanation": "Tu takes -es; keep é."
+        },
+        {
+          "prompt": "il + travailler",
+          "answer": "il travaille",
+          "accept": [],
+          "explanation": "Il takes -e."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I live in a house.",
+          "answer": "J’habite dans une maison.",
+          "accept": [],
+          "explanation": "Habiter with je becomes j’habite; maison is feminine so une."
+        },
+        {
+          "prompt": "She likes the apartment.",
+          "answer": "Elle aime l’appartement.",
+          "accept": [],
+          "explanation": "Use l’ before the vowel and aimer + definite article."
+        },
+        {
+          "prompt": "We are looking for a supermarket.",
+          "answer": "Nous cherchons un supermarché.",
+          "accept": [],
+          "explanation": "Supermarché is masculine; un shows one non-specific supermarket."
+        },
+        {
+          "prompt": "They like the vegetables.",
+          "answer": "Ils aiment les légumes.",
+          "accept": [
+            "Elles aiment les légumes."
+          ],
+          "explanation": "Aimer + plural definite article: les; ils/elles takes -ent."
+        },
+        {
+          "prompt": "She is looking for a chair.",
+          "answer": "Elle cherche une chaise.",
+          "accept": [],
+          "explanation": "Chaise is feminine: une chaise."
+        },
+        {
+          "prompt": "We watch television.",
+          "answer": "Nous regardons la télévision.",
+          "accept": [],
+          "explanation": "Nous takes -ons; télévision takes la in this expression."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je cherche une chaise. → Change to more than one chair.",
+          "answer": "Je cherche des chaises.",
+          "accept": [],
+          "explanation": "Une → des in the indefinite plural; chaise normally adds -s."
+        },
+        {
+          "prompt": "Il regarde le livre. → Change the book to the books.",
+          "answer": "Il regarde les livres.",
+          "accept": [],
+          "explanation": "Le → les and livre adds -s."
+        },
+        {
+          "prompt": "Nous aimons la chambre. → Change the bedroom to the bedrooms.",
+          "answer": "Nous aimons les chambres.",
+          "accept": [],
+          "explanation": "La → les and chambre adds -s."
+        },
+        {
+          "prompt": "J’habite dans un appartement. → Replace appartement with maison.",
+          "answer": "J’habite dans une maison.",
+          "accept": [],
+          "explanation": "Maison is feminine, so use une rather than un."
+        },
+        {
+          "prompt": "Je cherche le salon. → Replace salon with appartement.",
+          "answer": "Je cherche l’appartement.",
+          "accept": [],
+          "explanation": "The masculine definite le elides to l’ before appartement."
+        }
+      ],
+      "oral": [
+        [
+          "Say in French: I live in an apartment.",
+          "J’habite dans un appartement."
+        ],
+        [
+          "Say in French: We are looking for a chair.",
+          "Nous cherchons une chaise."
+        ],
+        [
+          "Say in French: She likes the vegetables.",
+          "Elle aime les légumes."
+        ],
+        [
+          "Say in French and make plural: I am looking for some windows.",
+          "Je cherche des fenêtres."
+        ],
+        [
+          "Tu habites dans une maison ou dans un appartement ?",
+          "J’habite dans un appartement."
+        ],
+        [
+          "Tu aimes les fruits ou le fromage ?",
+          "J’aime les fruits."
+        ],
+        [
+          "Ask the teacher in French: Do you work at home?",
+          "Tu travailles à la maison ?"
+        ],
+        [
+          "Produce TWO sentences: one about your home, one about something you like.",
+          "J’habite dans une maison. J’aime le salon."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence with une + a familiar noun.",
+          "Je cherche une chaise."
+        ],
+        [
+          "Write a NEW sentence with les + a familiar plural noun.",
+          "J’aime les légumes."
+        ],
+        [
+          "Write two sentences using habiter and aimer; choose the articles carefully.",
+          "J’habite dans un appartement. J’aime la cuisine."
+        ]
+      ]
     }
   ]
 }
