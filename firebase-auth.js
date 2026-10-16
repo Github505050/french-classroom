@@ -1,7 +1,7 @@
 import { firebaseConfig } from './firebase-config.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc, getDocs, collection, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, signOut, updateProfile, updatePassword, reauthenticateWithCredential, EmailAuthProvider, deleteUser } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, getDocs, collection, serverTimestamp, deleteDoc } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 
 const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
 const gate=document.getElementById('auth-gate'),form=document.getElementById('gate-form'),message=document.getElementById('gate-message');
@@ -24,31 +24,54 @@ function migrateLocal(uid){const old=localStorage.getItem(STORAGE_USER);if(old==
 function leaveLocal(){const old=localStorage.getItem(STORAGE_USER);if(old)localStorage.setItem(BACKUP_PREFIX+old,JSON.stringify(entries()));clearEntries();localStorage.removeItem(STORAGE_USER)}
 function saveBackup(){if(user)localStorage.setItem(BACKUP_PREFIX+user.uid,JSON.stringify(entries()))}
 const gateStatus=t=>{message.textContent=t};
-const BLOCKED_EMAIL_DOMAINS=new Set(["mailinator.com","guerrillamail.com","guerrillamail.net","10minutemail.com","10minutemail.net","temp-mail.org","tempmail.com","tempmail.net","yopmail.com","yopmail.fr","trashmail.com","trashmail.net","dispostable.com","maildrop.cc","getnada.com","sharklasers.com","grr.la","throwawaymail.com","tempr.email","fakeinbox.com","mintemail.com","emailondeck.com","mailnesia.com","mohmal.com","spambog.com","inboxkitten.com","burnermail.io","dropmail.me","1secmail.com","1secmail.org","1secmail.net","1secmail.xyz","tmpmail.org","tmpmail.net","fakemail.net","fakemailgenerator.com","mytemp.email"]);
+const BLOCKED_EMAIL_DOMAINS=new Set(["mailinator.com","guerrillamail.com","guerrillamail.net","10minutemail.com","10minutemail.net","temp-mail.org","tempmail.com","tempmail.net","yopmail.com","yopmail.fr","trashmail.com","trashmail.net","dispostable.com","maildrop.cc","getnada.com","sharklasers.com","grr.la","throwawaymail.com","tempr.email","fakeinbox.com","mintemail.com","emailondeck.com","mailnesia.com","mohmal.com","spambog.com","inboxkitten.com","burnermail.io","dropmail.me","1secmail.com","1secmail.org","1secmail.net","1secmail.xyz","tmpmail.org","tmpmail.net","fakemail.net","fakemailgenerator.com","mytemp.email","mail.tm","mail.gw","tempmail.plus","temp-mail.io","emailfake.com","generator.email","mail7.io","tempail.com","tempmailo.com","moakt.com","minuteinbox.com","guerrillamail.info","mailcatch.com","mailpoof.com","tempmailaddress.com","temporary-mail.net","tmail.ws","mailforspam.com","spamgourmet.com","discard.email","fake-email.app","tempmail.dev","anonymmail.net","mail-temporaire.fr","yopmail.net","yopmail.org","nada.email","maildropbox.com"]);
 function disposableEmail(email){const domain=String(email).toLowerCase().trim().split('@')[1]||'';return BLOCKED_EMAIL_DOMAINS.has(domain)}
 let signupMode=false;
 const toggle=document.getElementById('gate-signup-toggle'),submit=document.getElementById('gate-submit'),resend=document.getElementById('gate-verify-resend'),refresh=document.getElementById('gate-verify-refresh');
-toggle.onclick=()=>{signupMode=!signupMode;submit.textContent=signupMode?'Create account':'Sign in';toggle.textContent=signupMode?'Already registered? Sign in':'Create a student account';gateStatus(signupMode?'Create your account, then verify your email to enter.':'')};
+function signinUi(note=''){
+ signupMode=false;submit.textContent='Sign in';toggle.textContent='Create a student account';
+ resend.hidden=true;refresh.hidden=true;toggle.hidden=false;gateStatus(note);
+}
+toggle.onclick=()=>{signupMode=!signupMode;submit.textContent=signupMode?'Create account':'Sign in';toggle.textContent=signupMode?'Already registered? Sign in':'Create a student account';gateStatus(signupMode?'Verify your email before signing in.':'')};
 form.addEventListener('submit',async e=>{
- e.preventDefault();const email=document.getElementById('gate-email').value.trim(),password=document.getElementById('gate-password').value,btn=submit;
- btn.disabled=true;gateStatus(signupMode?'Creating your account…':'Signing in…');
+ e.preventDefault();const email=document.getElementById('gate-email').value.trim(),password=document.getElementById('gate-password').value;
+ submit.disabled=true;gateStatus(signupMode?'Creating your account…':'Signing in…');
  try{
-  if(signupMode){if(disposableEmail(email))throw Error('Temporary email addresses are not accepted. Please use a regular personal or school email.');if(password.length<6)throw Error('Password must have at least 6 characters.');const created=await createUserWithEmailAndPassword(auth,email,password);await sendEmailVerification(created.user);gateStatus('Account created! Check your inbox and spam folder, open the verification link, then return here and select I verified my email.');resend.hidden=false;refresh.hidden=false;}
-  else await signInWithEmailAndPassword(auth,email,password);
-  document.getElementById('gate-password').value='';
- }catch(err){gateStatus(friendly(err))}finally{btn.disabled=false}
+  if(signupMode){
+   if(disposableEmail(email))throw Error('Please use a permanent personal or school email address.');
+   if(password.length<8)throw Error('Use a password of at least 8 characters.');
+   const result=await createUserWithEmailAndPassword(auth,email,password);
+   try{await sendEmailVerification(result.user)}finally{await signOut(auth)}
+   document.getElementById('gate-password').value='';
+   signinUi('Verification email sent. Click the link in your inbox, then come back and sign in using your password.');
+  }else{
+   const result=await signInWithEmailAndPassword(auth,email,password);
+   await result.user.reload();
+   await result.user.getIdToken(true);
+   await handleAuthState(result.user);
+  }
+ }catch(err){gateStatus(friendly(err))}finally{submit.disabled=false}
 });
-resend.onclick=async()=>{if(!auth.currentUser)return gateStatus('Sign in first to resend verification.');resend.disabled=true;try{await sendEmailVerification(auth.currentUser);gateStatus('Verification email sent. Check your inbox and spam folder.')}catch(e){gateStatus(friendly(e))}finally{resend.disabled=false}};
-refresh.onclick=async()=>{if(!auth.currentUser)return gateStatus('Sign in first, then verify your email.');refresh.disabled=true;try{await auth.currentUser.reload();await auth.currentUser.getIdToken(true);await handleAuthState(auth.currentUser);if(!auth.currentUser.emailVerified)gateStatus('Your email is not verified yet. Open the link in the email and try again.')}catch(e){gateStatus(friendly(e))}finally{refresh.disabled=false}};
+resend.hidden=true;refresh.hidden=true;
 function show(){modal.hidden=false;modal.classList.remove('hidden');trigger.setAttribute('aria-expanded','true');paint()}
 function hide(){modal.hidden=true;modal.classList.add('hidden');trigger.setAttribute('aria-expanded','false');trigger.focus()}
 trigger?.addEventListener('click',show);document.getElementById('account-close')?.addEventListener('click',hide);
 modal?.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)hide()});
-function paint(){if(!user)return;body.innerHTML=`<h2>My account</h2><p class="account-email">${html(user.email)}</p><span class="account-role">${role==='teacher'?'Teacher':'Student'}</span><p class="account-sub">Your private progress is linked to this account.</p><div class="account-actions">${role==='teacher'?'<button id="teacher-open" class="btn primary" type="button">Open teacher dashboard</button>':''}<button id="account-upload" class="btn" type="button">Upload this device's progress</button><button id="account-download" class="btn" type="button">Load my cloud progress</button><button id="account-signout" class="btn" type="button">Sign out</button></div><p id="account-status" role="status" class="account-status">${cloudEnabled?'Cloud sync is on':'Cloud sync unavailable — local answers are kept on this device'}</p>`;
-document.getElementById('teacher-open')?.addEventListener('click',()=>{hide();window.classroomGoTeacher?.()});
-document.getElementById('account-signout').onclick=async()=>{cloudEnabled=false;await signOut(auth)};
-document.getElementById('account-upload').onclick=async()=>{if(!confirm('Replace your cloud progress with the answers saved on this device?'))return;try{await syncNow();status('Uploaded successfully.')}catch(e){status(friendly(e))}};
-document.getElementById('account-download').onclick=async()=>{if(!confirm('Replace this device’s saved answers with your cloud progress?'))return;try{await loadCloud(true);status('Cloud progress loaded.')}catch(e){status(friendly(e))}};
+function paint(){
+ if(!user)return;
+ const pic=user.photoURL?html(user.photoURL):'',photo=pic?'<img src="'+pic+'" alt="Profile photo" class="profile-picture">':'<span class="profile-initial">'+html((user.displayName||user.email||'S')[0].toUpperCase())+'</span>';
+ body.innerHTML=`<div class="profile-header"><div class="profile-avatar">${photo}</div><div><h2>My profile</h2><p class="account-email">${html(user.email)}</p><span class="account-role">${role==='teacher'?'Teacher':'Student'}</span></div></div>
+ <form id="profile-name-form"><label>Display name<input class="field" id="profile-name" maxlength="60" value="${html(user.displayName||'')}" placeholder="Your name"></label><button class="btn" type="submit">Save name</button></form>
+ <form id="profile-photo-form"><label>Profile photo URL<input class="field" id="profile-photo" type="url" value="${pic}" placeholder="https://..."></label><button class="btn" type="submit">Save photo</button></form>
+ <details class="profile-details"><summary>Change password</summary><form id="profile-password-form"><label>Current password<input class="field" id="profile-old-password" type="password" autocomplete="current-password" required></label><label>New password<input class="field" id="profile-new-password" type="password" autocomplete="new-password" minlength="8" required></label><button class="btn" type="submit">Change password</button></form></details>
+ <div class="account-actions">${role==='teacher'?'<button id="teacher-open" class="btn primary" type="button">Teacher dashboard</button>':''}<button id="account-signout" class="btn" type="button">Sign out</button><button id="account-delete" class="btn profile-danger" type="button">Delete my account</button></div>
+ <p id="account-status" role="status" class="account-status"></p>`;
+ document.getElementById('teacher-open')?.addEventListener('click',()=>{hide();window.classroomGoTeacher?.()});
+ document.getElementById('account-signout').onclick=async()=>{hide();await signOut(auth)};
+ document.getElementById('profile-name-form').onsubmit=async e=>{e.preventDefault();try{await updateProfile(auth.currentUser,{displayName:document.getElementById('profile-name').value.trim()});status('Name saved.')}catch(e){status(friendly(e))}};
+ document.getElementById('profile-photo-form').onsubmit=async e=>{e.preventDefault();const url=document.getElementById('profile-photo').value.trim();if(url&&!/^https:\/\//i.test(url))return status('Use a secure https:// photo URL.');try{await updateProfile(auth.currentUser,{photoURL:url||null});paint();status('Photo updated.')}catch(e){status(friendly(e))}};
+ document.getElementById('profile-password-form').onsubmit=async e=>{e.preventDefault();const old=document.getElementById('profile-old-password').value,next=document.getElementById('profile-new-password').value;if(next.length<8)return status('Use at least 8 characters.');try{await reauthenticateWithCredential(auth.currentUser,EmailAuthProvider.credential(auth.currentUser.email,old));await updatePassword(auth.currentUser,next);e.target.reset();status('Password changed successfully.')}catch(e){status(friendly(e))}};
+ document.getElementById('account-delete').onclick=async()=>{if(!confirm('Permanently delete your account and cloud progress? This cannot be undone.'))return;const pw=prompt('Enter your current password to confirm deletion:');if(!pw)return;try{const u=auth.currentUser;await reauthenticateWithCredential(u,EmailAuthProvider.credential(u.email,pw));await Promise.all([deleteDoc(doc(db,'progress',u.uid)).catch(()=>{}),deleteDoc(doc(db,'profiles',u.uid)).catch(()=>{})]);await deleteUser(u);hide();status('Account deleted.')}catch(e){status('Account deletion failed: '+friendly(e))}};
 }
 async function syncNow(){if(!user)throw Error('Not signed in');const id=user.uid;const data=entries();await setDoc(doc(db,'progress',id),{entries:data,updatedAt:serverTimestamp()});saveBackup();cloudEnabled=true}
 async function loadCloud(overwrite=false){if(!user)return;const id=user.uid;const result=await getDoc(doc(db,'progress',id));if(result.exists()){restoreEntries(result.data().entries||{});saveBackup();cloudEnabled=true;window.classroomRefresh?.()}else if(overwrite){throw Error('No cloud progress found for this account.')}else{cloudEnabled=true;await syncNow()}}
@@ -68,7 +91,7 @@ async function handleAuthState(u){const attempt=++session;clearTimeout(writeTime
  if(!u){resend.hidden=true;refresh.hidden=true;toggle.hidden=false;if(user||localStorage.getItem(STORAGE_USER))leaveLocal();user=null;role='student';window.classroomSetTeacherRole?.(false);document.body.classList.add('classroom-locked');trigger.textContent='Account';gateStatus('Sign in or create your student account.');return}
  await u.reload().catch(()=>{});await u.getIdToken(true).catch(()=>{});
  let isTeacher=false;try{const r=await getDoc(doc(db,'roles',u.uid));isTeacher=r.data()?.role==='teacher'}catch(e){console.warn('Role check:',e)}
- if(!u.emailVerified && !isTeacher){document.body.classList.add('classroom-locked');resend.hidden=false;refresh.hidden=false;toggle.hidden=true;submit.textContent='Sign in';gateStatus('Verify your email to enter the classroom. Check your inbox or spam, then choose I verified my email.');return}
+ if(!u.emailVerified && !isTeacher){document.body.classList.add('classroom-locked');await signOut(auth);signinUi('Your email is not verified. Open the verification link in your inbox, then sign in again with your password.');return}
  resend.hidden=true;refresh.hidden=true;toggle.hidden=false;
  if(user?.uid!==u.uid)migrateLocal(u.uid);
  user=u;role='student';
@@ -76,7 +99,7 @@ async function handleAuthState(u){const attempt=++session;clearTimeout(writeTime
  try{await setDoc(doc(db,'profiles',u.uid),{email:u.email||'',lastSeen:serverTimestamp()},{merge:true})}catch(err){console.warn('Profile not saved:',err)}
  try{await loadCloud(false)}catch(err){console.warn('Progress sync:',err);cloudEnabled=false}
  if(attempt!==session)return;
- document.body.classList.remove('classroom-locked');trigger.textContent='My account';if(!modal.hidden)paint();
+ if(!modal.hidden)hide();document.body.classList.remove('classroom-locked');trigger.textContent='My account';window.classroomBonjour?.();
  window.classroomRefresh?.();
  if(role==='teacher'&&first){first=false;window.classroomGoTeacher()}else first=false;
  gateStatus('');
