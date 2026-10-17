@@ -107,6 +107,8 @@ window.classroomLoadStudents=async()=>{
    row.updatedAt=data.updatedAt||null;
    map.set(x.id,row);
   });
+  try{const permissions=await getDocs(collection(db,'roles'));permissions.forEach(x=>{if(x.data()?.role==='teacher')map.delete(x.id)})}catch(e){console.warn('Teacher role listing unavailable:',e)}
+  if(role!=='teacher'||user?.uid!==uid||seq!==teacherLoadSeq)return;
   students=[...map.values()];
   window.classroomTeacherPortal?.setData(students);
  }catch(e){
