@@ -28,7 +28,7 @@ function mock(){
   let events={},refreshes=0;
   const doc={addEventListener:(type,fn)=>events[type]=fn,querySelector:()=>({})};
   const outlines=Array.from({length:14},(_,i)=>({title:'Foundation lesson '+(i+1),questionCount:2,answerSets:[['bonjour'],['merci']]}));
-  const weeks=[{id:'a1-week1',title:'A1 · Week 1',days:[{title:'Greetings',status:'ready',recall:Array(10).fill(['Word','Mot']),drills:[],sentences:[],changes:[],exit:[],oral:[['Speak']]}]}];
+  const weeks=[{id:'week1',title:'A1 · Week 1',days:[{title:'Greetings',status:'ready',recall:Array(10).fill(['Word','Mot']),drills:[],sentences:[],changes:[],exit:[],oral:[['Speak']]}]}];
   while(weeks[0].days.length<7)weeks[0].days.push({title:'Day '+weeks[0].days.length,status:'coming_soon'});
   const window={classroomIsTeacher:true,classroomGetSyllabus:()=>weeks,classroomFoundationOutline:()=>outlines,classroomRefresh:()=>refreshes++};
   const env={window,document:doc,Date,Number,String,Object,Map,Array,Math,Set,Blob,URL,setTimeout,console};
@@ -38,10 +38,10 @@ function mock(){
 test('teacher score calculations, foundation tracking and student data escaping',()=>{
   const {api}=mock();
   const entries={
-    frenchportal_v2_a1-week1_day1_completed:'yes',
-    frenchportal_v2_a1-week1_day1_score:'8',
-    frenchportal_v1_a1-week1_day1_recall_0:'Bonjour.',
-    frenchportal_v1_a1-week1_day1_oral_0:'1',
+    frenchportal_v2_week1_day1_completed:'yes',
+    frenchportal_v2_week1_day1_score:'8',
+    frenchportal_v1_week1_day1_recall_0:'Bonjour.',
+    frenchportal_v1_week1_day1_oral_0:'1',
     french_foundations_v1_0_complete:'1',
     french_foundations_v1_13_q_0:'bonjour',
     french_foundations_v1_13_q_1:'Incorrect'
@@ -64,7 +64,7 @@ test('teacher score calculations, foundation tracking and student data escaping'
 });
 test('no teacher UI for students, and invalid scores are excluded',()=>{
   const {api,window}=mock();
-  const r=api.compute({uid:'x',profile:{name:'Student'},entries:{frenchportal_v2_a1-week1_day1_score:'900',french_foundations_v1_0_complete:'1'}});
+  const r=api.compute({uid:'x',profile:{name:'Student'},entries:{frenchportal_v2_week1_day1_score:'900',french_foundations_v1_0_complete:'1'}});
   assert.equal(r.scored,0);
   assert.equal(r.average,null);
   window.classroomIsTeacher=false;
