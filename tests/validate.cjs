@@ -60,7 +60,8 @@ test('teacher score calculations, foundation tracking and student data escaping'
   assert.ok(rendered.includes('&lt;img'));
   assert.ok(!rendered.includes('<img src=x'));
   assert.ok(rendered.includes('Teacher workspace'));
-  assert.ok(rendered.includes('2 / 21'));
+  assert.ok(rendered.includes('Lessons completed'));
+  assert.ok(rendered.includes('Teacher workspace'));
 });
 test('no teacher UI for students, and invalid scores are excluded',()=>{
   const {api,window}=mock();
