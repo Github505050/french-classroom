@@ -7,11 +7,14 @@ const check=async(browser,device)=>{
  const isMobile=device==='mobile';
  const context=await browser.newContext({viewport:isMobile?{width:390,height:844}:{width:1365,height:768},deviceScaleFactor:1});
  const page=await context.newPage(),errors=[];
+ // Fake only the authenticated session; Firebase is tested separately with real accounts before release.
+ await page.route('**/firebase-auth.js',route=>route.fulfill({status:200,contentType:'text/javascript',body:'/* isolated UI smoke test */'}));
  page.on('pageerror',error=>errors.push(error.message));
  await page.goto(base,{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>window.classroomTeacherPortal && window.classroomFoundationOutline && window.classroomGetSyllabus()?.length===1,{timeout:20000});
  await page.evaluate(()=>{
    document.body.classList.remove('classroom-locked','auth-checking');
+   window.classroomTeacherDashboard=()=>window.classroomTeacherPortal.render();
    window.classroomSetTeacherRole(true);
    window.classroomSetSection('teacher');
    window.classroomTeacherPortal.setData([
