@@ -1,0 +1,60 @@
+name: Classroom quality checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feature/teacher-portal-pro]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse JavaScript files
+        run: |
+          node --check sw.js
+          node --check foundations.js
+          node --check teacher-dashboard.js
+          node --check firebase-auth.js
+          node --check tests/validate.cjs
+          node --check tests/browser-smoke.cjs
+      - name: Run lesson, data, and security checks
+        run: node --test tests/validate.cjs
+
+  browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: static-validation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install headless Chromium test runner
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start test website
+        run: |
+          python3 -m http.server 8090 --bind 127.0.0.1 > /tmp/classroom-server.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8090/config.json > /dev/null && exit 0; sleep 1; done
+          cat /tmp/classroom-server.log
+          exit 1
+      - name: Test desktop and mobile website flows
+        run: node tests/browser-smoke.cjs
+      - name: Attach UI screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: teacher-portal-screenshots
+          path: artifacts/
+          if-no-files-found: ignore
