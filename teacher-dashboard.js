@@ -1,7 +1,7 @@
 /* Teacher Portal Pro — read-only Firestore reporting. No student data is stored outside the signed-in session. */
 (function () {
   'use strict';
-  var records = [], state = {tab:'overview', query:'', status:'all', sort:'name', selected:null};
+  var records = [], sourceRows = [], state = {tab:'overview', query:'', status:'all', sort:'name', selected:null};
   var note = 'Loading student records…', lastRefresh = null;
   var E = function(v){return String(v == null ? '' : v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]})};
   var pct = function(a,b){return b ? Math.round(a/b*100) : 0};
@@ -69,12 +69,14 @@
   }
   function setData(rows){
     if(!window.classroomIsTeacher)return;
-    records=(Array.isArray(rows)?rows:[]).map(compute);
+    sourceRows=Array.isArray(rows)?rows:[];
+    records=sourceRows.map(compute);
     lastRefresh=new Date();note=records.length?'Student progress is synced from Firestore.':'No student records yet.';
     refresh();
   }
   function setStatus(message){if(!window.classroomIsTeacher)return;note=message;refresh()}
-  function clear(){records=[];state={tab:'overview',query:'',status:'all',sort:'name',selected:null};note='Loading student records…';lastRefresh=null}
+  function recompute(){records=sourceRows.map(compute);refresh()}
+  function clear(){records=[];sourceRows=[];state={tab:'overview',query:'',status:'all',sort:'name',selected:null};note='Loading student records…';lastRefresh=null}
   function refresh(){if(window.classroomIsTeacher && document.querySelector('#teacher-portal'))window.classroomRefresh?.()}
   function total(k){return records.reduce(function(n,r){return n+r[k]},0)}
   function icon(name){return '<span class="tp-symbol" aria-hidden="true">'+name+'</span>'}
@@ -212,5 +214,5 @@
     if(event.target.id==='tp-status'){state.status=event.target.value;updateContent()}
     if(event.target.id==='tp-sort'){state.sort=event.target.value;updateContent()}
   });
-  window.classroomTeacherPortal={render:render,setData:setData,setStatus:setStatus,clear:clear,exportCsv:exportCsv,compute:compute};
+  window.classroomTeacherPortal={render:render,setData:setData,setStatus:setStatus,clear:clear,recompute:recompute,exportCsv:exportCsv,compute:compute};
 })();
