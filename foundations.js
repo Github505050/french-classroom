@@ -90,5 +90,6 @@ const home=$('main');if(home){const observer=new MutationObserver(()=>{if(btn.cl
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
 window.classroomFoundationOutline=()=>lessons.map(l=>({title:l.title,questionCount:l.questions.length,answerSets:l.questions.map(q=>q.slice(1))}));
+window.classroomTeacherPortal?.recompute?.();
 window.classroomOpenFoundations=open;
 })();
