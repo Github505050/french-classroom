@@ -26,7 +26,12 @@
       var base='french_foundations_v1_'+f, done=values[base+'_complete']==='1';
       var questionTotal=outline[f] ? outline[f].questionCount : null;
       var answered=Object.keys(values).filter(function(k){return k.indexOf(base+'_q_')===0 && String(values[k]).trim()!==''}).length;
-      foundRows.push({day:f+1,title:outline[f] ? outline[f].title : 'Foundation day '+(f+1),done:done,answered:answered,total:questionTotal});
+      var correct=0;
+      if(outline[f] && outline[f].answerSets)outline[f].answerSets.forEach(function(accepted,j){
+        var answer=String(values[base+'_q_'+j]||'').trim().toLowerCase().normalize('NFC').replace(/[’]/g,"'").replace(/[.!?]/g,'').replace(/\s+/g,' ');
+        if(answer && accepted.some(function(valid){return String(valid).trim().toLowerCase().normalize('NFC').replace(/[’]/g,"'").replace(/[.!?]/g,'').replace(/\s+/g,' ')===answer}))correct++;
+      });
+      foundRows.push({day:f+1,title:outline[f] ? outline[f].title : 'Foundation day '+(f+1),done:done,answered:answered,correct:correct,total:questionTotal});
       if(done)totalCompleted++;
     }
     syllabus().forEach(function(w){
@@ -133,7 +138,7 @@
     var r=records.find(function(x){return x.uid===state.selected});
     if(!r)return '<div class="tp-card">Student record unavailable. <button type="button" class="tp-link" data-tp-tab="students">Back to students</button></div>';
     var foundation=r.foundation.map(function(d){
-      return '<div class="tp-lesson '+(d.done?'is-done':'')+'"><span class="tp-lesson-index">'+d.day+'</span><div class="tp-lesson-info"><strong>'+E(d.title)+'</strong><small>'+E(d.total==null?d.answered+' answers saved':d.answered+' / '+d.total+' responses saved')+'</small></div><span class="tp-chip '+(d.done?'active':'muted')+'">'+(d.done?'Completed':'Not complete')+'</span></div>';
+      return '<div class="tp-lesson '+(d.done?'is-done':'')+'"><span class="tp-lesson-index">'+d.day+'</span><div class="tp-lesson-info"><strong>'+E(d.title)+'</strong><small>'+E(d.total==null?d.answered+' answers saved':d.answered+' / '+d.total+' responses saved · '+d.correct+' correct')+'</small></div><span class="tp-chip '+(d.done?'active':'muted')+'">'+(d.done?'Completed':'Not complete')+'</span></div>';
     }).join('');
     var weekly=r.weekly.map(function(w){
       return '<section class="tp-card"><div class="tp-section-head"><div><h3>'+E(w.title)+'</h3><p>'+w.lessons.filter(function(d){return d.done}).length+' of '+w.lessons.length+' lessons completed</p></div></div><div class="tp-lesson-grid">'+w.lessons.map(function(d){
