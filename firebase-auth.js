@@ -75,7 +75,7 @@ function paint(){
  <p id="account-status" role="status" class="account-status"></p>`;
  document.getElementById('teacher-open')?.addEventListener('click',()=>{hide();window.classroomGoTeacher?.()});
  document.getElementById('account-signout').onclick=async()=>{hide();await signOut(auth)};
- document.getElementById('profile-name-form').onsubmit=async e=>{e.preventDefault();try{await updateProfile(auth.currentUser,{displayName:document.getElementById('profile-name').value.trim()});status('Name saved.')}catch(e){status(friendly(e))}};
+ document.getElementById('profile-name-form').onsubmit=async e=>{e.preventDefault();try{const name=document.getElementById('profile-name').value.trim();if(name.length<2||name.length>60)throw Error('Enter a name of 2–60 characters.');await updateProfile(auth.currentUser,{displayName:name});await setDoc(doc(db,'profiles',auth.currentUser.uid),{email:auth.currentUser.email||'',name:name,lastSeen:serverTimestamp()},{merge:true});status('Name saved to your profile and classroom roster.')}catch(e){status(friendly(e))}};
  document.getElementById('profile-photo-file').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;if(file.size>3_000_000||!['image/jpeg','image/png','image/webp'].includes(file.type))return status('Use a JPG, PNG, or WebP image under 3 MB.');try{const bitmap=await createImageBitmap(file);const canvas=document.createElement('canvas');canvas.width=160;canvas.height=160;const ctx=canvas.getContext('2d');const side=Math.min(bitmap.width,bitmap.height);ctx.drawImage(bitmap,(bitmap.width-side)/2,(bitmap.height-side)/2,side,side,0,0,160,160);bitmap.close?.();const data=canvas.toDataURL('image/jpeg',.78);await setDoc(doc(db,'profiles',user.uid),{email:user.email||'',avatar:data,lastSeen:serverTimestamp()},{merge:true});localStorage.setItem('classroom_avatar_'+user.uid,data);paint();status('Photo saved to your account.')}catch(err){status('Could not process this photo.')}};
  document.getElementById('profile-password-form').onsubmit=async e=>{e.preventDefault();const old=document.getElementById('profile-old-password').value,next=document.getElementById('profile-new-password').value;if(next.length<8)return status('Use at least 8 characters.');try{await reauthenticateWithCredential(auth.currentUser,EmailAuthProvider.credential(auth.currentUser.email,old));await updatePassword(auth.currentUser,next);e.target.reset();status('Password changed successfully.')}catch(e){status(friendly(e))}};
  document.getElementById('account-delete').onclick=async()=>{if(!confirm('Permanently delete your account and cloud progress? This cannot be undone.'))return;const pw=prompt('Enter your current password to confirm deletion:');if(!pw)return;try{const u=auth.currentUser;await reauthenticateWithCredential(u,EmailAuthProvider.credential(u.email,pw));await Promise.all([deleteDoc(doc(db,'progress',u.uid)),deleteDoc(doc(db,'profiles',u.uid))]);await deleteUser(u);localStorage.removeItem('classroom_avatar_'+u.uid);hide();status('Account deleted.')}catch(e){status('Account deletion failed: '+friendly(e))}};
@@ -84,14 +84,42 @@ async function syncNow(){if(!user)throw Error('Not signed in');const id=user.uid
 async function loadCloud(overwrite=false){if(!user)return;const id=user.uid;const result=await getDoc(doc(db,'progress',id));if(result.exists()){restoreEntries(result.data().entries||{});saveBackup();cloudEnabled=true;window.classroomRefresh?.()}else if(overwrite){throw Error('No cloud progress found for this account.')}else{cloudEnabled=true;await syncNow()}}
 function schedule(){if(!user)return;saveBackup();if(!cloudEnabled)return;clearTimeout(writeTimer);const current=++session,uid=user.uid;writeTimer=setTimeout(async()=>{if(current!==session||user?.uid!==uid)return;try{await syncNow()}catch(e){console.warn('Cloud save unavailable',e);status('Sync failed — answers remain on this device')}},1400)}
 window.classroomCloud={schedule};
-window.classroomTeacherDashboard=()=>`<section class="teacher-dashboard"><div class="teacher-head"><span class="eyebrow" style="color:#b9eded">TEACHER WORKSPACE</span><h2>Classroom overview</h2><p>Manage student progress and learning activity.</p></div><div class="teacher-metrics"><div class="teacher-metric"><strong id="teacher-count">${students.length}</strong><span>Student profiles</span></div><div class="teacher-metric"><strong id="teacher-completions">${students.reduce((a,s)=>a+s.completed,0)}</strong><span>Completed lessons</span></div><div class="teacher-metric"><strong id="teacher-activity">${students.filter(s=>s.progress).length}</strong><span>With saved progress</span></div></div><div class="teacher-list"><div class="row"><h3>Students</h3><button class="teacher-action" id="teacher-reload">Refresh</button></div><p class="small muted">${html(listMessage)}</p><div id="teacher-students">${students.map(s=>`<div class="teacher-student"><div><strong>${html(s.email||'Student')}</strong><small>${html(s.uid)}</small></div><div><strong>${s.completed}</strong> lessons completed</div></div>`).join('')}</div></div><div class="teacher-list"><h3>Student registration</h3><p class="muted small">Students create their own accounts and verify their email before entering. Share your classroom URL with them.</p><button class="teacher-action" id="teacher-copy-link" type="button">Copy classroom link</button></div></section>`;
-window.classroomLoadStudents=async()=>{if(role!=='teacher'||!user)return;listMessage='Refreshing…';window.classroomRefresh?.();try{const [profiles,progress]=await Promise.all([getDocs(collection(db,'profiles')),getDocs(collection(db,'progress'))]);const map=new Map();profiles.forEach(x=>{if(x.id!==user.uid)map.set(x.id,{uid:x.id,email:x.data().email||'',completed:0,progress:false})});progress.forEach(x=>{if(x.id===user.uid)return;const student=map.get(x.id)||{uid:x.id,email:'',completed:0,progress:false};student.progress=true;const vals=x.data().entries||{};student.completed=Object.entries(vals).filter(([k,v])=>/^frenchportal_v2_.*_completed$/.test(k)&&v==='yes').length;map.set(x.id,student)});students=[...map.values()].sort((a,b)=>a.email.localeCompare(b.email));listMessage=students.length?'Student records from Firestore.':'No students yet. Add an account in Firebase.'}catch(e){listMessage='Cannot load students: '+friendly(e)}window.classroomRefresh?.()};
-window.classroomGoTeacher=()=>{if(role!=='teacher')return;window.classroomSetSection?.('teacher');window.classroomLoadStudents()};
-document.addEventListener('click',async e=>{
- const copy=e.target.closest('#teacher-copy-link');
- if(copy){try{await navigator.clipboard.writeText('https://github505050.github.io/french-classroom/');copy.textContent='Link copied'}catch{copy.textContent='https://github505050.github.io/french-classroom/'}return}
- if(e.target.closest('#teacher-reload'))window.classroomLoadStudents?.();
-});
+window.classroomTeacherDashboard=()=>window.classroomTeacherPortal?.render()||'<section class="panel">Teacher workspace loading…</section>';
+let teacherLoadSeq=0;
+window.classroomLoadStudents=async()=>{
+ if(role!=='teacher'||!user)return;
+ const uid=user.uid,seq=++teacherLoadSeq;
+ window.classroomTeacherPortal?.setStatus('Refreshing student records…');
+ try{
+  const [profiles,progress]=await Promise.all([getDocs(collection(db,'profiles')),getDocs(collection(db,'progress'))]);
+  if(role!=='teacher'||user?.uid!==uid||seq!==teacherLoadSeq)return;
+  const map=new Map();
+  profiles.forEach(x=>{
+   if(x.id===uid)return;
+   const data=x.data()||{};
+   map.set(x.id,{uid:x.id,email:data.email||'',name:data.name||'',profile:data,entries:{},updatedAt:null});
+  });
+  progress.forEach(x=>{
+   if(x.id===uid)return;
+   const data=x.data()||{};
+   const row=map.get(x.id)||{uid:x.id,email:'',name:'',profile:{},entries:{},updatedAt:null};
+   row.entries=data.entries||{};
+   row.updatedAt=data.updatedAt||null;
+   map.set(x.id,row);
+  });
+  try{const permissions=await getDocs(collection(db,'roles'));permissions.forEach(x=>{if(x.data()?.role==='teacher')map.delete(x.id)})}catch(e){console.warn('Teacher role listing unavailable:',e)}
+  if(role!=='teacher'||user?.uid!==uid||seq!==teacherLoadSeq)return;
+  students=[...map.values()];
+  window.classroomTeacherPortal?.setData(students);
+ }catch(e){
+  if(role==='teacher'&&user?.uid===uid&&seq===teacherLoadSeq)window.classroomTeacherPortal?.setStatus('Could not load student records: '+friendly(e));
+ }
+};
+window.classroomGoTeacher=()=>{
+ if(role!=='teacher')return;
+ window.classroomSetSection?.('teacher');
+ window.classroomLoadStudents?.();
+};
 
 let first=true;let freshSignIn=false;let authBusy=false;let pendingAuthUser=undefined;
 async function handleAuthState(u){
@@ -102,7 +130,7 @@ async function handleAuthState(u){
   if(!u){
    if(resend)resend.hidden=true;if(refresh)refresh.hidden=true;toggle.hidden=false;
    if(user||localStorage.getItem(STORAGE_USER))leaveLocal();
-   user=null;role='student';window.classroomSetTeacherRole?.(false);
+   user=null;role='student';teacherLoadSeq++;students=[];window.classroomTeacherPortal?.clear();window.classroomSetTeacherRole?.(false);
    document.body.classList.add('classroom-locked');document.body.classList.remove('auth-checking');
    trigger.textContent='Account';gateStatus('Sign in or create your student account.');
    return;
