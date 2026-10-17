@@ -89,5 +89,6 @@ nav.addEventListener('click',e=>{if(e.target.closest('.navbtn')!==btn)btn.classL
 const home=$('main');if(home){const observer=new MutationObserver(()=>{if(btn.classList.contains('active')&&!$('foundation-lesson'))btn.classList.remove('active')});observer.observe(home,{childList:true})}
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',attach);else attach();
+window.classroomFoundationOutline=()=>lessons.map(l=>({title:l.title,questionCount:l.questions.length}));
 window.classroomOpenFoundations=open;
 })();
