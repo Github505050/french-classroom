@@ -88,6 +88,101 @@
           ]
         }
       ]
+    },
+    {
+      "weekId": "week2",
+      "days": [
+        {
+          "day": 8,
+          "title": "Day 8 Listening",
+          "videos": [
+            {
+              "title": "Day 8 Listening",
+              "url": "https://www.youtube.com/watch?v=HADlVv4nZZQ",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "title": "Day 9 Listening",
+          "videos": [
+            {
+              "title": "Day 9 Listening",
+              "url": "https://www.youtube.com/watch?v=MBK7K1Xw3Lc",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "title": "Day 10 Listening",
+          "videos": [
+            {
+              "title": "Day 10 Listening",
+              "url": "https://www.youtube.com/watch?v=ZKnn-l4mLLQ",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
+        },
+        {
+          "day": 11,
+          "title": "Day 11 Listening",
+          "videos": [
+            {
+              "title": "Day 11 — Video 1",
+              "url": "https://www.youtube.com/watch?v=-4p0fngSbUs",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            },
+            {
+              "title": "Day 11 — Video 2",
+              "url": "https://www.youtube.com/watch?v=PdmdX9tvJB4",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
+        },
+        {
+          "day": 12,
+          "title": "Day 12 Listening",
+          "videos": [
+            {
+              "title": "Day 12 Listening",
+              "url": "https://www.youtube.com/watch?v=16-01J9ybPE",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
+        },
+        {
+          "day": 13,
+          "title": "Negation",
+          "videos": [
+            {
+              "title": "Negation",
+              "url": "https://www.youtube.com/watch?v=__3sV6WTrK0",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
+        },
+        {
+          "day": 14,
+          "title": "Full Revision",
+          "videos": [
+            {
+              "title": "Full Revision",
+              "url": "https://www.youtube.com/watch?v=__Cu2nwgAjA",
+              "description": "Open this listening activity on YouTube.",
+              "level": "A1"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
