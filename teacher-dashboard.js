@@ -52,7 +52,7 @@
           });
         });
         (d.oral||[]).forEach(function(_,j){if(values[old+'oral_'+j]==='1')oral++});
-        lessons.push({day:i+1,title:d.title||'Lesson '+(i+1),ready:d.status==='ready',done:done,
+        lessons.push({day:Number.isInteger(d.day)?d.day:i+1,title:d.title||'Lesson '+(i+1),ready:d.status==='ready',done:done,completedAt:typeof values[prefix+'completedAt']==='string'?values[prefix+'completedAt']:'',
           score:score,max:maximum,answers:answers,oral:oral,fields:fields});
         if(d.status==='ready')totalPossible++;
         if(done)totalCompleted++;
@@ -140,11 +140,11 @@
     var r=records.find(function(x){return x.uid===state.selected});
     if(!r)return '<div class="tp-card">Student record unavailable. <button type="button" class="tp-link" data-tp-tab="students">Back to students</button></div>';
     var foundation=r.foundation.map(function(d){
-      return '<div class="tp-lesson '+(d.done?'is-done':'')+'"><span class="tp-lesson-index">'+d.day+'</span><div class="tp-lesson-info"><strong>'+E(d.title)+'</strong><small>'+E(d.total==null?d.answered+' answers saved':d.answered+' / '+d.total+' responses saved · '+d.correct+' correct')+'</small></div><span class="tp-chip '+(d.done?'active':'muted')+'">'+(d.done?'Completed':'Not complete')+'</span></div>';
+      return '<div class="tp-lesson '+(d.done?'is-done':'')+'"><span class="tp-lesson-index">'+d.day+'</span><div class="tp-lesson-info"><strong>'+E(d.title)+'</strong><small>'+E(d.total==null?d.answered+' answers saved':d.answered+' / '+d.total+' responses saved · '+d.correct+' correct')+'</small></div><span class="tp-chip '+(d.done?'active':'muted')+'">'+(d.done?(completedDate?'Completed on '+E(completedDate):'Completed · Date not recorded'):'Not complete')+'</span></div>';
     }).join('');
     var weekly=r.weekly.map(function(w){
       return '<section class="tp-card"><div class="tp-section-head"><div><h3>'+E(w.title)+'</h3><p>'+w.lessons.filter(function(d){return d.done}).length+' of '+w.lessons.length+' lessons completed</p></div></div><div class="tp-lesson-grid">'+w.lessons.map(function(d){
-        var score=d.score===null?'No score':d.score+' / '+d.max;
+        var score=d.score===null?'No score':d.score+' / '+d.max;var completedDate='';if(d.done&&d.completedAt){var dt=new Date(d.completedAt);if(!Number.isNaN(dt.getTime()))completedDate=dt.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})}
         return '<article class="tp-lesson '+(d.done?'is-done':'')+'"><span class="tp-lesson-index">'+d.day+'</span><div class="tp-lesson-info"><strong>'+E(d.title)+'</strong><small>'+E(score)+' · '+d.answers+' written answers · '+d.oral+' speaking tasks</small>'+
         (d.fields.length?'<details class="tp-responses"><summary>View '+d.fields.length+' saved written answer'+(d.fields.length===1?'':'s')+'</summary>'+d.fields.map(function(f){
           return '<div class="tp-response"><small>'+E(f.label)+' · '+E(f.prompt)+'</small><p>'+E(f.answer)+'</p></div>';
