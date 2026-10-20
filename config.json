@@ -4,7 +4,8 @@
   "timezone": "America/Toronto",
   "welcome": "Bienvenue ! Choisis une leçon pour apprendre, pratiquer et réviser.",
   "weeks": [
-    "weeks/week1.json"
+    "weeks/week1.json",
+    "weeks/week2.json"
   ],
   "resources": [
     {
