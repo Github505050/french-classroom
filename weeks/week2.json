@@ -1,0 +1,2220 @@
+{
+  "id": "week2",
+  "number": 2,
+  "title": "French A1 · Week 2",
+  "description": "French A1 Week 2: global Days 8–14. Days 8–12 complete the 14 -ER-category verbs (three per day on Days 8–11; two on Day 12 for consolidation). Day 13: beginner negation. Day 14: cumulative review. No new -IR or -RE verb conjugation lessons.",
+  "days": [
+    {
+      "day": 8,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Étudier, trouver, donner",
+      "title": "Étudier & Trouver & Donner",
+      "focus": "Say what you study, find and give in complete sentences.",
+      "yesterday": "Review Week 1 verbs, familiar articles and 2 old sentences before starting.",
+      "explanation": "DAY 8 — SIMPLE STUDENT NOTES: ÉTUDIER, TROUVER, DONNER\n\n1. YOUR GOAL TODAY\nSay what you study, find and give in complete sentences. You will learn just three new verbs and five new nouns. Start with a quick memory check; do not read the answers first.\n\n2. FIRST: REMEMBER WHAT YOU KNOW\nSay from memory: « Nous parlons français. »; « J’habite dans un appartement. »; « Je cherche le livre. » Keep Week 1 present tense active. If stuck, check the answer, hide it, and say it again.\n\n3. TODAY'S THREE VERBS\nétudier = to study → j’étudie; nous étudions.\ntrouver = to find → je trouve; nous trouvons.\ndonner = to give → je donne; nous donnons.\nRead the conjugation tables above. Then hide them and try je / nous / vous without looking.\n\n4. SMALL RULES THAT MAKE THE VERBS EASIER\nÉtudier follows regular -ER endings: j’étudie, nous étudions. Je becomes j’ before étudier. Trouver = find; chercher = look for (an important difference). Donner quelque chose à quelqu’un = give something to someone. Learn « à mon ami » as a fixed phrase today; possessives are not a new grammar lesson.\n\n5. TODAY'S FIVE WORDS: LEARN THE ARTICLE\nla clé = the key.\nle meuble = the piece of furniture.\nle mur = the wall.\nl’étage = the floor / storey.\nle cahier = the notebook.\n\n6. THREE REAL-LIFE MODEL SENTENCES\nJ’étudie le français. = I study French.\nJe trouve la clé. = I find the key.\nJe donne le cahier à mon ami. = I give the notebook to my friend.\n\n7. SPEAK WITHOUT READING\nListen to or read a model once; repeat it aloud once. Then hide the model and give your own answer to the speaking questions. A short correct answer is enough. Try to add ONE extra piece of information when ready.\n\n8. SMART REVIEW — SPACED REPETITION\nReview several Week 1 items, yesterday's verbs (when available), and material from three days earlier (when available). Recall first → check → repair → repeat aloud. Correct answers should be remembered again tomorrow and in later lessons; mistakes return sooner. Flashcards are OLD MATERIAL FIRST, not a second vocabulary lesson.\n\n9. COMMON CHECKS\nSubject + conjugated verb + rest. Keep articles and accents. Do not write « je suis + action verb » for a simple present action. For open speaking or writing, the model answer is ONE example: your different correct sentence also counts.\n\n10. MINI HOMEWORK (5–8 MIN)\nWithout looking: say 3 sentences with today's verbs, translate 2 old sentences, and write 2 new sentences. Review the 2 mistakes that caused the most trouble. No need to copy conjugation tables repeatedly.",
+      "verbs": [
+        {
+          "fr": "étudier",
+          "en": "to study"
+        },
+        {
+          "fr": "trouver",
+          "en": "to find"
+        },
+        {
+          "fr": "donner",
+          "en": "to give"
+        }
+      ],
+      "vocab": [
+        [
+          "la clé",
+          "the key"
+        ],
+        [
+          "le meuble",
+          "the piece of furniture"
+        ],
+        [
+          "le mur",
+          "the wall"
+        ],
+        [
+          "l’étage",
+          "the floor / storey"
+        ],
+        [
+          "le cahier",
+          "the notebook"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "étudier",
+          "forms": [
+            "j’étudie",
+            "tu étudies",
+            "il / elle étudie",
+            "nous étudions",
+            "vous étudiez",
+            "ils / elles étudient"
+          ],
+          "meaning": "to study"
+        },
+        {
+          "name": "trouver",
+          "forms": [
+            "je trouve",
+            "tu trouves",
+            "il / elle trouve",
+            "nous trouvons",
+            "vous trouvez",
+            "ils / elles trouvent"
+          ],
+          "meaning": "to find"
+        },
+        {
+          "name": "donner",
+          "forms": [
+            "je donne",
+            "tu donnes",
+            "il / elle donne",
+            "nous donnons",
+            "vous donnez",
+            "ils / elles donnent"
+          ],
+          "meaning": "to give"
+        }
+      ],
+      "fixed": [
+        "J’étudie le français. — I study French.",
+        "Je trouve la clé. — I find the key.",
+        "Je donne le cahier à mon ami. — I give the notebook to my friend."
+      ],
+      "flashcards": [
+        [
+          "We speak French.",
+          "Nous parlons français."
+        ],
+        [
+          "I live in an apartment.",
+          "J’habite dans un appartement."
+        ],
+        [
+          "She is looking for a chair.",
+          "Elle cherche une chaise."
+        ],
+        [
+          "étudier — I form",
+          "j’étudie"
+        ],
+        [
+          "trouver — we form",
+          "nous trouvons"
+        ]
+      ],
+      "flashcardsNote": "Daily spaced review: 3 OLD prompts + 2 retrieval prompts for today. Hide answers, say aloud, flip, and repeat any error.",
+      "recall": [
+        {
+          "prompt": "REVIEW · We speak French.",
+          "answer": "Nous parlons français.",
+          "accept": [],
+          "explanation": "Week 1: nous parlons; do not add de before français."
+        },
+        {
+          "prompt": "REVIEW · I live in an apartment.",
+          "answer": "J’habite dans un appartement.",
+          "accept": [],
+          "explanation": "Week 1: j’habite; un appartement is masculine."
+        },
+        {
+          "prompt": "REVIEW · She is looking for a chair.",
+          "answer": "Elle cherche une chaise.",
+          "accept": [],
+          "explanation": "Week 1: chercher needs no pour; une chaise."
+        },
+        {
+          "prompt": "REVIEW · I like cheese.",
+          "answer": "J’aime le fromage.",
+          "accept": [],
+          "explanation": "Week 1: use le with general likes."
+        },
+        {
+          "prompt": "NEW VOCAB · the key",
+          "answer": "la clé",
+          "accept": [],
+          "explanation": "Learn la clé together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the piece of furniture",
+          "answer": "le meuble",
+          "accept": [],
+          "explanation": "Learn le meuble together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the wall",
+          "answer": "le mur",
+          "accept": [],
+          "explanation": "Learn le mur together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the floor / storey",
+          "answer": "l’étage",
+          "accept": [],
+          "explanation": "Learn l’étage together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the notebook",
+          "answer": "le cahier",
+          "accept": [],
+          "explanation": "Learn le cahier together with its article. "
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "Conjugate étudier with je.",
+          "answer": "j’étudie",
+          "accept": [],
+          "explanation": "Say the whole phrase. étudier: j’étudie."
+        },
+        {
+          "prompt": "Conjugate étudier with nous.",
+          "answer": "nous étudions",
+          "accept": [],
+          "explanation": "Use the complete nous-form: nous étudions."
+        },
+        {
+          "prompt": "Conjugate trouver with je.",
+          "answer": "je trouve",
+          "accept": [],
+          "explanation": "Say the whole phrase. trouver: je trouve."
+        },
+        {
+          "prompt": "Conjugate trouver with nous.",
+          "answer": "nous trouvons",
+          "accept": [],
+          "explanation": "Use the complete nous-form: nous trouvons."
+        },
+        {
+          "prompt": "Conjugate donner with je.",
+          "answer": "je donne",
+          "accept": [],
+          "explanation": "Say the whole phrase. donner: je donne."
+        },
+        {
+          "prompt": "Conjugate donner with nous.",
+          "answer": "nous donnons",
+          "accept": [],
+          "explanation": "Use the complete nous-form: nous donnons."
+        },
+        {
+          "prompt": "Conjugate trouver with vous.",
+          "answer": "vous trouvez",
+          "accept": [],
+          "explanation": "Correct form: vous trouvez."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate: I study French.",
+          "answer": "J’étudie le français.",
+          "accept": [],
+          "explanation": "Reuse the complete taught expression and check articles and verb endings."
+        },
+        {
+          "prompt": "Translate: I find the key.",
+          "answer": "Je trouve la clé.",
+          "accept": [],
+          "explanation": "Reuse the complete taught expression and check articles and verb endings."
+        },
+        {
+          "prompt": "Translate: I give the notebook to my friend.",
+          "answer": "Je donne le cahier à mon ami.",
+          "accept": [],
+          "explanation": "Reuse the complete taught expression and check articles and verb endings."
+        },
+        {
+          "prompt": "REVIEW · Translate: We speak French.",
+          "answer": "Nous parlons français.",
+          "accept": [],
+          "explanation": "Week 1 -ER: nous parlons, without de."
+        },
+        {
+          "prompt": "REVIEW · Translate: She likes cheese.",
+          "answer": "Elle aime le fromage.",
+          "accept": [],
+          "explanation": "Week 1 aimer + le for general preference."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Change subject to nous: J’étudie le français.",
+          "answer": "Nous étudions le français.",
+          "accept": [],
+          "explanation": "Change the verb form and retain the rest of the sentence."
+        },
+        {
+          "prompt": "Change subject to elle: Je trouve la clé.",
+          "answer": "Elle trouve la clé.",
+          "accept": [],
+          "explanation": "Use the correct elle verb form."
+        }
+      ],
+      "oral": [
+        [
+          "Qu’est-ce que tu étudies ?",
+          "J’étudie le français."
+        ],
+        [
+          "Tu trouves la clé ?",
+          "Oui, je trouve la clé."
+        ],
+        [
+          "Qu’est-ce que tu donnes à ton ami ?",
+          "Je donne le cahier à mon ami."
+        ],
+        [
+          "Say aloud without reading: I study French.",
+          "J’étudie le français."
+        ],
+        [
+          "Say aloud without reading: I find the key.",
+          "Je trouve la clé."
+        ],
+        [
+          "Say aloud without reading: I give the notebook to my friend.",
+          "Je donne le cahier à mon ami."
+        ],
+        [
+          "OLD VERB: Say in French: We work at home.",
+          "Nous travaillons à la maison."
+        ],
+        [
+          "PERSONAL SPEAKING: Make one true sentence using any verb from today.",
+          "J’étudie le français."
+        ]
+      ],
+      "exit": [
+        [
+          "Make one NEW sentence using étudier.",
+          "J’étudie le français."
+        ],
+        [
+          "Make one NEW sentence using trouver or donner.",
+          "Je trouve la clé."
+        ],
+        [
+          "Write 2 true sentences about yourself; reuse a Week 1 verb and a new verb.",
+          "J’habite dans un appartement. J’étudie le français."
+        ]
+      ]
+    },
+    {
+      "day": 9,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Aider, utiliser, commander",
+      "title": "Aider & Utiliser & Commander",
+      "focus": "Offer help, use everyday objects and place a basic order.",
+      "yesterday": "Review Day 8 verbs (étudier, trouver, donner) and one Week 1 sentence. Revisit older material before new content.",
+      "explanation": "DAY 9 — SIMPLE STUDENT NOTES: AIDER, UTILISER, COMMANDER\n\n1. YOUR GOAL TODAY\nOffer help, use everyday objects and place a basic order. You will learn just three new verbs and five new nouns. Start with a quick memory check; do not read the answers first.\n\n2. FIRST: REMEMBER WHAT YOU KNOW\nSay from memory: « Nous parlons français. »; « J’habite dans un appartement. »; « Je cherche le livre. » Keep Week 1 present tense active. If stuck, check the answer, hide it, and say it again.\n\n3. TODAY'S THREE VERBS\naider = to help → j’aide; nous aidons.\nutiliser = to use → j’utilise; nous utilisons.\ncommander = to order → je commande; nous commandons.\nRead the conjugation tables above. Then hide them and try je / nous / vous without looking.\n\n4. SMALL RULES THAT MAKE THE VERBS EASIER\nAll three are regular -ER verbs. Before aider/utiliser, je becomes j’: j’aide, j’utilise. Aider is followed directly by the person: « J’aide mon ami », not « J’aide à mon ami ». « Commander une pizza » is an everyday expression.\n\n5. TODAY'S FIVE WORDS: LEARN THE ARTICLE\nle téléphone = the telephone.\nl’ordinateur = the computer.\nle message = the message.\nle client = the customer.\nla commande = the order.\n\n6. THREE REAL-LIFE MODEL SENTENCES\nJ’aide mon ami. = I help my friend.\nJ’utilise le téléphone. = I use the phone.\nJe commande une pizza. = I order a pizza.\n\n7. SPEAK WITHOUT READING\nListen to or read a model once; repeat it aloud once. Then hide the model and give your own answer to the speaking questions. A short correct answer is enough. Try to add ONE extra piece of information when ready.\n\n8. SMART REVIEW — SPACED REPETITION\nReview several Week 1 items, yesterday's verbs (when available), and material from three days earlier (when available). Recall first → check → repair → repeat aloud. Correct answers should be remembered again tomorrow and in later lessons; mistakes return sooner. Flashcards are OLD MATERIAL FIRST, not a second vocabulary lesson.\n\n9. COMMON CHECKS\nSubject + conjugated verb + rest. Keep articles and accents. Do not write « je suis + action verb » for a simple present action. For open speaking or writing, the model answer is ONE example: your different correct sentence also counts.\n\n10. MINI HOMEWORK (5–8 MIN)\nWithout looking: say 3 sentences with today's verbs, translate 2 old sentences, and write 2 new sentences. Review the 2 mistakes that caused the most trouble. No need to copy conjugation tables repeatedly.",
+      "verbs": [
+        {
+          "fr": "aider",
+          "en": "to help"
+        },
+        {
+          "fr": "utiliser",
+          "en": "to use"
+        },
+        {
+          "fr": "commander",
+          "en": "to order"
+        }
+      ],
+      "vocab": [
+        [
+          "le téléphone",
+          "the telephone"
+        ],
+        [
+          "l’ordinateur",
+          "the computer"
+        ],
+        [
+          "le message",
+          "the message"
+        ],
+        [
+          "le client",
+          "the customer"
+        ],
+        [
+          "la commande",
+          "the order"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "aider",
+          "forms": [
+            "j’aide",
+            "tu aides",
+            "il / elle aide",
+            "nous aidons",
+            "vous aidez",
+            "ils / elles aident"
+          ],
+          "meaning": "to help"
+        },
+        {
+          "name": "utiliser",
+          "forms": [
+            "j’utilise",
+            "tu utilises",
+            "il / elle utilise",
+            "nous utilisons",
+            "vous utilisez",
+            "ils / elles utilisent"
+          ],
+          "meaning": "to use"
+        },
+        {
+          "name": "commander",
+          "forms": [
+            "je commande",
+            "tu commandes",
+            "il / elle commande",
+            "nous commandons",
+            "vous commandez",
+            "ils / elles commandent"
+          ],
+          "meaning": "to order"
+        }
+      ],
+      "fixed": [
+        "J’aide mon ami. — I help my friend.",
+        "J’utilise le téléphone. — I use the phone.",
+        "Je commande une pizza. — I order a pizza."
+      ],
+      "flashcards": [
+        [
+          "I like cheese.",
+          "J’aime le fromage."
+        ],
+        [
+          "We listen to the music (specific music).",
+          "Nous écoutons la musique."
+        ],
+        [
+          "They watch television (masculine group).",
+          "Ils regardent la télévision."
+        ],
+        [
+          "aider — I form",
+          "j’aide"
+        ],
+        [
+          "utiliser — we form",
+          "nous utilisons"
+        ]
+      ],
+      "flashcardsNote": "Daily spaced review: 3 OLD prompts + 2 retrieval prompts for today. Hide answers, say aloud, flip, and repeat any error.",
+      "recall": [
+        {
+          "prompt": "REVIEW · I like cheese.",
+          "answer": "J’aime le fromage.",
+          "accept": [],
+          "explanation": "Week 1: use le with general likes."
+        },
+        {
+          "prompt": "REVIEW · We listen to the music (specific music).",
+          "answer": "Nous écoutons la musique.",
+          "accept": [],
+          "explanation": "Week 1: nous écoutons; direct object."
+        },
+        {
+          "prompt": "REVIEW · They watch television (masculine group).",
+          "answer": "Ils regardent la télévision.",
+          "accept": [],
+          "explanation": "Week 1: ils regardent."
+        },
+        {
+          "prompt": "REVIEW · the bedroom",
+          "answer": "la chambre",
+          "accept": [],
+          "explanation": "Week 1 vocabulary: feminine la chambre."
+        },
+        {
+          "prompt": "REVIEW · Yesterday’s verb: “I study” (give the French je-form).",
+          "answer": "j’étudie",
+          "accept": [],
+          "explanation": "Yesterday’s verb étudier: j’étudie."
+        },
+        {
+          "prompt": "NEW VOCAB · the telephone",
+          "answer": "le téléphone",
+          "accept": [],
+          "explanation": "Learn le téléphone together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the computer",
+          "answer": "l’ordinateur",
+          "accept": [],
+          "explanation": "Learn l’ordinateur together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the message",
+          "answer": "le message",
+          "accept": [],
+          "explanation": "Learn le message together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the customer",
+          "answer": "le client",
+          "accept": [],
+          "explanation": "Learn le client together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the order",
+          "answer": "la commande",
+          "accept": [],
+          "explanation": "Learn la commande together with its article. "
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "Conjugate aider with je.",
+          "answer": "j’aide",
+          "accept": [],
+          "explanation": "Say the whole phrase. aider: j’aide."
+        },
+        {
+          "prompt": "Conjugate aider with nous.",
+          "answer": "nous aidons",
+          "accept": [],
+          "explanation": "Use the complete nous-form: nous aidons."
+        },
+        {
+          "prompt": "Conjugate utiliser with je.",
+          "answer": "j’utilise",
+          "accept": [],
+          "explanation": "Say the whole phrase. utiliser: j’utilise."
+        },
+        {
+          "prompt": "Conjugate utiliser with nous.",
+          "answer": "nous utilisons",
+          "accept": [],
+          "explanation": "Use the complete nous-form: nous utilisons."
+        },
+        {
+          "prompt": "Conjugate commander with je.",
+          "answer": "je commande",
+          "accept": [],
+          "explanation": "Say the whole phrase. commander: je commande."
+        },
+        {
+          "prompt": "Conjugate commander with nous.",
+          "answer": "nous commandons",
+          "accept": [],
+          "explanation": "Use the complete nous-form: nous commandons."
+        },
+        {
+          "prompt": "Conjugate utiliser with vous.",
+          "answer": "vous utilisez",
+          "accept": [],
+          "explanation": "Correct form: vous utilisez."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate: I help my friend.",
+          "answer": "J’aide mon ami.",
+          "accept": [],
+          "explanation": "Reuse the complete taught expression and check articles and verb endings."
+        },
+        {
+          "prompt": "Translate: I use the phone.",
+          "answer": "J’utilise le téléphone.",
+          "accept": [],
+          "explanation": "Reuse the complete taught expression and check articles and verb endings."
+        },
+        {
+          "prompt": "Translate: I order a pizza.",
+          "answer": "Je commande une pizza.",
+          "accept": [],
+          "explanation": "Reuse the complete taught expression and check articles and verb endings."
+        },
+        {
+          "prompt": "REVIEW · Translate: We speak French.",
+          "answer": "Nous parlons français.",
+          "accept": [],
+          "explanation": "Week 1 -ER: nous parlons, without de."
+        },
+        {
+          "prompt": "REVIEW · Translate: She likes cheese.",
+          "answer": "Elle aime le fromage.",
+          "accept": [],
+          "explanation": "Week 1 aimer + le for general preference."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Change je to nous: J’aide le client.",
+          "answer": "Nous aidons le client.",
+          "accept": [],
+          "explanation": "Je/j’ → nous; aider becomes aidons. Keep le client."
+        },
+        {
+          "prompt": "Change subject to elle: J’utilise le téléphone.",
+          "answer": "Elle utilise le téléphone.",
+          "accept": [],
+          "explanation": "Use the correct elle verb form."
+        }
+      ],
+      "oral": [
+        [
+          "Tu aides ton ami ?",
+          "Oui, j’aide mon ami."
+        ],
+        [
+          "Tu utilises le téléphone ?",
+          "Oui, j’utilise le téléphone."
+        ],
+        [
+          "Qu’est-ce que tu commandes ?",
+          "Je commande une pizza."
+        ],
+        [
+          "Say aloud without reading: I help my friend.",
+          "J’aide mon ami."
+        ],
+        [
+          "Say aloud without reading: I use the phone.",
+          "J’utilise le téléphone."
+        ],
+        [
+          "Say aloud without reading: I order a pizza.",
+          "Je commande une pizza."
+        ],
+        [
+          "OLD VERB: Say in French: We work at home.",
+          "Nous travaillons à la maison."
+        ],
+        [
+          "PERSONAL SPEAKING: Make one true sentence using any verb from today.",
+          "J’aide mon ami."
+        ]
+      ],
+      "exit": [
+        [
+          "Make one NEW sentence using aider.",
+          "J’aide mon ami."
+        ],
+        [
+          "Make one NEW sentence using utiliser or commander.",
+          "J’utilise le téléphone."
+        ],
+        [
+          "Write 2 true sentences about yourself; reuse a Week 1 verb and a new verb.",
+          "J’habite dans un appartement. J’aide mon ami."
+        ]
+      ]
+    },
+    {
+      "day": 10,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Penser, expliquer, arriver",
+      "title": "Penser & Expliquer & Arriver",
+      "focus": "Express a simple thought, explain an answer and say when you arrive.",
+      "yesterday": "Review Day 9 verbs (aider, utiliser, commander) and one Week 1 sentence. Revisit older material before new content.",
+      "explanation": "DAY 10 — SIMPLE STUDENT NOTES: PENSER, EXPLIQUER, ARRIVER\n\n1. YOUR GOAL TODAY\nExpress a simple thought, explain an answer and say when you arrive. You will learn just three new verbs and five new nouns. Start with a quick memory check; do not read the answers first.\n\n2. FIRST: REMEMBER WHAT YOU KNOW\nSay from memory: « Nous parlons français. »; « J’habite dans un appartement. »; « Je cherche le livre. » Keep Week 1 present tense active. If stuck, check the answer, hide it, and say it again.\n\n3. TODAY'S THREE VERBS\npenser = to think → je pense; nous pensons.\nexpliquer = to explain → j’explique; nous expliquons.\narriver = to arrive → j’arrive; nous arrivons.\nRead the conjugation tables above. Then hide them and try je / nous / vous without looking.\n\n4. SMALL RULES THAT MAKE THE VERBS EASIER\nAll three use regular -ER endings. J’explique and j’arrive use j’ before a vowel. Useful chunks: penser à + thing; expliquer + thing; arriver à + place. Learn these as complete phrases, not as a separate prepositions lesson. « À mon cours » / « à ton cours » are model chunks.\n\n5. TODAY'S FIVE WORDS: LEARN THE ARTICLE\nla question = the question.\nla réponse = the answer.\nle professeur = the teacher.\nl’école = the school.\nle cours = the class / lesson.\n\n6. THREE REAL-LIFE MODEL SENTENCES\nJe pense à mon cours. = I think about my class.\nLe professeur explique la question. = The teacher explains the question.\nJ’arrive à l’école. = I arrive at school.\n\n7. SPEAK WITHOUT READING\nListen to or read a model once; repeat it aloud once. Then hide the model and give your own answer to the speaking questions. A short correct answer is enough. Try to add ONE extra piece of information when ready.\n\n8. SMART REVIEW — SPACED REPETITION\nReview several Week 1 items, yesterday's verbs (when available), and material from three days earlier (when available). Recall first → check → repair → repeat aloud. Correct answers should be remembered again tomorrow and in later lessons; mistakes return sooner. Flashcards are OLD MATERIAL FIRST, not a second vocabulary lesson.\n\n9. COMMON CHECKS\nSubject + conjugated verb + rest. Keep articles and accents. Do not write « je suis + action verb » for a simple present action. For open speaking or writing, the model answer is ONE example: your different correct sentence also counts.\n\n10. MINI HOMEWORK (5–8 MIN)\nWithout looking: say 3 sentences with today's verbs, translate 2 old sentences, and write 2 new sentences. Review the 2 mistakes that caused the most trouble. No need to copy conjugation tables repeatedly.",
+      "verbs": [
+        {
+          "fr": "penser",
+          "en": "to think"
+        },
+        {
+          "fr": "expliquer",
+          "en": "to explain"
+        },
+        {
+          "fr": "arriver",
+          "en": "to arrive"
+        }
+      ],
+      "vocab": [
+        [
+          "la question",
+          "the question"
+        ],
+        [
+          "la réponse",
+          "the answer"
+        ],
+        [
+          "le professeur",
+          "the teacher"
+        ],
+        [
+          "l’école",
+          "the school"
+        ],
+        [
+          "le cours",
+          "the class / lesson"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "penser",
+          "forms": [
+            "je pense",
+            "tu penses",
+            "il / elle pense",
+            "nous pensons",
+            "vous pensez",
+            "ils / elles pensent"
+          ],
+          "meaning": "to think"
+        },
+        {
+          "name": "expliquer",
+          "forms": [
+            "j’explique",
+            "tu expliques",
+            "il / elle explique",
+            "nous expliquons",
+            "vous expliquez",
+            "ils / elles expliquent"
+          ],
+          "meaning": "to explain"
+        },
+        {
+          "name": "arriver",
+          "forms": [
+            "j’arrive",
+            "tu arrives",
+            "il / elle arrive",
+            "nous arrivons",
+            "vous arrivez",
+            "ils / elles arrivent"
+          ],
+          "meaning": "to arrive"
+        }
+      ],
+      "fixed": [
+        "Je pense à mon cours. — I think about my class.",
+        "Le professeur explique la question. — The teacher explains the question.",
+        "J’arrive à l’école. — I arrive at school."
+      ],
+      "flashcards": [
+        [
+          "the bedroom",
+          "la chambre"
+        ],
+        [
+          "the eggs",
+          "les œufs"
+        ],
+        [
+          "the apartment",
+          "l’appartement"
+        ],
+        [
+          "penser — I form",
+          "je pense"
+        ],
+        [
+          "expliquer — we form",
+          "nous expliquons"
+        ]
+      ],
+      "flashcardsNote": "Daily spaced review: 3 OLD prompts + 2 retrieval prompts for today. Hide answers, say aloud, flip, and repeat any error.",
+      "recall": [
+        {
+          "prompt": "REVIEW · the bedroom",
+          "answer": "la chambre",
+          "accept": [],
+          "explanation": "Week 1 vocabulary: feminine la chambre."
+        },
+        {
+          "prompt": "REVIEW · the eggs",
+          "answer": "les œufs",
+          "accept": [],
+          "explanation": "Week 1 vocabulary: plural les œufs."
+        },
+        {
+          "prompt": "REVIEW · the apartment",
+          "answer": "l’appartement",
+          "accept": [],
+          "explanation": "Week 1: masculine word with l’ before vowel."
+        },
+        {
+          "prompt": "REVIEW · I am",
+          "answer": "je suis",
+          "accept": [],
+          "explanation": "Earlier verb être: je suis."
+        },
+        {
+          "prompt": "REVIEW · Yesterday’s verb: “I help” (give the French je-form).",
+          "answer": "j’aide",
+          "accept": [],
+          "explanation": "Yesterday’s verb aider: j’aide."
+        },
+        {
+          "prompt": "NEW VOCAB · the question",
+          "answer": "la question",
+          "accept": [],
+          "explanation": "Learn la question together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the answer",
+          "answer": "la réponse",
+          "accept": [],
+          "explanation": "Learn la réponse together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the teacher",
+          "answer": "le professeur",
+          "accept": [],
+          "explanation": "Learn le professeur together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the school",
+          "answer": "l’école",
+          "accept": [],
+          "explanation": "Learn l’école together with its article. "
+        },
+        {
+          "prompt": "NEW VOCAB · the class / lesson",
+          "answer": "le cours",
+          "accept": [],
+          "explanation": "Learn le cours together with its article. "
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "Conjugate penser with je.",
+          "answer": "je pense",
+          "accept": [],
+          "explanation": "Say the whole phrase. penser: je pense."
+        },
+        {
+          "prompt": "Conjugate penser with nous.",
+          "answer": "nous pensons",
+          "accept": [],
+          "explanation": "Use the complete nous-form: nous pensons."
+        },
+        {
+          "prompt": "Conjugate expliquer with je.",
+          "answer": "j’explique",
+          "accept": [],
+          "explanation": "Say the whole phrase. expliquer: j’explique."
+        },
+        {
+          "prompt": "Conjugate expliquer with nous.",
+          "answer": "nous expliquons",
+          "accept": [],
+          "explanation": "Use the complete nous-form: nous expliquons."
+        },
+        {
+          "prompt": "Conjugate arriver with je.",
+          "answer": "j’arrive",
+          "accept": [],
+          "explanation": "Say the whole phrase. arriver: j’arrive."
+        },
+        {
+          "prompt": "Conjugate arriver with nous.",
+          "answer": "nous arrivons",
+          "accept": [],
+          "explanation": "Use the complete nous-form: nous arrivons."
+        },
+        {
+          "prompt": "Conjugate expliquer with vous.",
+          "answer": "vous expliquez",
+          "accept": [],
+          "explanation": "Correct form: vous expliquez."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate: I think about my class.",
+          "answer": "Je pense à mon cours.",
+          "accept": [],
+          "explanation": "Reuse the complete taught expression and check articles and verb endings."
+        },
+        {
+          "prompt": "Translate: The teacher explains the question.",
+          "answer": "Le professeur explique la question.",
+          "accept": [],
+          "explanation": "Reuse the complete taught expression and check articles and verb endings."
+        },
+        {
+          "prompt": "Translate: I arrive at school.",
+          "answer": "J’arrive à l’école.",
+          "accept": [],
+          "explanation": "Reuse the complete taught expression and check articles and verb endings."
+        },
+        {
+          "prompt": "REVIEW · Translate: We speak French.",
+          "answer": "Nous parlons français.",
+          "accept": [],
+          "explanation": "Week 1 -ER: nous parlons, without de."
+        },
+        {
+          "prompt": "REVIEW · Translate: She likes cheese.",
+          "answer": "Elle aime le fromage.",
+          "accept": [],
+          "explanation": "Week 1 aimer + le for general preference."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Change je to nous: Je pense à la question.",
+          "answer": "Nous pensons à la question.",
+          "accept": [],
+          "explanation": "Je → nous; penser becomes pensons. Keep à la question."
+        },
+        {
+          "prompt": "Change subject to elle: Le professeur explique la question.",
+          "answer": "Elle explique la question.",
+          "accept": [],
+          "explanation": "Use the correct elle verb form."
+        }
+      ],
+      "oral": [
+        [
+          "Tu penses à ton cours ?",
+          "Oui, je pense à mon cours."
+        ],
+        [
+          "Qui explique la question ?",
+          "Le professeur explique la question."
+        ],
+        [
+          "Tu arrives à l’école ?",
+          "Oui, j’arrive à l’école."
+        ],
+        [
+          "Say aloud without reading: I think about my class.",
+          "Je pense à mon cours."
+        ],
+        [
+          "Say aloud without reading: The teacher explains the question.",
+          "Le professeur explique la question."
+        ],
+        [
+          "Say aloud without reading: I arrive at school.",
+          "J’arrive à l’école."
+        ],
+        [
+          "OLD VERB: Say in French: We work at home.",
+          "Nous travaillons à la maison."
+        ],
+        [
+          "PERSONAL SPEAKING: Make one true sentence using any verb from today.",
+          "Je pense à mon cours."
+        ]
+      ],
+      "exit": [
+        [
+          "Make one NEW sentence using penser.",
+          "Je pense à mon cours."
+        ],
+        [
+          "Make one NEW sentence using expliquer or arriver.",
+          "Le professeur explique la question."
+        ],
+        [
+          "Write 2 true sentences about yourself; reuse a Week 1 verb and a new verb.",
+          "J’habite dans un appartement. Je pense à mon cours."
+        ]
+      ]
+    },
+    {
+      "day": 11,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Manger, acheter & payer",
+      "title": "Manger, acheter & payer",
+      "focus": "Talk about food, buying items and paying using three -ER verbs.",
+      "yesterday": "Recall yesterday: penser, expliquer, arriver, and a Week 1 question.",
+      "explanation": "DAY 11 — SIMPLE STUDENT NOTES: MANGER, ACHETER & PAYER\n\n1. FIRST: RECALL\nWithout notes, say: Nous parlons français. / Elle explique. / Nous trouvons la clé. Then check your answers.\n\n2. WHAT DO THE THREE VERBS MEAN?\nmanger = to eat; acheter = to buy; payer = to pay. All three belong to the -ER group, but watch their spelling.\n\n3. HOW TO USE THEM\nJe mange une pomme. = I eat an apple.\nJ’achète une bouteille. = I buy a bottle.\nJe paie le repas. = I pay for the meal.\nUse the conjugation tables, then cover them and say je / nous / vous aloud.\n\n4. THREE SMALL SPELLING POINTS\nManger: nous mangeons (keep e after g to preserve the soft sound).\nAcheter: j’achète / nous achetons (è changes in some forms).\nPayer: je paie / nous payons. The alternative « je paye » is also correct, but learn « je paie » first.\n\n5. FIVE WORDS TO LEARN WITH ARTICLES\nle repas = meal; la bouteille = bottle; le panier = basket; la pomme = apple; le prix = price.\n\n6. SPEAK WITHOUT NOTES\nWhat do you eat? → Je mange une pomme.\nWhat do you buy? → J’achète une bouteille.\nWhat do you pay for? → Je paie le repas.\n\n7. COMMON ERRORS\nNOT « nous mangons » → nous mangeons.\nNOT « je achete » → j’achète.\nNOT « nous pai ons » → nous payons.\nTry the written drills only after saying the answers aloud.",
+      "verbs": [
+        {
+          "fr": "manger",
+          "en": "to eat"
+        },
+        {
+          "fr": "acheter",
+          "en": "to buy"
+        },
+        {
+          "fr": "payer",
+          "en": "to pay"
+        }
+      ],
+      "vocab": [
+        [
+          "le repas",
+          "the meal"
+        ],
+        [
+          "la bouteille",
+          "the bottle"
+        ],
+        [
+          "le panier",
+          "the basket"
+        ],
+        [
+          "la pomme",
+          "the apple"
+        ],
+        [
+          "le prix",
+          "the price"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "manger",
+          "forms": [
+            "je mange",
+            "tu manges",
+            "il / elle mange",
+            "nous mangeons",
+            "vous mangez",
+            "ils / elles mangent"
+          ],
+          "meaning": "to eat"
+        },
+        {
+          "name": "acheter",
+          "forms": [
+            "j’achète",
+            "tu achètes",
+            "il / elle achète",
+            "nous achetons",
+            "vous achetez",
+            "ils / elles achètent"
+          ],
+          "meaning": "to buy"
+        },
+        {
+          "name": "payer",
+          "forms": [
+            "je paie",
+            "tu paies",
+            "il / elle paie",
+            "nous payons",
+            "vous payez",
+            "ils / elles paient"
+          ],
+          "meaning": "to pay"
+        }
+      ],
+      "fixed": [
+        "Je mange une pomme. — I eat an apple.",
+        "J’achète une bouteille. — I buy a bottle.",
+        "Je paie le repas. — I pay for the meal."
+      ],
+      "flashcards": [
+        [
+          "We speak French.",
+          "Nous parlons français."
+        ],
+        [
+          "I study.",
+          "J’étudie."
+        ],
+        [
+          "the apple",
+          "la pomme"
+        ],
+        [
+          "I buy",
+          "j’achète"
+        ],
+        [
+          "we eat",
+          "nous mangeons"
+        ]
+      ],
+      "flashcardsNote": "Daily spaced review: 3 OLD prompts + 2 retrieval prompts for today. Hide answers, say aloud, flip, and repeat any error.",
+      "recall": [
+        {
+          "prompt": "REVIEW · We speak French.",
+          "answer": "Nous parlons français.",
+          "accept": [],
+          "explanation": "Week 1: nous parlons, no de."
+        },
+        {
+          "prompt": "REVIEW · I live in an apartment.",
+          "answer": "J’habite dans un appartement.",
+          "accept": [],
+          "explanation": "Week 1: j’habite dans un appartement."
+        },
+        {
+          "prompt": "REVIEW · We find the key.",
+          "answer": "Nous trouvons la clé.",
+          "accept": [],
+          "explanation": "Day 8: nous trouvons; la clé."
+        },
+        {
+          "prompt": "REVIEW · She explains.",
+          "answer": "Elle explique.",
+          "accept": [],
+          "explanation": "Day 10: elle explique."
+        },
+        {
+          "prompt": "NEW VOCAB · the meal",
+          "answer": "le repas",
+          "accept": [],
+          "explanation": "Remember the article and spelling: le repas."
+        },
+        {
+          "prompt": "NEW VOCAB · the bottle",
+          "answer": "la bouteille",
+          "accept": [],
+          "explanation": "Remember the article and spelling: la bouteille."
+        },
+        {
+          "prompt": "NEW VOCAB · the basket",
+          "answer": "le panier",
+          "accept": [],
+          "explanation": "Remember the article and spelling: le panier."
+        },
+        {
+          "prompt": "NEW VOCAB · the apple",
+          "answer": "la pomme",
+          "accept": [],
+          "explanation": "Remember the article and spelling: la pomme."
+        },
+        {
+          "prompt": "NEW VOCAB · the price",
+          "answer": "le prix",
+          "accept": [],
+          "explanation": "Remember the article and spelling: le prix."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + manger",
+          "answer": "je mange",
+          "accept": [],
+          "explanation": "Regular je ending -e."
+        },
+        {
+          "prompt": "nous + manger",
+          "answer": "nous mangeons",
+          "accept": [],
+          "explanation": "Keep e in mangeons."
+        },
+        {
+          "prompt": "je + acheter",
+          "answer": "j’achète",
+          "accept": [],
+          "explanation": "Use j’ and è."
+        },
+        {
+          "prompt": "nous + acheter",
+          "answer": "nous achetons",
+          "accept": [],
+          "explanation": "With nous the stem is achet-."
+        },
+        {
+          "prompt": "je + payer",
+          "answer": "je paie",
+          "accept": [],
+          "explanation": "Je paie is a standard form; je paye also accepted."
+        },
+        {
+          "prompt": "nous + payer",
+          "answer": "nous payons",
+          "accept": [],
+          "explanation": "Keep y for nous."
+        },
+        {
+          "prompt": "vous + payer",
+          "answer": "vous payez",
+          "accept": [],
+          "explanation": "Vous takes -ez."
+        },
+        {
+          "prompt": "REVIEW · elles + travailler",
+          "answer": "elles travaillent",
+          "accept": [],
+          "explanation": "Week 1 ending -ent."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate: I eat an apple.",
+          "answer": "Je mange une pomme.",
+          "accept": [],
+          "explanation": "Une pomme is feminine."
+        },
+        {
+          "prompt": "Translate: We buy a bottle.",
+          "answer": "Nous achetons une bouteille.",
+          "accept": [],
+          "explanation": "Nous achetons: no è."
+        },
+        {
+          "prompt": "Translate: She pays for the meal.",
+          "answer": "Elle paie le repas.",
+          "accept": [],
+          "explanation": "Payer takes a direct object here."
+        },
+        {
+          "prompt": "REVIEW · I like the cheese.",
+          "answer": "J’aime le fromage.",
+          "accept": [],
+          "explanation": "Recall aimer with a definite article."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Change je to nous: Je mange une pomme.",
+          "answer": "Nous mangeons une pomme.",
+          "accept": [],
+          "explanation": "Nous mangeons with e."
+        },
+        {
+          "prompt": "Change je to nous: J’achète une bouteille.",
+          "answer": "Nous achetons une bouteille.",
+          "accept": [],
+          "explanation": "Nous achetons without è."
+        },
+        {
+          "prompt": "Change je to nous: Je paie le repas.",
+          "answer": "Nous payons le repas.",
+          "accept": [],
+          "explanation": "Nous payons keeps y."
+        }
+      ],
+      "oral": [
+        [
+          "Qu’est-ce que tu manges ?",
+          "Je mange une pomme."
+        ],
+        [
+          "Qu’est-ce que tu achètes ?",
+          "J’achète une bouteille."
+        ],
+        [
+          "Tu paies le repas ?",
+          "Oui, je paie le repas."
+        ],
+        [
+          "Say: We eat an apple.",
+          "Nous mangeons une pomme."
+        ],
+        [
+          "Say: She buys a bottle.",
+          "Elle achète une bouteille."
+        ],
+        [
+          "Say: We pay for the meal.",
+          "Nous payons le repas."
+        ],
+        [
+          "OLD VERB: We speak French.",
+          "Nous parlons français."
+        ],
+        [
+          "PERSONAL: Say two things you buy or eat.",
+          "Je mange une pomme et j’achète une bouteille."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a sentence with manger.",
+          "Je mange une pomme."
+        ],
+        [
+          "Write a sentence with acheter or payer.",
+          "Je paie le repas."
+        ],
+        [
+          "Say three sentences aloud without notes, then write one.",
+          "Je mange une pomme. J’achète une bouteille. Je paie le repas."
+        ]
+      ]
+    },
+    {
+      "day": 12,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Appeler & se lever — consolidation -ER",
+      "title": "Appeler & se lever — consolidation -ER",
+      "focus": "Learn two final -ER-category verbs and strengthen the 22-verb -ER foundation.",
+      "yesterday": "Review Day 11: manger, acheter, payer; practise « nous mangeons », « j’achète » and « nous payons ».",
+      "explanation": "DAY 12 — SIMPLE STUDENT NOTES: APPELER & SE LEVER\n\n1. WHY ONLY TWO NEW VERBS?\nThese are the last two -ER-category verbs from the priority list. We use the extra time to remember older verbs. Do NOT start -IR or -RE today.\n\n2. APPELER = TO CALL\nJ’appelle mon ami. = I call my friend.\nJe → j’appelle; tu appelles; elle appelle; nous appelons; vous appelez; ils appellent.\nNotice: double ll in j’appelle, but one l in nous appelons and vous appelez.\n\n3. SE LEVER = TO GET UP\nJe me lève le matin. = I get up in the morning.\nThis verb uses a small word before it: me, te, se, nous, vous, se.\nLearn the entire phrase together: je me lève / tu te lèves / elle se lève / nous nous levons / vous vous levez / ils se lèvent.\nYou do not need to learn other reflexive verbs today.\n\n4. FIVE WORDS WITH ARTICLES\nle téléphone = telephone; le matin = morning; le réveil = alarm clock; l’ami = male friend; la journée = day.\n\n5. SPEAK IN SIMPLE SENTENCES\nJ’appelle mon ami. / Je me lève le matin. / Nous nous levons le matin.\nSay each once while reading, then again without looking.\n\n6. COMMON ERRORS\nNOT « je appelle » → j’appelle.\nNOT « nous appellons » → nous appelons.\nNOT « je lève » for “I get up” → je me lève.\nNOT « nous nous lèvons » → nous nous levons.\n\n7. QUICK REVIEW\nSay from memory: Je mange une pomme. / J’achète une bouteille. / Je paie le repas. Then answer the speaking prompts.",
+      "verbs": [
+        {
+          "fr": "appeler",
+          "en": "to call"
+        },
+        {
+          "fr": "se lever",
+          "en": "to get up"
+        }
+      ],
+      "vocab": [
+        [
+          "le téléphone",
+          "the telephone"
+        ],
+        [
+          "le matin",
+          "the morning"
+        ],
+        [
+          "le réveil",
+          "the alarm clock"
+        ],
+        [
+          "l’ami",
+          "the friend (masculine)"
+        ],
+        [
+          "la journée",
+          "the day"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "appeler",
+          "forms": [
+            "j’appelle",
+            "tu appelles",
+            "il / elle appelle",
+            "nous appelons",
+            "vous appelez",
+            "ils / elles appellent"
+          ],
+          "meaning": "to call"
+        },
+        {
+          "name": "se lever",
+          "forms": [
+            "je me lève",
+            "tu te lèves",
+            "il / elle se lève",
+            "nous nous levons",
+            "vous vous levez",
+            "ils / elles se lèvent"
+          ],
+          "meaning": "to get up"
+        }
+      ],
+      "fixed": [
+        "J’appelle mon ami. — I call my friend.",
+        "Je me lève le matin. — I get up in the morning.",
+        "Nous nous levons le matin. — We get up in the morning."
+      ],
+      "flashcards": [
+        [
+          "I like",
+          "j’aime"
+        ],
+        [
+          "the kitchen",
+          "la cuisine"
+        ],
+        [
+          "I pay",
+          "je paie"
+        ],
+        [
+          "I call",
+          "j’appelle"
+        ],
+        [
+          "I get up",
+          "je me lève"
+        ]
+      ],
+      "flashcardsNote": "Daily spaced review: 3 OLD prompts + 2 retrieval prompts for today. Hide answers, say aloud, flip, and repeat any error.",
+      "recall": [
+        {
+          "prompt": "REVIEW · We speak French.",
+          "answer": "Nous parlons français.",
+          "accept": [],
+          "explanation": "Week 1: nous parlons, no de."
+        },
+        {
+          "prompt": "REVIEW · I live in an apartment.",
+          "answer": "J’habite dans un appartement.",
+          "accept": [],
+          "explanation": "Week 1: j’habite dans un appartement."
+        },
+        {
+          "prompt": "REVIEW · We find the key.",
+          "answer": "Nous trouvons la clé.",
+          "accept": [],
+          "explanation": "Day 8: nous trouvons; la clé."
+        },
+        {
+          "prompt": "REVIEW · She explains.",
+          "answer": "Elle explique.",
+          "accept": [],
+          "explanation": "Day 10: elle explique."
+        },
+        {
+          "prompt": "NEW VOCAB · the telephone",
+          "answer": "le téléphone",
+          "accept": [],
+          "explanation": "Remember the article and spelling: le téléphone."
+        },
+        {
+          "prompt": "NEW VOCAB · the morning",
+          "answer": "le matin",
+          "accept": [],
+          "explanation": "Remember the article and spelling: le matin."
+        },
+        {
+          "prompt": "NEW VOCAB · the alarm clock",
+          "answer": "le réveil",
+          "accept": [],
+          "explanation": "Remember the article and spelling: le réveil."
+        },
+        {
+          "prompt": "NEW VOCAB · the friend (masculine)",
+          "answer": "l’ami",
+          "accept": [],
+          "explanation": "Remember the article and spelling: l’ami."
+        },
+        {
+          "prompt": "NEW VOCAB · the day",
+          "answer": "la journée",
+          "accept": [],
+          "explanation": "Remember the article and spelling: la journée."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + appeler",
+          "answer": "j’appelle",
+          "accept": [],
+          "explanation": "Use j’ and double ll."
+        },
+        {
+          "prompt": "nous + appeler",
+          "answer": "nous appelons",
+          "accept": [],
+          "explanation": "One l with nous."
+        },
+        {
+          "prompt": "tu + appeler",
+          "answer": "tu appelles",
+          "accept": [],
+          "explanation": "Double ll with tu."
+        },
+        {
+          "prompt": "je + se lever",
+          "answer": "je me lève",
+          "accept": [],
+          "explanation": "Include me."
+        },
+        {
+          "prompt": "tu + se lever",
+          "answer": "tu te lèves",
+          "accept": [],
+          "explanation": "Include te."
+        },
+        {
+          "prompt": "nous + se lever",
+          "answer": "nous nous levons",
+          "accept": [],
+          "explanation": "Two nous: subject and reflexive word."
+        },
+        {
+          "prompt": "vous + se lever",
+          "answer": "vous vous levez",
+          "accept": [],
+          "explanation": "Two vous: subject and reflexive word."
+        },
+        {
+          "prompt": "REVIEW · nous + manger",
+          "answer": "nous mangeons",
+          "accept": [],
+          "explanation": "Keep e after g."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate: I call my friend.",
+          "answer": "J’appelle mon ami.",
+          "accept": [],
+          "explanation": "Use j’appelle with a double l."
+        },
+        {
+          "prompt": "Translate: She calls her friend.",
+          "answer": "Elle appelle son ami.",
+          "accept": [],
+          "explanation": "Elle appelle has double l."
+        },
+        {
+          "prompt": "Translate: I get up in the morning.",
+          "answer": "Je me lève le matin.",
+          "accept": [],
+          "explanation": "Se lever uses me with je."
+        },
+        {
+          "prompt": "Translate: We get up in the morning.",
+          "answer": "Nous nous levons le matin.",
+          "accept": [],
+          "explanation": "Nous nous levons."
+        },
+        {
+          "prompt": "REVIEW · She buys a bottle.",
+          "answer": "Elle achète une bouteille.",
+          "accept": [],
+          "explanation": "Day 11 acheter → elle achète."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je me lève le matin.",
+          "answer": "Nous nous levons le matin.",
+          "accept": [],
+          "explanation": "Change je me → nous nous; lève → levons."
+        },
+        {
+          "prompt": "Change je to nous: J’appelle un ami.",
+          "answer": "Nous appelons un ami.",
+          "accept": [],
+          "explanation": "Je → nous; j’appelle → nous appelons."
+        }
+      ],
+      "oral": [
+        [
+          "Tu appelles un ami ?",
+          "Oui, j’appelle un ami."
+        ],
+        [
+          "Tu te lèves le matin ?",
+          "Oui, je me lève le matin."
+        ],
+        [
+          "Qu’est-ce que tu fais le matin ? (Answer with se lever.)",
+          "Je me lève le matin."
+        ],
+        [
+          "Say: She calls her friend.",
+          "Elle appelle son ami."
+        ],
+        [
+          "Say: We get up in the morning.",
+          "Nous nous levons le matin."
+        ],
+        [
+          "REVIEW: I buy a bottle.",
+          "J’achète une bouteille."
+        ],
+        [
+          "REVIEW: We eat an apple.",
+          "Nous mangeons une pomme."
+        ],
+        [
+          "PERSONAL: Say two sentences about your day.",
+          "Je me lève le matin et j’appelle mon ami."
+        ]
+      ],
+      "exit": [
+        [
+          "Write one new sentence using appeler.",
+          "J’appelle mon ami."
+        ],
+        [
+          "Write one new sentence using se lever.",
+          "Je me lève le matin."
+        ],
+        [
+          "Speak three Week 1 / Week 2 sentences without notes.",
+          "J’habite dans un appartement. Je mange une pomme. Je me lève le matin."
+        ]
+      ]
+    },
+    {
+      "day": 13,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "La négation",
+      "title": "La négation — ne…pas et ne…jamais",
+      "focus": "Explain negation simply, recognize five common negative patterns and automate ne…pas / ne…jamais in familiar sentences.",
+      "yesterday": "Review Day 12: appeler, se lever, and two Week 1 verbs; keep all examples in -ER or previously learned être/avoir/aller.",
+      "explanation": "DAY 13 — SIMPLE GRAMMAR NOTES: LA NÉGATION (SAYING NOT)\n\n1. WHAT IS NEGATION?\nNegation turns a positive sentence into a negative one. In English we say do not, does not, never, no longer or nothing. In French we put small negative words around the conjugated verb.\nPositive: Je travaille. (I work.)\nNegative: Je ne travaille pas. (I do not work.)\n\n2. MOST IMPORTANT: NE ... PAS = NOT / DO NOT\nPattern: PERSON + ne + CONJUGATED VERB + pas + REST.\nJe parle français. → Je ne parle pas français.\nNous étudions. → Nous n’étudions pas.\nKeep the same verb ending. Ne and pas go around the conjugated verb.\n\n3. WHY DO WE SOMETIMES WRITE N’?\nBefore a verb beginning with a vowel sound or silent h, ne becomes n’:\nJ’aime la cuisine. → Je n’aime pas la cuisine.\nJ’habite ici. → Je n’habite pas ici.\nElle étudie. → Elle n’étudie pas.\nRemember: the je in j’aime becomes je when n’ is inserted: Je n’aime pas (not J’n’aime pas).\n\n4. FIVE COMMON TYPES — LEARN WHAT THEY MEAN\nne ... pas = not: Je ne parle pas. (I do not speak.)\nne ... jamais = never: Je ne regarde jamais la télévision. (I never watch television.)\nne ... plus = no longer / not anymore: Je ne travaille plus ici. (I no longer work here.)\nne ... rien = nothing / not anything: Je ne trouve rien. (I find nothing.)\nne ... personne = nobody / no one: Je ne vois personne. (I see nobody.)\nTODAY: practise ne...pas and ne...jamais until easy. The other three are for recognition, not for memorizing extra verb tables; voir is used only as an example.\n\n5. HOW TO USE THE TWO MAIN TYPES\nJe mange une pomme. → Je ne mange pas de pomme. (I do not eat an apple / any apples.)\nJe regarde la télévision. → Je ne regarde jamais la télévision. (I never watch television.)\nWith a definite object, keep le/la/les: Je n’aime pas le fromage.\nWith un/une/des after most verbs, in negative statements these often change to de/d’: J’ai un livre. → Je n’ai pas de livre. / J’ai une clé. → Je n’ai pas de clé. This change does not apply to noun descriptions after être: Ce n’est pas un livre. Practise the simpler examples first.\n\n6. OLD VERBS WORK THE SAME WAY\nJe suis étudiant. → Je ne suis pas étudiant.\nJ’ai un cahier. → Je n’ai pas de cahier.\nJe vais à l’école. → Je ne vais pas à l’école.\n\n7. SPOKEN FRENCH AND WRITING\nIn everyday informal speech you may hear « Je sais pas » without ne. Understand it, but practise the complete « Je ne sais pas » structure for careful speaking and writing. Do not add the irregular verb savoir to today's verb list.\n\n8. THREE COMMON ERRORS\nWRONG: Je pas travaille. → RIGHT: Je ne travaille pas.\nWRONG: Je n’aime le fromage pas. → RIGHT: Je n’aime pas le fromage.\nWRONG: J’n’aime pas. → RIGHT: Je n’aime pas.\n\n9. SPEAKING AUTOMATION — SHORT ROUNDS\nA. Look and identify: positive or negative?\nB. Make 6 familiar positive sentences negative without looking at the model.\nC. Choose pas (not) or jamais (never).\nD. Fix 3 broken sentences.\nE. Give 5 oral answers (first guided, then without a model). Wait until you have spoken before revealing the example.\n\n10. SMALL HOMEWORK (8 MINUTES)\nSay 4 ne...pas sentences and 2 ne...jamais sentences aloud, then write 3 new negatives. Next day, recall them without notes. Understanding first, accuracy next, speed last.",
+      "verbs": [],
+      "vocab": [],
+      "conjugations": [],
+      "fixed": [
+        "Je ne parle pas français. — I do not speak French.",
+        "Je n’aime pas le fromage. — I do not like cheese.",
+        "Je ne regarde jamais la télévision. — I never watch television.",
+        "Nous n’étudions pas aujourd’hui. — We are not studying today."
+      ],
+      "flashcards": [
+        [
+          "We speak",
+          "nous parlons"
+        ],
+        [
+          "I buy",
+          "j’achète"
+        ],
+        [
+          "I get up",
+          "je me lève"
+        ],
+        [
+          "I do not work",
+          "je ne travaille pas"
+        ],
+        [
+          "I never watch television",
+          "je ne regarde jamais la télévision"
+        ]
+      ],
+      "flashcardsNote": "Spaced review of Weeks 1–2. First say the old affirmative form; then apply negation. Do not read notes before attempting.",
+      "recall": [
+        {
+          "prompt": "They watch television (masculine group).",
+          "answer": "Ils regardent la télévision.",
+          "accept": [],
+          "explanation": "Week 1: ils regardent."
+        },
+        {
+          "prompt": "the bedroom",
+          "answer": "la chambre",
+          "accept": [],
+          "explanation": "Week 1 vocabulary: feminine la chambre."
+        },
+        {
+          "prompt": "the eggs",
+          "answer": "les œufs",
+          "accept": [],
+          "explanation": "Week 1 vocabulary: plural les œufs."
+        },
+        {
+          "prompt": "the apartment",
+          "answer": "l’appartement",
+          "accept": [],
+          "explanation": "Week 1: masculine word with l’ before vowel."
+        },
+        {
+          "prompt": "I am",
+          "answer": "je suis",
+          "accept": [],
+          "explanation": "Earlier verb être: je suis."
+        },
+        {
+          "prompt": "REVIEW · “I call” in French.",
+          "answer": "j’appelle",
+          "accept": [],
+          "explanation": "Day 12: j’appelle has double l."
+        },
+        {
+          "prompt": "REVIEW · “We get up” in French.",
+          "answer": "nous nous levons",
+          "accept": [],
+          "explanation": "Day 12: include the reflexive word nous."
+        },
+        {
+          "prompt": "REVIEW: Conjugate acheter with nous.",
+          "answer": "nous achetons",
+          "accept": [],
+          "explanation": "Acheter has nous achetons (no è)."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "Make negative: Je travaille.",
+          "answer": "Je ne travaille pas.",
+          "accept": [],
+          "explanation": "Put ne before the conjugated verb and pas after."
+        },
+        {
+          "prompt": "Make negative: Elle aime le fromage.",
+          "answer": "Elle n’aime pas le fromage.",
+          "accept": [],
+          "explanation": "Ne → n’ before aime; use elle n’aime."
+        },
+        {
+          "prompt": "Make negative: Nous parlons français.",
+          "answer": "Nous ne parlons pas français.",
+          "accept": [],
+          "explanation": "Keep nous parlons unchanged between ne and pas."
+        },
+        {
+          "prompt": "Make negative: J’étudie.",
+          "answer": "Je n’étudie pas.",
+          "accept": [],
+          "explanation": "J’étudie becomes je n’étudie: no J’n."
+        },
+        {
+          "prompt": "Make negative: Ils travaillent à la maison.",
+          "answer": "Ils ne travaillent pas à la maison.",
+          "accept": [],
+          "explanation": "Ne comes before travaillent."
+        },
+        {
+          "prompt": "Make negative: J’ai un cahier.",
+          "answer": "Je n’ai pas de cahier.",
+          "accept": [],
+          "explanation": "Un becomes de after negated avoir."
+        },
+        {
+          "prompt": "Use NEVER: Je regarde la télévision.",
+          "answer": "Je ne regarde jamais la télévision.",
+          "accept": [],
+          "explanation": "Ne...jamais means never."
+        },
+        {
+          "prompt": "Use NEVER: Nous commandons une pizza.",
+          "answer": "Nous ne commandons jamais de pizza.",
+          "accept": [],
+          "explanation": "Jamais replaces pas; une becomes de."
+        },
+        {
+          "prompt": "Identify type: Je ne travaille plus ici.",
+          "answer": "ne…plus",
+          "accept": [],
+          "explanation": "Ne…plus means no longer."
+        },
+        {
+          "prompt": "Identify type: Je ne trouve rien.",
+          "answer": "ne…rien",
+          "accept": [],
+          "explanation": "Ne…rien means nothing."
+        },
+        {
+          "prompt": "Identify type: Je ne vois personne.",
+          "answer": "ne…personne",
+          "accept": [],
+          "explanation": "Ne…personne means nobody."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate: I do not like cheese.",
+          "answer": "Je n’aime pas le fromage.",
+          "accept": [],
+          "explanation": "Keep le because liking something in general uses definite article."
+        },
+        {
+          "prompt": "Translate: We do not study today.",
+          "answer": "Nous n’étudions pas aujourd’hui.",
+          "accept": [],
+          "explanation": "Use n’ before étudions."
+        },
+        {
+          "prompt": "Translate: She never watches television.",
+          "answer": "Elle ne regarde jamais la télévision.",
+          "accept": [],
+          "explanation": "Never = ne...jamais."
+        },
+        {
+          "prompt": "Translate: I do not have a key.",
+          "answer": "Je n’ai pas de clé.",
+          "accept": [],
+          "explanation": "Avoir + ne...pas: une becomes de."
+        },
+        {
+          "prompt": "Translate: They do not speak French (masculine).",
+          "answer": "Ils ne parlent pas français.",
+          "accept": [],
+          "explanation": "Use ne...pas around parlent."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Fix the error: Je pas parle français.",
+          "answer": "Je ne parle pas français.",
+          "accept": [],
+          "explanation": "Put ne before parle and pas immediately after."
+        },
+        {
+          "prompt": "Fix the error: J’n’aime pas les légumes.",
+          "answer": "Je n’aime pas les légumes.",
+          "accept": [],
+          "explanation": "Je stays je when n’ appears."
+        },
+        {
+          "prompt": "Fix the error: Elle ne regarde la télévision jamais.",
+          "answer": "Elle ne regarde jamais la télévision.",
+          "accept": [],
+          "explanation": "Put jamais immediately after regarde."
+        }
+      ],
+      "oral": [
+        [
+          "Tu travailles aujourd’hui ? Réponds NON.",
+          "Non, je ne travaille pas aujourd’hui."
+        ],
+        [
+          "Tu aimes le fromage ? Réponds NON.",
+          "Non, je n’aime pas le fromage."
+        ],
+        [
+          "Tu regardes toujours la télévision ? Réponds JAMAIS.",
+          "Non, je ne regarde jamais la télévision."
+        ],
+        [
+          "Tu as un cahier ? Réponds NON.",
+          "Non, je n’ai pas de cahier."
+        ],
+        [
+          "Tu commandes souvent une pizza ? Réponds JAMAIS.",
+          "Non, je ne commande jamais de pizza."
+        ],
+        [
+          "Say aloud: I do not study today.",
+          "Je n’étudie pas aujourd’hui."
+        ],
+        [
+          "Say aloud: We never watch television.",
+          "Nous ne regardons jamais la télévision."
+        ],
+        [
+          "Give TWO truthful negative sentences about yourself (model only).",
+          "Je ne regarde pas la télévision. Je ne travaille jamais le dimanche."
+        ]
+      ],
+      "exit": [
+        [
+          "Write one new ne…pas sentence.",
+          "Je ne travaille pas aujourd’hui."
+        ],
+        [
+          "Write one new ne…jamais sentence.",
+          "Je ne regarde jamais la télévision."
+        ],
+        [
+          "Explain in one sentence where pas goes in French.",
+          "Pas goes immediately after the conjugated verb in simple ne…pas sentences."
+        ]
+      ]
+    },
+    {
+      "day": 14,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Week 2 final review",
+      "title": "Bilan de la semaine — parler sans notes",
+      "focus": "Demonstrate accurate retrieval of the 14 Week 2 verbs, old verbs, articles, simple sentences and negative responses in a short conversation.",
+      "yesterday": "Recall ne…pas and ne…jamais from Day 13. Also recall mixed items from Week 1 before taking this test.",
+      "explanation": "DAY 14 — FULL WEEK 2 REVIEW: NO NEW MATERIAL\n\n1. TODAY'S GOAL\nShow what you remember from Days 8–13 AND Week 1. No new verbs, nouns or grammar. First attempt is without the notes; then correct the parts you missed.\n\n2. YOUR 14 WEEK 2 VERBS\nDay 8: étudier, trouver, donner.\nDay 9: aider, utiliser, commander.\nDay 10: penser, expliquer, arriver.\nDay 11: manger, acheter, payer.\nDay 12: appeler, se lever.\nOld Week 1 verbs must still be usable: parler, travailler, habiter, aimer, chercher, demander, regarder, écouter. Also recall être, avoir, aller from earlier lessons.\n\n3. WHAT YOU MUST BE ABLE TO DO\nA. Conjugate selected verbs with je / tu / nous / ils without a table.\nB. Use old and new nouns with the correct articles.\nC. Make complete sentences: WHO + VERB + OBJECT / WHERE.\nD. Negate familiar sentences with ne...pas and ne...jamais.\nE. Give short spoken answers that relate to your real life.\n\n4. SIX QUICK SPEAKING STEPS\nStep 1: Answer a yes/no question. Step 2: Name an object you use. Step 3: Say what you eat. Step 4: Explain what you study. Step 5: Say something you do NOT do. Step 6: Say something you NEVER do. Speak first, then reveal the example.\n\n5. HOW TO CORRECT ERRORS WITHOUT STRESS\nChoose your two most frequent mistakes (verb ending, noun article, ne...pas order, apostrophe). For each, read the correction once, hide it, and produce two new examples. Do not copy the full lesson.\n\n6. MINI ASSESSMENT\nUse the drills, translations, transformations and oral activities. Aim for at least 70% independent accuracy AND five correct complete sentences without notes. If not yet reached, spend the next session repairing weak points rather than adding new grammar.\n\n7. SMALL HOMEWORK / NEXT WEEK PREP\nRecord or speak a 45–60 second self-description using five different familiar verbs and one negative sentence. Write four true sentences. Repeat the difficult items after 1 and 3 days.",
+      "verbs": [],
+      "vocab": [],
+      "conjugations": [],
+      "fixed": [
+        "J’étudie le français et j’utilise mon cahier. — I study French and use my notebook.",
+        "Je ne regarde pas la télévision. — I do not watch television.",
+        "Je ne commande jamais de pizza. — I never order pizza.",
+        "Nous appelons notre ami. — We call our friend."
+      ],
+      "flashcards": [
+        [
+          "We call",
+          "nous appelons"
+        ],
+        [
+          "I buy",
+          "j’achète"
+        ],
+        [
+          "She explains",
+          "elle explique"
+        ],
+        [
+          "We eat",
+          "nous mangeons"
+        ],
+        [
+          "I use",
+          "j’utilise"
+        ]
+      ],
+      "flashcardsNote": "Cumulative spaced recall from Week 1 and Week 2; compare answers only after recalling aloud. Mark 2 weak items for future review.",
+      "recall": [
+        {
+          "prompt": "RECALL · the key",
+          "answer": "la clé",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · the wall",
+          "answer": "le mur",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · the telephone",
+          "answer": "le téléphone",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · the message",
+          "answer": "le message",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · the question",
+          "answer": "la question",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · the class / lesson",
+          "answer": "le cours",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · the meat",
+          "answer": "la viande",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · the apple",
+          "answer": "la pomme",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · the receipt",
+          "answer": "le reçu",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · the card",
+          "answer": "la carte",
+          "accept": [],
+          "explanation": "Keep the article with the noun."
+        },
+        {
+          "prompt": "RECALL · We call",
+          "answer": "nous appelons",
+          "accept": [],
+          "explanation": "Appeler: nous appelons (one l)."
+        },
+        {
+          "prompt": "RECALL · I buy",
+          "answer": "j’achète",
+          "accept": [],
+          "explanation": "Use the whole verb form without a table."
+        },
+        {
+          "prompt": "RECALL · She explains",
+          "answer": "elle explique",
+          "accept": [],
+          "explanation": "Expliquer: elle explique."
+        },
+        {
+          "prompt": "RECALL · We eat",
+          "answer": "nous mangeons",
+          "accept": [],
+          "explanation": "Use the whole verb form without a table."
+        },
+        {
+          "prompt": "RECALL · I use",
+          "answer": "j’utilise",
+          "accept": [],
+          "explanation": "Use the whole verb form without a table."
+        },
+        {
+          "prompt": "OLD REVIEW · We speak French.",
+          "answer": "Nous parlons français.",
+          "accept": [],
+          "explanation": "Week 1: nous parlons; do not add de before français."
+        },
+        {
+          "prompt": "OLD REVIEW · I live in an apartment.",
+          "answer": "J’habite dans un appartement.",
+          "accept": [],
+          "explanation": "Week 1: j’habite; un appartement is masculine."
+        },
+        {
+          "prompt": "OLD REVIEW · She is looking for a chair.",
+          "answer": "Elle cherche une chaise.",
+          "accept": [],
+          "explanation": "Week 1: chercher needs no pour; une chaise."
+        },
+        {
+          "prompt": "OLD REVIEW · I like cheese.",
+          "answer": "J’aime le fromage.",
+          "accept": [],
+          "explanation": "Week 1: use le with general likes."
+        },
+        {
+          "prompt": "OLD REVIEW · We listen to the music (specific music).",
+          "answer": "Nous écoutons la musique.",
+          "accept": [],
+          "explanation": "Week 1: nous écoutons; direct object."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "Conjugate étudier with nous.",
+          "answer": "nous étudions",
+          "accept": [],
+          "explanation": "Correct present form: nous étudions."
+        },
+        {
+          "prompt": "Conjugate trouver with vous.",
+          "answer": "vous trouvez",
+          "accept": [],
+          "explanation": "Correct present form: vous trouvez."
+        },
+        {
+          "prompt": "Conjugate donner with je.",
+          "answer": "je donne",
+          "accept": [],
+          "explanation": "Correct present form: je donne."
+        },
+        {
+          "prompt": "Conjugate aider with nous.",
+          "answer": "nous aidons",
+          "accept": [],
+          "explanation": "Correct present form: nous aidons."
+        },
+        {
+          "prompt": "Conjugate utiliser with elle.",
+          "answer": "elle utilise",
+          "accept": [],
+          "explanation": "Elle utilise: regular -ER ending -e."
+        },
+        {
+          "prompt": "Conjugate commander with ils.",
+          "answer": "ils commandent",
+          "accept": [],
+          "explanation": "Correct present form: ils commandent."
+        },
+        {
+          "prompt": "Conjugate penser with je.",
+          "answer": "je pense",
+          "accept": [],
+          "explanation": "Correct present form: je pense."
+        },
+        {
+          "prompt": "Conjugate expliquer with vous.",
+          "answer": "vous expliquez",
+          "accept": [],
+          "explanation": "Correct present form: vous expliquez."
+        },
+        {
+          "prompt": "Conjugate arriver with nous.",
+          "answer": "nous arrivons",
+          "accept": [],
+          "explanation": "Correct present form: nous arrivons."
+        },
+        {
+          "prompt": "Conjugate manger with nous.",
+          "answer": "nous mangeons",
+          "accept": [],
+          "explanation": "Correct present form: nous mangeons."
+        },
+        {
+          "prompt": "Conjugate acheter with je.",
+          "answer": "j’achète",
+          "accept": [],
+          "explanation": "Correct present form: j’achète."
+        },
+        {
+          "prompt": "Make negative: Je mange une pomme.",
+          "answer": "Je ne mange pas de pomme.",
+          "accept": [],
+          "explanation": "Change une to de with a negated object."
+        },
+        {
+          "prompt": "Make negative: Nous regardons la télévision.",
+          "answer": "Nous ne regardons pas la télévision.",
+          "accept": [],
+          "explanation": "Ne and pas go around regardons."
+        },
+        {
+          "prompt": "Use NEVER: Je travaille le dimanche.",
+          "answer": "Je ne travaille jamais le dimanche.",
+          "accept": [],
+          "explanation": "Never = ne...jamais."
+        },
+        {
+          "prompt": "je + acheter",
+          "answer": "j’achète",
+          "accept": [],
+          "explanation": "Use j’ and è."
+        },
+        {
+          "prompt": "nous + payer",
+          "answer": "nous payons",
+          "accept": [],
+          "explanation": "Keep y with nous."
+        },
+        {
+          "prompt": "elle + appeler",
+          "answer": "elle appelle",
+          "accept": [],
+          "explanation": "Double ll."
+        },
+        {
+          "prompt": "je + se lever",
+          "answer": "je me lève",
+          "accept": [],
+          "explanation": "Reflexive me before lève."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate: I study French.",
+          "answer": "J’étudie le français.",
+          "accept": [],
+          "explanation": "Keep correct article and verb ending."
+        },
+        {
+          "prompt": "Translate: I help my friend.",
+          "answer": "J’aide mon ami.",
+          "accept": [],
+          "explanation": "Keep correct article and verb ending."
+        },
+        {
+          "prompt": "Translate: I think about my class.",
+          "answer": "Je pense à mon cours.",
+          "accept": [],
+          "explanation": "Keep correct article and verb ending."
+        },
+        {
+          "prompt": "Translate: I eat an apple.",
+          "answer": "Je mange une pomme.",
+          "accept": [],
+          "explanation": "Keep correct article and verb ending."
+        },
+        {
+          "prompt": "Translate: I call my friend.",
+          "answer": "J’appelle mon ami.",
+          "accept": [],
+          "explanation": "Appeler takes a direct object: j’appelle mon ami."
+        },
+        {
+          "prompt": "Translate: She explains the question.",
+          "answer": "Elle explique la question.",
+          "accept": [],
+          "explanation": "Expliquer is used directly before its object."
+        },
+        {
+          "prompt": "Translate: We study French.",
+          "answer": "Nous étudions le français.",
+          "accept": [],
+          "explanation": "Étudier: nous étudions."
+        },
+        {
+          "prompt": "Translate: I do not like cheese.",
+          "answer": "Je n’aime pas le fromage.",
+          "accept": [],
+          "explanation": "Keep le after aimer."
+        },
+        {
+          "prompt": "Translate: I never watch television.",
+          "answer": "Je ne regarde jamais la télévision.",
+          "accept": [],
+          "explanation": "Ne...jamais."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Fix: Nous mangeons? Choose correct spelling: Nous mangons une pomme.",
+          "answer": "Nous mangeons une pomme.",
+          "accept": [],
+          "explanation": "Keep e: nous mangeons."
+        },
+        {
+          "prompt": "Fix: Je ne aime pas le fromage.",
+          "answer": "Je n’aime pas le fromage.",
+          "accept": [],
+          "explanation": "Use n’ before vowel."
+        },
+        {
+          "prompt": "Change to negative: Elle commande une pizza.",
+          "answer": "Elle ne commande pas de pizza.",
+          "accept": [],
+          "explanation": "Ne...pas and une becomes de."
+        },
+        {
+          "prompt": "Change je to nous: J’achète un sac.",
+          "answer": "Nous achetons un sac.",
+          "accept": [],
+          "explanation": "Acheter: j’achète / nous achetons."
+        },
+        {
+          "prompt": "Change tu to elles: Tu expliques la question.",
+          "answer": "Elles expliquent la question.",
+          "accept": [],
+          "explanation": "Expliquer: elles expliquent."
+        }
+      ],
+      "oral": [
+        [
+          "Qu’est-ce que tu étudies ?",
+          "J’étudie le français."
+        ],
+        [
+          "Tu aides ton ami ?",
+          "Oui, j’aide mon ami."
+        ],
+        [
+          "Qu’est-ce que tu commandes ?",
+          "Je commande une pizza."
+        ],
+        [
+          "Qu’est-ce que tu manges ?",
+          "Je mange une pomme."
+        ],
+        [
+          "Qu’est-ce que tu achètes ?",
+          "J’achète une bouteille."
+        ],
+        [
+          "Tu regardes la télévision tous les jours ? Réponds NON.",
+          "Non, je ne regarde pas la télévision tous les jours."
+        ],
+        [
+          "Tu commandes toujours une pizza ? Réponds JAMAIS.",
+          "Non, je ne commande jamais de pizza."
+        ],
+        [
+          "Say four different true statements, without notes; use at least two new verbs.",
+          "J’étudie le français. Je trouve ma clé. Je travaille à la maison. J’aime le fromage."
+        ],
+        [
+          "Say a 45–60 second self-introduction with 5 different verbs and one negative sentence. (Model to adapt.)",
+          "J’habite dans un appartement. Je parle français. J’étudie le français. J’utilise mon cahier. J’aime le fromage. Je ne regarde pas la télévision."
+        ]
+      ],
+      "exit": [
+        [
+          "Write two truthful sentences with NEW verbs.",
+          "J’étudie le français. Je mange une pomme."
+        ],
+        [
+          "Write one sentence with ne…pas and another with ne…jamais.",
+          "Je ne travaille pas aujourd’hui. Je ne regarde jamais la télévision."
+        ],
+        [
+          "Write two sentences using a Week 1 verb and a Week 2 verb.",
+          "J’habite dans un appartement. Je trouve la clé."
+        ]
+      ]
+    }
+  ]
+}
