@@ -2,7 +2,7 @@
   "id": "week2",
   "number": 2,
   "title": "French A1 · Week 2",
-  "description": "French A1 Week 2: global Days 8–14. Days 8–12 complete the 14 -ER-category verbs (three per day on Days 8–11; two on Day 12 for consolidation). Day 13: beginner negation. Day 14: cumulative review. No new -IR or -RE verb conjugation lessons.",
+  "description": "French A1 Week 2: global Days 8–14. Days 8–12 complete the remaining 14 verbs in the priority PDF’s -ER category (three per day on Days 8–11; two on Day 12 for consolidation). Day 13: beginner negation. Day 14: cumulative review. No -IR or -RE-category verbs introduced.",
   "days": [
     {
       "day": 8,
@@ -1570,8 +1570,8 @@
           "j’achète"
         ],
         [
-          "I get up",
-          "je me lève"
+          "I finish",
+          "je finis"
         ],
         [
           "I do not work",
@@ -1808,9 +1808,9 @@
       "releaseDate": null,
       "short": "Week 2 final review",
       "title": "Bilan de la semaine — parler sans notes",
-      "focus": "Demonstrate accurate retrieval of the 14 Week 2 verbs, old verbs, articles, simple sentences and negative responses in a short conversation.",
+      "focus": "Demonstrate accurate retrieval of the 15 Week 2 verbs, old verbs, articles, simple sentences and negative responses in a short conversation.",
       "yesterday": "Recall ne…pas and ne…jamais from Day 13. Also recall mixed items from Week 1 before taking this test.",
-      "explanation": "DAY 14 — FULL WEEK 2 REVIEW: NO NEW MATERIAL\n\n1. TODAY'S GOAL\nShow what you remember from Days 8–13 AND Week 1. No new verbs, nouns or grammar. First attempt is without the notes; then correct the parts you missed.\n\n2. YOUR 14 WEEK 2 VERBS\nDay 8: étudier, trouver, donner.\nDay 9: aider, utiliser, commander.\nDay 10: penser, expliquer, arriver.\nDay 11: manger, acheter, payer.\nDay 12: appeler, se lever.\nOld Week 1 verbs must still be usable: parler, travailler, habiter, aimer, chercher, demander, regarder, écouter. Also recall être, avoir, aller from earlier lessons.\n\n3. WHAT YOU MUST BE ABLE TO DO\nA. Conjugate selected verbs with je / tu / nous / ils without a table.\nB. Use old and new nouns with the correct articles.\nC. Make complete sentences: WHO + VERB + OBJECT / WHERE.\nD. Negate familiar sentences with ne...pas and ne...jamais.\nE. Give short spoken answers that relate to your real life.\n\n4. SIX QUICK SPEAKING STEPS\nStep 1: Answer a yes/no question. Step 2: Name an object you use. Step 3: Say what you eat. Step 4: Explain what you study. Step 5: Say something you do NOT do. Step 6: Say something you NEVER do. Speak first, then reveal the example.\n\n5. HOW TO CORRECT ERRORS WITHOUT STRESS\nChoose your two most frequent mistakes (verb ending, noun article, ne...pas order, apostrophe). For each, read the correction once, hide it, and produce two new examples. Do not copy the full lesson.\n\n6. MINI ASSESSMENT\nUse the drills, translations, transformations and oral activities. Aim for at least 70% independent accuracy AND five correct complete sentences without notes. If not yet reached, spend the next session repairing weak points rather than adding new grammar.\n\n7. SMALL HOMEWORK / NEXT WEEK PREP\nRecord or speak a 45–60 second self-description using five different familiar verbs and one negative sentence. Write four true sentences. Repeat the difficult items after 1 and 3 days.",
+      "explanation": "DAY 14 — FULL WEEK 2 REVIEW: NO NEW MATERIAL\n\n1. TODAY'S GOAL\nShow what you remember from Days 8–13 AND Week 1. No new verbs, nouns or grammar. First attempt is without the notes; then correct the parts you missed.\n\n2. YOUR 15 WEEK 2 VERBS\nDay 8: étudier, trouver, donner.\nDay 9: aider, utiliser, commander.\nDay 10: penser, expliquer, arriver.\nDay 11: manger, acheter, payer.\nDay 12: appeler, se lever, acheter.\nOld Week 1 verbs must still be usable: parler, travailler, habiter, aimer, chercher, demander, regarder, écouter. Also recall être, avoir, aller from earlier lessons.\n\n3. WHAT YOU MUST BE ABLE TO DO\nA. Conjugate selected verbs with je / tu / nous / ils without a table.\nB. Use old and new nouns with the correct articles.\nC. Make complete sentences: WHO + VERB + OBJECT / WHERE.\nD. Negate familiar sentences with ne...pas and ne...jamais.\nE. Give short spoken answers that relate to your real life.\n\n4. SIX QUICK SPEAKING STEPS\nStep 1: Answer a yes/no question. Step 2: Name an object you use. Step 3: Say what you eat. Step 4: Explain what you study. Step 5: Say something you do NOT do. Step 6: Say something you NEVER do. Speak first, then reveal the example.\n\n5. HOW TO CORRECT ERRORS WITHOUT STRESS\nChoose your two most frequent mistakes (verb ending, noun article, ne...pas order, apostrophe). For each, read the correction once, hide it, and produce two new examples. Do not copy the full lesson.\n\n6. MINI ASSESSMENT\nUse the drills, translations, transformations and oral activities. Aim for at least 70% independent accuracy AND five correct complete sentences without notes. If not yet reached, spend the next session repairing weak points rather than adding new grammar.\n\n7. SMALL HOMEWORK / NEXT WEEK PREP\nRecord or speak a 45–60 second self-description using five different familiar verbs and one negative sentence. Write four true sentences. Repeat the difficult items after 1 and 3 days.",
       "verbs": [],
       "vocab": [],
       "conjugations": [],
@@ -1818,20 +1818,20 @@
         "J’étudie le français et j’utilise mon cahier. — I study French and use my notebook.",
         "Je ne regarde pas la télévision. — I do not watch television.",
         "Je ne commande jamais de pizza. — I never order pizza.",
-        "Nous appelons notre ami. — We call our friend."
+        "Nous finissons le cours. — We finish the class."
       ],
       "flashcards": [
         [
-          "We call",
-          "nous appelons"
+          "We finish",
+          "nous finissons"
         ],
         [
           "I buy",
           "j’achète"
         ],
         [
-          "She explains",
-          "elle explique"
+          "She answers",
+          "elle répond"
         ],
         [
           "We eat",
@@ -1905,10 +1905,10 @@
           "explanation": "Keep the article with the noun."
         },
         {
-          "prompt": "RECALL · We call",
-          "answer": "nous appelons",
+          "prompt": "RECALL · We finish",
+          "answer": "nous finissons",
           "accept": [],
-          "explanation": "Appeler: nous appelons (one l)."
+          "explanation": "Use the whole verb form without a table."
         },
         {
           "prompt": "RECALL · I buy",
@@ -1917,10 +1917,10 @@
           "explanation": "Use the whole verb form without a table."
         },
         {
-          "prompt": "RECALL · She explains",
-          "answer": "elle explique",
+          "prompt": "RECALL · She answers",
+          "answer": "elle répond",
           "accept": [],
-          "explanation": "Expliquer: elle explique."
+          "explanation": "Use the whole verb form without a table."
         },
         {
           "prompt": "RECALL · We eat",
@@ -1998,9 +1998,9 @@
         },
         {
           "prompt": "Conjugate commander with ils.",
-          "answer": "ils commandent",
+          "answer": "ils / elles commandent",
           "accept": [],
-          "explanation": "Correct present form: ils commandent."
+          "explanation": "Correct present form: ils / elles commandent."
         },
         {
           "prompt": "Conjugate penser with je.",
@@ -2101,22 +2101,22 @@
           "explanation": "Keep correct article and verb ending."
         },
         {
-          "prompt": "Translate: I call my friend.",
-          "answer": "J’appelle mon ami.",
+          "prompt": "Translate: I wait for my friend.",
+          "answer": "J’attends mon ami.",
           "accept": [],
-          "explanation": "Appeler takes a direct object: j’appelle mon ami."
+          "explanation": "Keep correct article and verb ending."
         },
         {
-          "prompt": "Translate: She explains the question.",
-          "answer": "Elle explique la question.",
+          "prompt": "Translate: She answers the question.",
+          "answer": "Elle répond à la question.",
           "accept": [],
-          "explanation": "Expliquer is used directly before its object."
+          "explanation": "Répondre à + question."
         },
         {
-          "prompt": "Translate: We study French.",
-          "answer": "Nous étudions le français.",
+          "prompt": "Translate: We finish the class.",
+          "answer": "Nous finissons le cours.",
           "accept": [],
-          "explanation": "Étudier: nous étudions."
+          "explanation": "Finir → finissons with nous."
         },
         {
           "prompt": "Translate: I do not like cheese.",
@@ -2157,10 +2157,10 @@
           "explanation": "Acheter: j’achète / nous achetons."
         },
         {
-          "prompt": "Change tu to elles: Tu expliques la question.",
-          "answer": "Elles expliquent la question.",
+          "prompt": "Change tu to elles: Tu finis le cours.",
+          "answer": "Elles finissent le cours.",
           "accept": [],
-          "explanation": "Expliquer: elles expliquent."
+          "explanation": "Finir: elles finissent."
         }
       ],
       "oral": [
@@ -2181,8 +2181,8 @@
           "Je mange une pomme."
         ],
         [
-          "Qu’est-ce que tu achètes ?",
-          "J’achète une bouteille."
+          "Qu’est-ce que tu choisis ?",
+          "Je choisis une bouteille."
         ],
         [
           "Tu regardes la télévision tous les jours ? Réponds NON.",
