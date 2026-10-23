@@ -577,3 +577,7 @@ html[data-theme="dark"] .ai-homework{background:#243f53!important;border-color:#
    The complete illustration remains visible on the dedicated Story Reading screen. */
 .story-section .app-story-cover{display:none!important}
 .app-reading-screen .story-section .app-story-cover{display:flex!important}
+
+/* Isolate the inline story widget's contents from root-page scrolling. */
+#daily-story.story-section{contain:layout paint;overflow:clip!important;min-width:0;max-width:100%}
+.app-reading-screen #daily-story.story-section{contain:none;overflow:visible!important}
