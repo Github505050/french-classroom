@@ -82,3 +82,32 @@ test('Firestore rules keep teacher reads and prevent student cross-account reads
   assert.match(rules,/request\.auth\.uid == uid/);
   assert.match(rules,/allow write: if false/);
 });
+
+test('student experience upgrades are connected without changing source lessons',()=>{
+  assert.match(html,/classroom-polish\\.css/);
+  assert.match(html,/mobile-learning-nav/);
+  assert.match(html,/function practiceRoadmap/);
+  assert.match(html,/frenchportal_v2_saved_words/);
+  assert.match(html,/function weeklyRevisionView/);
+  assert.match(html,/frenchportal_v2_story_/);
+  assert.match(html,/function restoreCurrentView/);
+  const stories=JSON.parse(read('stories.json'));
+  assert.deepEqual(stories.days.map(x=>x.day),[5,6,8,9,10,11,12,13]);
+  const announcements=JSON.parse(read('announcements.json'));
+  assert.ok(Array.isArray(announcements.announcements));
+  assert.ok(JSON.parse(read('audio/manifest.json')));
+  assert.match(read('sw.js'),/classroom-polish\\.css/);
+});
+test('teacher profile handles story notes and completion dates safely',()=>{
+  const {api}=mock();
+  const entry={
+    frenchportal_v2_week1_day1_completed:'yes',
+    frenchportal_v2_week1_day1_completedAt:'2026-10-20T15:00:00.000Z',
+    frenchportal_v2_story_week1_day1_writing:'<script>alert(1)</script>'
+  };
+  const row=api.compute({uid:'test-story',profile:{name:'Student'},entries:entry});
+  assert.equal(row.weekly[0].lessons[0].storyNotes,'<script>alert(1)</script>');
+  api.setData([{uid:'test-story',profile:{name:'Student'},entries:entry}]);
+  const output=api.render();
+  assert.doesNotMatch(output,/<script>alert\\(1\\)<\\/script>/);
+});
