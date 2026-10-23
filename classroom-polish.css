@@ -85,3 +85,16 @@ html[data-theme="dark"] .mobile-learning-nav{background:#172e3ff2;border-color:#
 html[data-theme="dark"] .classroom-news{background:#203d50;border-color:#38596b}html[data-theme="dark"] .classroom-news-heading strong,html[data-theme="dark"] .classroom-news article strong{color:#eff6f9}html[data-theme="dark"] .classroom-news article p{color:#c0d3db}
 
 .speaking-lessons{display:grid;gap:13px;margin:20px 0}.speaking-lesson{display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid #d9e7ec;background:#fff;border-radius:16px;padding:19px 21px;box-shadow:0 5px 16px #19445409}.speaking-lesson h3{font-size:1.02rem;margin:6px 0}.speaking-lesson p{color:#5b7685;font-size:.86rem;margin:0}.speaking-day{color:#0a7182;font-size:.74rem;font-weight:800;letter-spacing:.1em}.speaking-lesson>.btn{white-space:nowrap}html[data-theme="dark"] .speaking-lesson{background:#1e3548;border-color:#385a6d}html[data-theme="dark"] .speaking-lesson p{color:#b9ccd6}@media(max-width:550px){.speaking-lesson{padding:15px;flex-direction:column;align-items:stretch}.speaking-lesson>.btn{align-self:flex-start}}
+
+/* Educator console respects the shared appearance setting */
+html[data-theme="dark"] .teacher-portal{--tp-bg:#1e3548;--tp-ink:#ebf2f6;--tp-mute:#b7cbd5;--tp-border:#3c5a6d}
+html[data-theme="dark"] .tp-stat,html[data-theme="dark"] .tp-card{background:#1e3548;border-color:#3b596b;color:#e9f3f7}
+html[data-theme="dark"] .tp-stat strong,html[data-theme="dark"] .tp-stat-top,html[data-theme="dark"] .tp-card h3,html[data-theme="dark"] .tp-person strong{color:#eef5f9}
+html[data-theme="dark"] .tp-card p,html[data-theme="dark"] .tp-faint,html[data-theme="dark"] .tp-lesson-info small{color:#b4cbd5}
+html[data-theme="dark"] .tp-tabbar button{color:#c4d4dd}
+html[data-theme="dark"] .tp-action-grid button,html[data-theme="dark"] .tp-chip{background:#29495d;border-color:#426278;color:#e2eff3}
+html[data-theme="dark"] .tp-toolbar input,html[data-theme="dark"] .tp-toolbar select{background:#172e40;border-color:#4a6677;color:#eff7fa}
+html[data-theme="dark"] .tp-banner{background:#224858;border-color:#346779;color:#d5eaf0}
+html[data-theme="dark"] .tp-table tbody tr:hover{background:#254459}
+html[data-theme="dark"] .tp-table th,html[data-theme="dark"] .tp-table td{border-color:#38566a;color:#dceaf0}
+html[data-theme="dark"] .tp-lesson,html[data-theme="dark"] .tp-response{border-color:#38566a}
