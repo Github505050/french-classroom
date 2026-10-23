@@ -43,10 +43,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install headless Chromium test runner
+      - name: Use preinstalled GitHub Chrome for browser tests
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install --with-deps chromium
+          google-chrome --version
       - name: Start test website
         run: |
           python3 -m http.server 8090 --bind 127.0.0.1 > /tmp/classroom-server.log 2>&1 &

@@ -1,0 +1,289 @@
+/* Mon Espace Français · mobile-first app design v1
+   Visual-only layer: all lesson, score, progress and authentication keys remain untouched. */
+:root{--app-ink:#122b45;--app-blue:#146edb;--app-teal:#0a8191;--app-paper:#ffffff;--app-canvas:#f4f9fd;--app-border:#dbe8f2;--app-shadow:0 10px 28px #214c7510}
+body{background:var(--app-canvas);color:var(--app-ink);font-family:Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
+header{background:#ffffff!important;border-bottom:1px solid #e5eef5!important;box-shadow:0 5px 16px #22456908;padding:17px max(18px,calc((100vw - 1160px)/2))!important}
+header:after{display:none}
+header .topline{max-width:1140px;margin:0 auto;min-height:58px}
+.brand{display:flex!important;align-items:center;gap:12px;color:#112d48!important;font-weight:850;letter-spacing:-.035em}
+.app-brand-logo{display:flex;gap:3px;align-items:center;justify-content:center;transform:rotate(-13deg);width:46px;height:46px;padding:7px;border-radius:13px;background:#eef9fc}
+.app-brand-logo span{height:27px;width:9px;border-radius:6px 6px 3px 3px;background:#2157a9;box-shadow:0 3px 5px #32649123}
+.app-brand-logo span:nth-child(2){background:#fff;height:30px}
+.app-brand-logo span:nth-child(3){background:#ef5264;height:26px}
+.app-brand-lines{display:flex;flex-direction:column;gap:2px}
+#brand{font-size:clamp(1.1rem,2.5vw,1.34rem)!important;line-height:1.2}
+.brand small{font-size:.6rem!important;letter-spacing:.18em!important;color:#54748c!important}
+.top-actions{gap:8px}.top-actions #account-trigger,.theme-toggle{background:#f5faff!important;border:1px solid #e3edf5!important;color:#285575!important;box-shadow:none!important;border-radius:14px}
+.top-actions #account-trigger{font-size:.83rem;padding:11px 14px;min-height:44px}.theme-toggle{width:44px;height:44px}
+.layout{max-width:1220px;gap:20px;padding:25px 20px 72px}
+.sidebar .panel{background:#fff;border:1px solid var(--app-border);border-radius:21px;box-shadow:var(--app-shadow);padding:12px}
+.navbtn{border-radius:13px;color:#3e5b71;font-weight:750;min-height:46px;transition:background .16s,color .16s}
+.navbtn.active{background:#e5f2ff!important;color:#176bb9!important}
+.navbtn:hover{background:#f3f8fd}
+.layout>main{min-width:0}
+.layout main>.panel{border-radius:23px;border:1px solid #e0eaf4;box-shadow:var(--app-shadow);background:#fff}
+.app-icon{width:23px;height:23px;display:inline-block;flex:none;vertical-align:middle}
+.app-home{display:grid;gap:17px;min-width:0;color:#122b45}
+.app-home h2,.app-home h3,.app-home p{letter-spacing:normal}
+.app-welcome{min-height:220px;display:flex;align-items:center;border-radius:25px;padding:28px clamp(20px,4vw,38px);background:#dcf5fc url("./assets/paris-sky.svg") right center/auto 100% no-repeat;position:relative;isolation:isolate;overflow:hidden}
+.app-welcome:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#e3f7ffef 0%,#e3f7ffd9 43%,#e3f7ff00 81%);z-index:-1}
+.app-welcome-copy{max-width:480px}
+.app-overline{font-size:.72rem;letter-spacing:.15em;font-weight:850;color:#47778f;text-transform:uppercase}
+.app-welcome h2{font-size:clamp(2.1rem,4.5vw,3.15rem)!important;line-height:1.12;letter-spacing:-.05em!important;font-weight:850;margin:22px 0 8px!important;color:#11334d}
+.app-welcome p{font-size:1.05rem;color:#304c68;line-height:1.45;max-width:265px;margin:0}
+.app-welcome-small{display:inline-block;color:#527891;font-size:.86rem;margin-top:12px}
+.app-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.app-stat{min-height:106px;border-radius:19px;display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-content:center;align-items:center;padding:17px 19px;background:#fff;box-shadow:0 6px 15px #203e5e0b}
+.app-stat-icon{grid-row:1/3;width:40px;height:40px;display:grid;place-items:center;border-radius:14px}
+.app-stat-icon .app-icon{width:27px;height:27px}
+.app-stat strong{font-size:1.53rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.app-stat>span:last-child{font-size:.77rem;color:#587289;font-weight:600;white-space:normal}
+.app-stat-streak{background:#fff4ea}.app-stat-streak .app-stat-icon{color:#f16b31;background:#ffe6d5}
+.app-stat-week{background:#edf6ff}.app-stat-week .app-stat-icon{color:#e8a21b;background:#fff0b8}
+.app-stat-course{background:#eafbf7}.app-stat-course .app-stat-icon{color:#139f82;background:#c8f5e7}
+.classroom-home .classroom-hero.app-featured{padding:0!important;display:grid;grid-template-columns:minmax(0,1fr) 47%;min-height:340px;background:linear-gradient(115deg,#0a8b91,#0aa5ac 60%,#41d8d4)!important;border-radius:25px;overflow:hidden;box-shadow:0 18px 35px #0b6a8222;isolation:isolate;position:relative}
+.app-featured:before{display:none}.app-featured:after{content:"";position:absolute;right:-40px;top:-80px;width:370px;height:370px;border-radius:50%;background:radial-gradient(circle,#d3fff37a,transparent 68%);pointer-events:none}
+.app-featured-copy{padding:35px 0 30px 35px;position:relative;z-index:3;align-self:center;min-width:0}
+.app-featured .app-overline{color:#e9ffff;letter-spacing:.16em}
+.app-featured h3{font-size:clamp(1.7rem,3.6vw,2.55rem);letter-spacing:-.045em!important;line-height:1.12;color:#fff;margin:16px 0 13px!important}
+.app-featured h3 span{display:block;margin-top:5px}
+.app-featured p{font-size:.92rem;line-height:1.55;color:#e3ffff;max-width:295px;margin:0 0 24px}
+.app-continue{min-height:48px;display:inline-flex;align-items:center;gap:18px;justify-content:space-between;background:#fff;border:0;border-radius:14px;color:#125477;padding:12px 17px;font-size:.91rem;font-weight:850;box-shadow:0 8px 16px #00687a36}
+.app-continue .app-icon{width:18px;height:18px}.app-continue:hover{background:#eafaf9;transform:translateY(-1px)}
+.app-student-illustration{z-index:1;position:absolute;right:-3%;bottom:-2%;width:min(56%,420px);height:auto;max-height:108%;object-fit:contain;object-position:bottom}
+.classroom-home .classroom-ring.app-featured-ring{position:absolute;z-index:4;right:22px;bottom:18px;width:92px;height:92px;padding:7px;background:conic-gradient(#ecfffe var(--completion),#ffffff6b var(--completion));box-shadow:0 9px 20px #04657520}
+.app-featured-ring>div{background:#e9fffc!important;color:#153f58}
+.app-featured-ring strong{font-size:1.35rem!important;color:#123b52!important}
+.app-featured-ring span{font-size:.57rem!important;color:#527b83!important}
+.app-quick{min-width:0;padding:6px 0 0}.app-quick h3{font-size:1.25rem;color:#142e47;margin:0 0 15px!important;font-weight:850}
+.app-quick-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px}
+.app-quick-item{border:1px solid #e6edf5;background:#fff;border-radius:20px;min-height:116px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;font-size:.82rem;font-weight:800;color:#173449;padding:12px 6px;box-shadow:0 5px 17px #254f7210;transition:transform .15s,box-shadow .15s}
+.app-quick-item:hover{transform:translateY(-3px);box-shadow:0 13px 23px #1d547522}
+.app-quick-symbol{height:51px;width:51px;border-radius:17px;display:grid;place-items:center}
+.app-quick-symbol .app-icon{width:29px;height:29px;stroke-width:2}
+.app-quick-speaking .app-quick-symbol{background:#ffe0ea;color:#ec4e77}
+.app-quick-listening .app-quick-symbol{background:#daf9f8;color:#068997}
+.app-quick-words .app-quick-symbol{background:#fff0cb;color:#e39b19}
+.app-quick-practice .app-quick-symbol{background:#ece8ff;color:#765dc9}
+.app-quick-story .app-quick-symbol{background:#dcf8e8;color:#138e63}
+.app-home-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-width:0}
+.app-word-card,.app-progress-card{border-radius:22px;background:#fff;border:1px solid #e1eaf2;box-shadow:0 7px 21px #1c456612;padding:24px;min-width:0}
+.app-word-card{background:linear-gradient(125deg,#fff8e7,#fffdf8);border-color:#f5e8c6}
+.app-card-title{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.app-card-title h3{font-size:1.04rem;margin:0!important;color:#1c344a;font-weight:840}
+.app-card-emoji{font-size:1.25rem;color:#f5ad20;line-height:1}
+.app-word-card>strong{font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:850;color:#153854;display:inline-block;margin:5px 0}
+.app-word-card p{font-size:.92rem;color:#647c8e;margin:8px 0 16px}
+.app-word-sound{vertical-align:middle;margin-left:10px;border:0;background:#e8f4ff;color:#1779bc;border-radius:13px;min-height:40px;min-width:42px}
+.app-word-save{border:1px solid #efdfbb;background:#fff;border-radius:11px;font-size:.84rem;color:#396a88;font-weight:750;min-height:42px;padding:9px 13px}
+.app-progress-card .app-card-title button{margin-left:auto;border:0;background:#f1f8fc;border-radius:10px;color:#2d6b8c;min-height:36px;min-width:36px}
+.app-progress-card .app-card-emoji{color:#f27375}
+.app-progress-lines{display:grid;gap:11px;margin-top:17px}
+.app-progress-day{display:flex;align-items:center;gap:10px;color:#607688;font-size:.86rem;font-weight:650;line-height:1.35}
+.app-progress-mark{width:24px;height:24px;flex:0 0 24px;border-radius:50%;border:2px solid #c2d2e2;display:grid;place-items:center}
+.app-progress-mark.is-done{border-color:#19b78c;background:#19b78c;color:#fff}
+.app-progress-mark .app-icon{width:15px;height:15px}
+.app-progress-bottom{font-size:.75rem;font-weight:750;color:#557587;margin-top:13px}
+.app-mini-track{background:#e5eff4;height:7px;border-radius:8px;margin-top:8px;overflow:hidden}
+.app-mini-track span{display:block;height:100%;background:#1cae9c;border-radius:8px}
+.app-encouragement{border-radius:19px;background:linear-gradient(110deg,#e1f2ff,#eef9ff);border:1px solid #d4e9f5;padding:19px 22px;display:flex;gap:15px;align-items:center}
+.app-encouragement-icon{color:#eca927;display:grid;place-items:center;width:52px;height:52px;background:#fff8e5;border-radius:15px;flex:0 0 52px}
+.app-encouragement-icon .app-icon{width:29px;height:29px}
+.app-encouragement strong{font-weight:850;color:#203d59}
+.app-encouragement p{margin:4px 0 0;color:#5e7c94;font-size:.83rem;max-width:410px}
+.app-week-dots{display:flex;gap:6px;flex-wrap:nowrap;margin-left:auto}
+.app-week-dots span{width:12px;height:12px;background:#fff;border:2px solid #bed8e4;border-radius:50%}
+.app-week-dots span.filled{background:#13aa95;border-color:#13aa95}
+.app-secondary-shortcuts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.app-secondary-shortcuts button{min-height:44px;background:transparent;border:0;color:#53768e;font-size:.83rem;font-weight:750;display:flex;align-items:center;gap:7px;padding:8px 10px;border-radius:10px}
+.app-secondary-shortcuts button:hover{background:#e8f5fa}
+.app-secondary-shortcuts .app-icon{width:16px;height:16px}
+.mobile-learning-nav .app-icon{width:25px;height:25px}
+@media(max-width:1100px){.app-stat{padding:13px}.app-quick-grid{gap:8px}.app-featured-copy{padding-left:26px}}
+@media(max-width:850px){.layout{padding:16px 14px 100px!important}.sidebar{display:none!important}.layout>main{width:100%}.app-home{gap:15px}}
+@media(max-width:650px){
+ header{padding:11px 17px!important}header .topline{min-height:47px}.app-brand-logo{width:38px;height:38px}.app-brand-logo span{height:24px;width:7px}
+ #brand{font-size:1.03rem!important}.brand small{font-size:.53rem!important;letter-spacing:.11em!important}
+ .top-actions #account-trigger{font-size:0!important;min-width:43px;width:43px;height:43px;border-radius:50%;padding:0;display:flex;align-items:center;justify-content:center}
+ .top-actions #account-trigger:before{content:"";display:block;width:22px;height:22px;border:2px solid currentColor;border-radius:50%;background:radial-gradient(circle at 50% 34%,currentColor 0 3px,transparent 4px),radial-gradient(ellipse at 50% 112%,currentColor 0 8px,transparent 9px)}
+ .theme-toggle{width:40px;height:40px}
+ .app-welcome{min-height:190px;padding:22px 18px;background-position:58% center;background-size:auto 100%;border-radius:18px}
+ .app-welcome:before{background:linear-gradient(90deg,#e2f7ffed 0%,#e2f7ffd8 54%,transparent 94%)}
+ .app-welcome h2{font-size:clamp(1.85rem,7.5vw,2.3rem)!important;margin:22px 0 6px!important}
+ .app-welcome p{font-size:.94rem;max-width:220px}.app-welcome-small{font-size:.75rem;margin-top:7px}.app-overline{font-size:.59rem}
+ .app-stats{gap:7px}.app-stat{border-radius:14px;min-height:78px;padding:10px 7px;grid-template-columns:auto 1fr;column-gap:4px}
+ .app-stat-icon{width:23px;height:28px;background:transparent!important}.app-stat-icon .app-icon{width:23px;height:23px}
+ .app-stat strong{font-size:1.08rem}.app-stat>span:last-child{font-size:.64rem}
+ .classroom-home .classroom-hero.app-featured{border-radius:19px;min-height:280px;grid-template-columns:1fr}
+ .app-featured-copy{padding:22px 0 22px 18px;align-self:start;max-width:67%}
+ .app-featured h3{font-size:clamp(1.54rem,6vw,2.1rem);margin:15px 0 8px!important}
+ .app-featured p{font-size:.79rem;line-height:1.47;margin-bottom:18px;max-width:210px}
+ .app-continue{min-height:44px;padding:10px 13px;font-size:.83rem;gap:9px}
+ .app-student-illustration{right:-17%;bottom:-2%;width:76%;max-width:none;max-height:96%}
+ .classroom-home .classroom-ring.app-featured-ring{width:77px;height:77px;padding:6px;bottom:10px;right:10px}
+ .app-featured-ring strong{font-size:1.1rem!important}.app-featured-ring span{font-size:.48rem!important}
+ .app-quick h3{font-size:1.12rem;margin-bottom:12px!important}
+ .app-quick-grid{gap:6px;grid-template-columns:repeat(5,minmax(0,1fr))}
+ .app-quick-item{padding:11px 2px;gap:8px;min-height:92px;border-radius:13px;font-size:.62rem;letter-spacing:-.02em}
+ .app-quick-symbol{width:38px;height:38px;border-radius:12px}.app-quick-symbol .app-icon{width:24px;height:24px}
+ .app-home-two{grid-template-columns:1fr 1fr;gap:9px}
+ .app-word-card,.app-progress-card{padding:14px;border-radius:16px}
+ .app-card-title{gap:5px;margin-bottom:8px}.app-card-title h3{font-size:.89rem}.app-card-emoji{font-size:1rem}
+ .app-word-card>strong{font-size:1.24rem}.app-word-card p{font-size:.77rem;margin:6px 0 12px}
+ .app-word-save{font-size:.71rem;padding:8px;min-height:37px}.app-word-sound{margin-left:3px;min-height:32px;min-width:34px}
+ .app-word-sound .app-icon{width:19px;height:19px}
+ .app-progress-lines{gap:9px;margin-top:13px}.app-progress-day{font-size:.69rem;gap:5px}.app-progress-mark{width:18px;height:18px;flex-basis:18px}
+ .app-progress-mark .app-icon{width:13px;height:13px}
+ .app-encouragement{padding:14px;gap:10px}.app-encouragement-icon{width:40px;height:40px;flex-basis:40px}
+ .app-encouragement strong{font-size:.85rem}.app-encouragement p{font-size:.73rem}
+ .app-week-dots{gap:3px}.app-week-dots span{width:9px;height:9px}
+ .mobile-learning-nav{display:flex;justify-content:space-between;gap:0;padding:6px 5px calc(6px + env(safe-area-inset-bottom));border-radius:17px 17px 0 0}
+ .mobile-learn-tab{font-size:.65rem;min-height:55px;gap:4px;padding:6px 0}
+ .mobile-learn-tab.active{color:#087c88;background:#ddf4ef}
+ .mobile-learn-tab .app-icon{width:23px;height:23px}
+ .footer{display:none}
+}
+@media(max-width:375px){
+ .app-stat-icon{display:none}.app-stat{grid-template-columns:1fr;text-align:center;justify-items:center}
+ .app-featured-copy{max-width:68%}.app-student-illustration{right:-20%}
+ .app-home-two{grid-template-columns:1fr}.app-quick-item{font-size:.59rem}
+ .app-word-card,.app-progress-card{padding:17px}
+}
+html[data-theme="dark"] body{background:#0e2030;color:#e5eef5}
+html[data-theme="dark"] header{background:#182f43!important;border-color:#2f4f63!important}
+html[data-theme="dark"] .brand,html[data-theme="dark"] #brand{color:#f3f8fa!important}
+html[data-theme="dark"] .brand small{color:#b2c8d5!important}
+html[data-theme="dark"] .app-welcome{background-color:#204258;filter:brightness(.9)}
+html[data-theme="dark"] .app-welcome-copy{color:#183248}
+html[data-theme="dark"] .app-stat,.app-stat-streak,.app-stat-week,.app-stat-course{background:#1e3548!important;color:#ebf4f8}
+html[data-theme="dark"] .app-stat>span:last-child{color:#bfd2dd}
+html[data-theme="dark"] .app-quick-item,html[data-theme="dark"] .app-progress-card,html[data-theme="dark"] .app-word-card{background:#1d3649!important;border-color:#38596a!important;color:#edf6f9}
+html[data-theme="dark"] .app-card-title h3,html[data-theme="dark"] .app-quick h3,html[data-theme="dark"] .app-word-card>strong{color:#e9f4f9}
+html[data-theme="dark"] .app-word-card p,html[data-theme="dark"] .app-progress-day{color:#bfd2dd}
+html[data-theme="dark"] .app-encouragement{background:#1e3b51;border-color:#335c75}
+html[data-theme="dark"] .app-encouragement strong{color:#f5faff}
+html[data-theme="dark"] .app-encouragement p{color:#b4ccdc}
+html[data-theme="dark"] .app-secondary-shortcuts button{color:#bed8e8}
+@media(prefers-reduced-motion:reduce){.app-quick-item,.app-continue{transition:none!important;transform:none!important}}
+
+/* Weekly lessons: legible app-style cards without changing daily content */
+.app-lessons-screen{display:grid;gap:18px}
+.app-screen-header .eyebrow{font-size:.7rem;color:#347e9d;letter-spacing:.15em}
+.app-screen-header h2{font-size:clamp(1.6rem,3vw,2.1rem);margin:6px 0!important;letter-spacing:-.04em;color:#16334c}
+.app-screen-header p{color:#6a8398;font-size:.91rem;max-width:550px;line-height:1.5;margin:0}
+.app-week-tabs{display:flex;gap:8px;flex-wrap:wrap;background:#f0f6fb;padding:6px;border-radius:14px}
+.app-week-tab{border:1px solid transparent;border-radius:10px;min-height:42px;padding:9px 17px;color:#365b7c;background:transparent;font-size:.89rem;font-weight:800}
+.app-week-tab.active{background:#237bea;color:#fff;box-shadow:0 6px 16px #2369cc2d}
+.app-week-picker{display:flex;justify-content:flex-end;align-items:center;margin-top:-8px}
+.app-week-picker label{font-size:.73rem}.app-week-picker select{min-height:38px;border-radius:11px;padding:6px 12px;max-width:250px}
+.app-week-banner{min-height:160px;border-radius:18px;padding:21px 24px;position:relative;overflow:hidden;background:#e3f5ff url("./assets/paris-sky.svg") right center/auto 100% no-repeat}
+.app-week-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#e6f5fff5 0%,#e6f5fff2 46%,#e6f5ff12 94%)}
+.app-week-banner>div{position:relative;z-index:1}
+.app-week-banner .app-overline{font-size:.7rem;color:#396e8e}
+.app-week-banner h3{font-size:1.45rem;margin:7px 0 4px;color:#173b54}
+.app-week-banner p{font-size:.84rem;color:#466e88}
+.app-week-banner-meter{position:absolute!important;right:24px;bottom:25px;z-index:2!important;width:64px;height:64px;display:grid;place-items:center;border:6px solid #82d6d7;background:#ecfffb;border-radius:50%;font-size:.98rem;font-weight:850;color:#176979}
+.app-week-meter{position:absolute!important;bottom:0;left:0;right:0;height:7px;background:#d3e7eb}
+.app-week-meter span{display:block;height:100%;border-radius:8px;background:#2cc0a3}
+.app-week-list{display:grid;gap:10px}
+.app-lesson-row.day{display:grid!important;grid-template-columns:57px minmax(0,1fr) 36px;gap:14px;align-items:center;width:100%;min-height:88px;text-align:left;border-radius:17px;padding:15px 18px!important;border:1px solid #e0eaf2;background:#fff;box-shadow:0 4px 14px #173e5909;color:#233d58;opacity:1;transition:background .15s,border-color .15s,transform .15s}
+.app-lesson-row.day:hover:not(:disabled){transform:translateX(2px);border-color:#afd5ef;background:#f7fbff}
+.app-lesson-row.day.active{border-color:#8dbdf6;background:#e7f3ff}
+.app-lesson-row.day.completed{background:#f1fbf7;border-color:#d4f0e3}
+.app-lesson-row.day:disabled{background:#f9fbfd;border-color:#edf2f6;color:#97a8b6;cursor:not-allowed}
+.app-lesson-number{height:53px;width:53px;display:grid;place-items:center;border-radius:50%;font-size:1.18rem;font-weight:850;background:#e6f4fa;color:#194d78}
+.app-lesson-row.active .app-lesson-number{background:#d1e8ff;color:#1362c6}
+.app-lesson-row.completed .app-lesson-number{background:#dcf6e7;color:#166e4d}
+.app-lesson-row:disabled .app-lesson-number{background:#e9eef4;color:#a4b1be}
+.app-lesson-detail{display:grid;gap:4px;min-width:0}
+.app-lesson-detail strong{display:block;color:#193852;font-size:.99rem;line-height:1.28}
+.app-lesson-detail>span{color:#6d8494;font-size:.82rem;line-height:1.4}
+.app-lesson-detail small{color:#15816f;font-size:.71rem;font-weight:650}
+.app-lesson-row:disabled .app-lesson-detail strong{color:#879bad}
+.app-lesson-state{color:#1a86d1;display:grid;place-items:center;width:35px;height:35px;border-radius:50%;background:#edf8ff}
+.app-lesson-row.completed .app-lesson-state{background:#23bf88;color:#fff}
+.app-lesson-row:disabled .app-lesson-state{background:#eff3f7;color:#9daebc}
+.app-lesson-state .app-icon{width:21px;height:21px}
+/* Daily lesson and active recall: less clutter, stronger hierarchy */
+.layout main>.panel>.eyebrow{color:#3f82a8;letter-spacing:.13em}
+.layout main>.panel>h2{font-size:clamp(1.42rem,3vw,2rem);color:#193a54;letter-spacing:-.035em}
+.layout main .panel .pill{border-radius:999px;background:#eef7fc;color:#346d88;border-color:#d9e8f0;font-size:.79rem}
+.lesson-controls{display:flex;gap:10px;flex-wrap:wrap;margin:17px 0}
+.lesson-controls .btn{min-height:46px;border-radius:13px;padding:11px 17px;font-weight:750}
+.lesson-controls .primary{background:#237bea;color:#fff;border-color:#237bea}
+.lesson-controls .btn:hover{transform:translateY(-1px)}
+.layout main>.panel .tile{border-radius:17px;border:1px solid #e0eaf0;background:#fff;box-shadow:0 4px 16px #183d5910;padding:18px}
+.layout main>.panel .tile h3{color:#18415d;font-size:1.04rem}
+.layout main .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(116px,1fr));gap:8px;overflow:visible}
+.layout main .days .day:not(.app-lesson-row){min-height:75px;border-radius:12px;border:1px solid #e1e9f1;background:#fafdff}
+.layout main .days .day.active:not(.app-lesson-row){border-color:#68aff0;background:#e8f4ff}
+.layout main .days .day.completed:not(.app-lesson-row){background:#e9faf1;border-color:#9ae5c8}
+.learning-path{background:#edf8ff;border:1px solid #d0e5f8;border-radius:18px;padding:18px}
+.learning-path-header{color:#174f7d}
+.learning-step{border-radius:12px;background:#fff;border:1px solid #d1e5f5;color:#315f80;box-shadow:none;min-height:44px}
+.learning-step:hover{background:#d9effe}
+.practice{border:1px solid #e0eaf0!important;background:#fff!important;border-radius:18px!important;box-shadow:0 6px 20px #2047690d}
+.practice h3{color:#163a56}
+.btn.primary,.complete-btn{background:#237bea!important;border-color:#237bea!important;color:#fff!important;border-radius:12px!important}
+input.field,textarea.field,select.field{border:1px solid #ccdfeb;border-radius:12px;background:#fff;min-height:45px}
+input.field:focus,textarea.field:focus,select.field:focus{border-color:#207cda;box-shadow:0 0 0 3px #3488ea22}
+.score-card{border:1px solid #cce6dd;border-radius:20px;background:linear-gradient(135deg,#f2fdf9,#fff);padding:23px}
+.study-workspace{border:1px solid #dfebf2;border-radius:20px}
+.speaking-lesson{border-radius:16px;box-shadow:0 5px 17px #2454720b}
+.speaking-lesson .btn.primary{min-height:44px}
+/* Interactive story: full-bleed Paris banner, calm reader, accessible controls */
+.story-section.practice{padding:clamp(16px,2.5vw,24px)!important;background:#fff!important;border:1px solid #d9e8f1!important;box-shadow:0 16px 32px #1b527020!important}
+.app-story-art{position:relative;min-height:140px;border-radius:16px;overflow:hidden;background:#e5f6fc url("./assets/paris-sky.svg") center/cover no-repeat;margin:0 0 18px}
+.app-story-art:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#1148679e,transparent)}
+.app-story-art-caption{position:absolute;left:18px;bottom:18px;color:#fff;text-shadow:0 2px 6px #0f475b70;font-size:.85rem;letter-spacing:.12em;font-weight:850;text-transform:uppercase}
+.story-section h3{font-size:1.42rem!important;color:#173c56!important;letter-spacing:-.035em}
+.story-text{background:#fbfdff!important;border:1px solid #e3edf3!important;border-radius:17px!important;color:#243f55!important;font-size:1.05rem!important;line-height:2!important;box-shadow:0 5px 15px #224c6510!important}
+.story-word{border-bottom:1px dotted #2794bc;color:#0b6293;border-radius:3px;font-weight:600}
+.story-word:hover,.story-word:focus-visible{background:#dcefff!important}
+.story-lookup{border-radius:14px!important;border:1px solid #cee7f2!important;background:#f0faff!important;color:#24445e!important}
+.story-player{border-radius:17px!important;background:#f4f9ff!important;border:1px solid #dae9f7!important;box-shadow:0 6px 15px #1b477711!important}
+.story-control{border-radius:13px!important;min-height:44px!important;background:#fff!important;border-color:#cedfed!important}
+.story-control-main{background:#1678e9!important;color:#fff!important;border-color:#1678e9!important}
+.story-progress{accent-color:#267ee2}
+.story-section #story-writing{min-height:112px}
+/* Teacher and content utilities: consistent professional product skin */
+.teacher-portal .tp-hero{border-radius:22px;background:linear-gradient(115deg,#173e63,#147c9c)}
+.teacher-portal .tp-card,.teacher-portal .tp-stat{border-radius:17px;box-shadow:0 6px 18px #183b590b}
+.teacher-portal .tp-tabbar button{border-radius:12px}
+.teacher-portal .tp-table-wrap{border-radius:14px}
+.teacher-portal button:focus-visible,.app-lesson-row:focus-visible,.app-quick-item:focus-visible,.mobile-learn-tab:focus-visible{outline:3px solid #207be1;outline-offset:3px}
+@media(max-width:650px){
+ .app-week-banner{min-height:145px;padding:18px}.app-week-banner h3{font-size:1.23rem}
+ .app-lesson-row.day{min-height:80px;grid-template-columns:46px minmax(0,1fr) 30px;gap:10px;padding:12px!important}
+ .app-lesson-number{height:44px;width:44px;font-size:1.05rem}
+ .app-lesson-detail strong{font-size:.88rem}
+ .app-lesson-detail>span{font-size:.73rem}
+ .app-lesson-state{width:30px;height:30px}
+ .app-lesson-state .app-icon{width:18px;height:18px}
+ .app-week-picker{display:none}
+ .app-week-tabs{gap:5px}.app-week-tab{padding:10px 13px;font-size:.81rem;min-height:44px}
+ .layout main>.panel{padding:16px!important;border-radius:18px!important}
+ .layout main .days{display:flex;overflow-x:auto;scroll-snap-type:x proximity;gap:8px;padding-bottom:8px}
+ .layout main .days .day:not(.app-lesson-row){flex:0 0 126px;scroll-snap-align:start;min-height:75px}
+ .layout main .app-week-list .day.app-lesson-row{flex:none;width:100%}
+ .learning-path{padding:13px;border-radius:15px}
+ .learning-steps{gap:6px}.learning-step{padding:8px 9px;font-size:.73rem;min-height:42px}
+ .story-section{border-radius:18px!important}.app-story-art{min-height:115px;border-radius:13px}
+ .story-text{font-size:1rem!important;padding:17px!important}
+ .story-player-controls{gap:6px}.story-control{padding:9px 11px!important}
+}
+html[data-theme="dark"] .app-lesson-row.day{background:#1e3548;border-color:#395b70;color:#e8f4f7}
+html[data-theme="dark"] .app-lesson-row.day.active{background:#274861}
+html[data-theme="dark"] .app-lesson-row.day.completed{background:#1e4848}
+html[data-theme="dark"] .app-lesson-detail strong{color:#e8f4f9}
+html[data-theme="dark"] .app-lesson-detail>span{color:#bed0dc}
+html[data-theme="dark"] .app-week-banner{background-color:#214455}
+html[data-theme="dark"] .app-week-banner h3{color:#20435e}
+html[data-theme="dark"] .story-text,html[data-theme="dark"] .story-player,html[data-theme="dark"] .story-lookup{background:#214356!important;border-color:#3e6376!important;color:#eef8f9!important}
+html[data-theme="dark"] .story-word{color:#a9e6ff}
+
+/* Explicit pastel surfaces for light-mode learning statistics */
+html:not([data-theme="dark"]) .app-home .app-stats .app-stat-streak{background:#fff4ea!important;color:#19354a!important}
+html:not([data-theme="dark"]) .app-home .app-stats .app-stat-week{background:#edf6ff!important;color:#19354a!important}
+html:not([data-theme="dark"]) .app-home .app-stats .app-stat-course{background:#eafbf7!important;color:#19354a!important}
+html:not([data-theme="dark"]) .app-home .app-stats .app-stat>span:last-child{color:#4d7183!important}
