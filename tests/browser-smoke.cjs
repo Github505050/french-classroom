@@ -71,7 +71,9 @@ const check=async(browser,device)=>{
 
 // Guided study, vocabulary notebook, responsive navigation and refresh persistence.
 await page.evaluate(()=>{window.classroomSetSection('weekoverview')});
-await page.locator('#weekselect').selectOption('0');
+await page.locator('[data-app-week="1"]').click();
+assert.match(await page.locator('#main').innerText(),/Day 8/);
+await page.locator('[data-app-week="0"]').click();
 await page.locator('[data-day="4"]').first().click();
 await page.locator('[data-go="practice"]').first().click();
 assert.match(await page.locator('#main').innerText(),/Today's learning journey/);
