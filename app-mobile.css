@@ -287,3 +287,118 @@ html:not([data-theme="dark"]) .app-home .app-stats .app-stat-streak{background:#
 html:not([data-theme="dark"]) .app-home .app-stats .app-stat-week{background:#edf6ff!important;color:#19354a!important}
 html:not([data-theme="dark"]) .app-home .app-stats .app-stat-course{background:#eafbf7!important;color:#19354a!important}
 html:not([data-theme="dark"]) .app-home .app-stats .app-stat>span:last-child{color:#4d7183!important}
+
+
+/* LESSON & READING UPDATE — reference-inspired layout, real curriculum, light and dark modes */
+.app-day-screen,.app-reading-screen{display:grid;gap:18px;min-width:0}
+.app-day-head,.app-reading-header{display:grid;gap:10px;margin:2px 0 0;padding:5px 0 7px;border:0!important;background:transparent!important;box-shadow:none!important}
+.app-day-overline{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:820;color:#2377ad}
+.app-day-head h2,.app-reading-header h2{margin:0!important;color:#142b49;font-size:clamp(1.7rem,3.5vw,2.5rem)!important;letter-spacing:-.045em;line-height:1.18}
+.app-day-head p,.app-reading-header p{margin:0;line-height:1.6;color:#60788d;max-width:620px;font-size:.93rem}
+.app-daily-activities{display:grid;gap:13px;padding:12px 0 2px}
+.app-activity-progress{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.86rem;color:#365b78}
+.app-activity-progress strong{color:#244b68;font-size:.91rem}
+.app-activity-progress span{font-size:.78rem}
+.app-activity-bar{height:8px;border-radius:999px;overflow:hidden;background:#e9f0f7}
+.app-activity-bar>span{height:100%;display:block;border-radius:999px;background:linear-gradient(90deg,#52cc92,#17ab7f);transition:width .2s ease}
+.app-activity-list{display:grid;gap:11px;padding-top:8px}
+.app-activity-step{width:100%;min-height:86px;display:grid;grid-template-columns:58px minmax(0,1fr) 42px;align-items:center;gap:14px;text-align:left;border:1px solid #e1ebf4;border-radius:17px;background:#fff;padding:12px 15px;box-shadow:0 5px 18px #1548660c;color:#173651;transition:transform .16s ease,background .16s,border-color .16s}
+.app-activity-step:hover{transform:translateY(-2px);background:#f7fbff;border-color:#adcfef}
+.app-activity-icon{width:53px;height:53px;border-radius:16px;display:grid;place-items:center;background:#e2f2fc;color:#257bc0}
+.app-activity-icon .app-icon{width:28px;height:28px;stroke-width:2}
+.app-activity-grammar{background:#f1eafb;color:#8b54b9}
+.app-activity-exercises{background:#fff2db;color:#e58b28}
+.app-activity-speaking{background:#ffe5ef;color:#d54e8a}
+.app-activity-story{background:#e8edff;color:#616bd7}
+.app-activity-description{display:grid;gap:5px;min-width:0}
+.app-activity-description strong{font-size:1rem;letter-spacing:-.02em;color:#1c3857}
+.app-activity-description small{font-size:.81rem;color:#6e8397;line-height:1.35}
+.app-activity-end{display:grid;place-items:center;width:35px;height:35px;border-radius:50%;background:#edf5ff;color:#277ad8}
+.app-activity-end.is-complete{background:#dcf8e9;color:#15a46e}
+.app-activity-end .app-icon{width:19px;height:19px}
+.app-day-cta{margin:4px 0 0}
+.app-day-cta>.btn{display:flex;align-items:center;justify-content:center;gap:12px;min-height:52px;width:100%;border-radius:15px!important;font-weight:800;font-size:.97rem;background:#1c7bea!important;box-shadow:0 10px 21px #1c7bea27}
+.app-day-cta>.btn .app-icon{width:19px;height:19px}
+.app-tip{display:grid;gap:6px;background:#f5faff;border:1px solid #dfecf7;border-radius:16px;padding:17px 19px}
+.app-tip strong{color:#204260}
+.app-tip p{font-size:.85rem;line-height:1.6;margin:0;color:#647e92}
+.app-day-notes-title{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-top:8px;border-top:1px solid #e4edf4}
+.app-day-notes-title h3{color:#23445e;font-size:1.12rem;margin:0}
+.app-day-notes-title button{min-height:42px;font-size:.82rem}
+.app-day-screen .lesson-controls{margin-top:0}
+.app-day-screen #learning{border:1px solid #e3edf5;border-radius:18px;background:#fafdff;padding:12px 15px;min-width:0}
+.app-day-screen #learning.hidden{display:none}
+.app-day-screen #learning .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.app-day-screen #learning .tile{padding:17px}
+#lesson-vocabulary,#lesson-grammar{scroll-margin-top:22px}
+.app-day-screen .hint{border-radius:14px}
+.app-practice-heading{display:grid;gap:8px;padding:5px 0 15px;border-bottom:1px solid #e6edf5}
+.app-practice-heading h2{font-size:clamp(1.55rem,3.5vw,2.2rem);margin:0!important;letter-spacing:-.04em;color:#15344f}
+.app-practice-heading p{font-size:.88rem;line-height:1.6;margin:0;color:#658197}
+.app-reading-header{padding-bottom:1px}
+.app-reading-screen .story-section{margin:0!important;box-shadow:none!important;border:0!important;padding:0!important;background:transparent!important}
+.app-reading-screen .story-section .story-text{font-size:1.03rem!important;line-height:2!important}
+.app-story-cover{border-radius:19px;min-height:245px;background:linear-gradient(110deg,#0f688d66,#69d0dd13),url('./assets/paris-sky.svg') center 53% / cover no-repeat;position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end;box-shadow:0 12px 29px #315c7a22}
+.app-story-cover:after{content:"";position:absolute;z-index:-1;right:-4%;bottom:-41%;width:55%;height:132%;background:url('./assets/french-student.svg') bottom right/contain no-repeat;opacity:.95}
+.app-story-cover:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#093b5fd4,#0b4a60ad 43%,transparent 85%)}
+.app-story-cover-label{display:grid;gap:8px;padding:24px 28px;max-width:62%;color:#fff}
+.app-story-cover-label span{font-size:.7rem;letter-spacing:.16em;font-weight:850}
+.app-story-cover-label strong{font-size:clamp(1.3rem,3vw,2rem);line-height:1.15;letter-spacing:-.035em}
+.app-story-subhead{display:flex;flex-direction:column;gap:4px;padding:12px 0 0}
+.app-story-subhead span{font-size:.72rem;color:#247aa4;letter-spacing:.12em;font-weight:800}
+.app-story-subhead strong{font-size:1.24rem;letter-spacing:-.025em;color:#213c55}
+.app-reading-screen .story-section>p.small{line-height:1.55}
+.app-reading-screen .story-section .story-player{background:#f5f9ff!important;border:1px solid #dceafb!important;border-radius:17px!important}
+.app-reading-screen .story-section #story-writing{border:1px solid #d4e5f2;background:#fff;border-radius:14px}
+.app-reading-screen .story-section .story-word{font-weight:650}
+.app-reading-screen .story-section .story-lookup{margin:10px 0;border-radius:13px}
+.app-reading-screen .story-section .story-control{border-radius:11px}
+.app-reading-screen .story-section [data-story-play]{background:#227cec!important;border-color:#227cec!important;color:#fff!important}
+.app-reading-screen .story-section .story-progress{accent-color:#227cec}
+.study-heading{padding-bottom:7px;border-bottom:1px solid #e9f0f4}
+.study-tabs .study-tab.active{color:#146dd1;border-bottom:2px solid #1684e6}
+.study-workspace,.revision-card,.my-word{border-radius:16px;box-shadow:0 4px 15px #1549690a}
+.listen-header h2,.speaking-lessons h3{letter-spacing:-.028em}
+.listen-video{border-radius:18px!important;border:1px solid #dfeaf3!important;background:#fff!important;overflow:hidden;box-shadow:0 6px 16px #21466910!important}
+.listen-thumb{border-radius:14px!important;overflow:hidden}
+.listen-day{border-radius:12px!important}
+.listen-day.active{background:#e7f3ff!important;border-color:#4da5ed!important;color:#145d9d!important}
+.listen-youtube{border-radius:12px!important;background:#237bea!important;color:#fff!important}
+.speaking-lesson{background:#fff;border:1px solid #dfebf4;box-shadow:0 6px 16px #173c550e}
+.speaking-day{color:#137aaa}
+#foundation-lesson{border-radius:19px}
+#foundation-lesson .hint{border-radius:14px;background:#f4f9ff;border:1px solid #e2edf5}
+#foundation-lesson .q{border-radius:13px}
+.teacher-portal .tp-card,.teacher-portal .tp-stat{border-color:#dce9f2;border-radius:17px!important}
+@media(max-width:650px){
+ .app-day-screen,.app-reading-screen{gap:14px}
+ .app-day-head h2,.app-reading-header h2{font-size:1.76rem!important}
+ .app-day-head p,.app-reading-header p{font-size:.84rem}
+ .app-activity-progress strong{font-size:.78rem}
+ .app-activity-progress span{font-size:.7rem}
+ .app-activity-step{min-height:75px;grid-template-columns:48px minmax(0,1fr) 30px;gap:11px;padding:10px 12px;border-radius:15px}
+ .app-activity-icon{width:46px;height:46px;border-radius:13px}
+ .app-activity-icon .app-icon{width:25px;height:25px}
+ .app-activity-description strong{font-size:.9rem}
+ .app-activity-description small{font-size:.74rem}
+ .app-activity-end{width:29px;height:29px}
+ .app-day-cta>.btn{min-height:49px}
+ .app-tip{padding:14px 15px}
+ .app-day-screen #learning{padding:9px 10px}
+ .app-story-cover{min-height:195px;border-radius:16px}
+ .app-story-cover:after{right:-17%;bottom:-35%;width:83%;height:133%}
+ .app-story-cover-label{padding:19px;max-width:65%}
+ .app-story-cover-label strong{font-size:1.41rem}
+ .app-reading-screen .story-section .story-text{font-size:.97rem!important;line-height:1.92!important}
+ .app-reading-screen .story-section .story-player{padding:12px!important}
+ .app-reading-screen .story-section .story-player-controls{display:flex;gap:5px;flex-wrap:wrap}
+ .app-reading-screen .story-section .story-control{min-height:43px!important}
+ .study-workspace{padding:14px}
+}
+html[data-theme="dark"] .app-day-head h2,html[data-theme="dark"] .app-reading-header h2{color:#eef7fa}
+html[data-theme="dark"] .app-day-head p,html[data-theme="dark"] .app-reading-header p{color:#b8cedb}
+html[data-theme="dark"] .app-activity-step,html[data-theme="dark"] .app-tip,html[data-theme="dark"] .app-day-screen #learning{background:#203b4e;border-color:#416074;color:#e8f2f8}
+html[data-theme="dark"] .app-activity-description strong,html[data-theme="dark"] .app-activity-progress strong,html[data-theme="dark"] .app-day-notes-title h3,html[data-theme="dark"] .app-story-subhead strong{color:#eef7fa}
+html[data-theme="dark"] .app-activity-description small,html[data-theme="dark"] .app-practice-heading p{color:#b5cbd7}
+html[data-theme="dark"] .app-reading-screen .story-section .story-player{background:#233f53!important;border-color:#446278!important}
+html[data-theme="dark"] .app-story-subhead span{color:#a1d7e9}
