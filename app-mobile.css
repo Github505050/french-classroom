@@ -402,3 +402,8 @@ html[data-theme="dark"] .app-activity-description strong,html[data-theme="dark"]
 html[data-theme="dark"] .app-activity-description small,html[data-theme="dark"] .app-practice-heading p{color:#b5cbd7}
 html[data-theme="dark"] .app-reading-screen .story-section .story-player{background:#233f53!important;border-color:#446278!important}
 html[data-theme="dark"] .app-story-subhead span{color:#a1d7e9}
+
+.app-story-speed-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0 5px}
+.app-story-speed-actions .btn{min-height:42px!important;border-radius:11px!important;padding:9px 13px!important;font-size:.81rem!important;font-weight:760;background:#fff;border:1px solid #cedfed;color:#24567d}
+.app-story-speed-actions .btn[aria-pressed="true"]{background:#dff1ff!important;border-color:#7dbcee!important;color:#155e97!important}
+html[data-theme="dark"] .app-story-speed-actions .btn{background:#294d63;color:#ecf5f9;border-color:#44677c}
