@@ -86,8 +86,14 @@ assert.match(await page.locator('.story-text').innerText(),/J'habite dans un app
 await page.locator('[data-story-slow]').click();
 assert.equal(await page.locator('[data-story-slow]').getAttribute('aria-pressed'),'true','Slow reading mode must activate');
 await page.locator('[data-story-slow]').click();
+await page.locator('#story-writing').fill('Je comprends cette histoire.');
 await page.screenshot({path:path.join(shots,'story-reader-'+device+'.png'),fullPage:true});
-assert.match(await page.evaluate(()=>location.hash),/section=story/,'Story reader location should survive refresh');
+assert.match(await page.evaluate(()=>location.hash),/section=story/,'Story reader route should be reflected in address');
+await page.reload({waitUntil:'domcontentloaded'});
+await page.waitForFunction(()=>window.classroomGetSyllabus()?.length===2,{timeout:20000});
+await page.evaluate(()=>{document.body.classList.remove('classroom-locked','auth-checking');const gate=document.getElementById('auth-gate');if(gate){gate.hidden=true;gate.style.display='none'}});
+await page.locator('.app-reading-screen').waitFor();
+assert.equal(await page.locator('#story-writing').inputValue(),'Je comprends cette histoire.','Story writing survives a refresh on its own page');
 await page.locator('[data-back-section="lessons"]').first().click();
 await page.locator('[data-daily-stage="exercises"]').first().click();
 assert.match(await page.locator('#main').innerText(),/Today's learning journey/);
