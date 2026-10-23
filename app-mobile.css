@@ -415,3 +415,132 @@ html[data-theme="dark"] .app-story-speed-actions .btn{background:#294d63;color:#
  .app-story-cover:after{right:-12%;bottom:-10%;width:82%;height:155%}
 }
 html[data-theme="dark"] .app-reading-screen .story-word,html[data-theme="dark"] .practice.story-section .story-word{color:#e5f2f9!important;border-bottom-color:#6b9eb4!important}
+
+
+/* Weekly Practice refresh · the existing syllabus and storage schema are not changed */
+.weekly-practice-nav{margin:18px 0 21px;padding:clamp(17px,2.7vw,25px);border:1px solid #d8e8f4;border-radius:23px;background:linear-gradient(148deg,#f3fbff 0%,#fff 82%);box-shadow:0 8px 22px #1a60820c;min-width:0}
+.wp-heading{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
+.wp-heading h3{margin:6px 0 6px!important;color:#173957;font-size:1.4rem;line-height:1.2;letter-spacing:-.035em}
+.wp-heading p{margin:0;color:#607c90;font-size:.86rem}
+.wp-completion{white-space:nowrap;border-radius:999px;background:#e4f6ef;color:#22785c;font-weight:800;font-size:.78rem;padding:8px 12px}
+.wp-week-tabs{display:flex;flex-wrap:wrap;gap:7px;padding:5px;background:#e9f3fb;border-radius:13px;margin-top:19px}
+.wp-week{flex:1;min-width:95px;max-width:200px;min-height:42px;border:1px solid transparent;border-radius:10px;background:transparent;color:#4a6984;font-weight:790;font-size:.86rem}
+.wp-week:hover{background:#dcebf9}.wp-week.is-active{color:#fff;background:#247bea;box-shadow:0 5px 12px #206ccb24}
+.wp-days{display:flex;gap:8px;overflow-x:auto;padding:14px 1px 10px;scrollbar-width:thin;overscroll-behavior-inline:contain;scroll-snap-type:x proximity}
+.wp-day{display:flex;align-items:center;justify-content:center;gap:6px;flex:0 0 auto;min-width:82px;min-height:44px;padding:9px 13px;border:1px solid #d8e6f0;border-radius:12px;background:#fff;color:#42657f;font-size:.82rem;font-weight:780;scroll-snap-align:start}
+.wp-day:hover:not(:disabled){background:#edf7ff}.wp-day.is-active{background:#ddf0ff;border-color:#68b4ec;color:#0d63ac}
+.wp-day.is-done{border-color:#b5e8ce}.wp-day:disabled{opacity:.52;cursor:not-allowed}
+.wp-day .app-icon{width:15px;height:15px;color:#15a270}
+.wp-activity-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px;border-top:1px solid #deebf4;padding-top:14px;margin-top:5px}
+.wp-activity-head strong{font-size:.93rem;color:#1d496a}.wp-activity-head .small{color:#557f91;font-size:.77rem}
+.wp-activity-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-top:13px}
+.wp-activity{min-width:0;position:relative;border:1px solid #dce9f2;border-radius:16px;background:#fff;padding:15px 8px 13px;min-height:91px;display:flex;flex-direction:column;gap:9px;align-items:center;justify-content:center;color:#245678;box-shadow:0 4px 15px #1958790b}
+.wp-activity:hover{border-color:#95c6ed;background:#f4fbff;transform:translateY(-2px)}
+.wp-activity-symbol{height:37px;width:37px;border-radius:12px;background:#ecf4ff;display:grid;place-items:center;color:#397bc1}
+.wp-activity:nth-child(2) .wp-activity-symbol{background:#e5f8ee;color:#21865b}
+.wp-activity:nth-child(3) .wp-activity-symbol{background:#feeaf0;color:#d65388}
+.wp-activity:nth-child(4) .wp-activity-symbol{background:#f5eaff;color:#8256ba}
+.wp-activity:nth-child(5) .wp-activity-symbol{background:#fff2d8;color:#ac7626}
+.wp-activity-symbol .app-icon{width:22px;height:22px}
+.wp-activity-label{font-size:.81rem;font-weight:820;line-height:1.15}
+.wp-activity-index{position:absolute;top:8px;right:9px;font-size:.67rem;color:#92a8bb;font-weight:800}
+.practice.wp-question-section,.practice.wp-speaking-section{margin:15px 0 0;padding:clamp(15px,2.5vw,24px)!important;border:1px solid #e0eaf3!important;border-radius:20px!important;box-shadow:0 7px 21px #244e6a0b!important;background:#fff!important}
+.wp-section-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:17px;border-bottom:1px solid #e5eef5}
+.wp-section-heading h3{margin:0 0 7px!important;font-size:1.14rem;color:#193c59!important;line-height:1.25}
+.wp-section-heading p{margin:0!important;line-height:1.55;font-size:.81rem;max-width:550px}
+.wp-count{flex-shrink:0;font-size:.71rem;background:#edf5fd;border:1px solid #e0edf8;color:#4c7396;font-weight:780;border-radius:999px;padding:6px 11px}
+.wp-questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:17px}
+.wp-question.q{border:1px solid #e0eaf2!important;background:#fbfdff;border-radius:15px;padding:15px!important;margin:0;min-width:0;display:flex;flex-direction:column;gap:12px}
+.wp-question:first-of-type{border-top:1px solid #e0eaf2!important}
+.wp-question-label{display:flex;gap:9px;align-items:flex-start;line-height:1.4;color:#1f415e;font-size:.9rem}
+.wp-question-label strong{min-width:0;overflow-wrap:anywhere;font-weight:760}
+.wp-number{display:grid;place-items:center;flex:0 0 28px;height:28px;border-radius:9px;background:#e5f2fe;color:#1c78bd;font-size:.8rem;font-weight:820}
+.wp-question .response-field{min-height:75px!important;height:auto;resize:vertical;margin:0!important;padding:12px 13px!important;font-size:.89rem;line-height:1.48;background:#fff;border:1px solid #d1e2ef!important;border-radius:12px!important}
+.wp-question .response-field:focus-visible{outline:3px solid #76bbff;outline-offset:1px}
+.wp-question-actions{margin-top:auto;display:flex;justify-content:flex-end}
+.wp-validate-button,.wp-secondary-button{min-height:42px;padding:9px 15px!important;border-radius:11px!important;font-size:.8rem!important;font-weight:790!important;white-space:normal;line-height:1.2}
+.wp-validate-button{background:#e8f2ff!important;color:#0b66b4!important;border:1px solid #afd7fb!important}
+.wp-validate-button:hover{background:#d6eafe!important}
+.wp-secondary-button{background:#f4f8fc!important;border:1px solid #cee0eb!important;color:#2b6584!important}
+.wp-question .answer,.wp-question .validation{width:100%;margin:0!important;font-size:.83rem;line-height:1.55;border-radius:11px;padding:11px}
+.wp-speaking-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:17px 0 0}
+.wp-speaking-card.q{border:1px solid #dee9f3!important;background:#fbfdff;border-radius:15px;padding:16px!important;display:flex;flex-direction:column;gap:14px;min-width:0;margin:0}
+.wp-speaking-card:first-of-type{border-top:1px solid #dee9f3!important}
+.wp-speaking-prompt{display:flex;align-items:flex-start;gap:8px;line-height:1.5;color:#1a3d5a}
+.wp-speaking-prompt strong{flex:1;min-width:0;overflow-wrap:anywhere;font-size:.94rem}
+.wp-speaking-prompt .audio-btn{flex-shrink:0;margin:0;min-height:40px;min-width:40px}
+.wp-speaking-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.wp-spoken-check{display:flex;align-items:center;gap:7px;color:#3c607b;font-size:.77rem;font-weight:650;min-height:40px;cursor:pointer}
+.wp-spoken-check input{width:18px;height:18px;accent-color:#1684c9}
+.wp-speaking-card .record-controls{margin:0;border-top:1px solid #e6edf4;padding-top:13px;gap:7px}
+.wp-speaking-card .record-controls .btn{min-height:41px;border-radius:10px;padding:8px 11px;font-size:.78rem}
+.wp-speaking-card .record-status{font-size:.75rem;line-height:1.4}
+.wp-speaking-card .record-playback{width:100%}
+.wp-speaking-card .answer{margin:0;font-size:.83rem}
+.wp-speaking-footnote{margin:14px 0 0!important}
+.score-card.wp-finish{background:transparent!important;border:0!important;box-shadow:none!important;margin:19px 0 0;padding:0!important}
+.wp-finish>.wp-section-heading{padding:5px 0 14px}
+.wp-finish-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:16px}
+.wp-finish-card{border-radius:18px;border:1px solid #d8e8f2;min-width:0;padding:clamp(16px,2vw,22px);background:#f5fbff;box-shadow:0 6px 17px #2156750b}
+.wp-finish-score{background:#f2f9ff}.wp-finish-complete{background:#f0fbf7;border-color:#ccebdd}
+.wp-finish-card h3{font-size:1.08rem;margin:0 0 11px;color:#1b3f5a}
+.wp-finish-card p{font-size:.82rem;line-height:1.65;margin:0 0 16px}
+.wp-score-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:6px}
+.wp-score-controls .score-field{margin:0!important;flex:0 1 90px;width:90px!important;min-width:72px;padding:9px 11px!important;min-height:44px;font-size:1rem}
+.wp-score-controls>strong{font-size:.89rem;color:#3d6178}
+.wp-score-controls .btn{min-height:44px;margin:0;font-size:.78rem;white-space:nowrap;padding:9px 12px}
+.wp-finish-card .complete-btn,.wp-finish-card>[data-complete]{min-height:44px;font-size:.85rem}
+.wp-finish .complete-score{font-size:.77rem;margin:12px 0 0;color:#19734e}
+.wp-finish #score-status{margin-top:9px;min-height:19px}
+.ai-homework{border-radius:18px!important;border:1px solid #dceaf5!important;background:#f1f8fd!important;box-shadow:0 5px 17px #1b4f7210;padding:20px!important}
+.ai-homework h2{font-size:1.17rem;line-height:1.25}
+.ai-homework .row{gap:9px;align-items:center}
+.ai-homework button,.ai-homework a.btn{min-height:44px;border-radius:12px;font-size:.82rem!important}
+.ai-homework .ai-note{font-size:.78rem!important;line-height:1.55}
+.ai-homework details{margin-top:14px}
+.ai-homework details summary{font-weight:770;cursor:pointer;color:#276e91}
+.wp-question-section[id],.wp-speaking-section[id],.wp-finish[id],.weekly-practice-nav{scroll-margin-top:20px}
+@media(max-width:900px){.wp-questions,.wp-speaking-grid{grid-template-columns:1fr}}
+@media(max-width:650px){
+ .weekly-practice-nav{padding:15px;margin:13px 0 17px;border-radius:18px}
+ .wp-heading h3{font-size:1.25rem}
+ .wp-heading p{font-size:.77rem}
+ .wp-week-tabs{margin-top:13px}
+ .wp-week{min-height:43px}
+ .wp-day{min-height:43px;min-width:73px;padding:9px 10px;font-size:.76rem}
+ .wp-activity-head{display:grid;gap:5px}
+ .wp-activity-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ .wp-activity{min-height:87px;padding:11px 4px;border-radius:13px}
+ .wp-activity-label{font-size:.75rem}
+ .practice.wp-question-section,.practice.wp-speaking-section{padding:15px!important;margin:12px 0 0}
+ .wp-section-heading{padding-bottom:12px}
+ .wp-section-heading h3{font-size:1rem}
+ .wp-section-heading p{font-size:.75rem}
+ .wp-count{font-size:.65rem;padding:5px 8px}
+ .wp-questions,.wp-speaking-grid{gap:9px;margin-top:12px}
+ .wp-question.q,.wp-speaking-card.q{padding:13px!important;border-radius:13px}
+ .wp-question-label{font-size:.84rem}
+ .wp-question .response-field{min-height:64px!important}
+ .wp-question-actions{justify-content:flex-start}
+ .wp-validate-button{min-height:41px}
+ .wp-finish-grid{grid-template-columns:1fr;gap:10px}
+ .wp-finish-card{padding:16px;border-radius:15px}
+ .wp-finish-card h3{font-size:1rem}
+ .wp-score-controls .score-field{flex-basis:80px}
+ .ai-homework{padding:15px!important}
+ .ai-homework .row{display:flex;flex-wrap:wrap}
+}
+@media(max-width:370px){.wp-activity-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wp-spoken-check{font-size:.72rem}.wp-speaking-actions{align-items:flex-start}}
+html[data-theme="dark"] .weekly-practice-nav{background:linear-gradient(150deg,#223c52,#1d3449);border-color:#385c74}
+html[data-theme="dark"] .wp-heading h3,html[data-theme="dark"] .wp-activity-head strong,html[data-theme="dark"] .wp-section-heading h3,html[data-theme="dark"] .wp-question-label,html[data-theme="dark"] .wp-speaking-prompt,html[data-theme="dark"] .wp-finish-card h3{color:#eef7fa!important}
+html[data-theme="dark"] .wp-heading p,html[data-theme="dark"] .wp-activity-head .small,html[data-theme="dark"] .wp-question-label strong,html[data-theme="dark"] .wp-spoken-check{color:#c2d4dd}
+html[data-theme="dark"] .wp-week-tabs{background:#29465a}
+html[data-theme="dark"] .wp-week{color:#d2e5ed}
+html[data-theme="dark"] .wp-week.is-active{background:#237bea;color:#fff}
+html[data-theme="dark"] .wp-day,html[data-theme="dark"] .wp-activity,html[data-theme="dark"] .wp-question.q,html[data-theme="dark"] .wp-speaking-card.q,html[data-theme="dark"] .wp-finish-card{background:#233e52;border-color:#45687c;color:#e8f4f8}
+html[data-theme="dark"] .wp-day.is-active{background:#295c7b;border-color:#69b0dc}
+html[data-theme="dark"] .wp-activity-head,html[data-theme="dark"] .wp-section-heading{border-color:#45677c}
+html[data-theme="dark"] .wp-activity-label{color:#e3f1f5}
+html[data-theme="dark"] .wp-question .response-field{background:#193348;color:#eef5f9;border-color:#4c7288!important}
+html[data-theme="dark"] .wp-finish-complete{background:#234c4b}
+html[data-theme="dark"] .ai-homework{background:#243f53!important;border-color:#446679!important}
