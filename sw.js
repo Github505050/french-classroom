@@ -25,7 +25,7 @@ self.addEventListener('fetch', event => {
       }
       return response;
     } catch (error) {
-      const cached = await caches.match(request, {ignoreSearch: request.mode === 'navigate' || url.pathname.endsWith('/classroom-polish.css')});
+      const cached = await caches.match(request, {ignoreSearch: request.mode === 'navigate' || (url.pathname.endsWith('/classroom-polish.css') || url.pathname.endsWith('/app-mobile.css'))});
       if (cached) return cached;
       if (request.mode === 'navigate') return (await caches.match('./index.html')) || Response.error();
       return Response.error();
