@@ -560,3 +560,10 @@ html[data-theme="dark"] .ai-homework{background:#243f53!important;border-color:#
 
 /* Eliminate accidental document-level sideways scrolling after viewport changes. */
 @media(max-width:650px){html,body{max-width:100%;overflow-x:clip!important}}
+
+/* Fixed five-tab dock must never enlarge the root scrolling area on small phones. */
+@media(max-width:650px){
+ .mobile-learning-nav{width:100vw;max-width:100vw;min-width:0;box-sizing:border-box;overflow:clip}
+ .mobile-learning-nav .mobile-learn-tab{min-width:0;max-width:100%;flex:1 1 0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+ .mobile-learning-nav .mobile-learn-tab span{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+}
