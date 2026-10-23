@@ -5,7 +5,7 @@ const base='http://127.0.0.1:8090/';
 const shots='artifacts';fs.mkdirSync(shots,{recursive:true});
 const check=async(browser,device)=>{
  const isMobile=device==='mobile';
- const context=await browser.newContext({viewport:isMobile?{width:390,height:844}:{width:1365,height:768},deviceScaleFactor:1});
+ const context=await browser.newContext({viewport:isMobile?{width:390,height:844}:{width:1365,height:768},deviceScaleFactor:1,serviceWorkers:'block'});
  const page=await context.newPage(),errors=[];
  // Fake only the authenticated session; Firebase is tested separately with real accounts before release.
  await page.route(base+'firebase-auth.js',route=>route.fulfill({status:200,contentType:'text/javascript',body:'/* isolated UI smoke test */'}));
