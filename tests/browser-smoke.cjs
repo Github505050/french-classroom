@@ -44,15 +44,19 @@ const check=async(browser,device)=>{
  await page.evaluate(()=>{window.classroomSetTeacherRole(false);window.classroomSetSection('home')});
  assert.ok(await page.locator('.classroom-home').count()>0,'Student home should remain available');
  assert.equal(await page.locator('.classroom-ring').count(),1,'Weekly progress dial should appear');
- assert.equal(await page.locator('.classroom-tool-card').count(),4,'Home should have four clear primary areas');
+ assert.equal(await page.locator('.app-quick-item').count(),5,'Home should have five real learning shortcuts');
+ assert.equal(await page.locator('.app-quick-item').count(),5);
+ assert.equal(await page.locator('.app-stats .app-stat').count(),3,'Streak, weekly, course progress must be shown');
+ assert.ok(await page.locator('.app-student-illustration').evaluate(img=>img.complete&&img.naturalWidth>0),'Illustrated student asset must load');
  await page.screenshot({path:path.join(shots,'home-'+device+'.png'),fullPage:true});
  if(isMobile){
-   const nav=page.locator('#navigation');
-   assert.equal(await nav.isVisible(),false,'Mobile nav should be collapsed');
-   await page.locator('#mobile-menu-toggle').click();
-   assert.equal(await nav.isVisible(),true,'Mobile menu must open');
-   await page.locator('.navbtn[data-section="home"]').click();
-   assert.equal(await nav.isVisible(),false,'Mobile menu must close after selection');
+   const nav=page.locator('.mobile-learning-nav');
+   assert.equal(await nav.isVisible(),true,'Five-tab mobile navigation should be visible');
+   assert.equal(await nav.locator('.mobile-learn-tab').count(),5);
+   await page.locator('[data-mobile-action="lessons"]').click();
+   assert.match(await page.locator('#main').innerText(),/Weekly practice/);
+   await page.locator('[data-mobile-action="home"]').click();
+   assert.equal(await page.locator('.app-featured').count(),1,'Home should restore via app navigation');
  }
  await page.locator('[data-go="foundations"]').first().click();
  await page.locator('#foundation-week-select').waitFor();
@@ -60,8 +64,8 @@ const check=async(browser,device)=>{
  assert.match(await page.locator('#foundation-lesson').innerText(),/DAY 8/);
  await page.locator('#foundation-back-home').click();
  assert.ok(await page.locator('.classroom-home').count()>0,'Foundation back to home must work');
- await page.locator('[data-go="lessons"]').first().click();
- assert.match(await page.locator('#main').innerText(),/Choose a week and day/);
+ await page.evaluate(()=>window.classroomSetSection('weekoverview'));
+ assert.match(await page.locator('#main').innerText(),/Weekly practice/);
  await page.locator('[data-back-section="home"]').first().click();
  assert.ok(await page.locator('.classroom-home').count()>0);
 
@@ -100,10 +104,11 @@ assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'da
 await page.locator('#theme-toggle').click();
 if(isMobile){
   assert.equal(await page.locator('.mobile-learning-nav').isVisible(),true);
-  await page.locator('[data-mobile-section="home"]').click();
+  await page.locator('[data-mobile-action="home"]').click();
   assert.ok(await page.locator('.classroom-home').count()>0,'Mobile dock navigates home');
 }
 await page.screenshot({path:path.join(shots,'student-'+device+'.png'),fullPage:true});
+ if(isMobile){await page.setViewportSize({width:320,height:740});await page.evaluate(()=>window.classroomSetSection('home'));const narrow=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));assert.ok(narrow.scroll<=narrow.width+3,'320px app layout must not overflow: '+JSON.stringify(narrow));await page.screenshot({path:path.join(shots,'home-narrow-'+device+'.png'),fullPage:true});await page.setViewportSize({width:390,height:844})}
  const dimensions=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));
  assert.ok(dimensions.scroll<=dimensions.width+3,'Unexpected horizontal overflow: '+JSON.stringify(dimensions));
  assert.equal(errors.length,0,'Uncaught first-party page errors: '+errors.join('; '));
@@ -111,6 +116,7 @@ await page.screenshot({path:path.join(shots,'student-'+device+'.png'),fullPage:t
  // Core Home must still be attractive because its essential design is embedded in index.html.
  const fallback=await context.newPage();
  await fallback.route('**/classroom-polish.css*',route=>route.abort());
+ await fallback.route('**/app-mobile.css*',route=>route.abort());
  await fallback.route(base+'firebase-auth.js',route=>route.fulfill({status:200,contentType:'text/javascript',body:'/* isolated auth test */'}));
  await fallback.goto(base,{waitUntil:'domcontentloaded'});
  await fallback.waitForFunction(()=>window.classroomGetSyllabus()?.length===2,{timeout:20000});
@@ -120,11 +126,11 @@ await page.screenshot({path:path.join(shots,'student-'+device+'.png'),fullPage:t
    window.classroomSetSection('home');
    const hero=document.querySelector('.classroom-hero');
    const ring=document.querySelector('.classroom-ring');
-   return {gradient:getComputedStyle(hero).backgroundImage,ringWidth:ring.getBoundingClientRect().width,tools:document.querySelectorAll('.classroom-tool-card').length};
+   return {gradient:getComputedStyle(hero).backgroundImage,ringWidth:ring.getBoundingClientRect().width,tools:document.querySelectorAll('.app-quick-item').length};
  });
  assert.match(appearance.gradient,/linear-gradient/,'Home hero must remain styled when external CSS fails');
  assert.ok(appearance.ringWidth>60,'Home progress ring must remain styled without external CSS');
- assert.equal(appearance.tools,4,'Simplified home has four primary learning cards');
+ assert.equal(appearance.tools,5,'All five app study areas must remain present');
  await fallback.screenshot({path:path.join(shots,'home-css-fallback-'+device+'.png'),fullPage:true});
  await fallback.close();
  await context.close();
