@@ -109,5 +109,5 @@ test('teacher profile handles story notes and completion dates safely',()=>{
   assert.equal(row.weekly[0].lessons[0].storyNotes,'<script>alert(1)</script>');
   api.setData([{uid:'test-story',profile:{name:'Student'},entries:entry}]);
   const output=api.render();
-  assert.doesNotMatch(output,/<script>alert\\(1\\)<\\/script>/);
+  assert.equal(output.includes('<script>alert(1)</script>'),false);
 });
