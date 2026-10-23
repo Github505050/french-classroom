@@ -77,3 +77,9 @@ html[data-theme="dark"] .study-tabs{background:#182d3b}html[data-theme="dark"] .
 html[data-theme="dark"] .story-word:hover,html[data-theme="dark"] .story-word:focus-visible{background:#356377}
 html[data-theme="dark"] input,html[data-theme="dark"] textarea,html[data-theme="dark"] select{background:#172f41;color:#eff7fa;border-color:#486578}
 html[data-theme="dark"] .mobile-learning-nav{background:#172e3ff2;border-color:#375568}html[data-theme="dark"] .mobile-learn-tab{color:#c0d5df}html[data-theme="dark"] .mobile-learn-tab.active{background:#285368;color:#f5faff}
+
+.classroom-news{border-radius:17px;padding:18px 20px;background:linear-gradient(130deg,#ecf8f7,#f3f9fb);border:1px solid #cce4e8;box-shadow:0 8px 18px #103e4910;margin:14px 0}
+.classroom-news-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.classroom-news-heading span{font-size:.69rem;letter-spacing:.12em;color:#37717f;font-weight:800}.classroom-news-heading strong{font-size:1.06rem;color:#194f62}
+.classroom-news article{padding:10px 0;border-top:1px solid #d5e8e9}.classroom-news article strong{color:#194d60}.classroom-news article p{margin:5px 0;color:#3e6071}.classroom-news article small{color:#68808c}
+html[data-theme="dark"] .classroom-news{background:#203d50;border-color:#38596b}html[data-theme="dark"] .classroom-news-heading strong,html[data-theme="dark"] .classroom-news article strong{color:#eff6f9}html[data-theme="dark"] .classroom-news article p{color:#c0d3db}
