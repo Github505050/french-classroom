@@ -165,3 +165,119 @@ html[data-theme="dark"] .app-encouragement strong{color:#f5faff}
 html[data-theme="dark"] .app-encouragement p{color:#b4ccdc}
 html[data-theme="dark"] .app-secondary-shortcuts button{color:#bed8e8}
 @media(prefers-reduced-motion:reduce){.app-quick-item,.app-continue{transition:none!important;transform:none!important}}
+
+/* Weekly lessons: legible app-style cards without changing daily content */
+.app-lessons-screen{display:grid;gap:18px}
+.app-screen-header .eyebrow{font-size:.7rem;color:#347e9d;letter-spacing:.15em}
+.app-screen-header h2{font-size:clamp(1.6rem,3vw,2.1rem);margin:6px 0!important;letter-spacing:-.04em;color:#16334c}
+.app-screen-header p{color:#6a8398;font-size:.91rem;max-width:550px;line-height:1.5;margin:0}
+.app-week-tabs{display:flex;gap:8px;flex-wrap:wrap;background:#f0f6fb;padding:6px;border-radius:14px}
+.app-week-tab{border:1px solid transparent;border-radius:10px;min-height:42px;padding:9px 17px;color:#365b7c;background:transparent;font-size:.89rem;font-weight:800}
+.app-week-tab.active{background:#237bea;color:#fff;box-shadow:0 6px 16px #2369cc2d}
+.app-week-picker{display:flex;justify-content:flex-end;align-items:center;margin-top:-8px}
+.app-week-picker label{font-size:.73rem}.app-week-picker select{min-height:38px;border-radius:11px;padding:6px 12px;max-width:250px}
+.app-week-banner{min-height:160px;border-radius:18px;padding:21px 24px;position:relative;overflow:hidden;background:#e3f5ff url("./assets/paris-sky.svg") right center/auto 100% no-repeat}
+.app-week-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#e6f5fff5 0%,#e6f5fff2 46%,#e6f5ff12 94%)}
+.app-week-banner>div{position:relative;z-index:1}
+.app-week-banner .app-overline{font-size:.7rem;color:#396e8e}
+.app-week-banner h3{font-size:1.45rem;margin:7px 0 4px;color:#173b54}
+.app-week-banner p{font-size:.84rem;color:#466e88}
+.app-week-banner-meter{position:absolute!important;right:24px;bottom:25px;z-index:2!important;width:64px;height:64px;display:grid;place-items:center;border:6px solid #82d6d7;background:#ecfffb;border-radius:50%;font-size:.98rem;font-weight:850;color:#176979}
+.app-week-meter{position:absolute!important;bottom:0;left:0;right:0;height:7px;background:#d3e7eb}
+.app-week-meter span{display:block;height:100%;border-radius:8px;background:#2cc0a3}
+.app-week-list{display:grid;gap:10px}
+.app-lesson-row.day{display:grid!important;grid-template-columns:57px minmax(0,1fr) 36px;gap:14px;align-items:center;width:100%;min-height:88px;text-align:left;border-radius:17px;padding:15px 18px!important;border:1px solid #e0eaf2;background:#fff;box-shadow:0 4px 14px #173e5909;color:#233d58;opacity:1;transition:background .15s,border-color .15s,transform .15s}
+.app-lesson-row.day:hover:not(:disabled){transform:translateX(2px);border-color:#afd5ef;background:#f7fbff}
+.app-lesson-row.day.active{border-color:#8dbdf6;background:#e7f3ff}
+.app-lesson-row.day.completed{background:#f1fbf7;border-color:#d4f0e3}
+.app-lesson-row.day:disabled{background:#f9fbfd;border-color:#edf2f6;color:#97a8b6;cursor:not-allowed}
+.app-lesson-number{height:53px;width:53px;display:grid;place-items:center;border-radius:50%;font-size:1.18rem;font-weight:850;background:#e6f4fa;color:#194d78}
+.app-lesson-row.active .app-lesson-number{background:#d1e8ff;color:#1362c6}
+.app-lesson-row.completed .app-lesson-number{background:#dcf6e7;color:#166e4d}
+.app-lesson-row:disabled .app-lesson-number{background:#e9eef4;color:#a4b1be}
+.app-lesson-detail{display:grid;gap:4px;min-width:0}
+.app-lesson-detail strong{display:block;color:#193852;font-size:.99rem;line-height:1.28}
+.app-lesson-detail>span{color:#6d8494;font-size:.82rem;line-height:1.4}
+.app-lesson-detail small{color:#15816f;font-size:.71rem;font-weight:650}
+.app-lesson-row:disabled .app-lesson-detail strong{color:#879bad}
+.app-lesson-state{color:#1a86d1;display:grid;place-items:center;width:35px;height:35px;border-radius:50%;background:#edf8ff}
+.app-lesson-row.completed .app-lesson-state{background:#23bf88;color:#fff}
+.app-lesson-row:disabled .app-lesson-state{background:#eff3f7;color:#9daebc}
+.app-lesson-state .app-icon{width:21px;height:21px}
+/* Daily lesson and active recall: less clutter, stronger hierarchy */
+.layout main>.panel>.eyebrow{color:#3f82a8;letter-spacing:.13em}
+.layout main>.panel>h2{font-size:clamp(1.42rem,3vw,2rem);color:#193a54;letter-spacing:-.035em}
+.layout main .panel .pill{border-radius:999px;background:#eef7fc;color:#346d88;border-color:#d9e8f0;font-size:.79rem}
+.lesson-controls{display:flex;gap:10px;flex-wrap:wrap;margin:17px 0}
+.lesson-controls .btn{min-height:46px;border-radius:13px;padding:11px 17px;font-weight:750}
+.lesson-controls .primary{background:#237bea;color:#fff;border-color:#237bea}
+.lesson-controls .btn:hover{transform:translateY(-1px)}
+.layout main>.panel .tile{border-radius:17px;border:1px solid #e0eaf0;background:#fff;box-shadow:0 4px 16px #183d5910;padding:18px}
+.layout main>.panel .tile h3{color:#18415d;font-size:1.04rem}
+.layout main .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(116px,1fr));gap:8px;overflow:visible}
+.layout main .days .day:not(.app-lesson-row){min-height:75px;border-radius:12px;border:1px solid #e1e9f1;background:#fafdff}
+.layout main .days .day.active:not(.app-lesson-row){border-color:#68aff0;background:#e8f4ff}
+.layout main .days .day.completed:not(.app-lesson-row){background:#e9faf1;border-color:#9ae5c8}
+.learning-path{background:#edf8ff;border:1px solid #d0e5f8;border-radius:18px;padding:18px}
+.learning-path-header{color:#174f7d}
+.learning-step{border-radius:12px;background:#fff;border:1px solid #d1e5f5;color:#315f80;box-shadow:none;min-height:44px}
+.learning-step:hover{background:#d9effe}
+.practice{border:1px solid #e0eaf0!important;background:#fff!important;border-radius:18px!important;box-shadow:0 6px 20px #2047690d}
+.practice h3{color:#163a56}
+.btn.primary,.complete-btn{background:#237bea!important;border-color:#237bea!important;color:#fff!important;border-radius:12px!important}
+input.field,textarea.field,select.field{border:1px solid #ccdfeb;border-radius:12px;background:#fff;min-height:45px}
+input.field:focus,textarea.field:focus,select.field:focus{border-color:#207cda;box-shadow:0 0 0 3px #3488ea22}
+.score-card{border:1px solid #cce6dd;border-radius:20px;background:linear-gradient(135deg,#f2fdf9,#fff);padding:23px}
+.study-workspace{border:1px solid #dfebf2;border-radius:20px}
+.speaking-lesson{border-radius:16px;box-shadow:0 5px 17px #2454720b}
+.speaking-lesson .btn.primary{min-height:44px}
+/* Interactive story: full-bleed Paris banner, calm reader, accessible controls */
+.story-section.practice{padding:clamp(16px,2.5vw,24px)!important;background:#fff!important;border:1px solid #d9e8f1!important;box-shadow:0 16px 32px #1b527020!important}
+.app-story-art{position:relative;min-height:140px;border-radius:16px;overflow:hidden;background:#e5f6fc url("./assets/paris-sky.svg") center/cover no-repeat;margin:0 0 18px}
+.app-story-art:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#1148679e,transparent)}
+.app-story-art-caption{position:absolute;left:18px;bottom:18px;color:#fff;text-shadow:0 2px 6px #0f475b70;font-size:.85rem;letter-spacing:.12em;font-weight:850;text-transform:uppercase}
+.story-section h3{font-size:1.42rem!important;color:#173c56!important;letter-spacing:-.035em}
+.story-text{background:#fbfdff!important;border:1px solid #e3edf3!important;border-radius:17px!important;color:#243f55!important;font-size:1.05rem!important;line-height:2!important;box-shadow:0 5px 15px #224c6510!important}
+.story-word{border-bottom:1px dotted #2794bc;color:#0b6293;border-radius:3px;font-weight:600}
+.story-word:hover,.story-word:focus-visible{background:#dcefff!important}
+.story-lookup{border-radius:14px!important;border:1px solid #cee7f2!important;background:#f0faff!important;color:#24445e!important}
+.story-player{border-radius:17px!important;background:#f4f9ff!important;border:1px solid #dae9f7!important;box-shadow:0 6px 15px #1b477711!important}
+.story-control{border-radius:13px!important;min-height:44px!important;background:#fff!important;border-color:#cedfed!important}
+.story-control-main{background:#1678e9!important;color:#fff!important;border-color:#1678e9!important}
+.story-progress{accent-color:#267ee2}
+.story-section #story-writing{min-height:112px}
+/* Teacher and content utilities: consistent professional product skin */
+.teacher-portal .tp-hero{border-radius:22px;background:linear-gradient(115deg,#173e63,#147c9c)}
+.teacher-portal .tp-card,.teacher-portal .tp-stat{border-radius:17px;box-shadow:0 6px 18px #183b590b}
+.teacher-portal .tp-tabbar button{border-radius:12px}
+.teacher-portal .tp-table-wrap{border-radius:14px}
+.teacher-portal button:focus-visible,.app-lesson-row:focus-visible,.app-quick-item:focus-visible,.mobile-learn-tab:focus-visible{outline:3px solid #207be1;outline-offset:3px}
+@media(max-width:650px){
+ .app-week-banner{min-height:145px;padding:18px}.app-week-banner h3{font-size:1.23rem}
+ .app-lesson-row.day{min-height:80px;grid-template-columns:46px minmax(0,1fr) 30px;gap:10px;padding:12px!important}
+ .app-lesson-number{height:44px;width:44px;font-size:1.05rem}
+ .app-lesson-detail strong{font-size:.88rem}
+ .app-lesson-detail>span{font-size:.73rem}
+ .app-lesson-state{width:30px;height:30px}
+ .app-lesson-state .app-icon{width:18px;height:18px}
+ .app-week-picker{display:none}
+ .app-week-tabs{gap:5px}.app-week-tab{padding:10px 13px;font-size:.81rem;min-height:44px}
+ .layout main>.panel{padding:16px!important;border-radius:18px!important}
+ .layout main .days{display:flex;overflow-x:auto;scroll-snap-type:x proximity;gap:8px;padding-bottom:8px}
+ .layout main .days .day:not(.app-lesson-row){flex:0 0 126px;scroll-snap-align:start;min-height:75px}
+ .layout main .app-week-list .day.app-lesson-row{flex:none;width:100%}
+ .learning-path{padding:13px;border-radius:15px}
+ .learning-steps{gap:6px}.learning-step{padding:8px 9px;font-size:.73rem;min-height:42px}
+ .story-section{border-radius:18px!important}.app-story-art{min-height:115px;border-radius:13px}
+ .story-text{font-size:1rem!important;padding:17px!important}
+ .story-player-controls{gap:6px}.story-control{padding:9px 11px!important}
+}
+html[data-theme="dark"] .app-lesson-row.day{background:#1e3548;border-color:#395b70;color:#e8f4f7}
+html[data-theme="dark"] .app-lesson-row.day.active{background:#274861}
+html[data-theme="dark"] .app-lesson-row.day.completed{background:#1e4848}
+html[data-theme="dark"] .app-lesson-detail strong{color:#e8f4f9}
+html[data-theme="dark"] .app-lesson-detail>span{color:#bed0dc}
+html[data-theme="dark"] .app-week-banner{background-color:#214455}
+html[data-theme="dark"] .app-week-banner h3{color:#20435e}
+html[data-theme="dark"] .story-text,html[data-theme="dark"] .story-player,html[data-theme="dark"] .story-lookup{background:#214356!important;border-color:#3e6376!important;color:#eef8f9!important}
+html[data-theme="dark"] .story-word{color:#a9e6ff}
