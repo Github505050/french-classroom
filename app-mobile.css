@@ -557,3 +557,6 @@ html[data-theme="dark"] .ai-homework{background:#243f53!important;border-color:#
  .weekly-practice-nav .wp-day .app-icon{width:13px;height:13px}
 }
 @media(max-width:375px){.weekly-practice-nav .wp-days{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Eliminate accidental document-level sideways scrolling after viewport changes. */
+@media(max-width:650px){html,body{max-width:100%;overflow-x:clip!important}}
