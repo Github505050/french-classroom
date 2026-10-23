@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [feature/teacher-portal-pro]
+    branches: [main, feature/teacher-portal-pro]
   workflow_dispatch:
 
 permissions:
