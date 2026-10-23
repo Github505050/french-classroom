@@ -572,3 +572,8 @@ html[data-theme="dark"] .ai-homework{background:#243f53!important;border-color:#
 .app-story-cover{contain:paint;overflow:clip!important}
 .app-story-cover:after{right:0!important;max-width:100%}
 @media(max-width:650px){.app-story-cover:after{right:0!important;width:78%!important;bottom:-8%!important;height:140%!important}}
+
+/* Avoid repeating the large artwork inside long notebook practice.
+   The complete illustration remains visible on the dedicated Story Reading screen. */
+.story-section .app-story-cover{display:none!important}
+.app-reading-screen .story-section .app-story-cover{display:flex!important}
