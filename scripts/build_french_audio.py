@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 import subprocess
+import tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def normalize(s):
@@ -53,12 +54,17 @@ def main():
     if args.limit>0:items=items[:args.limit]
     for i,phrase in enumerate(items,1):
         key=normalize(phrase)
-        name=hashlib.sha256(key.encode("utf-8")).hexdigest()[:20]+".wav"
+        name=hashlib.sha256(key.encode("utf-8")).hexdigest()[:20]+".mp3"
         target=output/name
         if not target.exists():
-            subprocess.run([args.piper,"--model",str(model),"--output_file",str(target)],input=phrase+"\n",text=True,check=True)
+            with tempfile.TemporaryDirectory() as folder:
+                wav=Path(folder)/"utterance.wav"
+                subprocess.run([args.piper,"--model",str(model),"--output_file",str(wav)],
+                               input=phrase+"\\n",text=True,check=True)
+                subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y",
+                                "-i",str(wav),"-ac","1","-b:a","64k",str(target)],check=True)
         manifest[key]="audio/clips/"+name
         if i%50==0:print(f"Generated {i}/{len(items)}",flush=True)
     (ROOT/"audio"/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print("Ready:",len(manifest),"audio clips; commit audio/manifest.json and audio/clips/*.wav")
+    print("Ready:",len(manifest),"audio clips; commit audio/manifest.json and audio/clips/*.mp3")
 if __name__=="__main__":main()
