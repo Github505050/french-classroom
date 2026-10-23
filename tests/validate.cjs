@@ -84,7 +84,7 @@ test('Firestore rules keep teacher reads and prevent student cross-account reads
 });
 
 test('student experience upgrades are connected without changing source lessons',()=>{
-  assert.match(html,/classroom-polish\\.css/);
+  assert.ok(html.includes('classroom-polish.css'));
   assert.match(html,/mobile-learning-nav/);
   assert.match(html,/function practiceRoadmap/);
   assert.match(html,/frenchportal_v2_saved_words/);
@@ -96,7 +96,7 @@ test('student experience upgrades are connected without changing source lessons'
   const announcements=JSON.parse(read('announcements.json'));
   assert.ok(Array.isArray(announcements.announcements));
   assert.ok(JSON.parse(read('audio/manifest.json')));
-  assert.match(read('sw.js'),/classroom-polish\\.css/);
+  assert.ok(read('sw.js').includes('classroom-polish.css'));
 });
 test('teacher profile handles story notes and completion dates safely',()=>{
   const {api}=mock();
