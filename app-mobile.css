@@ -567,3 +567,8 @@ html[data-theme="dark"] .ai-homework{background:#243f53!important;border-color:#
  .mobile-learning-nav .mobile-learn-tab{min-width:0;max-width:100%;flex:1 1 0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
  .mobile-learning-nav .mobile-learn-tab span{max-width:100%;overflow:hidden;text-overflow:ellipsis}
 }
+
+/* Story cover illustration must not contribute to page width from inside the Practice view. */
+.app-story-cover{contain:paint;overflow:clip!important}
+.app-story-cover:after{right:0!important;max-width:100%}
+@media(max-width:650px){.app-story-cover:after{right:0!important;width:78%!important;bottom:-8%!important;height:140%!important}}
