@@ -167,7 +167,82 @@ body.classroom-locked #auth-gate{display:flex}
 .story-player{margin:19px 0;padding:17px;border:1px solid #d0dff0;background:linear-gradient(145deg,#fff,#ecf5fc);border-radius:19px;box-shadow:0 12px 22px #123e5b1c,0 4px 0 #ccdde9}
 .story-player-heading,.story-progress-label{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.86rem;font-weight:750;color:#22506d}.story-player-heading span:last-child{color:#526f84;font-weight:550}.story-player-controls{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:15px 0}.story-control{border:1px solid #bed3e4;background:#fff;color:#194c68;border-radius:12px;padding:10px 15px;min-height:44px;font-weight:750;box-shadow:0 4px 0 #d4e3ef}.story-control:active{transform:translateY(2px);box-shadow:0 2px 0 #d4e3ef}.story-control-main{background:#13667c;border-color:#13667c;color:white}.story-progress{width:100%;accent-color:#147895;cursor:pointer;margin:12px 0 3px}.story-player-note{font-size:.8rem;color:#5a7384;margin:6px 0 0}@media(max-width:480px){.story-player{padding:12px}.story-player-controls{gap:6px}.story-control{padding:10px 11px}.story-section{border-radius:17px}}
 .story-jump{margin:12px 0;max-width:100%;white-space:normal;text-align:left;background:#eaf6fc;border:1px solid #b8dfea;color:#164f68;font-weight:700}.story-jump:hover{background:#d5edf8}.story-section{scroll-margin-top:18px}
-</style><link rel="stylesheet" href="./classroom-polish.css"></head><body class="classroom-locked auth-checking"><div id="auth-loading" role="status" aria-label="Opening classroom"><span class="auth-loading-mark">FR</span><span class="auth-loading-spinner" aria-hidden="true"></span></div><div id="bonjour-screen" aria-hidden="true"><span>Bonjour<span class="bonjour-dot">.</span></span><small>MON ESPACE FRANÇAIS</small></div><div id="auth-gate"><section class="auth-card"><span class="auth-mark" aria-hidden="true">FR</span><h1>Mon Espace Français</h1><p>Your personal French learning space</p><form id="gate-form"><div id="gate-signup-extra" hidden><label>Full name<input id="gate-name" type="text" maxlength="70" autocomplete="name"></label><label>Date of birth<input id="gate-dob" type="date" autocomplete="bday"></label></div><label>Email<input id="gate-email" type="email" required autocomplete="username"></label><label>Password<input id="gate-password" type="password" required autocomplete="current-password"></label><div id="gate-confirm-wrap" hidden><label>Confirm password<input id="gate-confirm" type="password" autocomplete="new-password"></label></div><button id="gate-submit" type="submit">Sign in</button></form><button id="gate-forgot" class="gate-link" type="button">Forgot password?</button><button id="gate-signup-toggle" class="gate-link" type="button">Create a student account</button><div id="gate-message" class="auth-message" role="status">Checking secure sign-in…</div></section></div>
+</style><link rel="stylesheet" href="./classroom-polish.css?v=20261023-home-v16"><style id="critical-classroom-home">
+/* V3 Home: clear editorial hierarchy and distinct brand identity */
+.classroom-home{display:grid;gap:20px;min-width:0;color:#173449}
+.classroom-hero{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(180px,.7fr);align-items:center;gap:16px;padding:clamp(27px,4vw,43px);min-height:314px;border-radius:25px;background:linear-gradient(118deg,#112e44 0%,#12485a 57%,#147779 100%);color:#fff;box-shadow:0 20px 46px #103c4d2c}
+.classroom-hero:before{content:"";position:absolute;inset:auto -80px -175px auto;width:440px;height:440px;border-radius:50%;border:1px solid #ffffff20;box-shadow:0 0 0 50px #ffffff08,0 0 0 100px #ffffff06;z-index:-1}
+.classroom-hero-copy{max-width:580px}
+.classroom-hero-kicker{display:flex;gap:9px;align-items:center;flex-wrap:wrap;letter-spacing:.12em;font-size:.66rem;font-weight:850;color:#c4e9e7;text-transform:uppercase}
+.classroom-live-dot{width:8px;height:8px;border-radius:100%;background:#8ef0c3;box-shadow:0 0 0 4px #8ef0c327}
+.hero-kicker-sep{opacity:.45}
+.classroom-hero h2{margin:25px 0 13px!important;font-size:clamp(2.15rem,4.1vw,3.5rem)!important;line-height:1.09;letter-spacing:-.055em;font-weight:850;color:#fff}
+.classroom-hero h2 span{display:block;color:#a9e7de}
+.classroom-hero p{margin:0;max-width:440px;color:#d6e9ed;font-size:.95rem;line-height:1.62}
+.classroom-hero-actions{margin-top:25px;display:flex;align-items:center;flex-wrap:wrap;gap:11px}
+.classroom-main-action,.classroom-quiet-action{display:flex;align-items:center;justify-content:space-between;gap:19px;border-radius:11px;min-height:48px;padding:12px 16px;font-weight:800}
+.classroom-main-action{background:#f9fffc;color:#125465;border:1px solid #fff;box-shadow:0 7px 19px #061f2b22}
+.classroom-main-action:hover{background:#ddf6f0}
+.classroom-quiet-action{background:#ffffff0c;color:#f5fcfb;border:1px solid #ffffff52}
+.classroom-quiet-action:hover{background:#ffffff22}
+.classroom-hero-progress{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:8px 0}
+.classroom-ring{width:164px;aspect-ratio:1;border-radius:50%;padding:12px;background:conic-gradient(#a7f1dc var(--completion),#ffffff23 var(--completion));box-shadow:0 9px 36px #041c2b35}
+.classroom-ring>div{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;background:#154557;width:100%;height:100%;border-radius:50%}
+.classroom-ring strong{font-size:2.4rem;letter-spacing:-.055em;line-height:1;color:#fff}
+.classroom-ring span{font-size:.73rem;color:#cee5e5}
+.classroom-progress-caption{display:grid;gap:3px;text-align:center;font-size:.86rem}
+.classroom-progress-caption strong{color:#fff}.classroom-progress-caption span{color:#cce5e4;font-size:.75rem}
+.classroom-home-status{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,.75fr);gap:15px}
+.classroom-today-card,.classroom-words-card{background:#fff;border:1px solid #dae8ee;box-shadow:0 6px 23px #173b4c0b;border-radius:18px;padding:23px;min-width:0}
+.classroom-card-eyebrow{font-size:.67rem;letter-spacing:.13em;font-weight:850;color:#28748a;text-transform:uppercase}
+.classroom-today-title{margin-top:14px;display:flex;gap:13px;align-items:center;justify-content:space-between}
+.classroom-today-title h3{font-size:clamp(1.12rem,1.8vw,1.4rem);margin:0 0 7px;letter-spacing:-.025em;color:#173b50}
+.classroom-today-title h3 span{color:#81a0af;margin:0 3px}
+.classroom-today-title p{color:#678092;font-size:.84rem;margin:0}
+.classroom-today-title button{height:48px;width:48px;flex:0 0 48px;border:0;border-radius:13px;background:#dff4f0;color:#106e73;font-size:1.5rem}
+.classroom-today-title button:hover{background:#c8ece5}
+.classroom-today-steps{display:flex;gap:7px;flex-wrap:wrap;margin-top:19px}
+.classroom-today-steps span{padding:5px 10px;border-radius:999px;background:#f1f7f9;border:1px solid #e2eef0;font-size:.74rem;font-weight:750;color:#416779}
+.classroom-words-card{background:linear-gradient(141deg,#f2fbf7,#e7f5f3);border-color:#c9e7db}
+.classroom-words-number{display:flex;align-items:baseline;gap:10px;margin-top:8px;flex-wrap:wrap}
+.classroom-words-number:first-letter{font-size:2rem}
+.classroom-words-number{font-size:2.3rem;font-weight:850;line-height:1.2;color:#17636d}
+.classroom-words-number span{font-size:.8rem;font-weight:700;color:#407477}
+.classroom-words-card p{margin:10px 0 15px;color:#547883;font-size:.82rem}
+.classroom-words-card>button{padding:0;border:0;background:none;color:#126e72;font-weight:850;font-size:.84rem}
+.classroom-words-card>button:hover{text-decoration:underline}
+.classroom-workspace-heading{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-top:4px}
+.classroom-workspace-heading h3{font-size:1.35rem;letter-spacing:-.03em;margin:5px 0 0;color:#183b4d}
+.classroom-workspace-hint{color:#668294;font-size:.82rem}
+.classroom-tool-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.classroom-tool-card{min-width:0;min-height:190px;background:#fff;border:1px solid #dce7ee;border-radius:17px;padding:20px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;position:relative;box-shadow:0 5px 17px #173c4c0a}
+.classroom-tool-card:hover{transform:translateY(-3px);box-shadow:0 14px 29px #12374f18;border-color:#bad8db}
+.classroom-tool-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:#e6f0ff;color:#365ea7;font-size:1.5rem;margin-bottom:20px}
+.classroom-tool-card.hear .classroom-tool-icon{background:#e0f8f0;color:#147f69}
+.classroom-tool-card.talk .classroom-tool-icon{background:#f1e8fd;color:#7450ad}
+.classroom-tool-card.track .classroom-tool-icon{background:#fff2e5;color:#9e672b}
+.classroom-tool-name{color:#163b50;font-size:.94rem;font-weight:840;line-height:1.25}
+.classroom-tool-description{color:#6a8391;font-size:.76rem;margin-top:5px;line-height:1.4}
+.classroom-tool-open{position:absolute;right:16px;top:18px;color:#7896a3}
+.classroom-secondary-links{display:flex;align-items:center;gap:15px;flex-wrap:wrap;padding:5px 0 2px;border-top:1px solid #dce8ee}
+.classroom-secondary-links button{border:0;background:transparent;color:#4e7382;font-weight:750;font-size:.82rem;display:flex;align-items:center;gap:9px;padding:12px}
+.classroom-secondary-links button:hover{color:#126f79;background:#edf6f5;border-radius:9px}
+.classroom-secondary-links span:first-child{font-size:1.2rem}
+@media(max-width:970px){.classroom-tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.classroom-tool-card{min-height:156px}}
+@media(max-width:680px){.classroom-hero{grid-template-columns:1fr;min-height:0;padding:25px 23px;gap:25px}.classroom-hero h2{font-size:clamp(2rem,8.5vw,2.65rem)!important;margin:21px 0 10px!important}.classroom-hero-progress{flex-direction:row;justify-content:flex-start;align-items:center;gap:17px;border-top:1px solid #ffffff28;padding-top:18px}.classroom-ring{width:95px;padding:8px}.classroom-ring strong{font-size:1.6rem}.classroom-ring span{font-size:.58rem}.classroom-progress-caption{text-align:left}.classroom-home-status{grid-template-columns:1fr}.classroom-today-card,.classroom-words-card{padding:18px}.classroom-tool-card{min-height:145px;padding:16px}.classroom-tool-icon{margin-bottom:13px}.classroom-workspace-hint{display:none}}
+@media(max-width:400px){.classroom-hero-actions{display:grid;grid-template-columns:1fr}.classroom-main-action,.classroom-quiet-action{width:100%}.classroom-tool-grid{gap:9px}.classroom-tool-card{padding:12px;min-height:145px}.classroom-tool-name{font-size:.85rem}}
+html[data-theme="dark"] .classroom-home{color:#e8f3f7}
+html[data-theme="dark"] .classroom-today-card,html[data-theme="dark"] .classroom-tool-card{background:#1e3548;border-color:#3e5a6d}
+html[data-theme="dark"] .classroom-today-title h3,html[data-theme="dark"] .classroom-tool-name,html[data-theme="dark"] .classroom-workspace-heading h3{color:#edf5f9}
+html[data-theme="dark"] .classroom-today-title p,html[data-theme="dark"] .classroom-tool-description{color:#b3cbd5}
+html[data-theme="dark"] .classroom-words-card{background:linear-gradient(135deg,#1e4447,#244455);border-color:#426962}
+html[data-theme="dark"] .classroom-words-number,html[data-theme="dark"] .classroom-words-card>button{color:#a3eddf}
+html[data-theme="dark"] .classroom-words-number span,html[data-theme="dark"] .classroom-words-card p{color:#bfd8d8}
+html[data-theme="dark"] .classroom-today-steps span{background:#25495a;color:#d2e4eb;border-color:#3c6371}
+html[data-theme="dark"] .classroom-secondary-links{border-color:#375567}
+html[data-theme="dark"] .classroom-secondary-links button{color:#bcd3dc}
+
+</style></head><body class="classroom-locked auth-checking"><div id="auth-loading" role="status" aria-label="Opening classroom"><span class="auth-loading-mark">FR</span><span class="auth-loading-spinner" aria-hidden="true"></span></div><div id="bonjour-screen" aria-hidden="true"><span>Bonjour<span class="bonjour-dot">.</span></span><small>MON ESPACE FRANÇAIS</small></div><div id="auth-gate"><section class="auth-card"><span class="auth-mark" aria-hidden="true">FR</span><h1>Mon Espace Français</h1><p>Your personal French learning space</p><form id="gate-form"><div id="gate-signup-extra" hidden><label>Full name<input id="gate-name" type="text" maxlength="70" autocomplete="name"></label><label>Date of birth<input id="gate-dob" type="date" autocomplete="bday"></label></div><label>Email<input id="gate-email" type="email" required autocomplete="username"></label><label>Password<input id="gate-password" type="password" required autocomplete="current-password"></label><div id="gate-confirm-wrap" hidden><label>Confirm password<input id="gate-confirm" type="password" autocomplete="new-password"></label></div><button id="gate-submit" type="submit">Sign in</button></form><button id="gate-forgot" class="gate-link" type="button">Forgot password?</button><button id="gate-signup-toggle" class="gate-link" type="button">Create a student account</button><div id="gate-message" class="auth-message" role="status">Checking secure sign-in…</div></section></div>
 <header><div class="topline"><div class="brand">🇫🇷 <span id="brand">Mon Espace Français</span><small>YOUR PERSONAL FRENCH CLASSROOM</small></div><div class="top-actions"><button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" title="Change appearance">☾</button><button id="account-trigger" class="account-trigger" type="button" aria-haspopup="dialog" aria-expanded="false">Account</button></div></div><h1 id="headline">Bienvenue dans ton espace de français !</h1><p id="welcome">Your French learning and progress, in one place.</p></header>
 <div class="layout"><aside class="sidebar"><button type="button" id="mobile-menu-toggle" class="mobile-menu-toggle" aria-controls="navigation" aria-expanded="false" aria-label="Open navigation menu"><span aria-hidden="true">☰</span> Menu</button><div class="panel" id="navigation"><button class="navbtn active" data-section="home">⌂ Home</button><button class="navbtn" data-section="lessons">▤ Weekly practice</button><button class="navbtn" data-section="speaking">🎙 Speaking</button><button class="navbtn" data-section="listening">🎧 Listening</button><button class="navbtn" data-section="resources">♧ Resources</button></div></aside><main><div id="main" aria-live="polite"></div></main></div><div class="footer">Your work is saved on this device and syncs to your account when connected.</div><nav class="mobile-learning-nav" aria-label="Quick learning navigation"><button class="mobile-learn-tab active" type="button" data-mobile-section="home"><span class="tab-symbol">⌂</span>Home</button><button class="mobile-learn-tab" type="button" data-mobile-section="weekoverview"><span class="tab-symbol">▤</span>Lessons</button><button class="mobile-learn-tab" type="button" data-mobile-section="listening"><span class="tab-symbol">♫</span>Listen</button><button class="mobile-learn-tab" type="button" data-mobile-section="progress"><span class="tab-symbol">◷</span>My progress</button></nav>
 <div id="account-modal" class="account-overlay hidden" hidden role="dialog" aria-modal="true" aria-label="Classroom account"><section class="account-sheet"><button id="account-close" class="account-close" type="button" aria-label="Close account panel">×</button><div class="account-symbol" aria-hidden="true">✦</div><div id="account-body"><h2>My account</h2><p>Loading…</p></div></section></div>
