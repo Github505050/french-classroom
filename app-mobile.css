@@ -407,3 +407,11 @@ html[data-theme="dark"] .app-story-subhead span{color:#a1d7e9}
 .app-story-speed-actions .btn{min-height:42px!important;border-radius:11px!important;padding:9px 13px!important;font-size:.81rem!important;font-weight:760;background:#fff;border:1px solid #cedfed;color:#24567d}
 .app-story-speed-actions .btn[aria-pressed="true"]{background:#dff1ff!important;border-color:#7dbcee!important;color:#155e97!important}
 html[data-theme="dark"] .app-story-speed-actions .btn{background:#294d63;color:#ecf5f9;border-color:#44677c}
+
+/* Calm, book-like French reading; interactive words remain identifiable when focused. */
+.app-reading-screen .story-word,.practice.story-section .story-word{color:inherit!important;font-weight:inherit!important;border-bottom:1px dotted #9fc7d7!important;text-decoration:none!important;border-radius:2px;padding:0 1px;background:transparent!important}
+.app-reading-screen .story-word:hover,.app-reading-screen .story-word:focus-visible,.practice.story-section .story-word:hover,.practice.story-section .story-word:focus-visible{background:#e6f2ff!important;color:#0f68ad!important;border-bottom-color:#1e8bc8!important}
+@media(max-width:650px){
+ .app-story-cover:after{right:-12%;bottom:-10%;width:82%;height:155%}
+}
+html[data-theme="dark"] .app-reading-screen .story-word,html[data-theme="dark"] .practice.story-section .story-word{color:#e5f2f9!important;border-bottom-color:#6b9eb4!important}
