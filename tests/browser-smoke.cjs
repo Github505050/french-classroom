@@ -61,6 +61,42 @@ const check=async(browser,device)=>{
  assert.match(await page.locator('#main').innerText(),/Choose a week and day/);
  await page.locator('[data-back-section="home"]').first().click();
  assert.ok(await page.locator('.home-v2').count()>0);
+
+// Guided study, vocabulary notebook, responsive navigation and refresh persistence.
+await page.evaluate(()=>{window.classroomSetSection('weekoverview')});
+await page.locator('#weekselect').selectOption('0');
+await page.locator('[data-day="4"]').first().click();
+await page.locator('[data-go="practice"]').first().click();
+assert.match(await page.locator('#main').innerText(),/Today's learning journey/);
+await page.locator('#daily-story').waitFor();
+const storyWord=page.locator('.story-word').first();
+await storyWord.click();
+await page.locator('#story-lookup button').last().click();
+await page.locator('#story-writing').fill('Je comprends cette histoire.');
+assert.equal(await page.evaluate(()=>localStorage.getItem('frenchportal_v2_story_week1_day5_writing')),'Je comprends cette histoire.');
+const lessonHash=await page.evaluate(()=>location.hash);
+assert.match(lessonHash,/section=practice/);
+await page.reload({waitUntil:'domcontentloaded'});
+await page.waitForFunction(()=>window.classroomGetSyllabus()?.length===2,{timeout:20000});
+await page.evaluate(()=>document.body.classList.remove('classroom-locked','auth-checking'));
+await page.locator('#daily-story').waitFor();
+assert.equal(await page.locator('#story-writing').inputValue(),'Je comprends cette histoire.');
+assert.match(await page.locator('#main').innerText(),/Today's learning journey/);
+await page.evaluate(()=>window.classroomSetSection('progress'));
+await page.locator('[data-progress-tab="words"]').click();
+assert.match(await page.locator('#main').innerText(),/My vocabulary notebook/);
+assert.ok(await page.locator('.my-word').count()>0,'Saved vocabulary word should be visible');
+await page.locator('[data-progress-tab="revision"]').click();
+assert.ok(await page.locator('.revision-card').count()>0,'Revision uses actual week questions');
+await page.locator('#theme-toggle').click();
+assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
+await page.locator('#theme-toggle').click();
+if(isMobile){
+  assert.equal(await page.locator('.mobile-learning-nav').isVisible(),true);
+  await page.locator('[data-mobile-section="home"]').click();
+  assert.ok(await page.locator('.home-v2').count()>0,'Mobile dock navigates home');
+}
+await page.screenshot({path:path.join(shots,'student-'+device+'.png'),fullPage:true});
  const dimensions=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));
  assert.ok(dimensions.scroll<=dimensions.width+3,'Unexpected horizontal overflow: '+JSON.stringify(dimensions));
  assert.equal(errors.length,0,'Uncaught first-party page errors: '+errors.join('; '));
