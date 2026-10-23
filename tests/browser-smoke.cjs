@@ -78,7 +78,7 @@ const lessonHash=await page.evaluate(()=>location.hash);
 assert.match(lessonHash,/section=practice/);
 await page.reload({waitUntil:'domcontentloaded'});
 await page.waitForFunction(()=>window.classroomGetSyllabus()?.length===2,{timeout:20000});
-await page.evaluate(()=>document.body.classList.remove('classroom-locked','auth-checking'));
+await page.evaluate(()=>{document.body.classList.remove('classroom-locked','auth-checking');const gate=document.getElementById('auth-gate');if(gate){gate.hidden=true;gate.style.display='none'}});
 await page.locator('#daily-story').waitFor();
 assert.equal(await page.locator('#story-writing').inputValue(),'Je comprends cette histoire.');
 assert.match(await page.locator('#main').innerText(),/Today's learning journey/);
