@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 510" role="img" aria-labelledby="title desc">
+<title id="title">French student exploring Paris</title><desc id="desc">Cheerful illustrated French learner in a red beret carrying books, with Parisian houses and the Eiffel Tower behind her.</desc>
+<defs>
+<linearGradient id="sky" x2=".9" y2="1"><stop stop-color="#77dde3"/><stop offset="1" stop-color="#cdfcf0"/></linearGradient>
+<linearGradient id="coat" x2="1" y2="1"><stop stop-color="#fdf7ec"/><stop offset="1" stop-color="#dceafb"/></linearGradient>
+<linearGradient id="book" x2="1" y2="1"><stop stop-color="#2362b9"/><stop offset="1" stop-color="#122e70"/></linearGradient>
+<filter id="shadow" x="-35%" y="-35%" width="170%" height="170%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#176a76" flood-opacity=".18"/></filter>
+</defs>
+<g opacity=".6"><circle cx="565" cy="100" r="80" fill="#fbffff" opacity=".22"/><path d="M60 110q23-38 59-1 30-15 46 16H47q-10-14 13-15z" fill="#fff"/><path d="M480 67q26-30 53 2 21-6 28 18h-96q-11-17 15-20z" fill="#fff"/></g>
+<path d="M0 385q65-80 146-27 64-110 145-41 69-66 136-12 120-76 253 36v170H0z" fill="#92d8af" opacity=".9"/>
+<g opacity=".82">
+<path d="M430 230h78v159h-78z" fill="#ffe4ba"/><path d="M425 229l44-42 44 42z" fill="#e99284"/><path d="M526 245h82v148h-82z" fill="#fcf0da"/><path d="M518 243l49-41 48 41z" fill="#badbe7"/>
+<path d="M446 259h15v24h-15zm32 0h15v24h-15zm-32 46h15v24h-15zm32 0h15v24h-15z" fill="#9eb5c3"/>
+<path d="M542 274h15v25h-15zm30 0h15v25h-15zm-30 47h15v25h-15zm30 0h15v25h-15z" fill="#85b4b9"/>
+</g>
+<g transform="translate(529 91)" fill="none" stroke="#2f738e" stroke-linecap="round" stroke-linejoin="round">
+<path d="M35 0 0 253h78L35 0" stroke-width="10"/><path d="M17 113h36m-49 72h63M-5 253h82" stroke-width="12"/><path d="m30 38 26 147M44 38 6 185m11 0 35 68M59 185 10 253M0 215h74m-36-160h3" stroke-width="4.5" opacity=".8"/>
+</g>
+<path d="M0 413q148-58 272 4 185-37 408-4v97H0z" fill="#59bba0"/>
+<g fill="#258f80" opacity=".8"><ellipse cx="54" cy="348" rx="58" ry="52"/><ellipse cx="121" cy="369" rx="54" ry="49"/><ellipse cx="645" cy="361" rx="54" ry="62"/></g>
+<g transform="translate(145 97)" filter="url(#shadow)">
+<path d="M109 261q-54 5-74 62L4 435h320l-25-109q-15-70-77-79z" fill="url(#coat)"/>
+<path d="M67 279q38 37 104 44 73 0 103-41" fill="none" stroke="#1b7490" stroke-width="13" opacity=".3"/>
+<path d="M66 284q-40 74-8 141m210-141q36 76 8 141" fill="none" stroke="#17394e" stroke-width="15" opacity=".25"/>
+<path d="M85 147q-14-95 76-116 95-11 123 95l-5 136q-27 49-79 27-27-7-57-2-66 17-71-55z" fill="#502a39"/>
+<path d="M88 149q-2-87 78-98 89-4 94 94v87q-17 76-86 73-95-1-92-81z" fill="#673746"/>
+<path d="M126 198q6 38 44 46l4 57 50 8 3-81z" fill="#e3a17e"/>
+<ellipse cx="173" cy="164" rx="78" ry="91" fill="#f8c8a0"/>
+<path d="M95 146q-16-69 43-96 62-24 114 19 27 31 14 75-41-14-70-49-42 43-100 51z" fill="#582e3d"/>
+<path d="M96 166q-6 20-2 49" fill="none" stroke="#5f3042" stroke-width="17"/>
+<path d="M239 163q14 16 7 44" fill="none" stroke="#5f3042" stroke-width="13"/>
+<path d="M130 168q13-10 25 0m52 0q13-10 25 0" fill="none" stroke="#4b2e3a" stroke-width="6" stroke-linecap="round"/>
+<ellipse cx="120" cy="196" rx="19" ry="11" fill="#ef9288" opacity=".48"/><ellipse cx="224" cy="196" rx="19" ry="11" fill="#ef9288" opacity=".48"/>
+<path d="M158 207q17 16 33-2" fill="none" stroke="#ad5c61" stroke-width="5" stroke-linecap="round"/>
+<path d="M88 83q18-49 83-47 63-4 97 44-20-6-37-10-76-16-143 13z" fill="#df445b"/>
+<path d="M74 89q89-24 206-6-13 22-44 24-95-11-162-1z" fill="#c6344d"/>
+<path d="M110 316q63 42 128 4l33 115H73z" fill="#fff8eb"/>
+<path d="M106 348h149m-153 29h160m-164 29h170" stroke="#346b96" stroke-width="14" opacity=".9"/>
+<path d="M75 316q-23 15-34 56l-4 52h67zM259 312q36 12 44 66l12 45h-61z" fill="#f5c6a2"/>
+<path d="M198 329q31 10 39 35l-16 37-61-25z" fill="#f0b78f"/>
+<g transform="rotate(10 177 372)">
+<rect x="120" y="333" width="121" height="105" rx="9" fill="url(#book)"/><rect x="133" y="333" width="118" height="105" rx="8" fill="#2f72cc"/><path d="M173 335v102" stroke="#a6d8ff" stroke-width="3"/><path d="M187 369h48m-48 13h40m-40 13h44" stroke="#b2e3ff" stroke-width="5" stroke-linecap="round"/>
+</g>
+</g>
+<g fill="#fff7e6"><circle cx="382" cy="120" r="9"/><path d="m382 99 3 13 12 6-12 5-3 13-5-13-13-5 13-6z"/></g>
+<path d="M27 453q125-31 228 8 93 23 202-5 105-31 223 9v45H0z" fill="#c2f2d5" opacity=".8"/>
+</svg>
