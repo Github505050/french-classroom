@@ -11,7 +11,7 @@ const check=async(browser,device)=>{
  await page.route('**/firebase-auth.js',route=>route.fulfill({status:200,contentType:'text/javascript',body:'/* isolated UI smoke test */'}));
  page.on('pageerror',error=>errors.push(error.message));
  await page.goto(base,{waitUntil:'domcontentloaded'});
- await page.waitForFunction(()=>window.classroomTeacherPortal && window.classroomFoundationOutline && window.classroomGetSyllabus()?.length===1,{timeout:20000});
+ await page.waitForFunction(()=>window.classroomTeacherPortal && window.classroomFoundationOutline && window.classroomGetSyllabus()?.length===2,{timeout:20000});
  await page.evaluate(()=>{
    document.body.classList.remove('classroom-locked','auth-checking');
    window.classroomTeacherDashboard=()=>window.classroomTeacherPortal.render();
