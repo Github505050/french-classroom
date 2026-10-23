@@ -42,7 +42,7 @@ const check=async(browser,device)=>{
  await page.locator('[data-tp-tab="students"]').first().click();
  assert.match(await page.locator('#teacher-portal').innerText(),/Student directory/);
  await page.evaluate(()=>{window.classroomSetTeacherRole(false);window.classroomSetSection('home')});
- assert.ok(await page.locator('.home-v2').count()>0,'Student home should remain available');
+ assert.ok(await page.locator('.classroom-home').count()>0,'Student home should remain available');
  if(isMobile){
    const nav=page.locator('#navigation');
    assert.equal(await nav.isVisible(),false,'Mobile nav should be collapsed');
@@ -56,11 +56,11 @@ const check=async(browser,device)=>{
  await page.locator('#foundation-week-select').selectOption('1');
  assert.match(await page.locator('#foundation-lesson').innerText(),/DAY 8/);
  await page.locator('#foundation-back-home').click();
- assert.ok(await page.locator('.home-v2').count()>0,'Foundation back to home must work');
+ assert.ok(await page.locator('.classroom-home').count()>0,'Foundation back to home must work');
  await page.locator('[data-go="lessons"]').first().click();
  assert.match(await page.locator('#main').innerText(),/Choose a week and day/);
  await page.locator('[data-back-section="home"]').first().click();
- assert.ok(await page.locator('.home-v2').count()>0);
+ assert.ok(await page.locator('.classroom-home').count()>0);
 
 // Guided study, vocabulary notebook, responsive navigation and refresh persistence.
 await page.evaluate(()=>{window.classroomSetSection('weekoverview')});
@@ -98,7 +98,7 @@ await page.locator('#theme-toggle').click();
 if(isMobile){
   assert.equal(await page.locator('.mobile-learning-nav').isVisible(),true);
   await page.locator('[data-mobile-section="home"]').click();
-  assert.ok(await page.locator('.home-v2').count()>0,'Mobile dock navigates home');
+  assert.ok(await page.locator('.classroom-home').count()>0,'Mobile dock navigates home');
 }
 await page.screenshot({path:path.join(shots,'student-'+device+'.png'),fullPage:true});
  const dimensions=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));
