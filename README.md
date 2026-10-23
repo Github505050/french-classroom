@@ -43,3 +43,49 @@ For local preview, serve the repository root with python -m http.server 8000 and
 
 ## Limitations
 The site cannot independently grade handwritten work, upload notebook photos to teachers or guarantee speech audio on every device. Daily written scores are student-entered after external feedback.
+
+
+## Classroom experience upgrade
+
+The website has a lightweight, responsive UI stylesheet in `classroom-polish.css`. It adds:
+- A guided activity path at the top of notebook practice, linking to the actual available activities (never fabricating lesson content).
+- Four convenient mobile quick-navigation actions and a theme toggle with local-only appearance preference.
+- A personal French word notebook and weekly active-recall review inside **My Progress**.
+- An optional announcement feed. No empty announcement boxes appear to students.
+- A story reader that preserves text verbatim and supports word lookup, narration, notes, and sentence navigation.
+
+**Storage:** The personal vocabulary notebook, review ratings, and new story notes use keys beginning with `frenchportal_v2_`, consistent with Firebase's existing progress-sync allowlist. The old story-note key is read as a compatibility fallback, without deleting old records. Browser-local draft feedback means only "saved on this device"; Firebase sync depends on sign-in and network access.
+
+### Publish a teacher announcement (no database changes)
+
+Open [announcements.json](announcements.json) in GitHub and add a short teacher-authored entry to the array. Format:
+
+```json
+{
+  "announcements": [
+    {
+      "title": "Example class reminder",
+      "body": "Teacher-supplied message goes here.",
+      "date": "2026-10-23",
+      "active": true
+    }
+  ]
+}
+```
+
+Commit the file to publish it on GitHub Pages. Students see only active entries on Home. Do not put personal student details in this public file. Editing announcements directly in the teacher portal would require a securely authorized write endpoint; this static-site implementation intentionally does **not** provide one.
+
+### Free French recordings
+
+`audio/manifest.json` maps normalized French phrases to optional, pre-generated clips in `audio/clips/`. If a clip isn't present, students still hear the device French voice. The story player supports sentence-by-sentence recorded audio where available.
+
+`.github/workflows/french-audio.yml` is a manual/opt-in Piper voice-generation workflow (it also runs when the workflow definition changes), which can produce compressed MP3 clips and commit them. Avoid running it repeatedly for unchanged content: hundreds of clips may take time and increase repository size. Confirm the selected model's license conditions before any new redistribution. Future lesson content is never edited by this workflow.
+
+### Quality assurance
+
+`Classroom quality checks` runs on pushes to main:
+- JavaScript parsing and source/data validation via `node --test tests/validate.cjs`.
+- Desktop and mobile Playwright browser smoke tests with Firebase auth mocked **only for UI testing**.
+- Teacher student-profile presentation, Week 1 and Week 2 navigation, story writing persistence, refresh continuity, personal vocabulary and mobile overflow checks.
+
+Browser smoke tests are not a substitute for signed-in Firebase/Firestore end-to-end tests. Check GitHub Actions results before treating a release as verified.
