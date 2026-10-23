@@ -281,3 +281,9 @@ html[data-theme="dark"] .app-week-banner{background-color:#214455}
 html[data-theme="dark"] .app-week-banner h3{color:#20435e}
 html[data-theme="dark"] .story-text,html[data-theme="dark"] .story-player,html[data-theme="dark"] .story-lookup{background:#214356!important;border-color:#3e6376!important;color:#eef8f9!important}
 html[data-theme="dark"] .story-word{color:#a9e6ff}
+
+/* Explicit pastel surfaces for light-mode learning statistics */
+html:not([data-theme="dark"]) .app-home .app-stats .app-stat-streak{background:#fff4ea!important;color:#19354a!important}
+html:not([data-theme="dark"]) .app-home .app-stats .app-stat-week{background:#edf6ff!important;color:#19354a!important}
+html:not([data-theme="dark"]) .app-home .app-stats .app-stat-course{background:#eafbf7!important;color:#19354a!important}
+html:not([data-theme="dark"]) .app-home .app-stats .app-stat>span:last-child{color:#4d7183!important}
