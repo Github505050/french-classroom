@@ -549,3 +549,11 @@ html[data-theme="dark"] .ai-homework{background:#243f53!important;border-color:#
 .weekly-practice-nav{overflow:hidden;max-width:100%}
 .wp-days{min-width:0;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;isolation:isolate;touch-action:pan-x pan-y}
 .wp-day{scroll-snap-align:start}
+
+/* On phones, keep all seven day chips inside a compact responsive grid. */
+@media(max-width:650px){
+ .weekly-practice-nav .wp-days{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;overflow:visible!important;width:100%;max-width:100%;padding:12px 0 10px;scroll-snap-type:none}
+ .weekly-practice-nav .wp-day{width:100%;min-width:0!important;max-width:100%;padding:8px 3px!important;font-size:.72rem;line-height:1.25}
+ .weekly-practice-nav .wp-day .app-icon{width:13px;height:13px}
+}
+@media(max-width:375px){.weekly-practice-nav .wp-days{grid-template-columns:repeat(3,minmax(0,1fr))}}
