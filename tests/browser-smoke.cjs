@@ -138,7 +138,7 @@ await page.screenshot({path:path.join(shots,'student-'+device+'.png'),fullPage:t
  await context.close();
 };
 (async()=>{
- const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ const browser=await chromium.launch({headless:true,channel:process.env.CI?'chrome':undefined,args:['--no-sandbox']});
  try{await check(browser,'desktop');await check(browser,'mobile');console.log('Desktop and mobile teacher/student browser smoke tests passed');}
  finally{await browser.close()}
 })().catch(error=>{console.error(error);process.exitCode=1});
