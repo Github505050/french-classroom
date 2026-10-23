@@ -9,6 +9,36 @@
       "day": 6,
       "title": "Une journée au supermarché",
       "text": "Aujourd'hui, je vais au supermarché avec ma sœur. Nous cherchons le pain, le lait et les œufs. Ma sœur aime le fromage et les fruits. Moi, j'aime le riz et les légumes. Nous regardons le poisson. Je demande le fromage. Ensuite, nous allons à la maison. Ma sœur regarde la télévision et j'écoute la musique."
+    },
+    {
+      "day": 8,
+      "title": "Mon petit appartement",
+      "text": "J'habite dans un petit appartement à Montréal. Ma chambre est grande et mon salon est petit. Le matin, j'étudie le français dans ma chambre. Je cherche mon cahier et je trouve mon livre sous la table. Ensuite, je donne le livre à mon ami."
+    },
+    {
+      "day": 9,
+      "title": "J'aide mon ami",
+      "text": "Aujourd'hui, mon ami étudie le français avec moi. Il cherche son cahier dans le salon. Je trouve son cahier sous la table et je donne le cahier à mon ami. Nous utilisons mon ordinateur et nous commandons une grande pizza. Ensuite, nous parlons français ensemble."
+    },
+    {
+      "day": 10,
+      "title": "Une journée à l'école",
+      "text": "Le matin, j'arrive à l'école avec mon ami. Nous étudions le français dans une petite classe. Mon professeur explique une question difficile. Je pense à la question et je trouve la réponse. Mon ami cherche son cahier et je donne mon cahier à mon ami."
+    },
+    {
+      "day": 11,
+      "title": "À l'épicerie",
+      "text": "Aujourd'hui, je vais à l'épicerie avec ma sœur. Nous cherchons le pain, le lait et les légumes. Je regarde les fruits et j'achète une petite pomme. Ma sœur achète le fromage et je paie mes pommes. Ensuite, nous allons à la maison et je mange ma pomme."
+    },
+    {
+      "day": 12,
+      "title": "Ma routine du matin",
+      "text": "Le matin, je me lève dans ma petite chambre. Mon téléphone est sur la table et mon cahier est sous mon livre. J'appelle mon ami et nous parlons français. Ensuite, je mange une pomme et j'étudie le français. Mon ami arrive à la maison avec son cahier."
+    },
+    {
+      "day": 13,
+      "title": "Une journée sans télévision",
+      "text": "Aujourd'hui, je suis à la maison avec ma sœur. Je ne regarde jamais la télévision le matin. J'étudie le français dans ma chambre, mais je ne trouve pas mon cahier. J'appelle mon ami et nous parlons français. Le soir, je n'utilise pas mon ordinateur et j'écoute la musique."
     }
   ],
   "glossary": {
@@ -65,6 +95,52 @@
     "demande": "ask for",
     "ensuite": "then / afterwards",
     "allons": "go",
-    "j'écoute": "I listen to"
+    "j'écoute": "I listen to",
+    "sous": "under",
+    "son": "his / her",
+    "il": "he",
+    "utilisons": "use",
+    "commandons": "order",
+    "ensemble": "together",
+    "une": "a (feminine)",
+    "petite": "small (feminine)",
+    "table": "table",
+    "donne": "give",
+    "ami": "friend",
+    "étudie": "study / am studying",
+    "étudions": "study",
+    "ordinateur": "computer",
+    "pizza": "pizza",
+    "arrive": "arrive",
+    "école": "school",
+    "classe": "classroom / class",
+    "professeur": "teacher",
+    "explique": "explains",
+    "question": "question",
+    "difficile": "difficult",
+    "pense": "think",
+    "réponse": "answer",
+    "épicerie": "grocery store",
+    "achète": "buy",
+    "pommes": "apples",
+    "paie": "pay",
+    "mes": "my (plural)",
+    "mange": "eat",
+    "routine": "routine",
+    "lève": "get up",
+    "téléphone": "telephone",
+    "sur": "on",
+    "appelle": "call",
+    "soir": "evening",
+    "ne": "not (negative marker)",
+    "pas": "not",
+    "jamais": "never",
+    "n'utilise": "do not use",
+    "j'étudie": "I study",
+    "j'appelle": "I call",
+    "j'achète": "I buy",
+    "trouve": "find",
+    "cahier": "notebook",
+    "suis": "am"
   }
 }
