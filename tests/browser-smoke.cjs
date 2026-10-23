@@ -107,6 +107,26 @@ await page.screenshot({path:path.join(shots,'student-'+device+'.png'),fullPage:t
  const dimensions=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,width:innerWidth}));
  assert.ok(dimensions.scroll<=dimensions.width+3,'Unexpected horizontal overflow: '+JSON.stringify(dimensions));
  assert.equal(errors.length,0,'Uncaught first-party page errors: '+errors.join('; '));
+ // Regression: simulate the screenshot's missing/outdated external stylesheet.
+ // Core Home must still be attractive because its essential design is embedded in index.html.
+ const fallback=await context.newPage();
+ await fallback.route('**/classroom-polish.css*',route=>route.abort());
+ await fallback.route(base+'firebase-auth.js',route=>route.fulfill({status:200,contentType:'text/javascript',body:'/* isolated auth test */'}));
+ await fallback.goto(base,{waitUntil:'domcontentloaded'});
+ await fallback.waitForFunction(()=>window.classroomGetSyllabus()?.length===2,{timeout:20000});
+ const appearance=await fallback.evaluate(()=>{
+   document.body.classList.remove('classroom-locked','auth-checking');
+   document.getElementById('auth-gate')?.setAttribute('hidden','');
+   window.classroomSetSection('home');
+   const hero=document.querySelector('.classroom-hero');
+   const ring=document.querySelector('.classroom-ring');
+   return {gradient:getComputedStyle(hero).backgroundImage,ringWidth:ring.getBoundingClientRect().width,tools:document.querySelectorAll('.classroom-tool-card').length};
+ });
+ assert.match(appearance.gradient,/linear-gradient/,'Home hero must remain styled when external CSS fails');
+ assert.ok(appearance.ringWidth>60,'Home progress ring must remain styled without external CSS');
+ assert.equal(appearance.tools,4,'Simplified home has four primary learning cards');
+ await fallback.screenshot({path:path.join(shots,'home-css-fallback-'+device+'.png'),fullPage:true});
+ await fallback.close();
  await context.close();
 };
 (async()=>{
