@@ -72,7 +72,7 @@ const check=async(browser,device)=>{
 // Guided study, vocabulary notebook, responsive navigation and refresh persistence.
 await page.evaluate(()=>{window.classroomSetSection('weekoverview')});
 await page.locator('[data-app-week="1"]').click();
-assert.match(await page.locator('#main').innerText(),/Day 8/);
+assert.equal((await page.locator('.app-week-list .app-lesson-number').first().innerText()).trim(),'8','Week 2 should begin with global Day 8');
 await page.locator('[data-app-week="0"]').click();
 await page.locator('[data-day="4"]').first().click();
 await page.locator('[data-go="practice"]').first().click();
