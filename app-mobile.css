@@ -544,3 +544,8 @@ html[data-theme="dark"] .wp-activity-label{color:#e3f1f5}
 html[data-theme="dark"] .wp-question .response-field{background:#193348;color:#eef5f9;border-color:#4c7288!important}
 html[data-theme="dark"] .wp-finish-complete{background:#234c4b}
 html[data-theme="dark"] .ai-homework{background:#243f53!important;border-color:#446679!important}
+
+/* Confine horizontally swipable day buttons to their own scrolling region on narrow phones. */
+.weekly-practice-nav{overflow:hidden;max-width:100%}
+.wp-days{min-width:0;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;isolation:isolate;touch-action:pan-x pan-y}
+.wp-day{scroll-snap-align:start}
