@@ -140,7 +140,7 @@
     var r=records.find(function(x){return x.uid===state.selected});
     if(!r)return '<div class="tp-card">Student record unavailable. <button type="button" class="tp-link" data-tp-tab="students">Back to students</button></div>';
     var foundation=r.foundation.map(function(d){
-      return '<div class="tp-lesson '+(d.done?'is-done':'')+'"><span class="tp-lesson-index">'+d.day+'</span><div class="tp-lesson-info"><strong>'+E(d.title)+'</strong><small>'+E(d.total==null?d.answered+' answers saved':d.answered+' / '+d.total+' responses saved · '+d.correct+' correct')+'</small></div><span class="tp-chip '+(d.done?'active':'muted')+'">'+(d.done?(completedDate?'Completed on '+E(completedDate):'Completed · Date not recorded'):'Not complete')+'</span></div>';
+      return '<div class="tp-lesson '+(d.done?'is-done':'')+'"><span class="tp-lesson-index">'+d.day+'</span><div class="tp-lesson-info"><strong>'+E(d.title)+'</strong><small>'+E(d.total==null?d.answered+' answers saved':d.answered+' / '+d.total+' responses saved · '+d.correct+' correct')+'</small></div><span class="tp-chip '+(d.done?'active':'muted')+'">'+(d.done?'Completed':'Not complete')+'</span></div>';
     }).join('');
     var weekly=r.weekly.map(function(w){
       return '<section class="tp-card"><div class="tp-section-head"><div><h3>'+E(w.title)+'</h3><p>'+w.lessons.filter(function(d){return d.done}).length+' of '+w.lessons.length+' lessons completed</p></div></div><div class="tp-lesson-grid">'+w.lessons.map(function(d){
