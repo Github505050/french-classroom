@@ -119,12 +119,12 @@
   }
   function summaryTable(rows){
     if(!rows.length)return '<div class="tp-empty"><strong>No matching students</strong><p>Try another search or filter. If this is a new class, share the registration link.</p></div>';
-    return '<div class="tp-table-wrap"><table class="tp-table"><thead><tr><th scope="col">Student</th><th scope="col">Activity</th><th scope="col">Lessons</th><th scope="col">Progress</th><th scope="col">Scores</th><th scope="col"></th></tr></thead><tbody>'+
+    return '<div class="tp-table-wrap"><table class="tp-table tp-directory-table"><thead><tr><th scope="col">Student</th><th scope="col">Activity</th><th scope="col">Lessons</th><th scope="col">Progress</th><th scope="col">Scores</th><th scope="col"></th></tr></thead><tbody>'+
       rows.map(function(r){return '<tr><td><div class="tp-person">'+avatar(r)+'<div><strong>'+E(r.name)+'</strong><small>'+E(r.email||'No email in profile')+'</small></div></div></td><td>'+studentStatus(r)+'</td><td><strong>'+r.completed+' / '+r.possible+'</strong><small class="tp-faint">'+r.foundationDone+' Foundation · '+r.weeklyDone+' Weekly</small></td><td><div class="tp-progress-value">'+pct(r.completed,r.possible)+'%</div>'+progressBar(r.completed,r.possible)+'</td><td>'+grade(r)+'</td><td><button type="button" class="tp-link" data-tp-student="'+E(r.uid)+'">View profile →</button></td></tr>'}).join('')+'</tbody></table></div>';
   }
   function studentsContent(){var rows=filtered();return '<div class="tp-section-head"><div><h3>Student directory</h3><p>'+rows.length+' of '+records.length+' students</p></div></div>'+summaryTable(rows)}
   function resultsContent(){var rows=filtered();return '<div class="tp-section-head"><div><h3>Results and performance</h3><p>Scores are entered by students after external correction; they are not verified grades.</p></div></div>'+
-    (rows.length?'<div class="tp-table-wrap"><table class="tp-table"><thead><tr><th>Student</th><th>Submitted scores</th><th>Weighted average</th><th>Points earned</th><th>Foundation</th><th></th></tr></thead><tbody>'+
+    (rows.length?'<div class="tp-table-wrap"><table class="tp-table tp-results-table"><thead><tr><th>Student</th><th>Submitted scores</th><th>Weighted average</th><th>Points earned</th><th>Foundation</th><th></th></tr></thead><tbody>'+
     rows.map(function(r){return '<tr><td>'+avatar(r)+' <strong>'+E(r.name)+'</strong></td><td>'+r.scored+'</td><td>'+grade(r)+'</td><td>'+r.scoreSum+' / '+r.scoreMaximum+'</td><td>'+r.foundationDone+' / 14</td><td><button type="button" class="tp-link" data-tp-student="'+E(r.uid)+'">Details →</button></td></tr>'}).join('')+'</tbody></table></div>':
     '<div class="tp-empty">No results match these filters.</div>');
   }
