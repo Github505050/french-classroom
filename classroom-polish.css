@@ -98,3 +98,30 @@ html[data-theme="dark"] .tp-banner{background:#224858;border-color:#346779;color
 html[data-theme="dark"] .tp-table tbody tr:hover{background:#254459}
 html[data-theme="dark"] .tp-table th,html[data-theme="dark"] .tp-table td{border-color:#38566a;color:#dceaf0}
 html[data-theme="dark"] .tp-lesson,html[data-theme="dark"] .tp-response{border-color:#38566a}
+
+/* Teacher directory/results: readable mobile cards, no hidden columns */
+@media(max-width:650px){
+  .tp-table-wrap{overflow-x:visible}
+  .teacher-portal .tp-table{min-width:0;width:100%;border-collapse:separate}
+  .teacher-portal .tp-table thead{display:none}
+  .teacher-portal .tp-table tbody{display:grid;gap:12px}
+  .teacher-portal .tp-table tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border:1px solid #dce7ed;border-radius:14px;padding:15px;background:#fff;box-shadow:0 3px 12px #153d5009}
+  .teacher-portal .tp-table tbody td{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0;padding:0;border:0;white-space:normal}
+  .teacher-portal .tp-table tbody td:first-child{grid-column:1/-1;padding-bottom:9px;border-bottom:1px solid #e4edf1}
+  .teacher-portal .tp-table tbody td:last-child{grid-column:1/-1;border-top:1px solid #e4edf1;padding-top:9px;flex-direction:row}
+  .teacher-portal .tp-table td:not(:first-child):not(:last-child):before{font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6a8492}
+  .teacher-portal .tp-directory-table td:nth-child(2):before{content:"Activity"}
+  .teacher-portal .tp-directory-table td:nth-child(3):before{content:"Lessons"}
+  .teacher-portal .tp-directory-table td:nth-child(4):before{content:"Progress"}
+  .teacher-portal .tp-directory-table td:nth-child(5):before{content:"Scores"}
+  .teacher-portal .tp-results-table td:nth-child(2):before{content:"Submitted scores"}
+  .teacher-portal .tp-results-table td:nth-child(3):before{content:"Average"}
+  .teacher-portal .tp-results-table td:nth-child(4):before{content:"Points"}
+  .teacher-portal .tp-results-table td:nth-child(5):before{content:"Foundation"}
+  .teacher-portal .tp-table .tp-person{min-width:0;max-width:100%}
+  .teacher-portal .tp-table .tp-person>div:last-child{min-width:0}
+  .teacher-portal .tp-table .tp-person small{overflow-wrap:anywhere}
+  html[data-theme="dark"] .teacher-portal .tp-table tbody tr{background:#1e3548;border-color:#426377}
+  html[data-theme="dark"] .teacher-portal .tp-table tbody td:first-child,html[data-theme="dark"] .teacher-portal .tp-table tbody td:last-child{border-color:#3b596b}
+  html[data-theme="dark"] .teacher-portal .tp-table td:not(:first-child):not(:last-child):before{color:#b7ccd7}
+}
