@@ -43,6 +43,9 @@ const check=async(browser,device)=>{
  assert.match(await page.locator('#teacher-portal').innerText(),/Student directory/);
  await page.evaluate(()=>{window.classroomSetTeacherRole(false);window.classroomSetSection('home')});
  assert.ok(await page.locator('.classroom-home').count()>0,'Student home should remain available');
+ assert.equal(await page.locator('.classroom-ring').count(),1,'Weekly progress dial should appear');
+ assert.equal(await page.locator('.classroom-tool-card').count(),4,'Home should have four clear primary areas');
+ await page.screenshot({path:path.join(shots,'home-'+device+'.png'),fullPage:true});
  if(isMobile){
    const nav=page.locator('#navigation');
    assert.equal(await nav.isVisible(),false,'Mobile nav should be collapsed');
