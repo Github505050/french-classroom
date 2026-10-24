@@ -5,7 +5,8 @@
   "welcome": "Bienvenue ! Choisis une leçon pour apprendre, pratiquer et réviser.",
   "weeks": [
     "weeks/week1.json",
-    "weeks/week2.json"
+    "weeks/week2.json",
+    "weeks/week3.json"
   ],
   "resources": [
     {
