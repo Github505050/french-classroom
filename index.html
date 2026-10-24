@@ -201,6 +201,12 @@ body.classroom-locked #auth-gate{display:flex}
 .lesson-notes-list li{padding-left:4px;color:#293f50;line-height:1.65;font-size:.95rem}
 @media(max-width:560px){.lesson-note-section{padding:14px}.lesson-note-heading{font-size:.98rem}.lesson-notes-table{font-size:.86rem}.lesson-notes-table th,.lesson-notes-table td{padding:9px 10px}}
 
+.app-day-screen #learning .lesson-notes-table th{white-space:nowrap}
+.app-day-screen #learning .lesson-notes-table.lesson-notes-wide{min-width:490px}
+.app-day-screen #learning .lesson-table-hint{display:none}
+@media(max-width:650px){.app-day-screen #learning .lesson-table-hint{display:block;font-size:.77rem;letter-spacing:.005em;font-weight:700;color:#476477;margin:5px 0 7px}}
+html[data-theme="dark"] .app-day-screen #learning .lesson-table-hint{color:#b6d9e5}
+
 /* Readability and mobile polish: consistent, clearly bold hierarchy for every week */
 .app-day-screen .app-day-head h2{font-weight:850;overflow-wrap:anywhere}
 .app-day-screen .app-day-notes-title h3{font-size:1.22rem;line-height:1.35;font-weight:850;color:#143b52;overflow-wrap:anywhere}
@@ -515,7 +521,7 @@ function teacherNotes(value, lesson, hasStory) {
    const m=line.match(/^((?:l[’']|le |la |les )[\p{L}’'\- ]+)\s*=\s*(.+)$/iu);
    return !!(m&&vocab.has(m[1].toLocaleLowerCase('fr')));
  };
- const table=(head,rows)=>`<div class="lesson-notes-table-scroll" tabindex="0" role="region" aria-label="Scrollable grammar table"><table class="lesson-notes-table"><thead><tr>${head.map(x=>`<th scope="col">${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+ const table=(head,rows)=>`${head.length>2?'<div class="lesson-table-hint" aria-hidden="true">↔ Swipe table to see all columns</div>':''}<div class="lesson-notes-table-scroll" tabindex="0" role="region" aria-label="Scrollable grammar table"><table class="lesson-notes-table${head.length>2?' lesson-notes-wide':''}"><thead><tr>${head.map(x=>`<th scope="col">${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
  const combo=/^(à|de)\s*\+\s*(le|la|l[’']|les)\s*=\s*([^:]+?)\s*:\s*(.+)$/iu;
  const article=/^(le|la|l[’']|les|un|une|des|ne\s*\.{2,3}\s*\w+)\s*=\s*(.+)$/iu;
  const translation=/^(.{3,100}?)\s+=\s+(.+)$/u;
