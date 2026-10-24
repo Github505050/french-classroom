@@ -390,7 +390,7 @@ function dashboard(){
  const first=next?.vocab?.find(v=>Array.isArray(v)&&v.length>=2)||null;
  const word=first||((next?.verbs||[])[0]?[(next.verbs[0].fr),(next.verbs[0].en)]:null);
  const name=state.config.studentName&&state.config.studentName!=='Mon élève'?esc(state.config.studentName):'';
- const actions=[['speaking','Speaking','speaking'],['listening','Listening','listening'],['words','Vocabulary','vocab'],['practice','Practice','practice'],['vocabulary','Vocabulary','vocab']];
+ const actions=[['speaking','Speaking','speaking'],['listening','Listening','listening'],['practice','Practice','practice'],['vocabulary','Vocabulary','vocab']];
  const dayTiles=w.days.slice(0,4).map((d,i)=>{const done=getForWeek(w,i,'completed')==='yes';return '<div class="app-progress-day"><span class="app-progress-mark '+(done?'is-done':'')+'">'+(done?appIcon('check'):'')+'</span><span>Day '+displayDayNumber(w,i)+' · '+esc(d.title)+'</span></div>'}).join('');
  return `<section class="classroom-home app-home" aria-label="French learning dashboard">
   <div class="app-welcome"><div class="app-welcome-copy"><span class="app-overline">MON ESPACE FRANÇAIS · ${esc(w.title)}</span><h2>Bonjour${name?', '+name:''}! <span aria-hidden="true">👋</span></h2><p>Your French journey continues here.</p><span class="app-welcome-small">A little French, every day.</span></div></div>
