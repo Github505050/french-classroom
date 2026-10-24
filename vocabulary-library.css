@@ -1,0 +1,36 @@
+/* French Classroom vocabulary library – isolated, responsive design */
+#main .vocab-library{--vl-ink:#173449;--vl-muted:#647b8a;--vl-stroke:#dbe7ed;--vl-teal:#126a71;max-width:none;width:100%;margin:0;color:var(--vl-ink)}
+#main .vocab-library *{box-sizing:border-box}
+#main .vocab-library .vocab-hero{position:relative;isolation:isolate;overflow:hidden;border:1px solid #cfe5e3;background:linear-gradient(117deg,#edf9f7 0%,#f5fbfa 55%,#f1f6fe 100%);padding:clamp(21px,3vw,33px);border-radius:22px;margin:0 0 20px}
+#main .vocab-library .vocab-hero:after{content:"";position:absolute;z-index:-1;width:240px;height:240px;border:32px solid #d6efed66;border-radius:50%;top:-118px;right:-82px}
+#main .vocab-library .vocab-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:#18767e;margin:0 0 11px}
+#main .vocab-library .vocab-hero h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:850;letter-spacing:-.045em;line-height:1.14;color:#123950;margin:0 0 9px}
+#main .vocab-library .vocab-hero p{color:#526f7e;max-width:540px;line-height:1.55;margin:0;font-size:.92rem}
+#main .vocab-library .vocab-overview{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding:0 2px}
+#main .vocab-library .vocab-overview-title{font-size:1.08rem;font-weight:850;color:#1c4053}
+#main .vocab-library .vocab-overview-count{font-size:.81rem;color:#537986;background:#f0f7f9;border:1px solid #dcebee;border-radius:100px;padding:7px 12px;font-weight:750}
+#main .vocab-library .vocab-categories{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important;align-items:stretch;margin:0;padding:0;max-width:none}
+#main .vocab-library .vocab-category{appearance:none!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;position:relative!important;width:100%!important;min-width:0!important;min-height:161px!important;gap:10px!important;padding:19px!important;text-align:left!important;white-space:normal!important;border:1px solid #dce7ec!important;border-radius:18px!important;background:#fff!important;color:#16394c!important;box-shadow:0 5px 16px #1d486412!important;transition:transform .16s,border-color .16s,box-shadow .16s!important}
+#main .vocab-library .vocab-category:hover{transform:translateY(-3px);border-color:#8ccdc8!important;box-shadow:0 12px 25px #1d48641e!important}
+#main .vocab-library .vocab-category[aria-pressed="true"]{background:linear-gradient(130deg,#f2fbfa,#fff)!important;border-color:#3b9b94!important;box-shadow:0 0 0 2px #3b9b9420,0 10px 25px #1d486416!important}
+#main .vocab-library .vocab-category:focus-visible{outline:3px solid #62a9cd;outline-offset:3px}
+#main .vocab-library .vocab-category-icon{display:grid!important;place-items:center;flex-shrink:0;width:43px;height:43px;line-height:1;background:#eaf6f3;border-radius:13px;font-size:1.35rem;margin:0}
+#main .vocab-library .vocab-category:nth-child(4n+2) .vocab-category-icon{background:#eef0ff}
+#main .vocab-library .vocab-category:nth-child(4n+3) .vocab-category-icon{background:#fff4e7}
+#main .vocab-library .vocab-category:nth-child(4n+4) .vocab-category-icon{background:#f2ecfb}
+#main .vocab-library .vocab-category-name{display:block!important;font-size:.97rem!important;font-weight:820!important;line-height:1.3!important;letter-spacing:-.012em;margin:0;color:#204052}
+#main .vocab-library .vocab-category-meta{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px;width:100%;margin-top:auto!important;font-size:.78rem!important;color:#617d8b!important;white-space:normal!important;font-weight:600!important}
+#main .vocab-library .vocab-category-meta .vocab-chevron{display:grid;place-items:center;width:23px;height:23px;flex-shrink:0;border-radius:8px;background:#f0f7f8;color:#276d76;font-size:1rem}
+#main .vocab-library .vocab-selected{margin-top:24px;padding:clamp(17px,3vw,25px);border-radius:19px;border:1px solid var(--vl-stroke);background:#fff;box-shadow:0 6px 22px #173b520c;scroll-margin-top:24px}
+#main .vocab-library .vocab-selected-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid #e7eff2;margin-bottom:10px}
+#main .vocab-library .vocab-selected-heading h3{margin:0;font-size:1.25rem;font-weight:850;color:#143d52;letter-spacing:-.025em}
+#main .vocab-library .vocab-selected-heading span{font-size:.79rem;font-weight:750;color:#3d7780;background:#eaf6f5;border-radius:100px;padding:6px 11px}
+#main .vocab-library .vocab-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:20px;row-gap:0;background:transparent!important;padding:0!important;border:0!important;border-radius:0!important;margin:0}
+#main .vocab-library .vocab-entry{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;gap:5px!important;min-width:0;min-height:80px;padding:14px 8px!important;margin:0!important;border:0!important;border-bottom:1px solid #e9eff3!important;background:transparent!important;line-height:1.35!important}
+#main .vocab-library .vocab-entry strong{display:block;font-size:1.07rem!important;line-height:1.35!important;font-weight:800!important;color:#174d62!important;margin:0!important}
+#main .vocab-library .vocab-entry span{display:block!important;font-size:.9rem!important;line-height:1.45!important;font-weight:450!important;color:#597281!important;margin:0!important}
+#main .vocab-library .vocab-empty{padding:24px 15px;text-align:center;background:#f6fafb;border:1px dashed #d1e1e7;border-radius:12px;color:#647c88;font-size:.88rem}
+@media(max-width:1000px){#main .vocab-library .vocab-categories{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:570px){#main .vocab-library .vocab-hero{padding:21px;border-radius:17px}#main .vocab-library .vocab-categories{gap:10px!important}#main .vocab-library .vocab-category{min-height:148px!important;padding:13px!important;border-radius:14px!important;gap:9px!important}#main .vocab-library .vocab-category-icon{width:37px;height:37px;border-radius:11px;font-size:1.16rem}#main .vocab-library .vocab-category-name{font-size:.86rem!important}#main .vocab-library .vocab-category-meta{font-size:.73rem!important}#main .vocab-library .vocab-selected{padding:17px 15px;border-radius:15px}#main .vocab-library .vocab-list{grid-template-columns:1fr!important}#main .vocab-library .vocab-entry{min-height:72px;padding:12px 3px!important}}
+@media(max-width:345px){#main .vocab-library .vocab-categories{grid-template-columns:1fr!important}#main .vocab-library .vocab-category{min-height:117px!important}}
+@media(prefers-reduced-motion:reduce){#main .vocab-library .vocab-category{transition:none!important}}
