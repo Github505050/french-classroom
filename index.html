@@ -201,6 +201,53 @@ body.classroom-locked #auth-gate{display:flex}
 .lesson-notes-list li{padding-left:4px;color:#293f50;line-height:1.65;font-size:.95rem}
 @media(max-width:560px){.lesson-note-section{padding:14px}.lesson-note-heading{font-size:.98rem}.lesson-notes-table{font-size:.86rem}.lesson-notes-table th,.lesson-notes-table td{padding:9px 10px}}
 
+/* Readability and mobile polish: consistent, clearly bold hierarchy for every week */
+.app-day-screen .app-day-head h2{font-weight:850;overflow-wrap:anywhere}
+.app-day-screen .app-day-notes-title h3{font-size:1.22rem;line-height:1.35;font-weight:850;color:#143b52;overflow-wrap:anywhere}
+.app-day-screen #learning .tile h3{font-weight:850;font-size:1.12rem;line-height:1.35;overflow-wrap:anywhere;color:#174457}
+.app-day-screen #learning .tile h3 .small{font-weight:550;font-size:.84rem;display:inline-block;line-height:1.6}
+.app-day-screen #learning .lesson-note-section{border-left:3px solid #3a8a99;padding:17px 19px;min-width:0}
+.app-day-screen #learning .lesson-note-heading{font-size:1.15rem;font-weight:850;line-height:1.4;color:#143c54;margin:0 0 12px;padding-bottom:9px;border-bottom:1px solid #e1edf0;letter-spacing:-.01em;overflow-wrap:anywhere}
+.app-day-screen #learning .lesson-note-body p,.app-day-screen #learning .lesson-notes-list li{font-size:1rem;line-height:1.7;overflow-wrap:anywhere}
+.app-day-screen #learning .lesson-notes-table th{font-weight:850;font-size:.95rem;letter-spacing:.005em}
+.app-day-screen #learning .lesson-notes-table td:first-child{font-weight:750}
+.app-day-screen #learning .lesson-notes-table-scroll{min-width:0;max-width:100%;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.app-day-screen #learning .lesson-notes-table-scroll:focus-visible{outline:3px solid #258da3;outline-offset:3px}
+.app-day-screen #learning .lesson-model-row{min-width:0;overflow-wrap:anywhere}
+@media(max-width:650px){
+  .app-day-screen #learning{min-width:0;max-width:100%;overflow-wrap:anywhere}
+  .app-day-screen #learning .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));min-width:0}
+  .app-day-screen #learning .tile{min-width:0}
+  .app-day-screen .app-day-notes-title h3{font-size:1.16rem;line-height:1.38}
+  .app-day-screen #learning .lesson-note-section{padding:14px 13px;border-radius:13px}
+  .app-day-screen #learning .lesson-note-heading{font-size:1.09rem;line-height:1.42;font-weight:850;margin-bottom:10px;padding-bottom:8px}
+  .app-day-screen #learning .lesson-note-body p,.app-day-screen #learning .lesson-notes-list li{font-size:.98rem;line-height:1.72}
+  .app-day-screen #learning .lesson-notes-table th{font-size:.89rem}
+  .app-day-screen #learning .lesson-notes-table th,.app-day-screen #learning .lesson-notes-table td{padding:10px}
+  .app-day-screen #learning .lesson-notes-table{min-width:320px}
+  .app-day-screen #learning .lesson-note-section,.app-day-screen #learning .lesson-note-body,.app-day-screen #learning .lesson-notes-clean{min-width:0;max-width:100%}
+}
+@media(max-width:360px){
+  .app-day-screen #learning{padding:11px}
+  .app-day-screen #learning .lesson-note-section{padding:12px 11px}
+  .app-day-screen #learning .lesson-note-heading{font-size:1.05rem}
+  .app-day-screen #learning .lesson-notes-table{min-width:305px;font-size:.85rem}
+  .app-day-screen #learning .tile{padding:13px}
+}
+html[data-theme="dark"] .app-day-screen #learning .lesson-note-section,html[data-theme="dark"] .app-day-screen #learning .tile{background:#243f52;border-color:#486779;color:#eef7fb;box-shadow:none}
+html[data-theme="dark"] .app-day-screen #learning .lesson-note-section{border-left-color:#76c8d1}
+html[data-theme="dark"] .app-day-screen #learning .lesson-note-heading,html[data-theme="dark"] .app-day-screen #learning .tile h3{color:#f1fafc;border-bottom-color:#486779}
+html[data-theme="dark"] .app-day-screen #learning .lesson-note-body p,html[data-theme="dark"] .app-day-screen #learning .lesson-notes-list li,html[data-theme="dark"] .app-day-screen #learning .lesson-model-row{color:#e2eef4}
+html[data-theme="dark"] .app-day-screen #learning .lesson-model-row{border-bottom-color:#486779}
+html[data-theme="dark"] .app-day-screen #learning .lesson-notes-table-scroll{border-color:#537284}
+html[data-theme="dark"] .app-day-screen #learning .lesson-notes-table th{background:#345b6e;color:#f7fbfd;border-bottom-color:#56778a}
+html[data-theme="dark"] .app-day-screen #learning .lesson-notes-table td{color:#e8f3f7;border-bottom-color:#466679}
+html[data-theme="dark"] .app-day-screen #learning .lesson-notes-table td:first-child{color:#fff;font-weight:800}
+html[data-theme="dark"] .app-day-screen #learning .lesson-notes-table tbody tr:nth-child(even){background:#294b5d}
+html[data-theme="dark"] .app-day-screen #learning .conj td{color:#e2eef4;border-color:#496879}
+html[data-theme="dark"] .app-day-screen #learning .tile h3 .muted,html[data-theme="dark"] .app-day-screen #learning .conj td:first-child{color:#bcd5e2}
+
+
 </style><link rel="stylesheet" href="./classroom-polish.css?v=20261023-home-v16"><style id="critical-classroom-home">
 /* V3 Home: clear editorial hierarchy and distinct brand identity */
 .classroom-home{display:grid;gap:20px;min-width:0;color:#173449}
@@ -468,7 +515,7 @@ function teacherNotes(value, lesson, hasStory) {
    const m=line.match(/^((?:l[’']|le |la |les )[\p{L}’'\- ]+)\s*=\s*(.+)$/iu);
    return !!(m&&vocab.has(m[1].toLocaleLowerCase('fr')));
  };
- const table=(head,rows)=>`<div class="lesson-notes-table-scroll"><table class="lesson-notes-table"><thead><tr>${head.map(x=>`<th scope="col">${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+ const table=(head,rows)=>`<div class="lesson-notes-table-scroll" tabindex="0" role="region" aria-label="Scrollable grammar table"><table class="lesson-notes-table"><thead><tr>${head.map(x=>`<th scope="col">${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
  const combo=/^(à|de)\s*\+\s*(le|la|l[’']|les)\s*=\s*([^:]+?)\s*:\s*(.+)$/iu;
  const article=/^(le|la|l[’']|les|un|une|des|ne\s*\.{2,3}\s*\w+)\s*=\s*(.+)$/iu;
  const translation=/^(.{3,100}?)\s+=\s+(.+)$/u;
