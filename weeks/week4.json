@@ -1,0 +1,1788 @@
+{
+  "id": "week4",
+  "number": 4,
+  "title": "French A1–A2 · Week 4",
+  "description": "Days 22–28: grouped -RE conjugation patterns (prendre/apprendre/comprendre; répondre; dire/lire; écrire/mettre/remettre), adjective agreement and demonstratives; everyday speaking, English-to-French translation, daily stories and D+1/+3/+7/+14/+30 active recall.",
+  "days": [
+    {
+      "day": 22,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Prendre family",
+      "title": "Prendre & apprendre — même famille",
+      "focus": "Take an object and talk about learning French",
+      "yesterday": "Spaced repetition due from Days [8, 15, 19, 21]; review 1–3–7–14–30 intervals; old mistakes return tomorrow. No new grammar beyond today’s target.",
+      "explanation": "DAY 22 — SIMPLE STUDENT NOTES\n\n1. SPACED REVIEW — FIRST, WITHOUT NOTES\nReview due from earlier days: Day 8, Day 15, Day 19, Day 21. This follows D+1, D+3, D+7, D+14, D+30. Say answers aloud before checking.\n\nToday introduces useful -RE forms via the prendre family; not all verbs ending in -RE share one pattern.\n2. TODAY’S VERBS\nprendre = to take. je prends | tu prends | il / elle prend | nous prenons | vous prenez | ils / elles prennent\napprendre = to learn. j’apprends | tu apprends | il / elle apprend | nous apprenons | vous apprenez | ils / elles apprennent\n\nPrendre and apprendre are in the same family. Compare je prends / j’apprends, nous prenons / nous apprenons, ils prennent / ils apprennent. Do NOT use the regular attendre endings here.\n\n3. USEFUL SENTENCES\nJe prends mon sac. — I take my bag.\nJ’apprends le français. — I learn French.\n\n4. TODAY’S VOCABULARY\nle sac = bag\nle métro = metro\nle billet = ticket\nla leçon = lesson\n\n5. COMMON MISTAKES\nNOT je prend → je prends. NOT nous apprendons → nous apprenons.\n\n6. MON HISTOIRE DU JOUR\nLe matin, je prends mon petit sac et mon livre. J’apprends le français à la maison avec mon ami. Ma sœur apprend le français aussi. Mon livre est sur la table, mais mon cahier est dans mon sac. Ensuite, nous étudions ensemble.\n\nRead and copy the story once, then read it aloud twice. Reuse familiar words naturally. No extra story exercises.\n\n7. SHORT PRACTICE\nFirst say the French answer, then type it. Do the short translations, mixed-verb drills, speaking questions and three quick exit tasks. If you make a mistake, correct it and try again tomorrow. For open-ended writing and speaking, model answers are examples; other correct personal answers are valid. Review mistakes tomorrow.",
+      "verbs": [
+        {
+          "fr": "prendre",
+          "en": "to take"
+        },
+        {
+          "fr": "apprendre",
+          "en": "to learn"
+        }
+      ],
+      "vocab": [
+        [
+          "le sac",
+          "bag"
+        ],
+        [
+          "le métro",
+          "metro"
+        ],
+        [
+          "le billet",
+          "ticket"
+        ],
+        [
+          "la leçon",
+          "lesson"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "prendre",
+          "forms": [
+            "je prends",
+            "tu prends",
+            "il / elle prend",
+            "nous prenons",
+            "vous prenez",
+            "ils / elles prennent"
+          ],
+          "meaning": "to take"
+        },
+        {
+          "name": "apprendre",
+          "forms": [
+            "j’apprends",
+            "tu apprends",
+            "il / elle apprend",
+            "nous apprenons",
+            "vous apprenez",
+            "ils / elles apprennent"
+          ],
+          "meaning": "to learn"
+        }
+      ],
+      "fixed": [
+        "Je prends mon sac. — I take my bag.",
+        "J’apprends le français. — I learn French."
+      ],
+      "flashcards": [
+        [
+          "I — étudier",
+          "j’étudie"
+        ],
+        [
+          "We — finir",
+          "nous finissons"
+        ],
+        [
+          "I — partir",
+          "je pars"
+        ],
+        [
+          "the bedroom",
+          "la chambre"
+        ],
+        [
+          "the notebook",
+          "le cahier"
+        ]
+      ],
+      "flashcardsNote": "Five quick cards; spaced review due from source Days [8, 15, 19, 21]. Errors: retry tomorrow.",
+      "recall": [
+        {
+          "prompt": "bag",
+          "answer": "le sac",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le sac."
+        },
+        {
+          "prompt": "metro",
+          "answer": "le métro",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le métro."
+        },
+        {
+          "prompt": "ticket",
+          "answer": "le billet",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le billet."
+        },
+        {
+          "prompt": "lesson",
+          "answer": "la leçon",
+          "accept": [],
+          "explanation": "Learn the noun with its article: la leçon."
+        },
+        {
+          "prompt": "Recall Day 8: I — étudier",
+          "answer": "j’étudie",
+          "accept": [],
+          "explanation": "Day 8 spaced review: recall without looking, then check: j’étudie."
+        },
+        {
+          "prompt": "Recall Day 15: I — finir",
+          "answer": "je finis",
+          "accept": [],
+          "explanation": "Day 15 spaced review: recall without looking, then check: je finis."
+        },
+        {
+          "prompt": "Recall Day 19: I — partir",
+          "answer": "je pars",
+          "accept": [],
+          "explanation": "Day 19 spaced review: recall without looking, then check: je pars."
+        },
+        {
+          "prompt": "Recall Day 21 — ask in French: Where do you live?",
+          "answer": "Tu habites où ?",
+          "accept": [],
+          "explanation": "Use the everyday question form learned on Day 21."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + prendre",
+          "answer": "je prends",
+          "accept": [],
+          "explanation": "Use the taught prendre pattern: je prends."
+        },
+        {
+          "prompt": "nous + prendre",
+          "answer": "nous prenons",
+          "accept": [],
+          "explanation": "Use the taught prendre pattern: nous prenons."
+        },
+        {
+          "prompt": "ils + prendre",
+          "answer": "ils prennent",
+          "accept": [],
+          "explanation": "With ils, use the present-tense form: ils prennent."
+        },
+        {
+          "prompt": "je + apprendre",
+          "answer": "j’apprends",
+          "accept": [],
+          "explanation": "Use the taught apprendre pattern: j’apprends."
+        },
+        {
+          "prompt": "nous + apprendre",
+          "answer": "nous apprenons",
+          "accept": [],
+          "explanation": "Use the taught apprendre pattern: nous apprenons."
+        },
+        {
+          "prompt": "ils + apprendre",
+          "answer": "ils apprennent",
+          "accept": [],
+          "explanation": "With ils, use the present-tense form: ils apprennent."
+        },
+        {
+          "prompt": "Old verb: nous + étudier",
+          "answer": "nous étudions",
+          "accept": [],
+          "explanation": "Review the conjugation: nous étudions."
+        },
+        {
+          "prompt": "Old verb: nous + trouver",
+          "answer": "nous trouvons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous trouvons."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate into French: I take my bag.",
+          "answer": "Je prends mon sac.",
+          "accept": [],
+          "explanation": "Reference sentence: Je prends mon sac. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: We learn French.",
+          "answer": "Nous apprenons le français.",
+          "accept": [],
+          "explanation": "Reference sentence: Nous apprenons le français. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: She takes the metro.",
+          "answer": "Elle prend le métro.",
+          "accept": [],
+          "explanation": "Reference sentence: Elle prend le métro. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: I do not take the book.",
+          "answer": "Je ne prends pas le livre.",
+          "accept": [],
+          "explanation": "Reference sentence: Je ne prends pas le livre. Check the person, verb ending and any articles or negation before comparing."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "je prends → change to nous",
+          "answer": "nous prenons",
+          "accept": [],
+          "explanation": "Compare je and nous forms of prendre."
+        },
+        {
+          "prompt": "j’apprends → change to nous",
+          "answer": "nous apprenons",
+          "accept": [],
+          "explanation": "Compare je and nous forms of apprendre."
+        },
+        {
+          "prompt": "Correct the error: « Nous prendons le métro. »",
+          "answer": "Nous prenons le métro.",
+          "accept": [],
+          "explanation": "Prendre: nous prenons (not prendons)."
+        }
+      ],
+      "oral": [
+        [
+          "Tu prends ton sac ?",
+          "Oui, je prends mon sac."
+        ],
+        [
+          "Tu apprends le français ?",
+          "Oui, j’apprends le français."
+        ],
+        [
+          "Qu’est-ce que tu prends le matin ?",
+          "Je prends mon sac."
+        ],
+        [
+          "Avec qui tu apprends le français ?",
+          "J’apprends le français avec mon ami."
+        ],
+        [
+          "Say two sentences using one old verb and today’s main idea.",
+          "Je parle français et j’apprends le français."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence using today’s focus.",
+          "Je prends mon sac."
+        ],
+        [
+          "Translate aloud without notes: We learn French.",
+          "Nous apprenons le français."
+        ],
+        [
+          "Say a sentence from today’s story without reading.",
+          "Le matin, je prends mon petit sac et mon livre."
+        ]
+      ]
+    },
+    {
+      "day": 23,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Understand & answer",
+      "title": "Comprendre & répondre — questions simples",
+      "focus": "Say what you understand and answer a question",
+      "yesterday": "Spaced repetition due from Days [9, 16, 20, 22]; review 1–3–7–14–30 intervals; old mistakes return tomorrow. No new grammar beyond today’s target.",
+      "explanation": "DAY 23 — SIMPLE STUDENT NOTES\n\n1. SPACED REVIEW — FIRST, WITHOUT NOTES\nReview due from earlier days: Day 9, Day 16, Day 20, Day 22. This follows D+1, D+3, D+7, D+14, D+30. Say answers aloud before checking.\n\n2. TODAY’S VERBS\ncomprendre = to understand. je comprends | tu comprends | il / elle comprend | nous comprenons | vous comprenez | ils / elles comprennent\nrépondre = to answer. je réponds | tu réponds | il / elle répond | nous répondons | vous répondez | ils / elles répondent\n\nComprendre shares the prendre pattern. Répondre is DIFFERENT: je réponds, il répond, nous répondons. To answer a person use répondre à: je réponds au professeur.\n\n3. USEFUL SENTENCES\nJe comprends la question. — I understand the question.\nJe réponds au professeur. — I answer the teacher.\n\n4. TODAY’S VOCABULARY\nSome nouns below are recycled review words, not new vocabulary: la réponse (Day 10), la question (Day 10), le message (Day 9).\nla réponse = answer\nla question = question\nle courriel = email\nle message = message\n\n5. COMMON MISTAKES\nNOT je comprendes → je comprends. NOT je répond le professeur → je réponds au professeur.\n\n6. MON HISTOIRE DU JOUR\nAujourd’hui, j’apprends le français avec mon ami. Mon professeur explique une question facile. Je comprends la question et je réponds au professeur. Mon ami comprend aussi. Ensuite, nous étudions dans ma petite chambre. Mon livre est sur la table et mon cahier est dans mon sac.\n\nRead and copy the story once, then read it aloud twice. Reuse familiar words naturally. No extra story exercises.\n\n7. SHORT PRACTICE\nFirst say the French answer, then type it. Do the short translations, mixed-verb drills, speaking questions and three quick exit tasks. If you make a mistake, correct it and try again tomorrow. For open-ended writing and speaking, model answers are examples; other correct personal answers are valid. Review mistakes tomorrow.",
+      "verbs": [
+        {
+          "fr": "comprendre",
+          "en": "to understand"
+        },
+        {
+          "fr": "répondre",
+          "en": "to answer"
+        }
+      ],
+      "vocab": [
+        [
+          "la réponse",
+          "answer"
+        ],
+        [
+          "la question",
+          "question"
+        ],
+        [
+          "le courriel",
+          "email"
+        ],
+        [
+          "le message",
+          "message"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "comprendre",
+          "forms": [
+            "je comprends",
+            "tu comprends",
+            "il / elle comprend",
+            "nous comprenons",
+            "vous comprenez",
+            "ils / elles comprennent"
+          ],
+          "meaning": "to understand"
+        },
+        {
+          "name": "répondre",
+          "forms": [
+            "je réponds",
+            "tu réponds",
+            "il / elle répond",
+            "nous répondons",
+            "vous répondez",
+            "ils / elles répondent"
+          ],
+          "meaning": "to answer"
+        }
+      ],
+      "fixed": [
+        "Je comprends la question. — I understand the question.",
+        "Je réponds au professeur. — I answer the teacher."
+      ],
+      "flashcards": [
+        [
+          "I — aider",
+          "j’aide"
+        ],
+        [
+          "I — réussir",
+          "je réussis"
+        ],
+        [
+          "I — dormir",
+          "je dors"
+        ],
+        [
+          "We — prendre",
+          "nous prenons"
+        ],
+        [
+          "the order",
+          "la commande"
+        ]
+      ],
+      "flashcardsNote": "Five quick cards; spaced review due from source Days [9, 16, 20, 22]. Errors: retry tomorrow.",
+      "recall": [
+        {
+          "prompt": "answer",
+          "answer": "la réponse",
+          "accept": [],
+          "explanation": "Learn the noun with its article: la réponse."
+        },
+        {
+          "prompt": "question",
+          "answer": "la question",
+          "accept": [],
+          "explanation": "Learn the noun with its article: la question."
+        },
+        {
+          "prompt": "email",
+          "answer": "le courriel",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le courriel."
+        },
+        {
+          "prompt": "message",
+          "answer": "le message",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le message."
+        },
+        {
+          "prompt": "Recall Day 9: I — aider",
+          "answer": "j’aide",
+          "accept": [],
+          "explanation": "Day 9 spaced review: recall without looking, then check: j’aide."
+        },
+        {
+          "prompt": "Recall Day 16: I — réussir",
+          "answer": "je réussis",
+          "accept": [],
+          "explanation": "Day 16 spaced review: recall without looking, then check: je réussis."
+        },
+        {
+          "prompt": "Recall Day 20: I — dormir",
+          "answer": "je dors",
+          "accept": [],
+          "explanation": "Day 20 spaced review: recall without looking, then check: je dors."
+        },
+        {
+          "prompt": "Recall Day 22 — we take",
+          "answer": "nous prenons",
+          "accept": [],
+          "explanation": "Prendre: nous prenons, not nous prendons."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + comprendre",
+          "answer": "je comprends",
+          "accept": [],
+          "explanation": "Use the taught comprendre pattern: je comprends."
+        },
+        {
+          "prompt": "nous + comprendre",
+          "answer": "nous comprenons",
+          "accept": [],
+          "explanation": "Use the taught comprendre pattern: nous comprenons."
+        },
+        {
+          "prompt": "ils + comprendre",
+          "answer": "ils comprennent",
+          "accept": [],
+          "explanation": "With ils, use the present-tense form: ils comprennent."
+        },
+        {
+          "prompt": "je + répondre",
+          "answer": "je réponds",
+          "accept": [],
+          "explanation": "Use the taught répondre pattern: je réponds."
+        },
+        {
+          "prompt": "nous + répondre",
+          "answer": "nous répondons",
+          "accept": [],
+          "explanation": "Use the taught répondre pattern: nous répondons."
+        },
+        {
+          "prompt": "ils + répondre",
+          "answer": "ils répondent",
+          "accept": [],
+          "explanation": "With ils, use the present-tense form: ils répondent."
+        },
+        {
+          "prompt": "Old verb: nous + aider",
+          "answer": "nous aidons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous aidons."
+        },
+        {
+          "prompt": "Old verb: nous + utiliser",
+          "answer": "nous utilisons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous utilisons."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate into French: I understand the question.",
+          "answer": "Je comprends la question.",
+          "accept": [],
+          "explanation": "Reference sentence: Je comprends la question. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: We answer the question.",
+          "answer": "Nous répondons à la question.",
+          "accept": [],
+          "explanation": "Reference sentence: Nous répondons à la question. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: She learns French.",
+          "answer": "Elle apprend le français.",
+          "accept": [],
+          "explanation": "Reference sentence: Elle apprend le français. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: I do not understand the message.",
+          "answer": "Je ne comprends pas le message.",
+          "accept": [],
+          "explanation": "Reference sentence: Je ne comprends pas le message. Check the person, verb ending and any articles or negation before comparing."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "je comprends → change to nous",
+          "answer": "nous comprenons",
+          "accept": [],
+          "explanation": "Compare je and nous forms of comprendre."
+        },
+        {
+          "prompt": "je réponds → change to nous",
+          "answer": "nous répondons",
+          "accept": [],
+          "explanation": "Compare je and nous forms of répondre."
+        },
+        {
+          "prompt": "Correct the error: « Je répond la question. »",
+          "answer": "Je réponds à la question.",
+          "accept": [],
+          "explanation": "Répondre takes à before a question; je réponds."
+        }
+      ],
+      "oral": [
+        [
+          "Tu comprends la question ?",
+          "Oui, je comprends la question."
+        ],
+        [
+          "Tu réponds au professeur ?",
+          "Oui, je réponds au professeur."
+        ],
+        [
+          "Tu apprends le français où ?",
+          "J’apprends le français à la maison."
+        ],
+        [
+          "Tu comprends toujours ?",
+          "Non, je ne comprends pas toujours."
+        ],
+        [
+          "Say two sentences using one old verb and today’s main idea.",
+          "Je parle français et j’apprends le français."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence using today’s focus.",
+          "Je comprends la question."
+        ],
+        [
+          "Translate aloud without notes: We answer the question.",
+          "Nous répondons à la question."
+        ],
+        [
+          "Say a sentence from today’s story without reading.",
+          "Aujourd’hui, j’apprends le français avec mon ami."
+        ]
+      ]
+    },
+    {
+      "day": 24,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Say & read",
+      "title": "Dire & lire — au quotidien",
+      "focus": "Use everyday speech and read familiar material",
+      "yesterday": "Spaced repetition due from Days [10, 17, 21, 23]; review 1–3–7–14–30 intervals; old mistakes return tomorrow. No new grammar beyond today’s target.",
+      "explanation": "DAY 24 — SIMPLE STUDENT NOTES\n\n1. SPACED REVIEW — FIRST, WITHOUT NOTES\nReview due from earlier days: Day 10, Day 17, Day 21, Day 23. This follows D+1, D+3, D+7, D+14, D+30. Say answers aloud before checking.\n\n2. TODAY’S VERBS\ndire = to say/tell. je dis | tu dis | il / elle dit | nous disons | vous dites | ils / elles disent\nlire = to read. je lis | tu lis | il / elle lit | nous lisons | vous lisez | ils / elles lisent\n\nDire and lire have different forms: vous dites but vous lisez. Note je dis / je lis and ils disent / ils lisent.\n\n3. USEFUL SENTENCES\nJe dis bonjour. — I say hello.\nJe lis un livre. — I read a book.\n\n4. TODAY’S VOCABULARY\nle journal = newspaper\nla phrase = sentence\nle mot = word\nl’histoire = story\n\n5. COMMON MISTAKES\nNOT vous disez → vous dites. NOT nous lissons → nous lisons.\n\n6. MON HISTOIRE DU JOUR\nLe matin, je lis un petit livre dans ma chambre. Mon ami lit un message sur son téléphone. Je dis bonjour à mon ami et nous parlons français. Il comprend une phrase difficile et il explique la phrase. Ensuite, je prends mon cahier et j’étudie avec lui.\n\nRead and copy the story once, then read it aloud twice. Reuse familiar words naturally. No extra story exercises.\n\n7. SHORT PRACTICE\nFirst say the French answer, then type it. Do the short translations, mixed-verb drills, speaking questions and three quick exit tasks. If you make a mistake, correct it and try again tomorrow. For open-ended writing and speaking, model answers are examples; other correct personal answers are valid. Review mistakes tomorrow.",
+      "verbs": [
+        {
+          "fr": "dire",
+          "en": "to say/tell"
+        },
+        {
+          "fr": "lire",
+          "en": "to read"
+        }
+      ],
+      "vocab": [
+        [
+          "le journal",
+          "newspaper"
+        ],
+        [
+          "la phrase",
+          "sentence"
+        ],
+        [
+          "le mot",
+          "word"
+        ],
+        [
+          "l’histoire",
+          "story"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "dire",
+          "forms": [
+            "je dis",
+            "tu dis",
+            "il / elle dit",
+            "nous disons",
+            "vous dites",
+            "ils / elles disent"
+          ],
+          "meaning": "to say/tell"
+        },
+        {
+          "name": "lire",
+          "forms": [
+            "je lis",
+            "tu lis",
+            "il / elle lit",
+            "nous lisons",
+            "vous lisez",
+            "ils / elles lisent"
+          ],
+          "meaning": "to read"
+        }
+      ],
+      "fixed": [
+        "Je dis bonjour. — I say hello.",
+        "Je lis un livre. — I read a book."
+      ],
+      "flashcards": [
+        [
+          "I — penser",
+          "je pense"
+        ],
+        [
+          "I — agir",
+          "j’agis"
+        ],
+        [
+          "We — répondre",
+          "nous répondons"
+        ],
+        [
+          "with him",
+          "avec lui"
+        ],
+        [
+          "the question",
+          "la question"
+        ]
+      ],
+      "flashcardsNote": "Five quick cards; spaced review due from source Days [10, 17, 21, 23]. Errors: retry tomorrow.",
+      "recall": [
+        {
+          "prompt": "newspaper",
+          "answer": "le journal",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le journal."
+        },
+        {
+          "prompt": "sentence",
+          "answer": "la phrase",
+          "accept": [],
+          "explanation": "Learn the noun with its article: la phrase."
+        },
+        {
+          "prompt": "word",
+          "answer": "le mot",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le mot."
+        },
+        {
+          "prompt": "story",
+          "answer": "l’histoire",
+          "accept": [],
+          "explanation": "Learn the noun with its article: l’histoire."
+        },
+        {
+          "prompt": "Recall Day 10: I — penser",
+          "answer": "je pense",
+          "accept": [],
+          "explanation": "Day 10 spaced review: recall without looking, then check: je pense."
+        },
+        {
+          "prompt": "Recall Day 17: I — agir",
+          "answer": "j’agis",
+          "accept": [],
+          "explanation": "Day 17 spaced review: recall without looking, then check: j’agis."
+        },
+        {
+          "prompt": "Recall Day 21 — ask: Do you speak French? (est-ce que)",
+          "answer": "Est-ce que tu parles français ?",
+          "accept": [],
+          "explanation": "Use Est-ce que + subject + verb."
+        },
+        {
+          "prompt": "Recall Day 23 — we answer the question",
+          "answer": "nous répondons à la question",
+          "accept": [],
+          "explanation": "Répondre à une question; nous répondons."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + dire",
+          "answer": "je dis",
+          "accept": [],
+          "explanation": "Use the taught dire pattern: je dis."
+        },
+        {
+          "prompt": "nous + dire",
+          "answer": "nous disons",
+          "accept": [],
+          "explanation": "Use the taught dire pattern: nous disons."
+        },
+        {
+          "prompt": "ils + dire",
+          "answer": "ils disent",
+          "accept": [],
+          "explanation": "With ils, use the present-tense form: ils disent."
+        },
+        {
+          "prompt": "je + lire",
+          "answer": "je lis",
+          "accept": [],
+          "explanation": "Use the taught lire pattern: je lis."
+        },
+        {
+          "prompt": "nous + lire",
+          "answer": "nous lisons",
+          "accept": [],
+          "explanation": "Use the taught lire pattern: nous lisons."
+        },
+        {
+          "prompt": "ils + lire",
+          "answer": "ils lisent",
+          "accept": [],
+          "explanation": "With ils, use the present-tense form: ils lisent."
+        },
+        {
+          "prompt": "Old verb: nous + penser",
+          "answer": "nous pensons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous pensons."
+        },
+        {
+          "prompt": "Old verb: nous + expliquer",
+          "answer": "nous expliquons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous expliquons."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate into French: I read a book.",
+          "answer": "Je lis un livre.",
+          "accept": [],
+          "explanation": "Reference sentence: Je lis un livre. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: You (formal) say hello.",
+          "answer": "Vous dites bonjour.",
+          "accept": [],
+          "explanation": "Reference sentence: Vous dites bonjour. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: We read the sentence.",
+          "answer": "Nous lisons la phrase.",
+          "accept": [],
+          "explanation": "Reference sentence: Nous lisons la phrase. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: She does not read the newspaper.",
+          "answer": "Elle ne lit pas le journal.",
+          "accept": [],
+          "explanation": "Reference sentence: Elle ne lit pas le journal. Check the person, verb ending and any articles or negation before comparing."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "je dis → change to nous",
+          "answer": "nous disons",
+          "accept": [],
+          "explanation": "Compare je and nous forms of dire."
+        },
+        {
+          "prompt": "je lis → change to nous",
+          "answer": "nous lisons",
+          "accept": [],
+          "explanation": "Compare je and nous forms of lire."
+        },
+        {
+          "prompt": "Correct the error: « Vous disez bonjour. »",
+          "answer": "Vous dites bonjour.",
+          "accept": [],
+          "explanation": "Dire has the irregular vous form: vous dites."
+        }
+      ],
+      "oral": [
+        [
+          "Tu lis un livre ?",
+          "Oui, je lis un petit livre."
+        ],
+        [
+          "Tu dis bonjour au professeur ?",
+          "Oui, je dis bonjour au professeur."
+        ],
+        [
+          "Qu’est-ce que tu lis ?",
+          "Je lis une histoire."
+        ],
+        [
+          "Tu comprends la phrase ?",
+          "Oui, je comprends la phrase."
+        ],
+        [
+          "Say two sentences using one old verb and today’s main idea.",
+          "Je parle français et j’apprends le français."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence using today’s focus.",
+          "Je lis un livre."
+        ],
+        [
+          "Translate aloud without notes: You (formal) say hello.",
+          "Vous dites bonjour."
+        ],
+        [
+          "Say a sentence from today’s story without reading.",
+          "Le matin, je lis un petit livre dans ma chambre."
+        ]
+      ]
+    },
+    {
+      "day": 25,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Adjective agreement",
+      "title": "Accord des adjectifs — petit / petite",
+      "focus": "Describe nouns accurately using masculine, feminine and plural adjectives",
+      "yesterday": "Spaced repetition due from Days [11, 18, 22, 24]; review 1–3–7–14–30 intervals; old mistakes return tomorrow. No new grammar beyond today’s target.",
+      "explanation": "DAY 25 — SIMPLE STUDENT NOTES\n\n1. SPACED REVIEW — FIRST, WITHOUT NOTES\nReview due from earlier days: Day 11, Day 18, Day 22, Day 24. This follows D+1, D+3, D+7, D+14, D+30. Say answers aloud before checking.\n\n2. TODAY’S GRAMMAR (NO NEW VERBS)\nAn adjective describes a noun. Masculine: un petit livre, un grand salon. Feminine: une petite chambre, une grande maison. Plural: les petits livres, les grandes chambres. Some adjectives, e.g. facile and difficile, have the same masculine/feminine singular form. Agreement follows the noun, not the speaker.\n\n3. USEFUL SENTENCES\nUn petit livre. / Une petite maison. — A small book / house.\nUn grand salon. / Une grande chambre. — A big living room / bedroom.\n\n4. TODAY’S VOCABULARY\nNo new vocabulary today: review previously learned nouns with their articles.\n\n5. COMMON MISTAKES\nNOT une petit chambre → une petite chambre; NOT les grande chambres → les grandes chambres.\n\n6. MON HISTOIRE DU JOUR\nMa chambre est petite, mais mon salon est grand. Je prends un petit livre et je lis une phrase facile. Ma sœur choisit une grande pomme dans la cuisine. Nous aimons les petits appartements et les grandes chambres. Mon ami apprend le français avec moi.\n\nRead and copy the story once, then read it aloud twice. Reuse familiar words naturally. No extra story exercises.\n\n7. SHORT PRACTICE\nFirst say the French answer, then type it. Do the short translations, mixed-verb drills, speaking questions and three quick exit tasks. If you make a mistake, correct it and try again tomorrow. For open-ended writing and speaking, model answers are examples; other correct personal answers are valid. Review mistakes tomorrow.",
+      "verbs": [],
+      "vocab": [],
+      "conjugations": [],
+      "fixed": [
+        "Un petit livre. / Une petite maison. — A small book / house.",
+        "Un grand salon. / Une grande chambre. — A big living room / bedroom."
+      ],
+      "flashcards": [
+        [
+          "I — manger",
+          "je mange"
+        ],
+        [
+          "I — acheter",
+          "j’achète"
+        ],
+        [
+          "I — payer",
+          "je paie"
+        ],
+        [
+          "We — lire",
+          "nous lisons"
+        ],
+        [
+          "with her",
+          "avec elle"
+        ]
+      ],
+      "flashcardsNote": "Five quick cards; spaced review due from source Days [11, 18, 22, 24]. Errors: retry tomorrow.",
+      "recall": [
+        {
+          "prompt": "Recall Day 11: I — manger",
+          "answer": "je mange",
+          "accept": [],
+          "explanation": "Day 11 spaced review: recall without looking, then check: je mange."
+        },
+        {
+          "prompt": "Recall Day 22: I — prendre",
+          "answer": "je prends",
+          "accept": [],
+          "explanation": "Day 22 spaced review: recall without looking, then check: je prends."
+        },
+        {
+          "prompt": "Older vocabulary: the meal",
+          "answer": "le repas",
+          "accept": [],
+          "explanation": "Review the article and noun: le repas."
+        },
+        {
+          "prompt": "Older vocabulary: the bottle",
+          "answer": "la bouteille",
+          "accept": [],
+          "explanation": "Review the article and noun: la bouteille."
+        },
+        {
+          "prompt": "Older vocabulary: the basket",
+          "answer": "le panier",
+          "accept": [],
+          "explanation": "Review the article and noun: le panier."
+        },
+        {
+          "prompt": "Recall Day 18 — with him",
+          "answer": "avec lui",
+          "accept": [],
+          "explanation": "After avec, use the stressed pronoun lui."
+        },
+        {
+          "prompt": "Recall Day 24 — we read",
+          "answer": "nous lisons",
+          "accept": [],
+          "explanation": "Lire: nous lisons."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "Complete / recall: a small room",
+          "answer": "une petite chambre",
+          "accept": [],
+          "explanation": "Apply today’s grammar with the correct noun form and sentence order."
+        },
+        {
+          "prompt": "Complete / recall: a big book",
+          "answer": "un grand livre",
+          "accept": [],
+          "explanation": "Apply today’s grammar with the correct noun form and sentence order."
+        },
+        {
+          "prompt": "Complete / recall: the small books",
+          "answer": "les petits livres",
+          "accept": [],
+          "explanation": "Apply today’s grammar with the correct noun form and sentence order."
+        },
+        {
+          "prompt": "Complete / recall: a difficult question",
+          "answer": "une question difficile",
+          "accept": [],
+          "explanation": "Apply today’s grammar with the correct noun form and sentence order."
+        },
+        {
+          "prompt": "Old verb: nous + manger",
+          "answer": "nous mangeons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous mangeons."
+        },
+        {
+          "prompt": "Old verb: nous + acheter",
+          "answer": "nous achetons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous achetons."
+        },
+        {
+          "prompt": "Correct the error: « les grande chambres »",
+          "answer": "les grandes chambres",
+          "accept": [],
+          "explanation": "Plural feminine: grandes agrees with chambres."
+        },
+        {
+          "prompt": "Old verb — nous + lire",
+          "answer": "nous lisons",
+          "accept": [],
+          "explanation": "Revisit Day 24: lire → nous lisons."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate into French: She reads a small book.",
+          "answer": "Elle lit un petit livre.",
+          "accept": [],
+          "explanation": "Lire: elle lit; livre is masculine, so un petit livre."
+        },
+        {
+          "prompt": "Translate into French: My bedroom is big.",
+          "answer": "Ma chambre est grande.",
+          "accept": [],
+          "explanation": "Chambre is feminine: ma chambre and grande."
+        },
+        {
+          "prompt": "Translate into French: We like small apartments.",
+          "answer": "Nous aimons les petits appartements.",
+          "accept": [],
+          "explanation": "General likes take les; plural masculine: petits appartements."
+        },
+        {
+          "prompt": "Translate into French: The question is difficult.",
+          "answer": "La question est difficile.",
+          "accept": [],
+          "explanation": "Question is feminine; difficile has the same form for both genders."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "un petit livre → replace livre with chambre",
+          "answer": "une petite chambre",
+          "accept": [],
+          "explanation": "Chambre is feminine; change both un → une and petit → petite."
+        },
+        {
+          "prompt": "la grande maison → change to plural",
+          "answer": "les grandes maisons",
+          "accept": [],
+          "explanation": "The definite article becomes les; both adjective and noun are plural."
+        },
+        {
+          "prompt": "Correct the error: « Elle lit un petite livre. »",
+          "answer": "Elle lit un petit livre.",
+          "accept": [],
+          "explanation": "Livre is masculine singular, so petit (not petite)."
+        }
+      ],
+      "oral": [
+        [
+          "Ta chambre est grande ou petite ?",
+          "Ma chambre est petite."
+        ],
+        [
+          "Ton livre est petit ou grand ?",
+          "Mon livre est petit."
+        ],
+        [
+          "Comment est la question ?",
+          "La question est difficile."
+        ],
+        [
+          "Décris ton salon.",
+          "Mon salon est grand et agréable."
+        ],
+        [
+          "Describe your bedroom AND a book you read (two complete sentences).",
+          "Ma chambre est petite et je lis un grand livre."
+        ]
+      ],
+      "exit": [
+        [
+          "Write one complete NEW sentence containing an adjective and a familiar verb.",
+          "Je lis un petit livre."
+        ],
+        [
+          "Translate aloud without notes: a big book",
+          "un grand livre"
+        ],
+        [
+          "Say a sentence from today’s story without reading.",
+          "Ma chambre est petite, mais mon salon est grand."
+        ]
+      ]
+    },
+    {
+      "day": 26,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Write & put",
+      "title": "Écrire & mettre — une journée pratique",
+      "focus": "Write a simple message and say where you put an object",
+      "yesterday": "Spaced repetition due from Days [12, 19, 23, 25]; review 1–3–7–14–30 intervals; old mistakes return tomorrow. No new grammar beyond today’s target.",
+      "explanation": "DAY 26 — SIMPLE STUDENT NOTES\n\n1. SPACED REVIEW — FIRST, WITHOUT NOTES\nReview due from earlier days: Day 12, Day 19, Day 23, Day 25. This follows D+1, D+3, D+7, D+14, D+30. Say answers aloud before checking.\n\n2. TODAY’S VERBS\nécrire = to write. j’écris | tu écris | il / elle écrit | nous écrivons | vous écrivez | ils / elles écrivent\nmettre = to put. je mets | tu mets | il / elle met | nous mettons | vous mettez | ils / elles mettent\n\nÉcrire and mettre have separate patterns: nous écrivons / nous mettons; ils écrivent / ils mettent. With mettre, say where an object goes: sur la table, dans le sac, sous la table.\n\n3. USEFUL SENTENCES\nJ’écris un message. — I write a message.\nJe mets le livre sur la table. — I put the book on the table.\n\n4. TODAY’S VOCABULARY\nSome nouns below are recycled review words, not new vocabulary: le stylo (Day 16).\nle stylo = pen\nle papier = paper\nla lettre = letter\nle bureau = desk\n\n5. COMMON MISTAKES\nNOT nous écrions → nous écrivons. NOT nous metons → nous mettons.\n\n6. MON HISTOIRE DU JOUR\nAujourd’hui, j’écris un petit message avec mon stylo. Je mets le papier sur le bureau et je prends mon livre. Mon ami lit mon message et il comprend la phrase. Ensuite, nous étudions le français dans ma chambre. Ma sœur met son cahier dans son sac.\n\nRead and copy the story once, then read it aloud twice. Reuse familiar words naturally. No extra story exercises.\n\n7. SHORT PRACTICE\nFirst say the French answer, then type it. Do the short translations, mixed-verb drills, speaking questions and three quick exit tasks. If you make a mistake, correct it and try again tomorrow. For open-ended writing and speaking, model answers are examples; other correct personal answers are valid. Review mistakes tomorrow.",
+      "verbs": [
+        {
+          "fr": "écrire",
+          "en": "to write"
+        },
+        {
+          "fr": "mettre",
+          "en": "to put"
+        }
+      ],
+      "vocab": [
+        [
+          "le stylo",
+          "pen"
+        ],
+        [
+          "le papier",
+          "paper"
+        ],
+        [
+          "la lettre",
+          "letter"
+        ],
+        [
+          "le bureau",
+          "desk"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "écrire",
+          "forms": [
+            "j’écris",
+            "tu écris",
+            "il / elle écrit",
+            "nous écrivons",
+            "vous écrivez",
+            "ils / elles écrivent"
+          ],
+          "meaning": "to write"
+        },
+        {
+          "name": "mettre",
+          "forms": [
+            "je mets",
+            "tu mets",
+            "il / elle met",
+            "nous mettons",
+            "vous mettez",
+            "ils / elles mettent"
+          ],
+          "meaning": "to put"
+        }
+      ],
+      "fixed": [
+        "J’écris un message. — I write a message.",
+        "Je mets le livre sur la table. — I put the book on the table."
+      ],
+      "flashcards": [
+        [
+          "I — appeler",
+          "j’appelle"
+        ],
+        [
+          "I — partir",
+          "je pars"
+        ],
+        [
+          "I — comprendre",
+          "je comprends"
+        ],
+        [
+          "a small bedroom",
+          "une petite chambre"
+        ],
+        [
+          "the pen",
+          "le stylo"
+        ]
+      ],
+      "flashcardsNote": "Five quick cards; spaced review due from source Days [12, 19, 23, 25]. Errors: retry tomorrow.",
+      "recall": [
+        {
+          "prompt": "pen",
+          "answer": "le stylo",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le stylo."
+        },
+        {
+          "prompt": "paper",
+          "answer": "le papier",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le papier."
+        },
+        {
+          "prompt": "letter",
+          "answer": "la lettre",
+          "accept": [],
+          "explanation": "Learn the noun with its article: la lettre."
+        },
+        {
+          "prompt": "desk",
+          "answer": "le bureau",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le bureau."
+        },
+        {
+          "prompt": "Recall Day 12: I — appeler",
+          "answer": "j’appelle",
+          "accept": [],
+          "explanation": "Day 12 spaced review: recall without looking, then check: j’appelle."
+        },
+        {
+          "prompt": "Recall Day 19: I — partir",
+          "answer": "je pars",
+          "accept": [],
+          "explanation": "Day 19 spaced review: recall without looking, then check: je pars."
+        },
+        {
+          "prompt": "Recall Day 23: I — comprendre",
+          "answer": "je comprends",
+          "accept": [],
+          "explanation": "Day 23 spaced review: recall without looking, then check: je comprends."
+        },
+        {
+          "prompt": "Recall Day 25 — a small bedroom",
+          "answer": "une petite chambre",
+          "accept": [],
+          "explanation": "Petite agrees with feminine chambre."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + écrire",
+          "answer": "j’écris",
+          "accept": [],
+          "explanation": "Use the taught écrire pattern: j’écris."
+        },
+        {
+          "prompt": "nous + écrire",
+          "answer": "nous écrivons",
+          "accept": [],
+          "explanation": "Use the taught écrire pattern: nous écrivons."
+        },
+        {
+          "prompt": "ils + écrire",
+          "answer": "ils écrivent",
+          "accept": [],
+          "explanation": "With ils, use the present-tense form: ils écrivent."
+        },
+        {
+          "prompt": "je + mettre",
+          "answer": "je mets",
+          "accept": [],
+          "explanation": "Use the taught mettre pattern: je mets."
+        },
+        {
+          "prompt": "nous + mettre",
+          "answer": "nous mettons",
+          "accept": [],
+          "explanation": "Use the taught mettre pattern: nous mettons."
+        },
+        {
+          "prompt": "ils + mettre",
+          "answer": "ils mettent",
+          "accept": [],
+          "explanation": "With ils, use the present-tense form: ils mettent."
+        },
+        {
+          "prompt": "Old verb: nous + appeler",
+          "answer": "nous appelons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous appelons."
+        },
+        {
+          "prompt": "Old verb: nous + se lever",
+          "answer": "nous nous levons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous nous levons."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate into French: I write a message.",
+          "answer": "J’écris un message.",
+          "accept": [],
+          "explanation": "Reference sentence: J’écris un message. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: We put the book on the table.",
+          "answer": "Nous mettons le livre sur la table.",
+          "accept": [],
+          "explanation": "Reference sentence: Nous mettons le livre sur la table. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: She writes a letter.",
+          "answer": "Elle écrit une lettre.",
+          "accept": [],
+          "explanation": "Reference sentence: Elle écrit une lettre. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: I do not put my bag under the table.",
+          "answer": "Je ne mets pas mon sac sous la table.",
+          "accept": [],
+          "explanation": "Reference sentence: Je ne mets pas mon sac sous la table. Check the person, verb ending and any articles or negation before comparing."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "j’écris → change to nous",
+          "answer": "nous écrivons",
+          "accept": [],
+          "explanation": "Compare je and nous forms of écrire."
+        },
+        {
+          "prompt": "je mets → change to nous",
+          "answer": "nous mettons",
+          "accept": [],
+          "explanation": "Compare je and nous forms of mettre."
+        },
+        {
+          "prompt": "Correct the error: « Nous metons le livre sur la table. »",
+          "answer": "Nous mettons le livre sur la table.",
+          "accept": [],
+          "explanation": "Mettre: nous mettons, with double t."
+        }
+      ],
+      "oral": [
+        [
+          "Tu écris un message ?",
+          "Oui, j’écris un message."
+        ],
+        [
+          "Tu mets ton livre où ?",
+          "Je mets mon livre sur la table."
+        ],
+        [
+          "Tu lis ton message ?",
+          "Oui, je lis mon message."
+        ],
+        [
+          "Qu’est-ce que tu écris ?",
+          "J’écris une petite lettre."
+        ],
+        [
+          "Say two sentences using one old verb and today’s main idea.",
+          "Je parle français et j’apprends le français."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence using today’s focus.",
+          "J’écris un message."
+        ],
+        [
+          "Translate aloud without notes: We put the book on the table.",
+          "Nous mettons le livre sur la table."
+        ],
+        [
+          "Say a sentence from today’s story without reading.",
+          "Aujourd’hui, j’écris un petit message avec mon stylo."
+        ]
+      ]
+    },
+    {
+      "day": 27,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Put back & review",
+      "title": "Remettre — même famille que mettre",
+      "focus": "Use remettre with the same endings as mettre and recycle earlier patterns",
+      "yesterday": "Spaced repetition due from Days [13, 20, 24, 26]; review 1–3–7–14–30 intervals; old mistakes return tomorrow. No new grammar beyond today’s target.",
+      "explanation": "DAY 27 — SIMPLE STUDENT NOTES\n\n1. SPACED REVIEW — FIRST, WITHOUT NOTES\nReview due from earlier days: Day 13, Day 20, Day 24, Day 26. This follows D+1, D+3, D+7, D+14, D+30. Say answers aloud before checking.\n\n2. TODAY’S VERBS\nremettre = to put back / hand in. je remets | tu remets | il / elle remet | nous remettons | vous remettez | ils / elles remettent\n\nRemettre follows mettre: je remets, nous remettons, ils remettent. Remettre un livre sur la table = put it back. Remettre un document au professeur = hand in a document.\n\n3. USEFUL SENTENCES\nJe remets le livre sur la table. — I put the book back on the table.\nNous remettons le document au professeur. — We hand the document to the teacher.\n\n4. TODAY’S VOCABULARY\nSome nouns below are recycled review words, not new vocabulary: le professeur (Day 10).\nle dossier = file / folder\nla bibliothèque = library\nle document = document\nle professeur = teacher\n\n5. COMMON MISTAKES\nNOT je remet → je remets. NOT nous remetons → nous remettons.\n\n6. MON HISTOIRE DU JOUR\nÀ l’école, je prends mon cahier et j’écris une phrase. Mon professeur lit mon petit document. Je remets le document au professeur et je remets mon stylo dans mon sac. Mon ami comprend la question et répond au professeur. Ensuite, nous sortons ensemble.\n\nRead and copy the story once, then read it aloud twice. Reuse familiar words naturally. No extra story exercises.\n\n7. SHORT PRACTICE\nFirst say the French answer, then type it. Do the short translations, mixed-verb drills, speaking questions and three quick exit tasks. If you make a mistake, correct it and try again tomorrow. For open-ended writing and speaking, model answers are examples; other correct personal answers are valid. Review mistakes tomorrow.",
+      "verbs": [
+        {
+          "fr": "remettre",
+          "en": "to put back / hand in"
+        }
+      ],
+      "vocab": [
+        [
+          "le dossier",
+          "file / folder"
+        ],
+        [
+          "la bibliothèque",
+          "library"
+        ],
+        [
+          "le document",
+          "document"
+        ],
+        [
+          "le professeur",
+          "teacher"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "remettre",
+          "forms": [
+            "je remets",
+            "tu remets",
+            "il / elle remet",
+            "nous remettons",
+            "vous remettez",
+            "ils / elles remettent"
+          ],
+          "meaning": "to put back / hand in"
+        }
+      ],
+      "fixed": [
+        "Je remets le livre sur la table. — I put the book back on the table.",
+        "Nous remettons le document au professeur. — We hand the document to the teacher."
+      ],
+      "flashcards": [
+        [
+          "I never watch television",
+          "Je ne regarde jamais la télévision."
+        ],
+        [
+          "I — dormir",
+          "je dors"
+        ],
+        [
+          "We — lire",
+          "nous lisons"
+        ],
+        [
+          "We — écrire",
+          "nous écrivons"
+        ],
+        [
+          "the letter",
+          "la lettre"
+        ]
+      ],
+      "flashcardsNote": "Five quick cards; spaced review due from source Days [13, 20, 24, 26]. Errors: retry tomorrow.",
+      "recall": [
+        {
+          "prompt": "file / folder",
+          "answer": "le dossier",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le dossier."
+        },
+        {
+          "prompt": "library",
+          "answer": "la bibliothèque",
+          "accept": [],
+          "explanation": "Learn the noun with its article: la bibliothèque."
+        },
+        {
+          "prompt": "document",
+          "answer": "le document",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le document."
+        },
+        {
+          "prompt": "teacher",
+          "answer": "le professeur",
+          "accept": [],
+          "explanation": "Learn the noun with its article: le professeur."
+        },
+        {
+          "prompt": "Recall Day 20: I — dormir",
+          "answer": "je dors",
+          "accept": [],
+          "explanation": "Day 20 spaced review: recall without looking, then check: je dors."
+        },
+        {
+          "prompt": "Recall Day 24: I — dire",
+          "answer": "je dis",
+          "accept": [],
+          "explanation": "Day 24 spaced review: recall without looking, then check: je dis."
+        },
+        {
+          "prompt": "Recall Day 13 — I never watch television",
+          "answer": "Je ne regarde jamais la télévision.",
+          "accept": [],
+          "explanation": "Ne...jamais means never."
+        },
+        {
+          "prompt": "Recall Day 26 — we write a message",
+          "answer": "Nous écrivons un message.",
+          "accept": [],
+          "explanation": "Écrire: nous écrivons."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + remettre",
+          "answer": "je remets",
+          "accept": [],
+          "explanation": "Use the taught remettre pattern: je remets."
+        },
+        {
+          "prompt": "nous + remettre",
+          "answer": "nous remettons",
+          "accept": [],
+          "explanation": "Use the taught remettre pattern: nous remettons."
+        },
+        {
+          "prompt": "ils + remettre",
+          "answer": "ils remettent",
+          "accept": [],
+          "explanation": "With ils, use the present-tense form: ils remettent."
+        },
+        {
+          "prompt": "Old verb: nous + dormir",
+          "answer": "nous dormons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous dormons."
+        },
+        {
+          "prompt": "Old verb: nous + ouvrir",
+          "answer": "nous ouvrons",
+          "accept": [],
+          "explanation": "Review the conjugation: nous ouvrons."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate into French: I put the book back on the table.",
+          "answer": "Je remets le livre sur la table.",
+          "accept": [],
+          "explanation": "Reference sentence: Je remets le livre sur la table. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: We hand the document to the teacher.",
+          "answer": "Nous remettons le document au professeur.",
+          "accept": [],
+          "explanation": "Reference sentence: Nous remettons le document au professeur. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: She puts the pen in her bag.",
+          "answer": "Elle met le stylo dans son sac.",
+          "accept": [],
+          "explanation": "Reference sentence: Elle met le stylo dans son sac. Check the person, verb ending and any articles or negation before comparing."
+        },
+        {
+          "prompt": "Translate into French: They (masculine) put the books back.",
+          "answer": "Ils remettent les livres.",
+          "accept": [],
+          "explanation": "Reference sentence: Ils remettent les livres. Check the person, verb ending and any articles or negation before comparing."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "je remets → change to nous",
+          "answer": "nous remettons",
+          "accept": [],
+          "explanation": "Compare je and nous forms of remettre."
+        },
+        {
+          "prompt": "Correct the error: « Je remet le livre sur la table. »",
+          "answer": "Je remets le livre sur la table.",
+          "accept": [],
+          "explanation": "Remettre: je remets."
+        }
+      ],
+      "oral": [
+        [
+          "Tu remets ton livre sur la table ?",
+          "Oui, je remets mon livre sur la table."
+        ],
+        [
+          "Tu mets ton cahier dans ton sac ?",
+          "Oui, je mets mon cahier dans mon sac."
+        ],
+        [
+          "Qu’est-ce que tu remets au professeur ?",
+          "Je remets mon document au professeur."
+        ],
+        [
+          "Tu comprends la question ?",
+          "Oui, je comprends la question."
+        ],
+        [
+          "Say two sentences using one old verb and today’s main idea.",
+          "Je parle français et j’apprends le français."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence using today’s focus.",
+          "Je remets le livre sur la table."
+        ],
+        [
+          "Translate aloud without notes: We hand the document to the teacher.",
+          "Nous remettons le document au professeur."
+        ],
+        [
+          "Say a sentence from today’s story without reading.",
+          "À l’école, je prends mon cahier et j’écris une phrase."
+        ]
+      ]
+    },
+    {
+      "day": 28,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Demonstratives & review",
+      "title": "Ce, cet, cette, ces — bilan de la semaine",
+      "focus": "Identify familiar objects and hold a short conversation using -RE and older verbs",
+      "yesterday": "Spaced repetition due from Days [14, 21, 25, 27]; review 1–3–7–14–30 intervals; old mistakes return tomorrow. No new grammar beyond today’s target.",
+      "explanation": "DAY 28 — SIMPLE STUDENT NOTES\n\n1. SPACED REVIEW — FIRST, WITHOUT NOTES\nReview due from earlier days: Day 14, Day 21, Day 25, Day 27. This follows D+1, D+3, D+7, D+14, D+30. Say answers aloud before checking.\n\n2. TODAY’S GRAMMAR (NO NEW VERBS)\nDemonstratives mean this/that/these/those. ce + masculine consonant (ce livre), cet + masculine vowel (cet appartement), cette + feminine (cette chambre), ces + any plural (ces livres, ces maisons). They replace le/la/les, not combine with them. Ask questions with rising intonation or est-ce que. For the cumulative test, also recycle older -ER and -IR verbs, negation, adjective agreement and questions.\n\n3. USEFUL SENTENCES\nCe livre est petit. — This book is small.\nCette chambre est grande. — This room is big.\nCes livres sont petits. — These books are small.\n\n4. TODAY’S VOCABULARY\nNo new vocabulary today: review nouns and articles from Weeks 1–4. Use today’s demonstratives in complete sentences.\n\n5. COMMON MISTAKES\nNOT ce appartement → cet appartement. NOT cette livre → ce livre. NOT ces chambre → ces chambres.\n\n6. MON HISTOIRE DU JOUR\nAujourd’hui, je suis à la maison avec mon ami. Ce livre est petit, mais cette histoire est facile. Je lis le livre et mon ami écrit un message. Ensuite, je mets ce livre sur la table et je remets mon stylo dans mon sac. Nous apprenons le français ensemble.\n\nRead and copy the story once, then read it aloud twice. Reuse familiar words naturally. No extra story exercises.\n\n7. SHORT PRACTICE & WEEKLY CHECK\nFirst say the French answer, then type it. Do the short translations, mixed-verb drills, speaking questions and three quick exit tasks. If you make a mistake, correct it and try again tomorrow. Finish with a 60–90-second no-notes conversation. Model responses for open-ended speaking are examples, not the only acceptable answers. Review mistakes tomorrow.",
+      "verbs": [],
+      "vocab": [],
+      "conjugations": [],
+      "fixed": [
+        "Ce livre est petit. — This book is small.",
+        "Cette chambre est grande. — This room is big.",
+        "Ces livres sont petits. — These books are small."
+      ],
+      "flashcards": [
+        [
+          "We — parler",
+          "nous parlons"
+        ],
+        [
+          "We — lire",
+          "nous lisons"
+        ],
+        [
+          "with me",
+          "avec moi"
+        ],
+        [
+          "a big room",
+          "une grande chambre"
+        ],
+        [
+          "We — remettre",
+          "nous remettons"
+        ]
+      ],
+      "flashcardsNote": "Five quick cards; spaced review due from source Days [14, 21, 25, 27]. Errors: retry tomorrow.",
+      "recall": [
+        {
+          "prompt": "Older vocabulary: file / folder",
+          "answer": "le dossier",
+          "accept": [],
+          "explanation": "Review the article and noun: le dossier."
+        },
+        {
+          "prompt": "Older vocabulary: library",
+          "answer": "la bibliothèque",
+          "accept": [],
+          "explanation": "Review the article and noun: la bibliothèque."
+        },
+        {
+          "prompt": "Older vocabulary: document",
+          "answer": "le document",
+          "accept": [],
+          "explanation": "Review the article and noun: le document."
+        },
+        {
+          "prompt": "Older vocabulary: teacher",
+          "answer": "le professeur",
+          "accept": [],
+          "explanation": "Review the article and noun: le professeur."
+        },
+        {
+          "prompt": "Recall Day 14 — they listen to the music",
+          "answer": "Ils écoutent la musique.",
+          "accept": [],
+          "explanation": "Week 1 consolidation: ils + regular -ER verb."
+        },
+        {
+          "prompt": "Recall Day 21 — do you work? (est-ce que)",
+          "answer": "Est-ce que tu travailles ?",
+          "accept": [],
+          "explanation": "Day 21 question pattern."
+        },
+        {
+          "prompt": "Recall Day 25 — a big bedroom",
+          "answer": "une grande chambre",
+          "accept": [],
+          "explanation": "Grande agrees with feminine chambre."
+        },
+        {
+          "prompt": "Recall Day 27 — I hand in the document",
+          "answer": "Je remets le document.",
+          "accept": [],
+          "explanation": "Remettre: je remets."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "Complete / recall: this book",
+          "answer": "ce livre",
+          "accept": [],
+          "explanation": "Apply today’s grammar with the correct noun form and sentence order."
+        },
+        {
+          "prompt": "Complete / recall: this apartment",
+          "answer": "cet appartement",
+          "accept": [],
+          "explanation": "Apply today’s grammar with the correct noun form and sentence order."
+        },
+        {
+          "prompt": "Complete / recall: this room",
+          "answer": "cette chambre",
+          "accept": [],
+          "explanation": "Apply today’s grammar with the correct noun form and sentence order."
+        },
+        {
+          "prompt": "Complete / recall: these books",
+          "answer": "ces livres",
+          "accept": [],
+          "explanation": "Apply today’s grammar with the correct noun form and sentence order."
+        },
+        {
+          "prompt": "Choose ce/cet/cette/ces: ___ histoire est facile.",
+          "answer": "Cette histoire est facile.",
+          "accept": [],
+          "explanation": "Histoire is feminine singular; use cette, even though h is silent."
+        },
+        {
+          "prompt": "Mix old verbs: nous + comprendre",
+          "answer": "nous comprenons",
+          "accept": [],
+          "explanation": "Comprendre belongs to the prendre family."
+        },
+        {
+          "prompt": "Mix old verbs: ils + choisir",
+          "answer": "ils choisissent",
+          "accept": [],
+          "explanation": "Regular -IR pattern: ils choisissent."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Translate into French: I read this book.",
+          "answer": "Je lis ce livre.",
+          "accept": [],
+          "explanation": "This masculine book: ce livre; lire → je lis."
+        },
+        {
+          "prompt": "Translate into French: She understands this question.",
+          "answer": "Elle comprend cette question.",
+          "accept": [],
+          "explanation": "Comprendre → elle comprend; feminine question → cette."
+        },
+        {
+          "prompt": "Translate into French: We put these notebooks on the table.",
+          "answer": "Nous mettons ces cahiers sur la table.",
+          "accept": [],
+          "explanation": "Mettre → nous mettons; plural demonstrative ces."
+        },
+        {
+          "prompt": "Translate into French: I do not understand this story.",
+          "answer": "Je ne comprends pas cette histoire.",
+          "accept": [],
+          "explanation": "Put ne...pas around comprends; histoire is feminine."
+        },
+        {
+          "prompt": "Translate into French: Do you read this story? (est-ce que)",
+          "answer": "Est-ce que tu lis cette histoire ?",
+          "accept": [],
+          "explanation": "Use the Day 21 est-ce que pattern; lire → tu lis."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "le livre → this book",
+          "answer": "ce livre",
+          "accept": [],
+          "explanation": "Ce before a masculine noun starting with a consonant."
+        },
+        {
+          "prompt": "l’appartement → this apartment",
+          "answer": "cet appartement",
+          "accept": [],
+          "explanation": "Cet before a masculine noun starting with a vowel sound."
+        },
+        {
+          "prompt": "la chambre → this room",
+          "answer": "cette chambre",
+          "accept": [],
+          "explanation": "Cette for a feminine singular noun."
+        },
+        {
+          "prompt": "les livres → these books",
+          "answer": "ces livres",
+          "accept": [],
+          "explanation": "Ces for plural nouns."
+        },
+        {
+          "prompt": "Correct the error: « Je lis cette livre. »",
+          "answer": "Je lis ce livre.",
+          "accept": [],
+          "explanation": "Livre is masculine: ce livre."
+        }
+      ],
+      "oral": [
+        [
+          "Tu lis ce livre ou cette histoire ?",
+          "Je lis cette histoire."
+        ],
+        [
+          "Où tu mets ces cahiers ?",
+          "Je mets ces cahiers sur la table."
+        ],
+        [
+          "Est-ce que tu comprends cette question ?",
+          "Oui, je comprends cette question."
+        ],
+        [
+          "Tu aimes ce livre ou cette histoire ?",
+          "J’aime ce livre."
+        ],
+        [
+          "Ask your teacher one question with est-ce que and a Week 4 verb.",
+          "Est-ce que tu lis ce livre ?"
+        ],
+        [
+          "Speak for 60–90 seconds about your day: use two Week 4 verbs, one older -ER or -IR verb, an adjective, a question and a negative sentence. No notes.",
+          "Le matin, je me lève dans ma petite chambre et je prends mon sac. Je vais à l’école avec mon ami. Nous apprenons le français et nous lisons un livre. Ce livre est facile, mais cette question est difficile. Mon ami comprend la question et je réponds au professeur. Ensuite, je mets mon cahier sur la table. Je ne regarde pas la télévision le matin. Est-ce que tu lis un livre aussi ? Le soir, je parle français avec ma sœur."
+        ]
+      ],
+      "exit": [
+        [
+          "Write a NEW sentence with a demonstrative and a Week 4 verb.",
+          "Je lis cette histoire."
+        ],
+        [
+          "Translate aloud without notes: We understand this question.",
+          "Nous comprenons cette question."
+        ],
+        [
+          "Ask one question and answer it aloud, using two different previously learned verbs.",
+          "Est-ce que tu lis ce livre ? Oui, je lis ce livre et j’étudie le français."
+        ]
+      ]
+    }
+  ]
+}
