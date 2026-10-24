@@ -48,6 +48,16 @@ const check=async(browser,device)=>{
  assert.equal(await page.locator('.app-quick-item').count(),5);
  assert.equal(await page.locator('.app-stats .app-stat').count(),3,'Streak, weekly, course progress must be shown');
  assert.ok(await page.locator('.app-student-illustration').evaluate(img=>img.complete&&img.naturalWidth>0),'Illustrated student asset must load');
+ assert.equal(await page.locator('.app-weekly-card').count(),1,'Weekly practice card replaces Word of the Day');
+ assert.equal(await page.locator('.app-word-card').count(),0,'Old Word of the Day home card is removed');
+ assert.equal(await page.locator('.app-weekly-choice').count(),2,'Home lists all published weeks');
+ await page.locator('[data-home-week="1"]').click();
+ assert.match(await page.locator('.app-lessons-screen').innerText(),/Weekly practice/);
+ assert.equal((await page.locator('.app-week-tab.active').innerText()).trim(),'Week 2','Home card opens selected week');
+ assert.equal((await page.locator('.app-week-list .app-lesson-number').first().innerText()).trim(),'8','Week 2 keeps global Day 8');
+ await page.locator('[data-app-week="0"]').click();
+ await page.locator('[data-back-section="home"]').first().click();
+ assert.equal(await page.locator('.app-weekly-card').count(),1,'Home card remains after returning from weekly practice');
  await page.screenshot({path:path.join(shots,'home-'+device+'.png'),fullPage:true});
  if(isMobile){
    const nav=page.locator('.mobile-learning-nav');
