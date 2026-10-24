@@ -1,0 +1,1655 @@
+{
+  "id": "week3",
+  "number": 3,
+  "title": "French A1 · Week 3",
+  "description": "Days 15–21: regular then irregular -IR verbs, stressed pronouns, basic questions and cumulative speaking; 1/3/7/14/30 spaced recall; daily story in explanation; English-to-French sentences. Some verbs extend the original 50-verb list.",
+  "days": [
+    {
+      "day": 15,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Regular -IR start",
+      "title": "Finir & choisir — les verbes réguliers en -IR",
+      "focus": "Understand the -iss- pattern and say what you finish or choose",
+      "yesterday": "Spaced review due today from Days 1, 8, 12, 14 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.",
+      "explanation": "DAY 15 — SIMPLE STUDENT NOTES\n\n1. FIRST: RECALL WITHOUT NOTES\nSpaced review due today from Days 1, 8, 12, 14 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.\n\n2. TODAY'S LEARNING\nINTRODUCTION TO 10 USEFUL -IR VERBS (overview only, do not memorise all today): regular group finir, choisir, réussir, remplir, agir, réagir; irregular group partir, sortir, dormir, ouvrir. Today study ONLY finir and choisir. REGULAR -IR: Not every -IR verb is regular. Finir and choisir follow -is, -is, -it, -issons, -issez, -issent. Example: je finis / nous finissons. The extra -iss- appears with nous, vous, ils/elles. Compare with Week 1 -ER: nous parlons.\n\n3. USEFUL WORDS AND SENTENCES\nle devoir = homework / assignment\nle travail = work\nle livre = book (review)\nle cours = class / lesson (review)\nJe finis mon devoir. — I finish my homework.\nJe choisis un livre. — I choose a book.\n\n4. AVOID COMMON ERRORS\nKeep the correct article, apostrophe, and verb ending. Do not add new grammar when a simpler sentence works.\n\n5. MON HISTOIRE DU JOUR — COPY ONCE AND READ ALOUD\nLe matin, je finis mon devoir dans ma petite chambre. Mon ami choisit un livre sur la table. Je choisis mon cahier et nous étudions le français ensemble. Ensuite, nous finissons notre travail. Le français est parfois difficile, mais nous aimons notre cours.\n\n6. STUDY ROUTINE\nTranslate and speak without notes before checking answers. Correct your two weakest patterns. Review them again tomorrow. English-to-French tasks are in the sentences section.",
+      "verbs": [
+        {
+          "fr": "finir",
+          "en": "to finish"
+        },
+        {
+          "fr": "choisir",
+          "en": "to choose"
+        }
+      ],
+      "vocab": [
+        [
+          "le devoir",
+          "homework / assignment"
+        ],
+        [
+          "le travail",
+          "work"
+        ],
+        [
+          "le livre",
+          "book (review)"
+        ],
+        [
+          "le cours",
+          "class / lesson (review)"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "finir",
+          "forms": [
+            "je finis",
+            "tu finis",
+            "il / elle finit",
+            "nous finissons",
+            "vous finissez",
+            "ils / elles finissent"
+          ],
+          "meaning": "to finish"
+        },
+        {
+          "name": "choisir",
+          "forms": [
+            "je choisis",
+            "tu choisis",
+            "il / elle choisit",
+            "nous choisissons",
+            "vous choisissez",
+            "ils / elles choisissent"
+          ],
+          "meaning": "to choose"
+        }
+      ],
+      "fixed": [
+        "Je finis mon devoir. — I finish my homework.",
+        "Je choisis un livre. — I choose a book."
+      ],
+      "flashcards": [
+        [
+          "I speak",
+          "je parle"
+        ],
+        [
+          "to study",
+          "j’étudie"
+        ],
+        [
+          "I call",
+          "j’appelle"
+        ],
+        [
+          "to finish",
+          "je finis"
+        ],
+        [
+          "to choose",
+          "je choisis"
+        ]
+      ],
+      "flashcardsNote": "Review from scheduled earlier Days [1, 8, 12, 14]. Follow the +1/+3/+7/+14/+30 schedule; missed items return tomorrow.",
+      "recall": [
+        {
+          "prompt": "homework / assignment",
+          "answer": "le devoir",
+          "accept": [],
+          "explanation": "Keep the correct article: le devoir."
+        },
+        {
+          "prompt": "work",
+          "answer": "le travail",
+          "accept": [],
+          "explanation": "Keep the correct article: le travail."
+        },
+        {
+          "prompt": "book (review)",
+          "answer": "le livre",
+          "accept": [],
+          "explanation": "Keep the correct article: le livre."
+        },
+        {
+          "prompt": "Recall Day 1: I speak",
+          "answer": "je parle",
+          "accept": [],
+          "explanation": "Day 1 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 8: to study",
+          "answer": "j’étudie",
+          "accept": [],
+          "explanation": "Day 8 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 12: I call",
+          "answer": "j’appelle",
+          "accept": [],
+          "explanation": "Day 12 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 14: we study",
+          "answer": "nous étudions",
+          "accept": [],
+          "explanation": "Day 14 spaced recall. Produce it without looking."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + finir",
+          "answer": "je finis",
+          "accept": [],
+          "explanation": "finir follows its taught conjugation pattern: je finis."
+        },
+        {
+          "prompt": "nous + finir",
+          "answer": "nous finissons",
+          "accept": [],
+          "explanation": "finir follows its taught conjugation pattern: nous finissons."
+        },
+        {
+          "prompt": "ils/elles + finir",
+          "answer": "ils / elles finissent",
+          "accept": [],
+          "explanation": "finir follows its taught conjugation pattern: ils / elles finissent."
+        },
+        {
+          "prompt": "je + choisir",
+          "answer": "je choisis",
+          "accept": [],
+          "explanation": "choisir follows its taught conjugation pattern: je choisis."
+        },
+        {
+          "prompt": "nous + choisir",
+          "answer": "nous choisissons",
+          "accept": [],
+          "explanation": "choisir follows its taught conjugation pattern: nous choisissons."
+        },
+        {
+          "prompt": "ils/elles + choisir",
+          "answer": "ils / elles choisissent",
+          "accept": [],
+          "explanation": "choisir follows its taught conjugation pattern: ils / elles choisissent."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I finish my homework.",
+          "answer": "Je finis mon devoir.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "We choose a book.",
+          "answer": "Nous choisissons un livre.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "She does not finish the class.",
+          "answer": "Elle ne finit pas le cours.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "They choose a small book.",
+          "answer": "Ils choisissent un petit livre.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je finis → change the subject to nous.",
+          "answer": "Nous finissons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        },
+        {
+          "prompt": "Je choisis → change the subject to nous.",
+          "answer": "Nous choisissons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        }
+      ],
+      "oral": [
+        [
+          "Tu finis ton devoir ?",
+          "Oui, je finis mon devoir."
+        ],
+        [
+          "Tu choisis un livre ou un cahier ?",
+          "Je choisis un livre."
+        ],
+        [
+          "Vous finissez le cours ?",
+          "Oui, nous finissons le cours."
+        ],
+        [
+          "What do you finish today? Answer in French.",
+          "Je finis mon devoir aujourd’hui."
+        ],
+        [
+          "Say aloud: We choose a small book.",
+          "Nous choisissons un petit livre."
+        ]
+      ],
+      "exit": [
+        [
+          "Write one new sentence using today’s lesson.",
+          "Je finis mon devoir."
+        ],
+        [
+          "Say two different sentences without reading the story.",
+          "Je choisis un livre. Je finis mon devoir."
+        ],
+        [
+          "Translate one sentence from today into French without notes.",
+          "Nous choisissons un livre."
+        ]
+      ]
+    },
+    {
+      "day": 16,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Success & forms",
+      "title": "Réussir & remplir — mes études",
+      "focus": "Use the same regular -IR pattern in study and everyday tasks",
+      "yesterday": "Spaced review due today from Days 2, 9, 13, 15 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.",
+      "explanation": "DAY 16 — SIMPLE STUDENT NOTES\n\n1. FIRST: RECALL WITHOUT NOTES\nSpaced review due today from Days 2, 9, 13, 15 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.\n\n2. TODAY'S LEARNING\nTODAY'S TWO VERBS follow the same regular -IR pattern as finir: -is, -is, -it, -issons, -issez, -issent. Start with the subject and choose the correct ending. Recall finir and choisir first.\n\n3. USEFUL WORDS AND SENTENCES\nl’examen = the exam\nle formulaire = the form\nle nom = the name\nla page = the page\nle stylo = the pen\nJe remplis le formulaire. — I fill in the form.\nElle réussit son examen. — She passes her exam.\n\n4. AVOID COMMON ERRORS\nKeep the correct article, apostrophe, and verb ending. Do not add new grammar when a simpler sentence works.\n\n5. MON HISTOIRE DU JOUR — COPY ONCE AND READ ALOUD\nAujourd'hui, j'étudie le français pour un petit examen. Je finis mon devoir et je choisis mon stylo. Mon ami remplit un formulaire avec son nom. Nous remplissons une page ensemble. Le professeur explique une question facile. Mon ami réussit son examen et nous parlons français à la maison.\n\n6. STUDY ROUTINE\nTranslate and speak without notes before checking answers. Correct your two weakest patterns. Review them again tomorrow. English-to-French tasks are in the sentences section.",
+      "verbs": [
+        {
+          "fr": "réussir",
+          "en": "to succeed"
+        },
+        {
+          "fr": "remplir",
+          "en": "to fill in / fill"
+        }
+      ],
+      "vocab": [
+        [
+          "l’examen",
+          "the exam"
+        ],
+        [
+          "le formulaire",
+          "the form"
+        ],
+        [
+          "le nom",
+          "the name"
+        ],
+        [
+          "la page",
+          "the page"
+        ],
+        [
+          "le stylo",
+          "the pen"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "réussir",
+          "forms": [
+            "je réussis",
+            "tu réussis",
+            "il / elle réussit",
+            "nous réussissons",
+            "vous réussissez",
+            "ils / elles réussissent"
+          ],
+          "meaning": "to succeed"
+        },
+        {
+          "name": "remplir",
+          "forms": [
+            "je remplis",
+            "tu remplis",
+            "il / elle remplit",
+            "nous remplissons",
+            "vous remplissez",
+            "ils / elles remplissent"
+          ],
+          "meaning": "to fill in / fill"
+        }
+      ],
+      "fixed": [
+        "Je remplis le formulaire. — I fill in the form.",
+        "Elle réussit son examen. — She passes her exam."
+      ],
+      "flashcards": [
+        [
+          "I live",
+          "j’habite"
+        ],
+        [
+          "I help",
+          "j’aide"
+        ],
+        [
+          "I do not watch television",
+          "je ne regarde pas la télévision"
+        ],
+        [
+          "to succeed",
+          "je réussis"
+        ],
+        [
+          "to fill in / fill",
+          "je remplis"
+        ]
+      ],
+      "flashcardsNote": "Review from scheduled earlier Days [2, 9, 13, 15]. Follow the +1/+3/+7/+14/+30 schedule; missed items return tomorrow.",
+      "recall": [
+        {
+          "prompt": "the exam",
+          "answer": "l’examen",
+          "accept": [],
+          "explanation": "Keep the correct article: l’examen."
+        },
+        {
+          "prompt": "the form",
+          "answer": "le formulaire",
+          "accept": [],
+          "explanation": "Keep the correct article: le formulaire."
+        },
+        {
+          "prompt": "the name",
+          "answer": "le nom",
+          "accept": [],
+          "explanation": "Keep the correct article: le nom."
+        },
+        {
+          "prompt": "Recall Day 2: I live",
+          "answer": "j’habite",
+          "accept": [],
+          "explanation": "Day 2 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 9: I help",
+          "answer": "j’aide",
+          "accept": [],
+          "explanation": "Day 9 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 13: I do not watch television",
+          "answer": "je ne regarde pas la télévision",
+          "accept": [],
+          "explanation": "Day 13 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 15: we finish",
+          "answer": "nous finissons",
+          "accept": [],
+          "explanation": "Day 15 spaced recall. Produce it without looking."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + réussir",
+          "answer": "je réussis",
+          "accept": [],
+          "explanation": "réussir follows its taught conjugation pattern: je réussis."
+        },
+        {
+          "prompt": "nous + réussir",
+          "answer": "nous réussissons",
+          "accept": [],
+          "explanation": "réussir follows its taught conjugation pattern: nous réussissons."
+        },
+        {
+          "prompt": "ils/elles + réussir",
+          "answer": "ils / elles réussissent",
+          "accept": [],
+          "explanation": "réussir follows its taught conjugation pattern: ils / elles réussissent."
+        },
+        {
+          "prompt": "je + remplir",
+          "answer": "je remplis",
+          "accept": [],
+          "explanation": "remplir follows its taught conjugation pattern: je remplis."
+        },
+        {
+          "prompt": "nous + remplir",
+          "answer": "nous remplissons",
+          "accept": [],
+          "explanation": "remplir follows its taught conjugation pattern: nous remplissons."
+        },
+        {
+          "prompt": "ils/elles + remplir",
+          "answer": "ils / elles remplissent",
+          "accept": [],
+          "explanation": "remplir follows its taught conjugation pattern: ils / elles remplissent."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I fill in the form.",
+          "answer": "Je remplis le formulaire.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "We pass the exam.",
+          "answer": "Nous réussissons l’examen.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "She chooses a pen.",
+          "answer": "Elle choisit un stylo.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "I do not finish the page.",
+          "answer": "Je ne finis pas la page.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je réussis → change the subject to nous.",
+          "answer": "Nous réussissons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        },
+        {
+          "prompt": "Je remplis → change the subject to nous.",
+          "answer": "Nous remplissons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        }
+      ],
+      "oral": [
+        [
+          "Tu remplis le formulaire ?",
+          "Oui, je remplis le formulaire."
+        ],
+        [
+          "Tu réussis ton examen ?",
+          "Oui, je réussis mon examen."
+        ],
+        [
+          "Tu choisis quel stylo ?",
+          "Je choisis le petit stylo."
+        ],
+        [
+          "Say: We fill in the form.",
+          "Nous remplissons le formulaire."
+        ],
+        [
+          "Say one sentence with finir and one with réussir.",
+          "Je finis mon devoir. Je réussis mon examen."
+        ]
+      ],
+      "exit": [
+        [
+          "Write one new sentence using today’s lesson.",
+          "Je remplis le formulaire."
+        ],
+        [
+          "Say two different sentences without reading the story.",
+          "J’étudie le français. Je parle avec mon ami."
+        ],
+        [
+          "Translate one sentence from today into French without notes.",
+          "Nous réussissons l’examen."
+        ]
+      ]
+    },
+    {
+      "day": 17,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Act & react",
+      "title": "Agir & réagir — petites situations",
+      "focus": "Apply regular -IR endings in short real situations",
+      "yesterday": "Spaced review due today from Days 3, 10, 14, 16 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.",
+      "explanation": "DAY 17 — SIMPLE STUDENT NOTES\n\n1. FIRST: RECALL WITHOUT NOTES\nSpaced review due today from Days 3, 10, 14, 16 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.\n\n2. TODAY'S LEARNING\nTODAY'S TWO VERBS follow the same regular -IR pattern as finir: -is, -is, -it, -issons, -issez, -issent. Start with the subject and choose the correct ending. Recall finir and choisir first.\n\n3. USEFUL WORDS AND SENTENCES\nle problème = the problem\nla solution = the solution\nl’idée = the idea\nle message = the message (review)\nJ’agis rapidement. — I act quickly.\nElle réagit à mon message. — She reacts to my message.\n\n4. AVOID COMMON ERRORS\nKeep the correct article, apostrophe, and verb ending. Do not add new grammar when a simpler sentence works.\n\n5. MON HISTOIRE DU JOUR — COPY ONCE AND READ ALOUD\nMon ami a un petit problème avec son ordinateur. Il regarde son écran et il réagit rapidement. Je pense à une solution facile et j'agis avec mon ami. Nous trouvons une idée et nous utilisons mon téléphone. Ensuite, nous finissons notre travail et mon ami réussit son travail.\n\n6. STUDY ROUTINE\nTranslate and speak without notes before checking answers. Correct your two weakest patterns. Review them again tomorrow. English-to-French tasks are in the sentences section.",
+      "verbs": [
+        {
+          "fr": "agir",
+          "en": "to act"
+        },
+        {
+          "fr": "réagir",
+          "en": "to react"
+        }
+      ],
+      "vocab": [
+        [
+          "le problème",
+          "the problem"
+        ],
+        [
+          "la solution",
+          "the solution"
+        ],
+        [
+          "l’idée",
+          "the idea"
+        ],
+        [
+          "le message",
+          "the message (review)"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "agir",
+          "forms": [
+            "j’agis",
+            "tu agis",
+            "il / elle agit",
+            "nous agissons",
+            "vous agissez",
+            "ils / elles agissent"
+          ],
+          "meaning": "to act"
+        },
+        {
+          "name": "réagir",
+          "forms": [
+            "je réagis",
+            "tu réagis",
+            "il / elle réagit",
+            "nous réagissons",
+            "vous réagissez",
+            "ils / elles réagissent"
+          ],
+          "meaning": "to react"
+        }
+      ],
+      "fixed": [
+        "J’agis rapidement. — I act quickly.",
+        "Elle réagit à mon message. — She reacts to my message."
+      ],
+      "flashcards": [
+        [
+          "I look for",
+          "je cherche"
+        ],
+        [
+          "she arrives",
+          "elle arrive"
+        ],
+        [
+          "we study",
+          "nous étudions"
+        ],
+        [
+          "to act",
+          "j’agis"
+        ],
+        [
+          "to react",
+          "je réagis"
+        ]
+      ],
+      "flashcardsNote": "Review from scheduled earlier Days [3, 10, 14, 16]. Follow the +1/+3/+7/+14/+30 schedule; missed items return tomorrow.",
+      "recall": [
+        {
+          "prompt": "the problem",
+          "answer": "le problème",
+          "accept": [],
+          "explanation": "Keep the correct article: le problème."
+        },
+        {
+          "prompt": "the solution",
+          "answer": "la solution",
+          "accept": [],
+          "explanation": "Keep the correct article: la solution."
+        },
+        {
+          "prompt": "the idea",
+          "answer": "l’idée",
+          "accept": [],
+          "explanation": "Keep the correct article: l’idée."
+        },
+        {
+          "prompt": "Recall Day 3: I look for",
+          "answer": "je cherche",
+          "accept": [],
+          "explanation": "Day 3 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 10: she arrives",
+          "answer": "elle arrive",
+          "accept": [],
+          "explanation": "Day 10 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 14: we study",
+          "answer": "nous étudions",
+          "accept": [],
+          "explanation": "Day 14 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 16: I fill in",
+          "answer": "je remplis",
+          "accept": [],
+          "explanation": "Day 16 spaced recall. Produce it without looking."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + agir",
+          "answer": "j’agis",
+          "accept": [],
+          "explanation": "agir follows its taught conjugation pattern: j’agis."
+        },
+        {
+          "prompt": "nous + agir",
+          "answer": "nous agissons",
+          "accept": [],
+          "explanation": "agir follows its taught conjugation pattern: nous agissons."
+        },
+        {
+          "prompt": "ils/elles + agir",
+          "answer": "ils / elles agissent",
+          "accept": [],
+          "explanation": "agir follows its taught conjugation pattern: ils / elles agissent."
+        },
+        {
+          "prompt": "je + réagir",
+          "answer": "je réagis",
+          "accept": [],
+          "explanation": "réagir follows its taught conjugation pattern: je réagis."
+        },
+        {
+          "prompt": "nous + réagir",
+          "answer": "nous réagissons",
+          "accept": [],
+          "explanation": "réagir follows its taught conjugation pattern: nous réagissons."
+        },
+        {
+          "prompt": "ils/elles + réagir",
+          "answer": "ils / elles réagissent",
+          "accept": [],
+          "explanation": "réagir follows its taught conjugation pattern: ils / elles réagissent."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I act quickly.",
+          "answer": "J’agis rapidement.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "We react to a message.",
+          "answer": "Nous réagissons à un message.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "She finishes her work.",
+          "answer": "Elle finit son travail.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "They do not react.",
+          "answer": "Ils ne réagissent pas.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "J’agis → change the subject to nous.",
+          "answer": "Nous agissons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        },
+        {
+          "prompt": "Je réagis → change the subject to nous.",
+          "answer": "Nous réagissons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        }
+      ],
+      "oral": [
+        [
+          "Tu réagis rapidement ?",
+          "Oui, je réagis rapidement."
+        ],
+        [
+          "Tu agis avec ton ami ?",
+          "Oui, j’agis avec mon ami."
+        ],
+        [
+          "Vous finissez votre travail ?",
+          "Oui, nous finissons notre travail."
+        ],
+        [
+          "Say: She reacts to the message.",
+          "Elle réagit au message."
+        ],
+        [
+          "Describe a simple problem using agir or réagir.",
+          "Mon ami a un problème. Je réagis et j’agis."
+        ]
+      ],
+      "exit": [
+        [
+          "Write one new sentence using today’s lesson.",
+          "J’agis rapidement."
+        ],
+        [
+          "Say two different sentences without reading the story.",
+          "J’étudie le français. Je parle avec mon ami."
+        ],
+        [
+          "Translate one sentence from today into French without notes.",
+          "Nous réagissons à un message."
+        ]
+      ]
+    },
+    {
+      "day": 18,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Stressed pronouns",
+      "title": "Pronoms toniques — moi, toi, lui...",
+      "focus": "Use stressed pronouns after avec, pour and in short answers",
+      "yesterday": "Spaced review due today from Days 4, 11, 15, 17 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.",
+      "explanation": "DAY 18 — SIMPLE STUDENT NOTES\n\n1. FIRST: RECALL WITHOUT NOTES\nSpaced review due today from Days 4, 11, 15, 17 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.\n\n2. TODAY'S LEARNING\nSTRESSED PRONOUNS (pronoms toniques): moi, toi, lui, elle, nous, vous, eux, elles. Use them after avec and pour: avec moi, pour toi, avec lui, avec elle, pour nous, avec eux. Short answers: Moi ! / Lui ! They are NOT the normal subject pronouns: je parle (not moi parle). No COD/COI lesson today.\n\n3. USEFUL WORDS AND SENTENCES\n\nTu étudies avec moi ? — Are you studying with me?\nCe livre est pour toi. — This book is for you.\n\n4. AVOID COMMON ERRORS\nKeep the correct article, apostrophe, and verb ending. Do not add new grammar when a simpler sentence works.\n\n5. MON HISTOIRE DU JOUR — COPY ONCE AND READ ALOUD\nAujourd'hui, mon ami étudie le français avec moi. Je choisis un livre pour lui et il trouve un cahier pour moi. Ma sœur travaille avec nous. Elle finit son travail, puis elle écoute la musique avec moi. Le soir, nous regardons la télévision ensemble.\n\n6. STUDY ROUTINE\nTranslate and speak without notes before checking answers. Correct your two weakest patterns. Review them again tomorrow. English-to-French tasks are in the sentences section.",
+      "verbs": [],
+      "vocab": [],
+      "conjugations": [],
+      "fixed": [
+        "Tu étudies avec moi ? — Are you studying with me?",
+        "Ce livre est pour toi. — This book is for you."
+      ],
+      "flashcards": [
+        [
+          "I listen",
+          "j’écoute"
+        ],
+        [
+          "I buy",
+          "j’achète"
+        ],
+        [
+          "we finish",
+          "nous finissons"
+        ],
+        [
+          "the house",
+          "la maison"
+        ],
+        [
+          "I watch",
+          "je regarde"
+        ]
+      ],
+      "flashcardsNote": "Review from scheduled earlier Days [4, 11, 15, 17]. Follow the +1/+3/+7/+14/+30 schedule; missed items return tomorrow.",
+      "recall": [
+        {
+          "prompt": "Recall Day 4: I listen",
+          "answer": "j’écoute",
+          "accept": [],
+          "explanation": "Day 4 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 11: I buy",
+          "answer": "j’achète",
+          "accept": [],
+          "explanation": "Day 11 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 15: we finish",
+          "answer": "nous finissons",
+          "accept": [],
+          "explanation": "Day 15 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 17: I act",
+          "answer": "j’agis",
+          "accept": [],
+          "explanation": "Day 17 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Review Day 1: I speak",
+          "answer": "je parle",
+          "accept": [],
+          "explanation": "Previously studied item; practise aloud."
+        },
+        {
+          "prompt": "Review Day 9: I help",
+          "answer": "j’aide",
+          "accept": [],
+          "explanation": "Previously studied item; practise aloud."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "with me",
+          "answer": "avec moi",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "with you (informal)",
+          "answer": "avec toi",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "with him",
+          "answer": "avec lui",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "with her",
+          "answer": "avec elle",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "for us",
+          "answer": "pour nous",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "with them (masculine/mixed)",
+          "answer": "avec eux",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I study with you. (informal)",
+          "answer": "J’étudie avec toi.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "She works with us.",
+          "answer": "Elle travaille avec nous.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "The book is for him.",
+          "answer": "Le livre est pour lui.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "I speak with them. (masculine or mixed group)",
+          "answer": "Je parle avec eux.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je parle avec mon ami. → Replace mon ami with him.",
+          "answer": "Je parle avec lui.",
+          "accept": [],
+          "explanation": "After avec, use the stressed pronoun lui."
+        },
+        {
+          "prompt": "Elle travaille avec ma sœur. → Replace ma sœur with me.",
+          "answer": "Elle travaille avec moi.",
+          "accept": [],
+          "explanation": "After avec, use moi."
+        }
+      ],
+      "oral": [
+        [
+          "Tu étudies avec moi ?",
+          "Oui, j’étudie avec toi."
+        ],
+        [
+          "Ce livre est pour lui ou pour elle ?",
+          "Ce livre est pour elle."
+        ],
+        [
+          "Tu travailles avec eux ?",
+          "Oui, je travaille avec eux."
+        ],
+        [
+          "Say: I study with her.",
+          "J’étudie avec elle."
+        ],
+        [
+          "Say: This book is for us.",
+          "Ce livre est pour nous."
+        ]
+      ],
+      "exit": [
+        [
+          "Write one new sentence using today’s lesson.",
+          "J’étudie avec toi."
+        ],
+        [
+          "Say two different sentences without reading the story.",
+          "J’étudie le français. Je parle avec mon ami."
+        ],
+        [
+          "Translate one sentence from today into French without notes.",
+          "Elle travaille avec nous."
+        ]
+      ]
+    },
+    {
+      "day": 19,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Leaving & going out",
+      "title": "Partir & sortir — mes déplacements",
+      "focus": "Use the irregular -IR patterns of partir and sortir",
+      "yesterday": "Spaced review due today from Days 5, 12, 16, 18 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.",
+      "explanation": "DAY 19 — SIMPLE STUDENT NOTES\n\n1. FIRST: RECALL WITHOUT NOTES\nSpaced review due today from Days 5, 12, 16, 18 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.\n\n2. TODAY'S LEARNING\nPARTIR and SORTIR do NOT follow finir's regular -iss- pattern. PARTIR: je pars, tu pars, il part, nous partons, vous partez, ils partent. SORTIR: je sors, tu sors, il sort, nous sortons, vous sortez, ils sortent. There is no -iss- here.\n\n3. USEFUL WORDS AND SENTENCES\nla gare = the train station\nle parc = the park\nla rue = the street\nle matin = the morning (review)\nle soir = the evening\nJe pars le matin. — I leave in the morning.\nNous sortons avec nos amis. — We go out with our friends.\n\n4. AVOID COMMON ERRORS\nDo not apply finir's -iss- endings to every -IR verb. Always check which pattern today's verb uses.\n\n5. MON HISTOIRE DU JOUR — COPY ONCE AND READ ALOUD\nLe matin, je pars de la maison avec mon ami. Nous sortons dans la rue et nous allons dans le parc. Mon ami choisit un petit livre et je cherche mon cahier. Nous parlons français ensemble. Le soir, je sors avec ma sœur et nous parlons français.\n\n6. STUDY ROUTINE\nTranslate and speak without notes before checking answers. Correct your two weakest patterns. Review them again tomorrow. English-to-French tasks are in the sentences section.",
+      "verbs": [
+        {
+          "fr": "partir",
+          "en": "to leave"
+        },
+        {
+          "fr": "sortir",
+          "en": "to go out"
+        }
+      ],
+      "vocab": [
+        [
+          "la gare",
+          "the train station"
+        ],
+        [
+          "le parc",
+          "the park"
+        ],
+        [
+          "la rue",
+          "the street"
+        ],
+        [
+          "le matin",
+          "the morning (review)"
+        ],
+        [
+          "le soir",
+          "the evening"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "partir",
+          "forms": [
+            "je pars",
+            "tu pars",
+            "il / elle part",
+            "nous partons",
+            "vous partez",
+            "ils / elles partent"
+          ],
+          "meaning": "to leave"
+        },
+        {
+          "name": "sortir",
+          "forms": [
+            "je sors",
+            "tu sors",
+            "il / elle sort",
+            "nous sortons",
+            "vous sortez",
+            "ils / elles sortent"
+          ],
+          "meaning": "to go out"
+        }
+      ],
+      "fixed": [
+        "Je pars le matin. — I leave in the morning.",
+        "Nous sortons avec nos amis. — We go out with our friends."
+      ],
+      "flashcards": [
+        [
+          "we speak",
+          "nous parlons"
+        ],
+        [
+          "I call",
+          "j’appelle"
+        ],
+        [
+          "I fill in",
+          "je remplis"
+        ],
+        [
+          "to leave",
+          "je pars"
+        ],
+        [
+          "to go out",
+          "je sors"
+        ]
+      ],
+      "flashcardsNote": "Review from scheduled earlier Days [5, 12, 16, 18]. Follow the +1/+3/+7/+14/+30 schedule; missed items return tomorrow.",
+      "recall": [
+        {
+          "prompt": "the train station",
+          "answer": "la gare",
+          "accept": [],
+          "explanation": "Keep the correct article: la gare."
+        },
+        {
+          "prompt": "the park",
+          "answer": "le parc",
+          "accept": [],
+          "explanation": "Keep the correct article: le parc."
+        },
+        {
+          "prompt": "the street",
+          "answer": "la rue",
+          "accept": [],
+          "explanation": "Keep the correct article: la rue."
+        },
+        {
+          "prompt": "Recall Day 5: we speak",
+          "answer": "nous parlons",
+          "accept": [],
+          "explanation": "Day 5 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 12: I call",
+          "answer": "j’appelle",
+          "accept": [],
+          "explanation": "Day 12 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 16: I fill in",
+          "answer": "je remplis",
+          "accept": [],
+          "explanation": "Day 16 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 18: with me",
+          "answer": "avec moi",
+          "accept": [],
+          "explanation": "Day 18 spaced recall. Produce it without looking."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + partir",
+          "answer": "je pars",
+          "accept": [],
+          "explanation": "partir follows its taught conjugation pattern: je pars."
+        },
+        {
+          "prompt": "nous + partir",
+          "answer": "nous partons",
+          "accept": [],
+          "explanation": "partir follows its taught conjugation pattern: nous partons."
+        },
+        {
+          "prompt": "ils/elles + partir",
+          "answer": "ils / elles partent",
+          "accept": [],
+          "explanation": "partir follows its taught conjugation pattern: ils / elles partent."
+        },
+        {
+          "prompt": "je + sortir",
+          "answer": "je sors",
+          "accept": [],
+          "explanation": "sortir follows its taught conjugation pattern: je sors."
+        },
+        {
+          "prompt": "nous + sortir",
+          "answer": "nous sortons",
+          "accept": [],
+          "explanation": "sortir follows its taught conjugation pattern: nous sortons."
+        },
+        {
+          "prompt": "ils/elles + sortir",
+          "answer": "ils / elles sortent",
+          "accept": [],
+          "explanation": "sortir follows its taught conjugation pattern: ils / elles sortent."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I leave in the morning.",
+          "answer": "Je pars le matin.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "We go out with our friends.",
+          "answer": "Nous sortons avec nos amis.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "She does not leave today.",
+          "answer": "Elle ne part pas aujourd’hui.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "They go out in the evening.",
+          "answer": "Ils sortent le soir.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je pars → change the subject to nous.",
+          "answer": "Nous partons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        },
+        {
+          "prompt": "Je sors → change the subject to nous.",
+          "answer": "Nous sortons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        }
+      ],
+      "oral": [
+        [
+          "Tu pars le matin ?",
+          "Oui, je pars le matin."
+        ],
+        [
+          "Tu sors avec ton ami ?",
+          "Oui, je sors avec mon ami."
+        ],
+        [
+          "Vous partez aujourd’hui ?",
+          "Oui, nous partons aujourd’hui."
+        ],
+        [
+          "Say: They leave in the evening.",
+          "Ils partent le soir."
+        ],
+        [
+          "Give one sentence with sortir and one with choisir.",
+          "Je sors le soir. Je choisis un livre."
+        ]
+      ],
+      "exit": [
+        [
+          "Write one new sentence using today’s lesson.",
+          "Je pars le matin."
+        ],
+        [
+          "Say two different sentences without reading the story.",
+          "J’étudie le français. Je parle avec mon ami."
+        ],
+        [
+          "Translate one sentence from today into French without notes.",
+          "Nous sortons avec nos amis."
+        ]
+      ]
+    },
+    {
+      "day": 20,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Sleep & open",
+      "title": "Dormir & ouvrir — à la maison",
+      "focus": "Use dormir and recognise ouvrir has present forms like regular -ER verbs",
+      "yesterday": "Spaced review due today from Days 6, 13, 17, 19 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.",
+      "explanation": "DAY 20 — SIMPLE STUDENT NOTES\n\n1. FIRST: RECALL WITHOUT NOTES\nSpaced review due today from Days 6, 13, 17, 19 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.\n\n2. TODAY'S LEARNING\nDORMIR: je dors, tu dors, il dort, nous dormons, vous dormez, ils dorment. OUVRIR is unusual for an -IR infinitive: j'ouvre, tu ouvres, il ouvre, nous ouvrons, vous ouvrez, ils ouvrent; it sounds like the regular -ER present endings.\n\n3. USEFUL WORDS AND SENTENCES\nla nuit = the night\nla porte = the door (review)\nla fenêtre = the window (review)\nle lit = the bed (review)\nJe dors la nuit. — I sleep at night.\nJ’ouvre la porte. — I open the door.\n\n4. AVOID COMMON ERRORS\nDo not apply finir's -iss- endings to every -IR verb. Always check which pattern today's verb uses.\n\n5. MON HISTOIRE DU JOUR — COPY ONCE AND READ ALOUD\nLe soir, je finis mon devoir dans ma chambre. J'ouvre la fenêtre et je regarde la rue. Mon ami appelle au téléphone, mais je ne parle pas longtemps. Je regarde mon livre et je dors dans mon petit lit. Le matin, ma sœur ouvre la porte et elle part pour l'école.\n\n6. STUDY ROUTINE\nTranslate and speak without notes before checking answers. Correct your two weakest patterns. Review them again tomorrow. English-to-French tasks are in the sentences section.",
+      "verbs": [
+        {
+          "fr": "dormir",
+          "en": "to sleep"
+        },
+        {
+          "fr": "ouvrir",
+          "en": "to open"
+        }
+      ],
+      "vocab": [
+        [
+          "la nuit",
+          "the night"
+        ],
+        [
+          "la porte",
+          "the door (review)"
+        ],
+        [
+          "la fenêtre",
+          "the window (review)"
+        ],
+        [
+          "le lit",
+          "the bed (review)"
+        ]
+      ],
+      "conjugations": [
+        {
+          "name": "dormir",
+          "forms": [
+            "je dors",
+            "tu dors",
+            "il / elle dort",
+            "nous dormons",
+            "vous dormez",
+            "ils / elles dorment"
+          ],
+          "meaning": "to sleep"
+        },
+        {
+          "name": "ouvrir",
+          "forms": [
+            "j’ouvre",
+            "tu ouvres",
+            "il / elle ouvre",
+            "nous ouvrons",
+            "vous ouvrez",
+            "ils / elles ouvrent"
+          ],
+          "meaning": "to open"
+        }
+      ],
+      "fixed": [
+        "Je dors la nuit. — I sleep at night.",
+        "J’ouvre la porte. — I open the door."
+      ],
+      "flashcards": [
+        [
+          "we work",
+          "nous travaillons"
+        ],
+        [
+          "I do not watch television",
+          "je ne regarde pas la télévision"
+        ],
+        [
+          "I act",
+          "j’agis"
+        ],
+        [
+          "to sleep",
+          "je dors"
+        ],
+        [
+          "to open",
+          "j’ouvre"
+        ]
+      ],
+      "flashcardsNote": "Review from scheduled earlier Days [6, 13, 17, 19]. Follow the +1/+3/+7/+14/+30 schedule; missed items return tomorrow.",
+      "recall": [
+        {
+          "prompt": "the night",
+          "answer": "la nuit",
+          "accept": [],
+          "explanation": "Keep the correct article: la nuit."
+        },
+        {
+          "prompt": "the door (review)",
+          "answer": "la porte",
+          "accept": [],
+          "explanation": "Keep the correct article: la porte."
+        },
+        {
+          "prompt": "the window (review)",
+          "answer": "la fenêtre",
+          "accept": [],
+          "explanation": "Keep the correct article: la fenêtre."
+        },
+        {
+          "prompt": "Recall Day 6: we work",
+          "answer": "nous travaillons",
+          "accept": [],
+          "explanation": "Day 6 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 13: I do not watch television",
+          "answer": "je ne regarde pas la télévision",
+          "accept": [],
+          "explanation": "Day 13 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 17: I act",
+          "answer": "j’agis",
+          "accept": [],
+          "explanation": "Day 17 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 19: I leave",
+          "answer": "je pars",
+          "accept": [],
+          "explanation": "Day 19 spaced recall. Produce it without looking."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "je + dormir",
+          "answer": "je dors",
+          "accept": [],
+          "explanation": "dormir follows its taught conjugation pattern: je dors."
+        },
+        {
+          "prompt": "nous + dormir",
+          "answer": "nous dormons",
+          "accept": [],
+          "explanation": "dormir follows its taught conjugation pattern: nous dormons."
+        },
+        {
+          "prompt": "ils/elles + dormir",
+          "answer": "ils / elles dorment",
+          "accept": [],
+          "explanation": "dormir follows its taught conjugation pattern: ils / elles dorment."
+        },
+        {
+          "prompt": "je + ouvrir",
+          "answer": "j’ouvre",
+          "accept": [],
+          "explanation": "ouvrir follows its taught conjugation pattern: j’ouvre."
+        },
+        {
+          "prompt": "nous + ouvrir",
+          "answer": "nous ouvrons",
+          "accept": [],
+          "explanation": "ouvrir follows its taught conjugation pattern: nous ouvrons."
+        },
+        {
+          "prompt": "ils/elles + ouvrir",
+          "answer": "ils / elles ouvrent",
+          "accept": [],
+          "explanation": "ouvrir follows its taught conjugation pattern: ils / elles ouvrent."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "I sleep at night.",
+          "answer": "Je dors la nuit.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "We open the door.",
+          "answer": "Nous ouvrons la porte.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "She does not sleep.",
+          "answer": "Elle ne dort pas.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "They open the window.",
+          "answer": "Ils ouvrent la fenêtre.",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Je dors → change the subject to nous.",
+          "answer": "Nous dormons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        },
+        {
+          "prompt": "J’ouvre → change the subject to nous.",
+          "answer": "Nous ouvrons",
+          "accept": [],
+          "explanation": "The verb must change with the subject."
+        }
+      ],
+      "oral": [
+        [
+          "Tu dors bien ?",
+          "Oui, je dors bien."
+        ],
+        [
+          "Tu ouvres la fenêtre ?",
+          "Oui, j’ouvre la fenêtre."
+        ],
+        [
+          "Vous partez le matin ?",
+          "Oui, nous partons le matin."
+        ],
+        [
+          "Say: We open the door.",
+          "Nous ouvrons la porte."
+        ],
+        [
+          "Say one sentence using dormir and one using sortir.",
+          "Je dors la nuit. Je sors le matin."
+        ]
+      ],
+      "exit": [
+        [
+          "Write one new sentence using today’s lesson.",
+          "Je dors la nuit."
+        ],
+        [
+          "Say two different sentences without reading the story.",
+          "J’étudie le français. Je parle avec mon ami."
+        ],
+        [
+          "Translate one sentence from today into French without notes.",
+          "Nous ouvrons la porte."
+        ]
+      ]
+    },
+    {
+      "day": 21,
+      "status": "ready",
+      "releaseDate": null,
+      "short": "Questions & review",
+      "title": "Questions simples — révision de la semaine",
+      "focus": "Ask simple everyday questions and retrieve material from Weeks 1–3",
+      "yesterday": "Spaced review due today from Days 7, 14, 18, 20 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.",
+      "explanation": "DAY 21 — SIMPLE STUDENT NOTES\n\n1. FIRST: RECALL WITHOUT NOTES\nSpaced review due today from Days 7, 14, 18, 20 (+1/+3/+7/+14/+30). Include 1-2 weak items from any older day. Say the answers aloud BEFORE reading the model.\n\n2. TODAY'S LEARNING\nASK BASIC QUESTIONS: (1) Raise your voice: Tu parles français ? (2) Add est-ce que: Est-ce que tu parles français ? (3) Use useful words with familiar verbs: Tu habites où ? Tu pars quand ? Comment tu étudies ? Pourquoi est-ce que tu étudies ? Combien de livres tu choisis ? Avoid formal inversion for now. Review the entire week's verbs and old negation.\n\n3. USEFUL WORDS AND SENTENCES\n\nTu habites où ? — Where do you live?\nEst-ce que tu finis ton devoir ? — Do you finish your homework?\n\n4. AVOID COMMON ERRORS\nKeep the correct article, apostrophe, and verb ending. Do not add new grammar when a simpler sentence works.\n\n5. MON HISTOIRE DU JOUR — COPY ONCE AND READ ALOUD\nAujourd'hui, j'étudie le français avec mon ami. Il demande : « Tu finis ton devoir ? » Je finis mon devoir et je demande : « Tu sors ce soir ? » Mon ami ne sort pas ce soir. Nous choisissons un livre et nous parlons français ensemble.\n\n6. STUDY ROUTINE\nTranslate and speak without notes before checking answers. Correct your two weakest patterns. Review them again tomorrow. English-to-French tasks are in the sentences section.",
+      "verbs": [],
+      "vocab": [],
+      "conjugations": [],
+      "fixed": [
+        "Tu habites où ? — Where do you live?",
+        "Est-ce que tu finis ton devoir ? — Do you finish your homework?"
+      ],
+      "flashcards": [
+        [
+          "the house",
+          "la maison"
+        ],
+        [
+          "we study",
+          "nous étudions"
+        ],
+        [
+          "with me",
+          "avec moi"
+        ],
+        [
+          "the house",
+          "la maison"
+        ],
+        [
+          "I watch",
+          "je regarde"
+        ]
+      ],
+      "flashcardsNote": "Review from scheduled earlier Days [7, 14, 18, 20]. Follow the +1/+3/+7/+14/+30 schedule; missed items return tomorrow.",
+      "recall": [
+        {
+          "prompt": "Recall Day 7: the house",
+          "answer": "la maison",
+          "accept": [],
+          "explanation": "Day 7 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 14: we study",
+          "answer": "nous étudions",
+          "accept": [],
+          "explanation": "Day 14 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 18: with me",
+          "answer": "avec moi",
+          "accept": [],
+          "explanation": "Day 18 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Recall Day 20: I sleep",
+          "answer": "je dors",
+          "accept": [],
+          "explanation": "Day 20 spaced recall. Produce it without looking."
+        },
+        {
+          "prompt": "Review Day 1: I speak",
+          "answer": "je parle",
+          "accept": [],
+          "explanation": "Previously studied item; practise aloud."
+        },
+        {
+          "prompt": "Review Day 9: I help",
+          "answer": "j’aide",
+          "accept": [],
+          "explanation": "Previously studied item; practise aloud."
+        }
+      ],
+      "drills": [
+        {
+          "prompt": "I finish",
+          "answer": "je finis",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "we choose",
+          "answer": "nous choisissons",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "she leaves",
+          "answer": "elle part",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "they sleep",
+          "answer": "ils dorment",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "I open",
+          "answer": "j’ouvre",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        },
+        {
+          "prompt": "we act",
+          "answer": "nous agissons",
+          "accept": [],
+          "explanation": "Use the pattern taught today or recall the previously studied conjugation."
+        }
+      ],
+      "sentences": [
+        {
+          "prompt": "Do you speak French? (intonation)",
+          "answer": "Tu parles français ?",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "Do you finish your homework? (est-ce que)",
+          "answer": "Est-ce que tu finis ton devoir ?",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "Where do you live?",
+          "answer": "Tu habites où ?",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "When do you leave?",
+          "answer": "Tu pars quand ?",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        },
+        {
+          "prompt": "Why do you study French?",
+          "answer": "Pourquoi est-ce que tu étudies le français ?",
+          "accept": [],
+          "explanation": "Check subject + conjugated verb + article/preposition + word order. For negative sentences put ne/n’ before the verb and pas after it."
+        }
+      ],
+      "changes": [
+        {
+          "prompt": "Tu étudies le français. → Make a question with est-ce que.",
+          "answer": "Est-ce que tu étudies le français ?",
+          "accept": [],
+          "explanation": "Add est-ce que, keeping the original verb conjugation."
+        },
+        {
+          "prompt": "Je finis mon devoir. → Change to a negative sentence.",
+          "answer": "Je ne finis pas mon devoir.",
+          "accept": [],
+          "explanation": "Use ne…pas around finis."
+        }
+      ],
+      "oral": [
+        [
+          "Tu habites où ?",
+          "J’habite à Montréal."
+        ],
+        [
+          "Est-ce que tu étudies le français ?",
+          "Oui, j’étudie le français."
+        ],
+        [
+          "Quand est-ce que tu pars ?",
+          "Je pars le matin."
+        ],
+        [
+          "Ask: Do you choose a book?",
+          "Est-ce que tu choisis un livre ?"
+        ],
+        [
+          "Ask: Where do you work?",
+          "Tu travailles où ?"
+        ],
+        [
+          "Ask: Do you go out today?",
+          "Tu sors aujourd’hui ?"
+        ]
+      ],
+      "exit": [
+        [
+          "Write one new sentence using today’s lesson.",
+          "Tu parles français ?"
+        ],
+        [
+          "Say two different sentences without reading the story.",
+          "J’étudie le français. Je parle avec mon ami."
+        ],
+        [
+          "Translate one sentence from today into French without notes.",
+          "Est-ce que tu finis ton devoir ?"
+        ]
+      ]
+    }
+  ]
+}
