@@ -7,7 +7,8 @@ const path=require('path');
   const url='file://'+path.resolve('portfolio.html');
   fs.mkdirSync('portfolio-shots',{recursive:true});
   async function switchTo(name){
-    await page.goto(url+'#'+name,{waitUntil:'load'});
+    await page.goto(url,{waitUntil:'load'});
+    await page.locator('[data-tab="'+name+'"]').click();
     await page.locator('[data-screen="'+name+'"]').waitFor({state:'visible'});
     await page.evaluate(()=>document.fonts.ready);
   }
