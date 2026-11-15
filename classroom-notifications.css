@@ -54,3 +54,15 @@ html[data-theme="dark"] .classroom-notice-item p{color:#b6d0dd}
  .teacher-portal .tp-tabbar{overflow-x:auto;justify-content:flex-start;scrollbar-width:thin;max-width:100%}
  .teacher-portal .tp-tabbar button{white-space:nowrap;flex:0 0 auto;min-width:90px}
 }
+
+/* Clear permission controls inside the existing notification bell. */
+.classroom-push-settings{padding:15px 19px;border-top:1px solid #e1ecf0;background:#f8fbfd}
+.classroom-push-heading{display:flex;align-items:center;gap:7px;font-size:.9rem;color:#24546b}
+.classroom-push-heading strong{font-weight:850}
+.classroom-push-settings p{font-size:.79rem;line-height:1.5;color:#638195;margin:8px 0 10px}
+.classroom-push-toggle{background:#216a81;color:#fff;border:0;border-radius:9px;min-height:39px;padding:8px 13px;font-weight:800;font-size:.82rem}
+.classroom-push-toggle:hover:not([disabled]){background:#15536a}
+.classroom-push-toggle[disabled]{opacity:.55;cursor:wait}
+html[data-theme="dark"] .classroom-push-settings{background:#183144;border-color:#385669}
+html[data-theme="dark"] .classroom-push-heading{color:#c4e5f2}
+html[data-theme="dark"] .classroom-push-settings p{color:#b4cbd9}
