@@ -14,17 +14,10 @@ create table if not exists public.notebook_submissions (
  submitted_at timestamptz not null default now()
 );
 create index if not exists notebook_submissions_owner_test_idx on public.notebook_submissions(owner_uid,test_id,submitted_at desc);
-create table if not exists public.teacher_roles (
- firebase_uid text primary key,
- role text not null check(role='teacher')
-);
 alter table public.notebook_submissions enable row level security;
-alter table public.teacher_roles enable row level security;
 -- No anon/authenticated table policies: only server-held service-role credentials can access the private tables.
 revoke all on public.notebook_submissions from anon, authenticated;
-revoke all on public.teacher_roles from anon, authenticated;
 -- Grant no direct browser access to the private bucket.
 drop policy if exists "notebook teachers public read" on storage.objects;
 drop policy if exists "notebook students public upload" on storage.objects;
--- IMPORTANT: manually insert the teacher's Firebase UID after confirming it in Firebase Console:
--- insert into public.teacher_roles(firebase_uid,role) values ('REAL_TEACHER_FIREBASE_UID','teacher');
+-- Teacher access uses the existing Firebase roles/{uid} document. No duplicate Supabase teacher role records are needed.
