@@ -118,7 +118,19 @@ function draw(){
 }
 async function load(force=false){
  const api=window.classroomTestUploads;if(!api||loading||(!force&&Date.now()-lastFetch<60000))return;
- loading=true;try{const data=await api.notifications();items=Array.isArray(data.notices)?data.notices:[];ready=true;lastFetch=Date.now();draw()}catch(err){if(open&&node())node().innerHTML='<div class="classroom-notice-empty"><strong>Notifications unavailable</strong><p>'+E(api.error(err))+'</p><button data-notice-retry type="button">Retry</button></div>'}finally{loading=false}
+ loading=true;try{
+ const data=await api.notifications();
+ items=Array.isArray(data.notices)?data.notices:[];
+ ready=true;lastFetch=Date.now();draw();
+ // When a student taps an OS push alert, the service worker opens a URL with
+ // the exact notice ID. A successful authenticated load marks it read.
+ const target=new URLSearchParams(window.location.search).get('notice');
+ if(target&&items.some(n=>n.id===target)){
+  await markRead(target);
+  const url=new URL(window.location.href);url.searchParams.delete('notice');
+  window.history.replaceState(window.history.state,'',url.pathname+url.search+url.hash);
+ }
+}catch(err){if(open&&node())node().innerHTML='<div class="classroom-notice-empty"><strong>Notifications unavailable</strong><p>'+E(api.error(err))+'</p><button data-notice-retry type="button">Retry</button></div>'}finally{loading=false}
 }
 function toggle(){open=!open;draw();if(open){node()?.querySelector('[data-notice-close]')?.focus();load(true);pushStatus()}}
 function close(){if(open){open=false;draw();document.getElementById('classroom-notice-button')?.focus()}}
