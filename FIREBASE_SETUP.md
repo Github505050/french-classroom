@@ -64,3 +64,31 @@ Teachers can use **Teacher Portal → Announcements** to send class-wide notices
 **Important:** This is an *in-app notification centre*, refreshed when the user logs in, reopens the tab, visits the notification menu, or periodically while the app is open. It does not send native Android/iOS browser push notifications, email, or SMS. Do not announce private marks in a class-wide message. Students only receive their own published result notices.
 
 Security: `classroom_announcements` and `classroom_notification_reads` use RLS and have no browser anon/authenticated grants. The service role is server-side only. The Edge Function verifies Firebase ID tokens and teacher role; read receipts are scoped to the signed-in Firebase UID.
+
+## Phone push notifications (PWA Web Push)
+
+**Implemented:** Students may opt in inside the header bell → **Enable phone notifications**. On Android, use a compatible browser; on iPhone/iPad (iOS 16.4+), use Safari's Share → Add to Home Screen and open the installed classroom app before enabling notifications. Students must grant the OS/browser permission. Do not ask automatically.
+
+- Push delivery uses the existing `sw.js` worker, standard Web Push/VAPID and the private Supabase Edge Function `notebook-tests`.
+- `classroom_push_subscriptions` stores per-device endpoints and encryption public/auth keys, bound to the verified Firebase UID; no other user's subscriptions are readable from browser roles. The authorized owner can disable notifications and remove their registration; sign-out attempts device revocation.
+- The signing pair and private database webhook token are generated on the backend on the first **Enable phone notifications** request, stored encrypted in Supabase Vault, and never placed in GitHub. Public VAPID key is returned to the signed-in user's browser.
+- Automatic push events: a new test registered by inserting its ID into `notebook_test_definitions` (via the `classroom_new_test_push` database trigger), a teacher announcement posted through Teacher → Announcements, or a teacher publishing/re-publishing a student's graded test. Draft grades produce no push.
+- Result push messages contain a generic “Your results are ready” notice, not marks or personally identifying details. Only the owner UID's subscriptions are targeted.
+- Clicking a push should open `#classroom=section=tests` or `#classroom=section=myresults` in the app.
+- The in-app bell continues to work with push disabled; Android/iOS delivery can be delayed or blocked by OS Focus/Do Not Disturb, battery optimization, denied permissions, expired subscriptions or offline devices.
+- This **does not** register a Play Store/App Store application and does not send SMS/email. Push depends on device permission, browser support and the hosted Supabase project remaining active.
+
+Infrastructure schema: [supabase/push-setup.sql](supabase/push-setup.sql).
+Server source: [supabase/functions/notebook-tests/index.ts](supabase/functions/notebook-tests/index.ts).
+
+### Required acceptance testing on a real phone
+
+1. Sign in to the existing website as a verified student; open bell → Enable phone notifications and allow permission. Confirm button changes to Turn off phone alerts.
+2. Close the browser or Home Screen app, then publish a test/teacher announcement and verify an OS lock-screen alert. (Do **not** publish placeholder coursework or notify real students merely to test.)
+3. Publish a **real** student result as teacher and confirm only that student receives the result alert. Draft status must not send.
+4. Tap the push and verify the correct Tests or My Results page opens.
+5. Disable notifications; confirm the device stops receiving new alerts.
+6. Sign out; verify previous student's notice content isn't visible to another person signed in on that phone.
+7. Repeat on iPhone Home Screen app and supported Android browser. **Until this real-device test is completed, delivery should be described as configured but not independently confirmed.**
+
+**Do not** put VAPID private keys, database service keys or webhook tokens in GitHub. This repository contains only safe source code; the secrets are generated at runtime inside Supabase Vault.
