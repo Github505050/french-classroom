@@ -1,5 +1,5 @@
 // French Classroom PWA: cache the app shell, fetch updated lessons first.
-const CACHE_NAME = 'mon-francais-shell-v35';
+const CACHE_NAME = 'mon-francais-shell-v36';
 const CORE = ['./', './index.html', './foundations.js', './teacher-dashboard.js', './teacher-test-submissions.js', './classroom-tests.js', './classroom-results.js', './classroom-notifications.js', './classroom-notifications.css', './teacher-announcements.js', './classroom-results.css', './test-uploads.js', './tests.json', './supabase-config.json', './teacher-dashboard.css', './classroom-polish.css', './app-mobile.css', './vocabulary-library.css', './assets/french-student.svg', './assets/paris-sky.svg', './config.json', './weeks/week1.json', './weeks/week2.json', './weeks/week3.json', './weeks/week4.json', './weeks/week5.json', './listening.json', './stories.json', './announcements.json', './audio/manifest.json', './firebase-auth.js', './firebase-config.js', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(async cache => {
@@ -31,4 +31,35 @@ self.addEventListener('fetch', event => {
       return Response.error();
     }
   })());
+});
+
+/* Phone push: a real visible notification, not silent background processing. */
+self.addEventListener('push',event=>{
+ event.waitUntil((async()=>{
+  let msg={};
+  try{msg=event.data?event.data.json():{}}catch{msg={}}
+  const allowed=['home','tests','myresults'];
+  const section=allowed.includes(msg.destination)?msg.destination:'home';
+  const url=new URL('./#classroom=section='+section,self.registration.scope).href;
+  const title=String(msg.title||'Mon Espace Français').slice(0,110);
+  const body=String(msg.body||'You have a new classroom update.').slice(0,200);
+  await self.registration.showNotification(title,{
+   body,icon:new URL('./icons/icon-192.png',self.registration.scope).href,
+   badge:new URL('./icons/icon-192.png',self.registration.scope).href,
+   tag:String(msg.tag||'classroom-update').slice(0,140),
+   renotify:false, data:{url},timestamp:Date.now()
+  });
+  const clients=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+  for(const client of clients)client.postMessage({type:'classroom-push-received'});
+ })());
+});
+self.addEventListener('notificationclick',event=>{
+ event.notification.close();
+ event.waitUntil((async()=>{
+  const target=event.notification.data?.url||new URL('./',self.registration.scope).href;
+  const list=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+  const page=list.find(c=>c.url.startsWith(self.registration.scope))||list[0];
+  if(page){try{await page.navigate(target)}catch{}await page.focus();return}
+  await self.clients.openWindow(target);
+ })());
 });
