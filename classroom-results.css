@@ -100,5 +100,7 @@
 }
 @media(prefers-reduced-motion:reduce){.my-results *{animation:none!important;transition:none!important}}
 
-/* Keep student-only navigation genuinely hidden for authorized teacher accounts. */
-.navbtn[data-section="myresults"][hidden]{display:none!important}
+
+.my-results-teacher-note{display:flex;flex-wrap:wrap;gap:7px 14px;align-items:center;background:#eef7fa;border:1px solid #bedce8;border-left:4px solid #377f9c;border-radius:11px;padding:13px 16px;margin-bottom:15px;color:#335e75;font-size:.84rem;line-height:1.55}
+.my-results-teacher-note strong{font-size:.86rem;color:#1c5573;white-space:nowrap}
+.my-results-teacher-note span{flex:1;min-width:170px}
