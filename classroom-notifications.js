@@ -112,7 +112,7 @@ function draw(){
  bell.setAttribute('aria-expanded',String(open));updateNoticeLayer();box.hidden=!open;
  if(!open)return;
  box.innerHTML='<div class="classroom-notice-header"><div><strong>Notifications</strong><small>'+unread+' unread</small></div><button type="button" data-notice-close aria-label="Close notifications">×</button></div>'+
- (items.length?'<div class="classroom-notice-items">'+items.map(n=>'<article class="classroom-notice-item '+(n.read?'is-read':'is-unread')+'"><span class="classroom-notice-marker"></span><div><h4>'+E(n.title)+'</h4><p>'+E(n.body)+'</p><small>'+E(time(n.createdAt))+'</small><div class="classroom-notice-actions"><button type="button" data-notice-open="'+E(n.id)+'">Open '+(n.destination==='tests'?'Tests':n.destination==='myresults'?'My Results':'Home')+'</button>'+(n.read?'':'<button type="button" data-notice-read="'+E(n.id)+'">Mark read</button>')+'</div></div></article>').join('')+'</div>':'<div class="classroom-notice-empty"><strong>All caught up</strong><p>New classroom updates and published results will appear here.</p></div>')+
+ (items.length?'<div class="classroom-notice-items">'+items.map(n=>'<button type="button" class="classroom-notice-item '+(n.read?'is-read':'is-unread')+'" data-notice-open="'+E(n.id)+'"><span class="classroom-notice-marker"></span><span class="classroom-notice-copy"><strong>'+E(n.title)+'</strong><span class="classroom-notice-description">'+E(n.body)+'</span><span class="classroom-notice-when">'+E(time(n.createdAt))+'</span><span class="classroom-notice-action-label">Tap to '+(n.destination==='tests'?'open Tests':n.destination==='myresults'?'view My Results':'open Home')+' →</span></span></button>').join('')+'</div>':'<div class="classroom-notice-empty"><strong>All caught up</strong><p>New classroom updates and published results will appear here.</p></div>')+
  '<div class="classroom-push-settings" id="classroom-push-settings"></div><div class="classroom-notice-foot">Notifications stay here, and phone alerts can be enabled on supported devices.</div>';
  renderPushSettings();
 }
@@ -123,17 +123,34 @@ async function load(force=false){
 function toggle(){open=!open;draw();if(open){node()?.querySelector('[data-notice-close]')?.focus();load(true);pushStatus()}}
 function close(){if(open){open=false;draw();document.getElementById('classroom-notice-button')?.focus()}}
 async function markRead(id){
- const n=items.find(x=>x.id===id);if(!n||n.read)return;
- try{await window.classroomTestUploads.readNotification(id);n.read=true;draw()}catch(err){console.warn('Unable to mark notice read',err)}
+ const n=items.find(x=>x.id===id);if(!n||n.read)return true;
+ try{
+  await window.classroomTestUploads.readNotification(id);
+  n.read=true;
+  draw();
+  return true;
+ }catch(err){console.warn('Unable to mark notice read',err);return false}
 }
-function navigate(id){const n=items.find(x=>x.id===id);if(!n)return;markRead(id);close();window.classroomSetSection?.(n.destination||'home')}
+async function navigate(id){
+ const n=items.find(x=>x.id===id);if(!n)return;
+ const destination=n.destination||'home';
+ // One tap opens the destination and persists its read receipt—no second step.
+ // Prevent double taps while the server acknowledges the read receipt.
+ if(n.opening)return;
+ n.opening=true;
+ try{await markRead(id)}
+ finally{
+  n.opening=false;
+  close();
+  window.classroomSetSection?.(destination);
+ }
+}
 document.addEventListener('click',e=>{
- const btn=e.target.closest('[data-push-toggle],[data-notice-open],[data-notice-read],[data-notice-close],[data-notice-retry],#classroom-notice-button');
+ const btn=e.target.closest('[data-push-toggle],[data-notice-open],[data-notice-close],[data-notice-retry],#classroom-notice-button');
  if(btn){if(btn.hasAttribute('data-push-toggle')){togglePhonePush();return}
  if(btn.id==='classroom-notice-button'){toggle();return}
  if(btn.hasAttribute('data-notice-close')){close();return}
  if(btn.hasAttribute('data-notice-retry')){load(true);return}
- if(btn.hasAttribute('data-notice-read')){markRead(btn.dataset.noticeRead);return}
  if(btn.hasAttribute('data-notice-open')){navigate(btn.dataset.noticeOpen);return}}
  if(open&&!node()?.contains(e.target)&&!e.target.closest('#classroom-notice-button'))close();
 });
