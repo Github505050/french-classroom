@@ -91,3 +91,15 @@ body.teacher-mode .sidebar .panel{box-shadow:0 8px 28px #0a304009;border-color:#
 @media(max-width:850px){body.teacher-mode .layout{grid-template-columns:1fr;gap:14px}.tp-hero{padding:25px}.tp-overview-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.teacher-portal{gap:13px}.tp-hero{display:block;padding:22px;min-height:0;border-radius:16px}.tp-hero h2{font-size:1.8rem}.tp-hero-action{justify-items:start;text-align:left;margin-top:17px}.tp-stat{padding:15px}.tp-stat strong{font-size:1.55rem}.tp-stat-top{font-size:.75rem}.tp-card{padding:16px;border-radius:14px}.tp-action-grid{grid-template-columns:1fr}.tp-toolbar{grid-template-columns:1fr}.tp-tabbar button{flex:1;padding:10px 9px}.tp-detail-grid{grid-template-columns:1fr 1fr}.tp-lesson-grid{grid-template-columns:1fr}.tp-lesson{flex-wrap:wrap}.tp-table{min-width:610px}}
 @media print{.teacher-portal .tp-hero-action,.teacher-portal .tp-tabbar,.teacher-portal .tp-toolbar,.teacher-portal button,.teacher-portal .tp-disclaimer{display:none!important}.teacher-portal{display:block}.tp-card,.tp-stat{break-inside:avoid;box-shadow:none}.tp-table-wrap{overflow:visible}}
+
+/* Educator announcement tab remains discoverable on desktop and narrow phones. */
+.teacher-portal .tp-tabbar{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;min-width:0;overflow:visible}
+.teacher-portal .tp-tabbar button{flex:1 1 auto;min-width:118px;white-space:normal;line-height:1.25;padding:11px 13px;overflow-wrap:anywhere}
+.teacher-portal #teacher-open-announcements{background:#d6f8f0;color:#145d61;border:1px solid #9adacb;box-shadow:0 2px 8px #082f3b18}
+.teacher-portal #teacher-open-announcements:hover{background:#baf1e3}
+@media(max-width:700px){
+ .teacher-portal .tp-tabbar{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scroll-padding-inline:10px}
+ .teacher-portal .tp-tabbar button{flex:0 0 auto;min-width:105px;white-space:nowrap}
+ .teacher-portal .tp-hero-action{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start;align-items:center}
+ .teacher-portal .tp-hero-action small{flex-basis:100%}
+}
