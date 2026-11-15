@@ -167,10 +167,10 @@
       '<h2>Teacher workspace<span>.</span></h2><p>Student records, learning progress and results in one place.</p></div>'+
       '<div class="tp-hero-action"><button type="button" id="teacher-reload">↻ Refresh records</button><small>'+E(lastRefresh?'Updated '+fmtDate(lastRefresh):'Secure Firestore reporting')+'</small></div></section>'+
       (state.tab==='student'?detail():metrics()+'<div class="tp-tabbar" role="group" aria-label="Teacher workspace sections">'+
-      [['overview','Overview'],['students','Students'],['results','Results'],['tests','Tests & Submissions']].map(function(item){return '<button type="button" data-tp-tab="'+item[0]+'" class="'+(state.tab===item[0]?'selected':'')+'" aria-pressed="'+(state.tab===item[0])+'">'+item[1]+'</button>'}).join('')+'</div>'+
-      (state.tab==='tests'?'':'<div class="tp-banner" role="status">'+E(note)+'</div>')+
-      (state.tab==='tests'?(window.classroomTeacherTestsView?.()||'<p>Tests loading…</p>'):state.tab==='overview'?overview():'<section class="tp-card">'+toolbar()+'<div id="tp-content">'+(state.tab==='students'?studentsContent():resultsContent())+'</div></section>'))+
-      (state.tab==='tests'?'':'<p class="tp-disclaimer">Only authorized teacher accounts can retrieve these records. Scores shown here are student-entered, not independently verified. Student records are not saved to this device by the teacher portal.</p>')+'</div>';
+      [['overview','Overview'],['students','Students'],['results','Results'],['tests','Tests & Submissions'],['announcements','Announcements']].map(function(item){return '<button type="button" data-tp-tab="'+item[0]+'" class="'+(state.tab===item[0]?'selected':'')+'" aria-pressed="'+(state.tab===item[0])+'">'+item[1]+'</button>'}).join('')+'</div>'+
+      (['tests','announcements'].includes(state.tab)?'':'<div class="tp-banner" role="status">'+E(note)+'</div>')+
+      (state.tab==='tests'?(window.classroomTeacherTestsView?.()||'<p>Tests loading…</p>'):state.tab==='announcements'?(window.classroomTeacherAnnouncementsView?.()||'<p>Announcements loading…</p>'):state.tab==='overview'?overview():'<section class="tp-card">'+toolbar()+'<div id="tp-content">'+(state.tab==='students'?studentsContent():resultsContent())+'</div></section>'))+
+      (['tests','announcements'].includes(state.tab)?'':'<p class="tp-disclaimer">Only authorized teacher accounts can retrieve these records. Scores shown here are student-entered, not independently verified. Student records are not saved to this device by the teacher portal.</p>')+'</div>';
   }
   function updateContent(){
     var el=document.getElementById('tp-content');
