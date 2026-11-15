@@ -68,4 +68,4 @@ window.classroomTestUploads={
  error
 };
 window.dispatchEvent(new Event('classroom-test-uploads-ready'));
-onAuthStateChanged(auth,user=>{if(user)window.dispatchEvent(new Event('classroom-auth-ready'))});
+onAuthStateChanged(auth,user=>{window.dispatchEvent(new CustomEvent('classroom-auth-state',{detail:{uid:user?.uid||null}}));if(user)window.dispatchEvent(new Event('classroom-auth-ready'))});
