@@ -26,7 +26,7 @@ async function shrinkPhoto(file){
   return new File([blob],file.name.replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'});
  }finally{URL.revokeObjectURL(url)}
 }
-async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination}={},onProgress){
+async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint}={},onProgress){
  const user=auth.currentUser;if(!user)throw Error('Sign in to upload notebook photos.');
  const token=await user.getIdToken();const url=await endpoint();
  const request={method:'POST',headers:{Authorization:'Bearer '+token}};
@@ -40,7 +40,7 @@ async function call(action,{testId,files,submissionId,sectionScores,feedback,gra
   const form=new FormData();form.append('action',action);form.append('testId',testId);optimized.forEach(f=>form.append('photos',f));
   request.body=form;
  }else{
-  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination});
+  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint});
  }
  const result=await fetch(url,request);
  const data=await result.json().catch(()=>({error:'Invalid server response'}));
@@ -56,6 +56,10 @@ window.classroomTestUploads={
  result:async testId=>(await call('result',{testId})).result,
  myResults:async()=>call('myResults'),
  notifications:async()=>call('notifications'),
+ pushConfig:async()=>call('pushConfig'),
+ registerPush:async pushSubscription=>call('registerPush',{pushSubscription}),
+ unregisterPush:async pushEndpoint=>call('unregisterPush',{pushEndpoint}),
+ pushStatus:async()=>call('pushStatus'),
  readNotification:async noticeId=>call('readNotification',{noticeId}),
  publishAnnouncement:async(title,body,kind,destination)=>call('publishAnnouncement',{title,body,kind,destination}),
  teacherAnnouncements:async()=>call('teacherAnnouncements'),
