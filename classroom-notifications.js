@@ -4,6 +4,39 @@
 const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let items=[],open=false,loading=false,lastFetch=0,ready=false,lastUid=null;
 const node=()=>document.getElementById('classroom-notice-popover');
+// Render the panel at the document root so page cards, header transforms, and
+// mobile stacking contexts cannot paint on top of or clip notifications.
+let backdrop=null;
+function ensureNoticeLayer(){
+ const panel=node();
+ if(!panel||!document.body)return;
+ if(panel.parentElement!==document.body)document.body.appendChild(panel);
+ if(!backdrop){
+  backdrop=document.createElement('div');
+  backdrop.className='classroom-notice-backdrop';
+  backdrop.hidden=true;
+  backdrop.setAttribute('aria-hidden','true');
+  document.body.appendChild(backdrop);
+  backdrop.addEventListener('click',close);
+ }
+}
+function updateNoticeLayer(){
+ ensureNoticeLayer();
+ const panel=node();
+ if(!panel)return;
+ if(backdrop)backdrop.hidden=!open;
+ document.body.classList.toggle('classroom-notice-is-open',open);
+ if(open){
+  panel.setAttribute('aria-modal','true');
+  const bell=document.getElementById('classroom-notice-button');
+  if(bell){
+   const pos=bell.getBoundingClientRect();
+   panel.style.setProperty('--notice-top',Math.min(window.innerHeight-90,Math.max(65,pos.bottom+12))+'px');
+   panel.style.setProperty('--notice-right',Math.max(12,window.innerWidth-pos.right)+'px');
+  }
+ }else panel.removeAttribute('aria-modal');
+}
+
 const pushAvailable=()=>typeof window.Notification!=='undefined'&&'serviceWorker' in navigator&&'PushManager' in window&&window.isSecureContext;
 const isApplePhone=()=>/iPad|iPhone|iPod/.test(navigator.userAgent);
 const installed=()=>window.matchMedia?.('(display-mode: standalone)').matches===true||navigator.standalone===true;
@@ -76,7 +109,7 @@ function draw(){
  const unread=items.filter(n=>!n.read).length;
  if(badge){badge.textContent=unread>99?'99+':String(unread);badge.hidden=!unread}
  bell.setAttribute('aria-label',unread?unread+' unread classroom notifications':'Classroom notifications');
- bell.setAttribute('aria-expanded',String(open));box.hidden=!open;
+ bell.setAttribute('aria-expanded',String(open));updateNoticeLayer();box.hidden=!open;
  if(!open)return;
  box.innerHTML='<div class="classroom-notice-header"><div><strong>Notifications</strong><small>'+unread+' unread</small></div><button type="button" data-notice-close aria-label="Close notifications">×</button></div>'+
  (items.length?'<div class="classroom-notice-items">'+items.map(n=>'<article class="classroom-notice-item '+(n.read?'is-read':'is-unread')+'"><span class="classroom-notice-marker"></span><div><h4>'+E(n.title)+'</h4><p>'+E(n.body)+'</p><small>'+E(time(n.createdAt))+'</small><div class="classroom-notice-actions"><button type="button" data-notice-open="'+E(n.id)+'">Open '+(n.destination==='tests'?'Tests':n.destination==='myresults'?'My Results':'Home')+'</button>'+(n.read?'':'<button type="button" data-notice-read="'+E(n.id)+'">Mark read</button>')+'</div></div></article>').join('')+'</div>':'<div class="classroom-notice-empty"><strong>All caught up</strong><p>New classroom updates and published results will appear here.</p></div>')+
@@ -87,8 +120,8 @@ async function load(force=false){
  const api=window.classroomTestUploads;if(!api||loading||(!force&&Date.now()-lastFetch<60000))return;
  loading=true;try{const data=await api.notifications();items=Array.isArray(data.notices)?data.notices:[];ready=true;lastFetch=Date.now();draw()}catch(err){if(open&&node())node().innerHTML='<div class="classroom-notice-empty"><strong>Notifications unavailable</strong><p>'+E(api.error(err))+'</p><button data-notice-retry type="button">Retry</button></div>'}finally{loading=false}
 }
-function toggle(){open=!open;draw();if(open){load(true);pushStatus()}}
-function close(){if(open){open=false;draw()}}
+function toggle(){open=!open;draw();if(open){node()?.querySelector('[data-notice-close]')?.focus();load(true);pushStatus()}}
+function close(){if(open){open=false;draw();document.getElementById('classroom-notice-button')?.focus()}}
 async function markRead(id){
  const n=items.find(x=>x.id===id);if(!n||n.read)return;
  try{await window.classroomTestUploads.readNotification(id);n.read=true;draw()}catch(err){console.warn('Unable to mark notice read',err)}
@@ -102,7 +135,7 @@ document.addEventListener('click',e=>{
  if(btn.hasAttribute('data-notice-retry')){load(true);return}
  if(btn.hasAttribute('data-notice-read')){markRead(btn.dataset.noticeRead);return}
  if(btn.hasAttribute('data-notice-open')){navigate(btn.dataset.noticeOpen);return}}
- if(open&&!e.target.closest('.classroom-notice-wrap'))close();
+ if(open&&!node()?.contains(e.target)&&!e.target.closest('#classroom-notice-button'))close();
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 window.addEventListener('classroom-test-uploads-ready',()=>load(true));
