@@ -41,7 +41,7 @@ async function mine(testId){
  return snap.docs.map(d=>({id:d.id,...d.data()})).filter(s=>s.ownerUid===u.uid&&s.testId===testId).sort((a,b)=>(b.submittedAt?.seconds||0)-(a.submittedAt?.seconds||0));
 }
 async function teacherList(){
- const u=ready(),role=await getDoc(doc(db,'roles',u.uid));
+ const u=auth.currentUser;if(!u)throw Error('Sign in to the teacher portal.');const role=await getDoc(doc(db,'roles',u.uid));
  if(role.data()?.role!=='teacher')throw Error('Teacher access required.');
  const snap=await getDocs(collection(db,'testSubmissions'));
  return snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.submittedAt?.seconds||0)-(a.submittedAt?.seconds||0));
