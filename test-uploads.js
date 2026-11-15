@@ -1,7 +1,7 @@
 /* Supabase notebook uploads use a protected Edge Function; Firebase remains the login provider. */
 import { firebaseConfig } from './firebase-config.js';
 import { getApp,getApps,initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 const app=getApps().length?getApp():initializeApp(firebaseConfig),auth=getAuth(app);
 const error=e=>String(e?.message||e?.code||'Supabase upload unavailable');
 let config;
@@ -64,3 +64,4 @@ window.classroomTestUploads={
  error
 };
 window.dispatchEvent(new Event('classroom-test-uploads-ready'));
+onAuthStateChanged(auth,user=>{if(user)window.dispatchEvent(new Event('classroom-auth-ready'))});
