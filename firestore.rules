@@ -46,6 +46,27 @@ service cloud.firestore {
         && request.resource.data.size() < 500000;
       allow delete: if verifiedOwner(uid);
     }
+    match /testSubmissions/{submissionId} {
+      allow get, list: if teacher() || (signedIn() && request.auth.token.email_verified == true && resource.data.ownerUid == request.auth.uid);
+      allow create: if signedIn() && request.auth.token.email_verified == true
+        && request.resource.data.keys().hasOnly(['ownerUid','testId','images','pageCount','status','submittedAt','studentEmail'])
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.studentEmail == request.auth.token.email
+        && request.resource.data.testId is string
+        && request.resource.data.testId.matches('^[A-Za-z0-9_-]{1,75}
+      allow read, write: if false;
+    }
+  }
+}
+)
+        && request.resource.data.status == 'submitted'
+        && request.resource.data.pageCount is int
+        && request.resource.data.pageCount >= 1 && request.resource.data.pageCount <= 8
+        && request.resource.data.images is list
+        && request.resource.data.images.size() == request.resource.data.pageCount
+        && request.resource.data.submittedAt == request.time;
+      allow update, delete: if false;
+    }
     match /{document=**} {
       allow read, write: if false;
     }
