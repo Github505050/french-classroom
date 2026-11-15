@@ -1,0 +1,43 @@
+/* Classroom announcements and notification centre */
+.classroom-notice-wrap{position:relative;display:flex;align-items:center}
+.classroom-notice-button{height:46px;width:46px;border:1px solid #d9e7ed;border-radius:15px;background:#f5fafb;color:#1e5975;display:grid;place-items:center;position:relative;box-shadow:0 3px 12px #163a4e0a}
+.classroom-notice-button:hover{background:#e5f4f9}.classroom-notice-count{position:absolute;top:1px;right:1px;min-width:18px;height:18px;padding:0 4px;border:2px solid #fff;border-radius:99px;background:#e54f60;color:#fff;display:grid;place-items:center;font-size:.65rem;font-weight:900}
+.classroom-notice-count[hidden],.classroom-notice-popover[hidden]{display:none!important}
+.classroom-notice-popover{position:absolute;top:calc(100% + 10px);right:0;width:min(390px,calc(100vw - 24px));max-height:min(75vh,630px);display:flex;flex-direction:column;z-index:2000;background:#fff;color:#24475c;border:1px solid #d7e4ec;border-radius:18px;box-shadow:0 22px 65px #193d5840;overflow:hidden;text-align:left}
+.classroom-notice-header{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:18px 20px;border-bottom:1px solid #e2edf2}
+.classroom-notice-header strong{display:block;font-size:1.1rem;color:#163f58;font-weight:850}.classroom-notice-header small{font-size:.77rem;color:#648194}
+.classroom-notice-header button{border:0;background:#f0f6f8;font-size:1.55rem;line-height:1;border-radius:9px;width:32px;height:32px;color:#4c6f83}
+.classroom-notice-items{overflow-y:auto;min-height:0}
+.classroom-notice-item{display:grid;grid-template-columns:8px minmax(0,1fr);gap:13px;padding:16px 20px;border-bottom:1px solid #eef2f5;background:#fff}
+.classroom-notice-item.is-unread{background:#f4fafc}.classroom-notice-marker{background:#e5e9ec;width:7px;height:7px;border-radius:50%;margin-top:8px}
+.classroom-notice-item.is-unread .classroom-notice-marker{background:#1e8ba2}
+.classroom-notice-item h4{font-weight:830;color:#1f455b;font-size:.93rem;margin:0 0 6px}
+.classroom-notice-item p{font-size:.83rem;color:#557488;line-height:1.55;margin:0 0 7px;overflow-wrap:anywhere}
+.classroom-notice-item small{font-size:.72rem;color:#8395a1}
+.classroom-notice-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.classroom-notice-actions button{border:0;background:transparent;color:#1b718c;font-size:.79rem;font-weight:800;padding:3px 0}
+.classroom-notice-actions button:hover{text-decoration:underline}
+.classroom-notice-foot{font-size:.72rem;color:#7892a1;padding:12px 19px;border-top:1px solid #e9f0f4;background:#f9fbfc}
+.classroom-notice-empty{padding:29px 19px;text-align:center;color:#476a7d}.classroom-notice-empty strong{font-size:1rem}.classroom-notice-empty p{font-size:.83rem;margin:7px 0;color:#7490a0}
+.teacher-notices-shell{min-width:0}.teacher-notices-head{background:linear-gradient(110deg,#183e56,#18687f);padding:27px;border-radius:17px;color:#fff;margin:0 0 16px}
+.teacher-notices-head .tp-kicker{color:#baddea}.teacher-notices-head h2{color:#fff;font-size:1.8rem;margin:6px 0}.teacher-notices-head p{color:#d4e9ee;margin:0;font-size:.9rem}
+.teacher-notices-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+.teacher-notices-compose,.teacher-notices-published{border:1px solid #dce7ef;border-radius:16px;background:#fff;padding:21px;min-width:0;box-shadow:0 3px 12px #153f5009}
+.teacher-notices-compose h3,.teacher-notices-published h3{margin:0 0 9px;color:#21475e;font-size:1.12rem}
+.teacher-notices-compose>p{font-size:.84rem;color:#668396;margin:0 0 16px}
+.teacher-notices-compose label{font-size:.83rem;display:block;margin:12px 0 0;color:#325c75;font-weight:780}
+.teacher-notices-compose .field{display:block;width:100%;margin:6px 0 0;min-width:0;background:#fff}
+.teacher-notices-compose textarea{resize:vertical;min-height:100px;line-height:1.55}
+.teacher-notices-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.teacher-notices-tools{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:7px;margin-top:17px}
+.teacher-notices-list-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 12px}
+.teacher-notice-row{display:flex;align-items:start;justify-content:space-between;gap:10px;padding:15px 0;border-bottom:1px solid #e5edf3}
+.teacher-notice-row div{flex:1;min-width:0}.teacher-notice-row small{display:block;color:#688597;font-size:.73rem;margin-bottom:7px;text-transform:capitalize}
+.teacher-notice-row strong{font-size:.9rem;font-weight:820;color:#244a63}.teacher-notice-row p{font-size:.82rem;color:#607e90;line-height:1.6;margin:5px 0 0}
+.teacher-notices-disclaimer{color:#718b9c;font-size:.79rem;line-height:1.6;margin-top:16px}
+@media(max-width:860px){.teacher-notices-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.classroom-notice-button{width:40px;height:40px;border-radius:12px}.classroom-notice-button svg{width:21px;height:21px}.classroom-notice-popover{position:fixed;top:72px;left:12px;right:12px;width:auto;max-height:calc(100dvh - 160px)}.teacher-notices-head{padding:20px}.teacher-notices-compose,.teacher-notices-published{padding:17px}.teacher-notices-fields{grid-template-columns:1fr}.teacher-notices-tools button{flex:1}.teacher-notices-tools{justify-content:stretch}}
+html[data-theme="dark"] .classroom-notice-popover,html[data-theme="dark"] .classroom-notice-item,html[data-theme="dark"] .teacher-notices-compose,html[data-theme="dark"] .teacher-notices-published{background:#1b3447;color:#e9f4fa;border-color:#35576a}
+html[data-theme="dark"] .classroom-notice-item.is-unread{background:#214456}
+html[data-theme="dark"] .classroom-notice-header strong,html[data-theme="dark"] .classroom-notice-item h4{color:#e9f4fa}
+html[data-theme="dark"] .classroom-notice-item p{color:#b6d0dd}
