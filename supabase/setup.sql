@@ -21,3 +21,9 @@ revoke all on public.notebook_submissions from anon, authenticated;
 drop policy if exists "notebook teachers public read" on storage.objects;
 drop policy if exists "notebook students public upload" on storage.objects;
 -- Teacher access uses the existing Firebase roles/{uid} document. No duplicate Supabase teacher role records are needed.
+
+-- Edge Functions connect using the Supabase service role. RLS still blocks browser roles.
+grant usage on schema public to service_role;
+grant select, insert on public.notebook_submissions to service_role;
+grant select on public.notebook_test_definitions to service_role;
+grant select, insert, update on public.notebook_test_results to service_role;
