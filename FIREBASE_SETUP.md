@@ -39,3 +39,16 @@ The Supabase backend must be deployed before the photo upload and teacher submis
 - Teacher authorization uses the `teacher_roles` table in Supabase. Only the administrator should maintain this table. It must match the authorized teacher's UID in Firebase.
 - Free projects can pause for inactivity, and Free quotas apply. Review data retention, backups, and privacy policies before collecting student notebook photos.
 - Old `storage.rules` and the `testSubmissions` section in `firestore.rules` relate to the superseded Firebase Storage design and are no longer used by notebook photo uploads.
+
+
+## Teacher grading and published student results
+
+The existing test syllabus stays in `tests.json`. The student test page has one **Upload notebook photos** action at the end of the assessment and a read-only result panel; answer keys and AI-copy controls are not exposed in the student interface.
+
+Teacher Portal → **Tests & Submissions** provides a submission list with status filters, private notebook page viewer, **Copy questions + AI instructions**, section-level marks using the original syllabus maximums, private draft saves and **Publish result**. The teacher must grade every section before publishing. Changes to published marks require explicitly publishing the revised grade.
+
+Supabase tables `notebook_test_definitions` and `notebook_test_results` have RLS enabled and no direct anon/authenticated table access. The `notebook-tests` Edge Function verifies the Firebase identity and existing Firebase `roles/{uid}` teacher role. Students can retrieve **only their own published** results; draft grades are never returned by the student result endpoint. The teacher key supplied for the current mega test must be kept privately outside the public GitHub Pages repository.
+
+**Review protocol:** assess notebook photographs and oral performance separately, then enter verified section marks and any feedback. The copy button only prepares an AI checking prompt; it does **not** upload student images or responses to any AI service.
+
+**Browser QA required before student use:** sign in as a verified student, upload a sample notebook page and verify that a teacher can view it; save a draft and confirm the student still sees Pending; publish all eight section marks and confirm the student sees exactly that total and feedback; confirm another student cannot read this result. Check mobile display and the one-button upload flow. Browser-only syntax or database checks do not substitute for these live authentication tests.
