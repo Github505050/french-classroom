@@ -66,3 +66,52 @@ html[data-theme="dark"] .classroom-notice-item p{color:#b6d0dd}
 html[data-theme="dark"] .classroom-push-settings{background:#183144;border-color:#385669}
 html[data-theme="dark"] .classroom-push-heading{color:#c4e5f2}
 html[data-theme="dark"] .classroom-push-settings p{color:#b4cbd9}
+
+/* Isolated notification sheet: never paint it inside the homepage/header. */
+.classroom-notice-backdrop{
+ position:fixed!important;inset:0!important;z-index:2147482000!important;
+ background:rgba(13,30,45,.58)!important;
+ backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+}
+.classroom-notice-backdrop[hidden]{display:none!important}
+body.classroom-notice-is-open{overflow:hidden!important}
+body>.classroom-notice-popover{
+ position:fixed!important;
+ top:var(--notice-top,76px)!important;
+ right:var(--notice-right,14px)!important;
+ left:auto!important;
+ bottom:auto!important;
+ width:min(420px,calc(100vw - 24px))!important;
+ max-height:min(680px,calc(100dvh - var(--notice-top,76px) - 16px))!important;
+ z-index:2147482001!important;
+ display:flex!important;flex-direction:column!important;
+ opacity:1!important;isolation:isolate!important;
+ background:#ffffff!important;
+ border:1px solid #d8e7ed!important;
+ box-shadow:0 27px 85px rgba(8,31,49,.4)!important;
+ border-radius:20px!important;
+ overflow:hidden!important;
+ transform:none!important;filter:none!important;
+}
+body>.classroom-notice-popover[hidden]{display:none!important}
+body>.classroom-notice-popover .classroom-notice-header{flex:0 0 auto;background:#fff;min-height:76px}
+body>.classroom-notice-popover .classroom-notice-items{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain}
+body>.classroom-notice-popover .classroom-push-settings,
+body>.classroom-notice-popover .classroom-notice-foot{flex:0 0 auto}
+@media(max-width:650px){
+ body>.classroom-notice-popover{
+  top:max(10px,env(safe-area-inset-top))!important;
+  left:10px!important;
+  right:10px!important;
+  bottom:max(14px,env(safe-area-inset-bottom))!important;
+  width:auto!important;
+  max-height:none!important;
+  border-radius:19px!important;
+ }
+ body>.classroom-notice-popover .classroom-notice-header{min-height:70px;padding:14px 17px}
+ body>.classroom-notice-popover .classroom-notice-items{min-height:0}
+ body>.classroom-notice-popover .classroom-push-settings{max-height:38dvh;overflow:auto}
+}
+html[data-theme="dark"] body>.classroom-notice-popover{background:#192e40!important;border-color:#48667c!important}
+html[data-theme="dark"] body>.classroom-notice-popover .classroom-notice-header{background:#192e40}
+@media(prefers-reduced-motion:reduce){.classroom-notice-backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}}
