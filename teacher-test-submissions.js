@@ -22,6 +22,7 @@ function draw(){
  const cards=submissions.length?submissions.map(s=>'<article class="tp-card teacher-submission"><div class="teacher-submission-title"><div><span class="tp-kicker">NOTEBOOK SUBMISSION</span><h3>'+E(tests.find(t=>t.id===s.testId)?.title||s.testId)+'</h3><p>'+E(s.studentEmail||'Student')+' · '+E(s.pageCount||0)+' photo(s) · '+E(s.submittedAt?.toDate?.()?.toLocaleString()||'Recently submitted')+'</p></div><button class="btn" data-teacher-copy="'+E(s.testId)+'">Copy questions for AI</button></div><div class="teacher-submission-photos" data-teacher-photos="'+E(s.id)+'"><button type="button" class="btn" data-teacher-view="'+E(s.id)+'">View notebook photos</button></div></article>').join(''):'<section class="tp-card"><p>No notebook photo submissions yet.</p></section>';
  el.innerHTML='<div class="teacher-tests-toolbar"><h3>Notebook submissions ('+submissions.length+')</h3><button class="btn" type="button" data-teacher-tests-refresh>Refresh submissions</button></div>'+cards+library;
 }
+window.addEventListener('classroom-test-uploads-ready',()=>{if(document.getElementById('teacher-tests-content'))refresh()});
 window.classroomTeacherTestsView=function(){queueMicrotask(()=>{if(!loaded)refresh();else draw()});return '<div class="teacher-tests-area" id="teacher-tests-content"><p class="muted">Loading notebook submissions…</p></div>'};
 document.addEventListener('click',async e=>{
  const b=e.target.closest('[data-teacher-tests-refresh],[data-teacher-copy],[data-teacher-view]');if(!b||!b.closest('#teacher-portal')||!window.classroomIsTeacher)return;
