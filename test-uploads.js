@@ -10,6 +10,22 @@ async function endpoint(){
  if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(config.url||''))throw Error('Supabase project not connected. Ask your teacher to complete Supabase setup.');
  return config.url+'/functions/v1/notebook-tests';
 }
+async function shrinkPhoto(file){
+ // Resize camera photos before transmission to preserve legible handwriting with less mobile data.
+ // Never increase resolution. Use white background for transparent images.
+ if(file.size<550000)return file;
+ const url=URL.createObjectURL(file);
+ try{
+  const img=await new Promise((resolve,reject)=>{const el=new Image();el.onload=()=>resolve(el);el.onerror=()=>reject(Error('Cannot read image '+file.name));el.src=url});
+  const scale=Math.min(1,2200/Math.max(img.naturalWidth,img.naturalHeight));
+  const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));
+  const ctx=canvas.getContext('2d');if(!ctx)throw Error('Image processing unavailable');
+  ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+  const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',.88));
+  if(!blob||blob.size>=file.size)return file;
+  return new File([blob],file.name.replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'});
+ }finally{URL.revokeObjectURL(url)}
+}
 async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus}={},onProgress){
  const user=auth.currentUser;if(!user)throw Error('Sign in to upload notebook photos.');
  const token=await user.getIdToken();const url=await endpoint();
@@ -18,7 +34,10 @@ async function call(action,{testId,files,submissionId,sectionScores,feedback,gra
   const photos=Array.from(files||[]);if(!/^[A-Za-z0-9_-]{1,75}$/.test(testId||''))throw Error('Invalid test ID.');
   if(!photos.length||photos.length>8)throw Error('Choose 1 to 8 photos.');
   for(const f of photos){if(!['image/jpeg','image/png','image/webp'].includes(f.type)||f.size>8*1024*1024)throw Error('Use JPEG, PNG or WebP images smaller than 8 MB each.')}
-  const form=new FormData();form.append('action',action);form.append('testId',testId);photos.forEach(f=>form.append('photos',f));
+  const optimized=[];for(const photo of photos)optimized.push(await shrinkPhoto(photo));
+  const bytes=optimized.reduce((n,f)=>n+f.size,0);
+  if(bytes>16*1024*1024)throw Error('The selected photos are too large together. Upload fewer pages at a time.');
+  const form=new FormData();form.append('action',action);form.append('testId',testId);optimized.forEach(f=>form.append('photos',f));
   request.body=form;
  }else{
   request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus});
