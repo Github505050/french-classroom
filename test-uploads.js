@@ -10,7 +10,7 @@ async function endpoint(){
  if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(config.url||''))throw Error('Supabase project not connected. Ask your teacher to complete Supabase setup.');
  return config.url+'/functions/v1/notebook-tests';
 }
-async function call(action,{testId,files,submissionId}={},onProgress){
+async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus}={},onProgress){
  const user=auth.currentUser;if(!user)throw Error('Sign in to upload notebook photos.');
  const token=await user.getIdToken();const url=await endpoint();
  const request={method:'POST',headers:{Authorization:'Bearer '+token}};
@@ -21,7 +21,7 @@ async function call(action,{testId,files,submissionId}={},onProgress){
   const form=new FormData();form.append('action',action);form.append('testId',testId);photos.forEach(f=>form.append('photos',f));
   request.body=form;
  }else{
-  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId});
+  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus});
  }
  const result=await fetch(url,request);
  const data=await result.json().catch(()=>({error:'Invalid server response'}));
@@ -34,6 +34,8 @@ window.classroomTestUploads={
  mine:async testId=>(await call('mine',{testId})).submissions,
  teacherList:async()=>(await call('teacherList')).submissions,
  urls:async sub=>(await call('photoUrls',{submissionId:sub.id})).urls,
+ result:async testId=>(await call('result',{testId})).result,
+ grade:async(submissionId,sectionScores,feedback,gradeStatus)=> (await call('grade',{submissionId,sectionScores,feedback,gradeStatus})).result,
  error
 };
 window.dispatchEvent(new Event('classroom-test-uploads-ready'));
