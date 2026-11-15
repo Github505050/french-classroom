@@ -1,5 +1,6 @@
 import { createClient } from 'npm:@supabase/supabase-js@2';
 import { createRemoteJWKSet, jwtVerify } from 'npm:jose@5';
+import webpush from 'npm:web-push@3.6.7';
 const googleKeys=createRemoteJWKSet(new URL('https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com'));
 const PROJECT_ID=Deno.env.get('FIREBASE_PROJECT_ID')||'french-classroom';
 const ORIGIN='https://github505050.github.io';
@@ -9,9 +10,72 @@ const client=createClient(Deno.env.get('SUPABASE_URL')!,Deno.env.get('SUPABASE_S
 const allowed=/^[A-Za-z0-9_-]{1,75}$/;
 const bucket='notebook-tests';
 function safeError(e:unknown){console.error(e);return reply({error:'Unable to complete request. Contact your teacher if the problem continues.'},500)}
+type PushPayload={title:string,body:string,destination:'home'|'tests'|'myresults',tag:string};
+let pushKeysPromise:Promise<string>|null=null;
+async function pushPublicKey(){
+ if(pushKeysPromise)return pushKeysPromise;
+ pushKeysPromise=(async()=>{
+  const {data:current,error}=await client.from('classroom_push_settings').select('public_key').eq('singleton',1).maybeSingle();
+  if(error)throw error;
+  if(current?.public_key)return current.public_key as string;
+  const keys=webpush.generateVAPIDKeys();
+  const hook=crypto.randomUUID().replaceAll('-','')+crypto.randomUUID().replaceAll('-','');
+  const {data:created,error:err}=await client.rpc('classroom_push_initialize',{p_private:keys.privateKey,p_public:keys.publicKey,p_hook:hook});
+  if(err)throw err;
+  return created as string;
+ })().catch(err=>{pushKeysPromise=null;throw err});
+ return pushKeysPromise;
+}
+const trustedPushHost=(value:string)=>{
+ try{const u=new URL(value);const h=u.hostname.toLowerCase();return u.protocol==='https:'&&!u.username&&!u.password&&!u.port&&
+   (h==='fcm.googleapis.com'||h==='fcmregistrations.googleapis.com'||h==='web.push.apple.com'||h.endsWith('.push.apple.com')||
+    h==='updates.push.services.mozilla.com'||h==='push.services.mozilla.com'||h.endsWith('.notify.windows.com'))&&value.length<=2048}
+ catch{return false}
+};
+async function sendPush(toUid:string|null,payload:PushPayload){
+ const {data:privateKey,error:secretError}=await client.rpc('classroom_push_secret',{secret_name:'classroom_push_vapid_private'});
+ if(secretError||!privateKey)throw secretError||new Error('VAPID key not ready');
+ const publicKey=await pushPublicKey();
+ webpush.setVapidDetails('https://github505050.github.io/french-classroom/',publicKey,privateKey);
+ let q=client.from('classroom_push_subscriptions').select('endpoint,owner_uid,p256dh,auth').limit(500);
+ if(toUid)q=q.eq('owner_uid',toUid);
+ const {data:rows,error}=await q;if(error)throw error;
+ let sent=0;
+ for(let i=0;i<(rows||[]).length;i+=8){
+  const batch=(rows||[]).slice(i,i+8);
+  await Promise.allSettled(batch.map(async row=>{
+   try{
+    await webpush.sendNotification({endpoint:row.endpoint,keys:{p256dh:row.p256dh,auth:row.auth}},
+     JSON.stringify({title:payload.title,body:payload.body,destination:payload.destination,tag:payload.tag}),
+     {TTL:86400,urgency:'normal'});
+    sent++;
+   }catch(e){
+    const code=Number((e as {statusCode?:number})?.statusCode||0);
+    if(code===404||code===410)await client.from('classroom_push_subscriptions').delete().eq('endpoint',row.endpoint);
+    else console.warn('Push delivery failed',code||'network');
+   }
+  }));
+ }
+ return sent;
+}
+function equalToken(a:string,b:string){if(a.length!==b.length)return false;let delta=0;for(let i=0;i<a.length;i++)delta|=a.charCodeAt(i)^b.charCodeAt(i);return delta===0}
 Deno.serve(async req=>{
  if(req.method==='OPTIONS')return new Response(null,{headers:cors});
  if(req.method!=='POST')return reply({error:'Method not supported'},405);
+ // Database-triggered publish push is authenticated independently of Firebase.
+ if(req.headers.get('x-classroom-push-hook')){
+  try{
+   const received=req.headers.get('x-classroom-push-hook')||'';
+   const {data:secret,error:se}=await client.rpc('classroom_push_secret',{secret_name:'classroom_push_hook'});
+   if(se||!secret||!equalToken(received,secret))return reply({error:'Unauthorized webhook'},403);
+   const msg=await req.json();
+   if(msg.action!=='internalTestPush'||!allowed.test(msg.testId)||typeof msg.title!=='string')return reply({error:'Invalid push event'},400);
+   const {data:published,error:pe}=await client.from('notebook_test_definitions').select('test_id,title').eq('test_id',msg.testId).maybeSingle();
+   if(pe||!published)return reply({error:'Test unavailable'},404);
+   const sent=await sendPush(null,{title:'New French test available',body:published.title.slice(0,100)+' — Open Tests to begin.',destination:'tests',tag:'test:'+published.test_id});
+   return reply({ok:true,delivered:sent});
+  }catch(e){return safeError(e)}
+ }
  if(req.headers.get('origin')!==ORIGIN)return reply({error:'Invalid origin'},403);
  try{
   const jwt=req.headers.get('authorization')?.replace(/^Bearer\s+/i,'');
@@ -28,12 +92,37 @@ Deno.serve(async req=>{
   const teacher=roleDocument?.fields?.role?.stringValue==='teacher';
   if(!teacher&&payload.email_verified!==true)return reply({error:'Verify your student email before accessing tests'},403);
   const contentType=req.headers.get('content-type')||'';
-  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';
+  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';
   if(contentType.includes('multipart/form-data')){
    const form=await req.formData();action=String(form.get('action')||'');testId=String(form.get('testId')||'');
    files=form.getAll('photos').filter((f):f is File=>f instanceof File);
   }else{
-   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');
+   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');
+  }
+  if(action==='pushConfig'){
+   const publicKey=await pushPublicKey();
+   return reply({publicKey});
+  }
+  if(action==='registerPush'){
+   const entry=pushSubscription;
+   if(!entry||typeof entry!=='object'||Array.isArray(entry))return reply({error:'Invalid push subscription'},400);
+   const endpoint=String(entry.endpoint||''),p256dh=String(entry.keys?.p256dh||''),authKey=String(entry.keys?.auth||'');
+   if(!trustedPushHost(endpoint)||!/^[A-Za-z0-9_-]{40,256}$/.test(p256dh)||!/^[A-Za-z0-9_-]{10,256}$/.test(authKey))return reply({error:'Unrecognized push subscription'},400);
+   await pushPublicKey();
+   const {error}=await client.from('classroom_push_subscriptions').upsert({endpoint,owner_uid:uid,p256dh,auth:authKey,updated_at:new Date().toISOString()},{onConflict:'endpoint'});
+   if(error)throw error;
+   return reply({ok:true});
+  }
+  if(action==='unregisterPush'){
+   if(typeof pushEndpoint!=='string'||pushEndpoint.length>2048)return reply({error:'Invalid subscription'},400);
+   const {error}=await client.from('classroom_push_subscriptions').delete().eq('owner_uid',uid).eq('endpoint',pushEndpoint);
+   if(error)throw error;
+   return reply({ok:true});
+  }
+  if(action==='pushStatus'){
+   const {count,error}=await client.from('classroom_push_subscriptions').select('endpoint',{head:true,count:'exact'}).eq('owner_uid',uid);
+   if(error)throw error;
+   return reply({devices:count||0});
   }
   if(action==='notifications'){
    const [posts,results,reads,availableTests]=await Promise.all([
@@ -77,7 +166,11 @@ Deno.serve(async req=>{
    if(!noticeTitle||noticeTitle.length>120||!noticeBody||noticeBody.length>1200)return reply({error:'Enter a title (up to 120 characters) and a message (up to 1200 characters)'},400);
    if(!['general','test','reminder'].includes(noticeKind)||!['home','tests','myresults'].includes(noticeDestination))return reply({error:'Invalid announcement category'},400);
    const {data,error}=await client.from('classroom_announcements').insert({title:noticeTitle,body:noticeBody,kind:noticeKind,destination:noticeDestination,created_by:uid}).select('id').single();
-   if(error)throw error;return reply({ok:true,id:data.id});
+   if(error)throw error;
+   let pushDelivered=0;
+   try{pushDelivered=await sendPush(null,{title:noticeTitle,body:noticeBody.slice(0,180),destination:noticeDestination as PushPayload['destination'],tag:'post:'+data.id})}
+   catch(pushError){console.error('Announcement published but push delivery failed',pushError)}
+   return reply({ok:true,id:data.id,pushDelivered});
   }
   if(action==='retireAnnouncement'){
    if(!teacher)return reply({error:'Teacher access required'},403);
@@ -167,6 +260,10 @@ Deno.serve(async req=>{
    const record={owner_uid:sub.owner_uid,test_id:sub.test_id,section_scores:sectionScores,feedback,status,total,graded_by:uid,graded_at:new Date().toISOString(),published_at:status==='published'?new Date().toISOString():null};
    const {error}=await client.from('notebook_test_results').upsert(record,{onConflict:'owner_uid,test_id'});
    if(error)throw error;
+   if(status==='published'){
+    try{await sendPush(sub.owner_uid,{title:'Your French test results are ready',body:'Your teacher has published your marks and feedback. Tap to view My Results.',destination:'myresults',tag:'result:'+sub.test_id})}
+    catch(pushError){console.error('Grades published but push delivery failed',pushError)}
+   }
    return reply({result:{status,total,sectionScores,feedback}});
   }
   if(action==='teacherList'){
