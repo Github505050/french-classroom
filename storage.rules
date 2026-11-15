@@ -1,0 +1,17 @@
+rules_version = '2';
+service firebase.storage {
+ match /b/{bucket}/o {
+  function signedIn(){ return request.auth != null && request.auth.token.email_verified == true; }
+  function teacher(){return request.auth != null && firestore.exists(/databases/(default)/documents/roles/$(request.auth.uid)) && firestore.get(/databases/(default)/documents/roles/$(request.auth.uid)).data.role == 'teacher';}
+  match /notebookTests/{uid}/{testId}/{submissionId}/{fileName} {
+   allow read: if (signedIn() && request.auth.uid == uid) || teacher();
+   allow create: if signedIn() && request.auth.uid == uid
+     && testId.matches('^[A-Za-z0-9_-]{1,75}$')
+     && submissionId.matches('^[A-Za-z0-9_-]{1,75}$')
+     && fileName.matches('^page[1-8]\\.(jpg|png|webp)$')
+     && request.resource.size <= 8 * 1024 * 1024
+     && request.resource.contentType.matches('^image/(jpeg|png|webp)$');
+   allow update, delete: if false;
+  }
+ }
+}
