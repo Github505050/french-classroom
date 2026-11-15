@@ -70,7 +70,7 @@ async function pushStatus(){
 }
 function renderPushSettings(){
  const area=document.getElementById('classroom-push-settings');if(!area)return;
- const mobileTip=isApplePhone()&&!installed()?'On iPhone, open this site in Safari, choose Share → Add to Home Screen, then open the installed app to enable notifications.':'You can receive test and result alerts on your phone even while this app is closed.';
+ const mobileTip=isApplePhone()&&!installed()?'On iPhone, open this site in Safari, choose Share → Add to Home Screen, then open the installed app to enable notifications.':'Allow phone notifications here, then enable sounds and Lock Screen alerts in your phone settings. Silent Mode, Focus or Do Not Disturb can suppress sound.';
  let body='';
  if(!pushAvailable())body='<p>Phone push is not available in this browser. You can still use the in-app notifications above.</p>';
  else if(isApplePhone()&&!installed())body='<p>'+mobileTip+'</p>';
