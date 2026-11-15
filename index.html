@@ -570,7 +570,7 @@ function dashboard(){
   </div>
   <section class="app-encouragement" aria-label="Weekly encouragement"><span class="app-encouragement-icon">${appIcon('trophy')}</span><div><strong>Keep going!</strong><p>${allDone?'Excellent work — review what you have learned.':'Every lesson brings you closer to speaking French confidently.'}</p></div><div class="app-week-dots" aria-label="${completed} of ${total} days complete">${w.days.map((d,i)=>`<span class="${getForWeek(w,i,'completed')==='yes'?'filled':''}"></span>`).join('')}</div></section>
   ${announcementsPanel()}
-  <div class="app-secondary-shortcuts"><button type="button" data-go="foundations">French Foundations ${appIcon('arrow')}</button><button type="button" data-go="tests">Tests & assessments ${appIcon('arrow')}</button>${!window.classroomIsTeacher?`<button type="button" data-go="myresults">My Results ${appIcon('arrow')}</button>`:'' }${window.classroomIsTeacher?`<button type="button" data-go="teacher">Teacher portal ${appIcon('arrow')}</button>`:''}</div>
+  <div class="app-secondary-shortcuts"><button type="button" data-go="foundations">French Foundations ${appIcon('arrow')}</button><button type="button" data-go="tests">Tests & assessments ${appIcon('arrow')}</button><button type="button" data-go="myresults">My Results ${appIcon('arrow')}</button>${window.classroomIsTeacher?`<button type="button" data-go="teacher">Teacher portal ${appIcon('arrow')}</button>`:''}</div>
  </section>`;
 }
 function wordsList(items){return `<ul class="formlist">${(items||[]).map(item=>`<li><strong>${esc(item[0])}</strong> — ${esc(item[1])}<button class="audio-btn" type="button" data-audio="${esc(item[0])}" aria-label="Pronounce ${esc(item[0])} in French">🔊</button></li>`).join('')}</ul>`;}
