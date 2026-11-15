@@ -18,7 +18,7 @@ Deno.serve(async req=>{
   if(!jwt)return reply({error:'Sign in first'},401);
   const {payload}=await jwtVerify(jwt,googleKeys,{issuer:'https://securetoken.google.com/'+PROJECT_ID,audience:PROJECT_ID,algorithms:['RS256']});
   const uid=String(payload.sub||''),email=String(payload.email||'');
-  if(!uid||!email||payload.email_verified!==true)return reply({error:'Verified Firebase account required'},403);
+  if(!uid||!email)return reply({error:'Firebase account required'},403);
   // Read the signed-in user's own Firebase role document using their Firebase ID token.
   // Firestore security rules allow an account to get its own role, never to edit it.
   const roleUrl='https://firestore.googleapis.com/v1/projects/'+PROJECT_ID+'/databases/(default)/documents/roles/'+encodeURIComponent(uid);
@@ -26,6 +26,7 @@ Deno.serve(async req=>{
   if(!roleResponse.ok && roleResponse.status!==404)return reply({error:'Unable to verify teacher permissions'},403);
   const roleDocument=roleResponse.ok?await roleResponse.json():null;
   const teacher=roleDocument?.fields?.role?.stringValue==='teacher';
+  if(!teacher&&payload.email_verified!==true)return reply({error:'Verify your student email before accessing tests'},403);
   const contentType=req.headers.get('content-type')||'';
   let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft';
   if(contentType.includes('multipart/form-data')){
