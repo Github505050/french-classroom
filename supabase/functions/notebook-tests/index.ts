@@ -27,12 +27,12 @@ Deno.serve(async req=>{
   const roleDocument=roleResponse.ok?await roleResponse.json():null;
   const teacher=roleDocument?.fields?.role?.stringValue==='teacher';
   const contentType=req.headers.get('content-type')||'';
-  let action='',testId='',submissionId='',files:File[]=[];
+  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft';
   if(contentType.includes('multipart/form-data')){
    const form=await req.formData();action=String(form.get('action')||'');testId=String(form.get('testId')||'');
    files=form.getAll('photos').filter((f):f is File=>f instanceof File);
   }else{
-   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');
+   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');
   }
   if(action==='upload'){
    if(teacher)return reply({error:'Student account required'},403);
@@ -56,10 +56,51 @@ Deno.serve(async req=>{
    const {data,error}=await client.from('notebook_submissions').select('id,owner_uid,student_email,test_id,page_count,submitted_at').eq('owner_uid',uid).eq('test_id',testId).order('submitted_at',{ascending:false}).limit(100);
    if(error)throw error;return reply({submissions:(data||[]).map(s=>({id:s.id,ownerUid:s.owner_uid,studentEmail:s.student_email,testId:s.test_id,pageCount:s.page_count,submittedAt:{seconds:Math.floor(new Date(s.submitted_at).getTime()/1000)}}))});
   }
+  if(action==='result'){
+   if(!allowed.test(testId))return reply({error:'Invalid test'},400);
+   const {data,error}=await client.from('notebook_test_results')
+     .select('test_id,section_scores,total,feedback,published_at,status')
+     .eq('owner_uid',uid).eq('test_id',testId).eq('status','published').maybeSingle();
+   if(error)throw error;
+   return reply({result:data?{testId:data.test_id,sectionScores:data.section_scores,total:data.total,feedback:data.feedback,publishedAt:data.published_at,status:'published'}:null});
+  }
+  if(action==='grade'){
+   if(!teacher)return reply({error:'Teacher access required'},403);
+   if(!/^[0-9a-f-]{36}$/.test(submissionId))return reply({error:'Invalid submission'},400);
+   const {data:sub,error:subErr}=await client.from('notebook_submissions').select('owner_uid,test_id').eq('id',submissionId).maybeSingle();
+   if(subErr)throw subErr;
+   if(!sub)return reply({error:'Submission not found'},404);
+   const {data:def,error:defErr}=await client.from('notebook_test_definitions').select('section_limits,max_marks').eq('test_id',sub.test_id).maybeSingle();
+   if(defErr)throw defErr;
+   if(!def)return reply({error:'Test grading rubric not configured'},400);
+   if(sectionScores===null||typeof sectionScores!=='object'||Array.isArray(sectionScores))return reply({error:'Invalid marks'},400);
+   const limits=def.section_limits as Record<string,number>;
+   const given=Object.keys(sectionScores);
+   if(given.some(key=>!(key in limits)))return reply({error:'Unknown grading section'},400);
+   for(const [section,points] of Object.entries(sectionScores)){
+    if(!Number.isInteger(points)||Number(points)<0||Number(points)>limits[section])return reply({error:'Score out of range for '+section},400);
+   }
+   const total=Object.values(sectionScores).reduce((n,p)=>n+Number(p),0);
+   if(total>def.max_marks)return reply({error:'Score exceeds test maximum'},400);
+   if(feedback.length>5000)return reply({error:'Feedback is too long'},400);
+   const status=action==='grade'&&gradeStatus==='published'?'published':'draft';
+   if(status==='published'&&given.length!==Object.keys(limits).length)return reply({error:'Mark every section before publishing'},400);
+   const {data:existing,error:exErr}=await client.from('notebook_test_results').select('status').eq('owner_uid',sub.owner_uid).eq('test_id',sub.test_id).maybeSingle();
+   if(exErr)throw exErr;
+   if(existing?.status==='published'&&status!=='published')return reply({error:'Published grades can only be changed by publishing an updated result'},409);
+   const record={owner_uid:sub.owner_uid,test_id:sub.test_id,section_scores:sectionScores,feedback,status,total,graded_by:uid,graded_at:new Date().toISOString(),published_at:status==='published'?new Date().toISOString():null};
+   const {error}=await client.from('notebook_test_results').upsert(record,{onConflict:'owner_uid,test_id'});
+   if(error)throw error;
+   return reply({result:{status,total,sectionScores,feedback}});
+  }
   if(action==='teacherList'){
    if(!teacher)return reply({error:'Teacher access required'},403);
    const {data,error}=await client.from('notebook_submissions').select('id,owner_uid,student_email,test_id,page_count,submitted_at').order('submitted_at',{ascending:false}).limit(200);
-   if(error)throw error;return reply({submissions:(data||[]).map(s=>({id:s.id,ownerUid:s.owner_uid,studentEmail:s.student_email,testId:s.test_id,pageCount:s.page_count,submittedAt:{seconds:Math.floor(new Date(s.submitted_at).getTime()/1000)}}))});
+   if(error)throw error;
+   const {data:grades,error:gradeErr}=await client.from('notebook_test_results').select('owner_uid,test_id,section_scores,feedback,total,status,published_at');
+   if(gradeErr)throw gradeErr;
+   const results=new Map((grades||[]).map(g=>[g.owner_uid+'|'+g.test_id,{sectionScores:g.section_scores,feedback:g.feedback,total:g.total,status:g.status,publishedAt:g.published_at}]));
+   return reply({submissions:(data||[]).map(s=>({id:s.id,ownerUid:s.owner_uid,studentEmail:s.student_email,testId:s.test_id,pageCount:s.page_count,submittedAt:{seconds:Math.floor(new Date(s.submitted_at).getTime()/1000)},result:results.get(s.owner_uid+'|'+s.test_id)||null}))});
   }
   if(action==='photoUrls'){
    if(!/^[0-9a-f-]{36}$/.test(submissionId))return reply({error:'Invalid submission'},400);
