@@ -52,3 +52,15 @@ Supabase tables `notebook_test_definitions` and `notebook_test_results` have RLS
 **Review protocol:** assess notebook photographs and oral performance separately, then enter verified section marks and any feedback. The copy button only prepares an AI checking prompt; it does **not** upload student images or responses to any AI service.
 
 **Browser QA required before student use:** sign in as a verified student, upload a sample notebook page and verify that a teacher can view it; save a draft and confirm the student still sees Pending; publish all eight section marks and confirm the student sees exactly that total and feedback; confirm another student cannot read this result. Check mobile display and the one-button upload flow. Browser-only syntax or database checks do not substitute for these live authentication tests.
+
+## Classroom in-app announcements and notifications
+
+Students see a notification bell in the site header with an unread count. They can read notices, mark them read, and jump to Tests, My Results, or Home. Private per-account read receipts are stored in `classroom_notification_reads`.
+
+Automatic notices are generated for published tests registered in `notebook_test_definitions` and results with `status='published'`. Draft results are never announced. When publishing a new test on GitHub Pages, register its test ID, title, limits, and max marks in Supabase `notebook_test_definitions`; this is already necessary for grading. The notification date is `published_at`.
+
+Teachers can use **Teacher Portal → Announcements** to send class-wide notices, apply a test/reminder template, choose which page opens, and archive prior announcements. Teacher permissions use existing verified Firebase roles.
+
+**Important:** This is an *in-app notification centre*, refreshed when the user logs in, reopens the tab, visits the notification menu, or periodically while the app is open. It does not send native Android/iOS browser push notifications, email, or SMS. Do not announce private marks in a class-wide message. Students only receive their own published result notices.
+
+Security: `classroom_announcements` and `classroom_notification_reads` use RLS and have no browser anon/authenticated grants. The service role is server-side only. The Edge Function verifies Firebase ID tokens and teacher role; read receipts are scoped to the signed-in Firebase UID.
