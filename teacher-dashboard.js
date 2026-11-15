@@ -165,7 +165,7 @@
     if(!window.classroomIsTeacher)return '<section class="panel">Teacher access required.</section>';
     return '<div class="teacher-portal" id="teacher-portal"><section class="tp-hero"><div><span class="tp-kicker">MON ESPACE FRANÇAIS / EDUCATOR CONSOLE</span>'+
       '<h2>Teacher workspace<span>.</span></h2><p>Student records, learning progress and results in one place.</p></div>'+
-      '<div class="tp-hero-action"><button type="button" id="teacher-reload">↻ Refresh records</button><small>'+E(lastRefresh?'Updated '+fmtDate(lastRefresh):'Secure Firestore reporting')+'</small></div></section>'+
+      '<div class="tp-hero-action"><button type="button" id="teacher-open-announcements">✉ Announcements</button><button type="button" id="teacher-reload">↻ Refresh records</button><small>'+E(lastRefresh?'Updated '+fmtDate(lastRefresh):'Secure Firestore reporting')+'</small></div></section>'+
       (state.tab==='student'?detail():metrics()+'<div class="tp-tabbar" role="group" aria-label="Teacher workspace sections">'+
       [['overview','Overview'],['students','Students'],['results','Results'],['tests','Tests & Submissions'],['announcements','Announcements']].map(function(item){return '<button type="button" data-tp-tab="'+item[0]+'" class="'+(state.tab===item[0]?'selected':'')+'" aria-pressed="'+(state.tab===item[0])+'">'+item[1]+'</button>'}).join('')+'</div>'+
       (['tests','announcements'].includes(state.tab)?'':'<div class="tp-banner" role="status">'+E(note)+'</div>')+
@@ -198,6 +198,7 @@
     var button=event.target.closest('button');if(!button)return;
     if(button.dataset.tpTab){changeTab(button.dataset.tpTab);return}
     if(button.dataset.tpStudent){state.selected=button.dataset.tpStudent;state.tab='student';window.classroomRefresh?.();window.scrollTo({top:0,behavior:'smooth'});return}
+    if(button.id==='teacher-open-announcements'){changeTab('announcements');window.scrollTo({top:0,behavior:'smooth'});return}
     if(button.id==='teacher-reload'){window.classroomLoadStudents?.();return}
     if(button.id==='tp-export-overview'){exportCsv();return}
     if(button.id==='teacher-copy-link'){
