@@ -54,6 +54,7 @@ window.classroomTestUploads={
  teacherList:async()=>(await call('teacherList')).submissions,
  urls:async sub=>(await call('photoUrls',{submissionId:sub.id})).urls,
  result:async testId=>(await call('result',{testId})).result,
+ myResults:async()=>call('myResults'),
  grade:async(submissionId,sectionScores,feedback,gradeStatus)=> (await call('grade',{submissionId,sectionScores,feedback,gradeStatus})).result,
  error
 };
