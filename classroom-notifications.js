@@ -38,6 +38,7 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 window.addEventListener('classroom-test-uploads-ready',()=>load(true));
+window.addEventListener('classroom-auth-ready',()=>load(true));
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)load(true)});
 window.addEventListener('classroom-result-published',()=>load(true));
 window.classroomNotificationsRefresh=()=>load(true);
