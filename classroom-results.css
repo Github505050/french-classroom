@@ -99,3 +99,6 @@
 .my-results-report-panel{padding:18px}.my-results-break-list{grid-template-columns:1fr;gap:18px}.my-results-break-header{font-size:.83rem}.my-results-section-header{align-items:flex-start}.my-results-section-header p{font-size:.79rem}
 }
 @media(prefers-reduced-motion:reduce){.my-results *{animation:none!important;transition:none!important}}
+
+/* Keep student-only navigation genuinely hidden for authorized teacher accounts. */
+.navbtn[data-section="myresults"][hidden]{display:none!important}
