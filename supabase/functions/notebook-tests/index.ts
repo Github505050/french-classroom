@@ -36,25 +36,32 @@ Deno.serve(async req=>{
    const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');
   }
   if(action==='notifications'){
-   const [posts,results,reads]=await Promise.all([
+   const [posts,results,reads,availableTests]=await Promise.all([
      client.from('classroom_announcements').select('id,title,body,kind,destination,created_at').eq('active',true).order('created_at',{ascending:false}).limit(80),
      client.from('notebook_test_results').select('test_id,published_at').eq('owner_uid',uid).eq('status','published').order('published_at',{ascending:false}).limit(80),
-     client.from('classroom_notification_reads').select('notice_id').eq('owner_uid',uid).limit(300)
+     client.from('classroom_notification_reads').select('notice_id').eq('owner_uid',uid).limit(300),
+     client.from('notebook_test_definitions').select('test_id,title,published_at').order('published_at',{ascending:false}).limit(80)
    ]);
    if(posts.error)throw posts.error;
    if(results.error)throw results.error;
    if(reads.error)throw reads.error;
+   if(availableTests.error)throw availableTests.error;
    const seen=new Set((reads.data||[]).map(r=>r.notice_id));
    const notices=[
      ...(posts.data||[]).map(p=>({id:'post:'+p.id,title:p.title,body:p.body,kind:p.kind,destination:p.destination,createdAt:p.created_at})),
+     ...(availableTests.data||[]).map(t=>({id:'test:'+t.test_id,title:'French test available: '+t.title,body:'Your teacher has assigned a classroom assessment. Open Tests to read the questions and submit your notebook answers.',kind:'test',destination:'tests',createdAt:t.published_at})),
      ...(results.data||[]).filter(r=>r.published_at).map(r=>({id:'result:'+r.test_id,title:'Your test results are available',body:'Your teacher has published the marks and feedback for a completed assessment. Open My Results to see your report.',kind:'result',destination:'myresults',createdAt:r.published_at}))
    ].sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt))).slice(0,100);
    return reply({notices:notices.map(n=>({...n,read:seen.has(n.id)}))});
   }
   if(action==='readNotification'){
-   if(!/^(post:[0-9a-f-]{36}|result:[A-Za-z0-9_-]{1,75})$/.test(noticeId))return reply({error:'Invalid notice'},400);
+   if(!/^(post:[0-9a-f-]{36}|result:[A-Za-z0-9_-]{1,75}|test:[A-Za-z0-9_-]{1,75})$/.test(noticeId))return reply({error:'Invalid notice'},400);
    if(noticeId.startsWith('post:')){
      const {data,error}=await client.from('classroom_announcements').select('id').eq('id',noticeId.slice(5)).eq('active',true).maybeSingle();
+     if(error)throw error;if(!data)return reply({error:'Notice unavailable'},404);
+   }else if(noticeId.startsWith('test:')){
+     const test=noticeId.slice(5);
+     const {data,error}=await client.from('notebook_test_definitions').select('test_id').eq('test_id',test).maybeSingle();
      if(error)throw error;if(!data)return reply({error:'Notice unavailable'},404);
    }else{
      const test=noticeId.slice(7);
