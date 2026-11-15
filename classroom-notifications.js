@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let items=[],open=false,loading=false,lastFetch=0,ready=false;
+let items=[],open=false,loading=false,lastFetch=0,ready=false,lastUid=null;
 const node=()=>document.getElementById('classroom-notice-popover');
 const pushAvailable=()=>typeof window.Notification!=='undefined'&&'serviceWorker' in navigator&&'PushManager' in window&&window.isSecureContext;
 const isApplePhone=()=>/iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -13,6 +13,18 @@ function decodeVapid(key){
  const raw=atob(normalized+'='.repeat((4-normalized.length%4)%4));
  return Uint8Array.from(raw,ch=>ch.charCodeAt(0));
 }
+window.classroomDisablePhonePush=async()=>{
+ if(!pushAvailable())return;
+ try{
+  const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();
+  if(sub){
+   try{await window.classroomTestUploads?.unregisterPush(sub.endpoint)}
+   catch(err){console.warn('Push device removal failed',err)}
+   await sub.unsubscribe();
+  }
+  pushEnabled=false;renderPushSettings();
+ }catch(err){console.warn('Failed to unsubscribe push',err)}
+};
 async function pushStatus(){
  if(!pushAvailable())return;
  try{
@@ -95,6 +107,11 @@ document.addEventListener('click',e=>{
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 window.addEventListener('classroom-test-uploads-ready',()=>load(true));
 window.addEventListener('classroom-auth-ready',()=>load(true));
+window.addEventListener('classroom-auth-state',event=>{
+ const next=event.detail?.uid||null;
+ if(next!==lastUid){lastUid=next;items=[];lastFetch=0;ready=false;open=false;pushEnabled=false;draw()}
+ if(next){load(true);pushStatus()}
+});
 window.addEventListener('classroom-auth-ready',()=>pushStatus());
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)load(true)});
 window.addEventListener('classroom-result-published',()=>load(true));
