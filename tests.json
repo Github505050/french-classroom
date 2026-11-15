@@ -1,3 +1,531 @@
 {
-  "tests": []
+  "tests": [
+    {
+      "id": "foundation-week1-week2-day12-mega-test",
+      "schemaVersion": "1.0",
+      "title": "French A1 — Mega Revision Test",
+      "language": "fr",
+      "instructionLanguage": "en",
+      "coverage": {
+        "foundationDays": "1–14",
+        "week1Days": "1–7",
+        "week2Days": "8–12",
+        "excluded": [
+          "Week 2 Day 13 negation",
+          "Week 2 Day 14 review",
+          "-IR/-RE verb production",
+          "past/future tense",
+          "advanced possessive/adjective systems"
+        ]
+      },
+      "maxMarks": 150,
+      "totalQuestions": 86,
+      "recommendedMode": "Two sittings; written recall first, oral and story separately",
+      "studentInstructions": "Do all questions without notes, word banks, dictionaries or translation tools. Teacher asks oral questions aloud. Keep answers hidden until submission.",
+      "sections": [
+        {
+          "id": "vocabulary",
+          "title": "Vocabulary — active recall",
+          "type": "short_answer",
+          "maxMarks": 20,
+          "instructions": "Translate into French from memory. Include articles for nouns. No word bank.",
+          "questions": [
+            {
+              "id": "VOC-01",
+              "prompt": "The living room",
+              "marks": 1
+            },
+            {
+              "id": "VOC-02",
+              "prompt": "The bed",
+              "marks": 1
+            },
+            {
+              "id": "VOC-03",
+              "prompt": "The grocery store",
+              "marks": 1
+            },
+            {
+              "id": "VOC-04",
+              "prompt": "The vegetables",
+              "marks": 1
+            },
+            {
+              "id": "VOC-05",
+              "prompt": "The fish",
+              "marks": 1
+            },
+            {
+              "id": "VOC-06",
+              "prompt": "The piece of furniture",
+              "marks": 1
+            },
+            {
+              "id": "VOC-07",
+              "prompt": "The wall",
+              "marks": 1
+            },
+            {
+              "id": "VOC-08",
+              "prompt": "The floor / storey (of a building)",
+              "marks": 1
+            },
+            {
+              "id": "VOC-09",
+              "prompt": "The notebook",
+              "marks": 1
+            },
+            {
+              "id": "VOC-10",
+              "prompt": "The customer",
+              "marks": 1
+            },
+            {
+              "id": "VOC-11",
+              "prompt": "The message",
+              "marks": 1
+            },
+            {
+              "id": "VOC-12",
+              "prompt": "The question",
+              "marks": 1
+            },
+            {
+              "id": "VOC-13",
+              "prompt": "The answer",
+              "marks": 1
+            },
+            {
+              "id": "VOC-14",
+              "prompt": "The meal",
+              "marks": 1
+            },
+            {
+              "id": "VOC-15",
+              "prompt": "The bottle",
+              "marks": 1
+            },
+            {
+              "id": "VOC-16",
+              "prompt": "The shopping basket",
+              "marks": 1
+            },
+            {
+              "id": "VOC-17",
+              "prompt": "The alarm clock",
+              "marks": 1
+            },
+            {
+              "id": "VOC-18",
+              "prompt": "Monday",
+              "marks": 1
+            },
+            {
+              "id": "VOC-19",
+              "prompt": "Fifteen",
+              "marks": 1
+            },
+            {
+              "id": "VOC-20",
+              "prompt": "Behind",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "conjugation",
+          "title": "Mixed present-tense conjugation",
+          "type": "fill_blank",
+          "maxMarks": 15,
+          "instructions": "Write only the missing present-tense verb form. For se lever, include the reflexive pronoun.",
+          "questions": [
+            {
+              "id": "VRB-01",
+              "prompt": "Vous ______ (être) à l’école.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-02",
+              "prompt": "Elles ______ (appeler) un ami.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-03",
+              "prompt": "Nous ______ (manger) des fruits.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-04",
+              "prompt": "Tu ______ (avoir) un stylo.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-05",
+              "prompt": "Ils ______ (travailler) dans un restaurant.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-06",
+              "prompt": "Je ______ (se lever) le matin.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-07",
+              "prompt": "Elle ______ (acheter) une pomme.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-08",
+              "prompt": "Nous ______ (aller) au parc.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-09",
+              "prompt": "Vous ______ (étudier) le français.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-10",
+              "prompt": "Il ______ (payer) à la caisse.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-11",
+              "prompt": "Tu ______ (écouter) le professeur.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-12",
+              "prompt": "Elles ______ (arriver) à l’école.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-13",
+              "prompt": "Nous ______ (chercher) le livre.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-14",
+              "prompt": "J’______ (aimer) le français.",
+              "marks": 1
+            },
+            {
+              "id": "VRB-15",
+              "prompt": "Ils ______ (utiliser) un ordinateur.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "foundation",
+          "title": "Foundation — articles, pronouns, place, adjectives, numbers",
+          "type": "short_answer",
+          "maxMarks": 10,
+          "instructions": "Use foundation knowledge only. Each item is worth one mark.",
+          "questions": [
+            {
+              "id": "FND-01",
+              "prompt": "______ maison (a house)",
+              "marks": 1
+            },
+            {
+              "id": "FND-02",
+              "prompt": "______ livres (the books)",
+              "marks": 1
+            },
+            {
+              "id": "FND-03",
+              "prompt": "______ école (the school)",
+              "marks": 1
+            },
+            {
+              "id": "FND-04",
+              "prompt": "Change to plural: un chat",
+              "marks": 1
+            },
+            {
+              "id": "FND-05",
+              "prompt": "Change to plural: la fenêtre",
+              "marks": 1
+            },
+            {
+              "id": "FND-06",
+              "prompt": "Subject pronoun for a female-only group: ______",
+              "marks": 1
+            },
+            {
+              "id": "FND-07",
+              "prompt": "Le téléphone est ______ la table. (on)",
+              "marks": 1
+            },
+            {
+              "id": "FND-08",
+              "prompt": "Je suis ______ mon ami. (with)",
+              "marks": 1
+            },
+            {
+              "id": "FND-09",
+              "prompt": "Complete: une ______ maison. (small)",
+              "marks": 1
+            },
+            {
+              "id": "FND-10",
+              "prompt": "Write the number 20 in French.",
+              "marks": 1
+            }
+          ]
+        },
+        {
+          "id": "translation",
+          "title": "English → French sentence translation",
+          "type": "translation",
+          "maxMarks": 20,
+          "instructions": "Translate complete sentences. 1 mark for accurate target verb and 1 mark for article, pronoun and remaining sentence structure. Accept equally correct natural alternatives.",
+          "questions": [
+            {
+              "id": "TRN-01",
+              "prompt": "We have a computer.",
+              "marks": 2
+            },
+            {
+              "id": "TRN-02",
+              "prompt": "She gives a book to her friend.",
+              "marks": 2
+            },
+            {
+              "id": "TRN-03",
+              "prompt": "I am looking for my phone.",
+              "marks": 2
+            },
+            {
+              "id": "TRN-04",
+              "prompt": "They like the house. (male or mixed group)",
+              "marks": 2
+            },
+            {
+              "id": "TRN-05",
+              "prompt": "You speak French. (plural or polite)",
+              "marks": 2
+            },
+            {
+              "id": "TRN-06",
+              "prompt": "The student explains the lesson.",
+              "marks": 2
+            },
+            {
+              "id": "TRN-07",
+              "prompt": "My brother watches television.",
+              "marks": 2
+            },
+            {
+              "id": "TRN-08",
+              "prompt": "We order a pizza.",
+              "marks": 2
+            },
+            {
+              "id": "TRN-09",
+              "prompt": "He helps his sister.",
+              "marks": 2
+            },
+            {
+              "id": "TRN-10",
+              "prompt": "I get up in the morning.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "correction",
+          "title": "Find and correct the mistake",
+          "type": "sentence_repair",
+          "maxMarks": 20,
+          "instructions": "Each sentence has exactly one intended error. Rewrite it completely. Award 1 mark for repairing the error and 1 for the full correct sentence. Accept equivalent spelling of apostrophes.",
+          "questions": [
+            {
+              "id": "FIX-01",
+              "prompt": "Nous parlez français.",
+              "marks": 2
+            },
+            {
+              "id": "FIX-02",
+              "prompt": "Elle as un cahier.",
+              "marks": 2
+            },
+            {
+              "id": "FIX-03",
+              "prompt": "J’habite dans une appartement.",
+              "marks": 2
+            },
+            {
+              "id": "FIX-04",
+              "prompt": "Ils regarde la télévision.",
+              "marks": 2
+            },
+            {
+              "id": "FIX-05",
+              "prompt": "Tu va au parc.",
+              "marks": 2
+            },
+            {
+              "id": "FIX-06",
+              "prompt": "Je cherche le clé.",
+              "marks": 2
+            },
+            {
+              "id": "FIX-07",
+              "prompt": "Nous mangons des pommes.",
+              "marks": 2
+            },
+            {
+              "id": "FIX-08",
+              "prompt": "Vous étudie le français.",
+              "marks": 2
+            },
+            {
+              "id": "FIX-09",
+              "prompt": "Elle se léve le matin.",
+              "marks": 2
+            },
+            {
+              "id": "FIX-10",
+              "prompt": "Elles sont content.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "sentence_building",
+          "title": "Independent sentence building",
+          "type": "teacher_review",
+          "maxMarks": 10,
+          "instructions": "No templates or word bank. Teacher grades each complete independent sentence 1 mark. Other valid sentences count.",
+          "questions": [
+            {
+              "id": "BLD-01",
+              "prompt": "Describe two objects inside your home. Write TWO complete French sentences.",
+              "marks": 2
+            },
+            {
+              "id": "BLD-02",
+              "prompt": "Explain what two members of your family do. Write TWO complete French sentences.",
+              "marks": 2
+            },
+            {
+              "id": "BLD-03",
+              "prompt": "Describe something you look for and something you find. Write TWO complete French sentences.",
+              "marks": 2
+            },
+            {
+              "id": "BLD-04",
+              "prompt": "Explain what you use your phone or computer for, using only learned verbs. Write TWO complete French sentences.",
+              "marks": 2
+            },
+            {
+              "id": "BLD-05",
+              "prompt": "Describe two activities during the day using verbs already learned. Write TWO complete French sentences.",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "speaking",
+          "title": "Spontaneous speaking",
+          "type": "teacher_review_oral",
+          "maxMarks": 30,
+          "instructions": "Teacher asks aloud one question at a time, without showing model answer. 1 mark for a relevant understood response; 1 mark for correct spontaneous French. Models are examples only.",
+          "questions": [
+            {
+              "id": "ORL-01",
+              "prompt": "Comment tu t’appelles ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-02",
+              "prompt": "Quel âge as-tu ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-03",
+              "prompt": "Où habites-tu ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-04",
+              "prompt": "Est-ce que tu as un ordinateur ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-05",
+              "prompt": "Tu vas où aujourd’hui ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-06",
+              "prompt": "Est-ce que tu parles français ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-07",
+              "prompt": "Tu habites dans une maison ou dans un appartement ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-08",
+              "prompt": "Qu’est-ce que tu aimes regarder ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-09",
+              "prompt": "Qu’est-ce que tu cherches dans ta chambre ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-10",
+              "prompt": "Qu’est-ce que tu écoutes ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-11",
+              "prompt": "Qu’est-ce que tu étudies ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-12",
+              "prompt": "Qui est-ce que tu aides ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-13",
+              "prompt": "Qu’est-ce que tu commandes dans une pizzeria ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-14",
+              "prompt": "Qu’est-ce que tu achètes à l’épicerie ?",
+              "marks": 2
+            },
+            {
+              "id": "ORL-15",
+              "prompt": "À quelle heure tu te lèves ?",
+              "marks": 2
+            }
+          ]
+        },
+        {
+          "id": "story",
+          "title": "Big English story → French",
+          "type": "teacher_review_story",
+          "maxMarks": 25,
+          "instructions": "Translate the full story into complete natural French. No translator. Score: meaning/completeness 5; learned present-tense verbs 7; articles/gender/agreement 5; sentence structure/prepositions 5; spelling/accents 3. Teacher review required; do not use exact-string matching.",
+          "questions": [
+            {
+              "id": "STORY-01",
+              "prompt": "My name is Alex. I am twenty years old. I live in Montréal with my family. I have an apartment. The apartment has a living room and two bedrooms. My mother works at a restaurant, and my brother studies French.\n\nIn the morning, I get up at seven o’clock. I eat an apple and my brother eats eggs. At eight o’clock, we go to school. At school, I listen to the teacher. The teacher explains a lesson. I ask for a book. The teacher gives a book to my friend.\n\nIn the afternoon, I arrive at home. I help my mother. I look for my phone. I find my phone on the table. My sister calls a friend.\n\nIn the evening, we order a pizza. My father pays. We talk and watch television. I like my family.",
+              "marks": 25
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
