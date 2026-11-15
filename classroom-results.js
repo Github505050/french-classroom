@@ -55,7 +55,7 @@ function detailed(t){
 function render(){
  const el=document.getElementById('classroom-results-root');if(!el)return;
  if(error){el.innerHTML='<div class="my-results-error"><strong>Results could not be loaded</strong><p>'+E(error)+'</p><button type="button" data-results-reload>Try again</button></div>';return}
- el.innerHTML='<div class="my-results"><header class="my-results-hero"><div><span class="my-results-kicker">MY LEARNING / ASSESSMENTS</span><h1>My Results<span>.</span></h1><p>Track your progress, review your teacher’s feedback, and know what to practise next.</p></div><span class="my-results-hero-art">'+icon('award')+'</span></header>'+summary()+(selected&&testFor(selected)?detailed(testFor(selected)):overview())+'</div>';
+ el.innerHTML='<div class="my-results">'+(window.classroomIsTeacher?'<div class="my-results-teacher-note"><strong>Teacher preview</strong><span>This section shows results for the currently signed-in account only. To see and grade your students’ tests, open <b>Teacher → Tests & Submissions</b>. Students see their own published results here.</span></div>':'')+'<header class="my-results-hero"><div><span class="my-results-kicker">MY LEARNING / ASSESSMENTS</span><h1>My Results<span>.</span></h1><p>Track your progress, review your teacher’s feedback, and know what to practise next.</p></div><span class="my-results-hero-art">'+icon('award')+'</span></header>'+summary()+(selected&&testFor(selected)?detailed(testFor(selected)):overview())+'</div>';
 }
 async function load(){
  if(busy)return;
