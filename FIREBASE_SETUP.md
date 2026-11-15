@@ -24,9 +24,7 @@ The Supabase backend must be deployed before the photo upload and teacher submis
 
 1. Create a Supabase Free project at https://supabase.com/dashboard (or connect Supabase through ChatGPT). Check the current Free storage and function limits before use.
 2. Run [supabase/setup.sql](supabase/setup.sql) in the project's SQL Editor. This creates a private `notebook-tests` bucket, protected submission records, and an administrator-maintained `teacher_roles` table. Browser clients cannot directly access those tables.
-3. Find your teacher account's **Firebase Authentication UID** in Firebase Console. In Supabase's SQL Editor, run:
-   `insert into public.teacher_roles(firebase_uid,role) values ('YOUR_REAL_FIREBASE_UID','teacher');`
-   Do not use an email address or a student's UID.
+3. Teacher permissions are read directly from the existing Firebase `roles/{uid}` record. No additional teacher account or Supabase teacher role entry is required.
 4. Deploy [supabase/functions/notebook-tests/index.ts](supabase/functions/notebook-tests/index.ts) as Edge Function `notebook-tests` with JWT gateway verification **disabled** (see [supabase/config.toml](supabase/config.toml)). The function independently validates Firebase-signed ID tokens using Google's public keys, the expected Firebase project and verified email status.
 5. Set the Edge Function secret `FIREBASE_PROJECT_ID=french-classroom`. Supabase provides its server URL and secret key to the deployed function; **never** commit or paste a service-role secret into GitHub HTML, JavaScript, or `supabase-config.json`.
 6. Update [supabase-config.json](supabase-config.json) with the Supabase Project URL, e.g. `https://YOUR_PROJECT_REF.supabase.co`. The project URL is public; it is **not** a secret.
