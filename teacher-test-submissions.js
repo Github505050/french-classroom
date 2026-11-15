@@ -6,7 +6,7 @@ let submissions=[],tests=[],loaded=false,loading=false,error='';
 async function refresh(){
  const el=document.getElementById('teacher-tests-content'),api=window.classroomTestUploads;
  if(!el||!window.classroomIsTeacher)return;
- if(!api){el.innerHTML='<p class="muted">Firebase connection is loading…</p>';return}
+ if(!api){el.innerHTML='<p class="muted">Supabase connection is loading…</p>';return}
  if(loading)return;
  loading=true;el.innerHTML='<p class="muted">Loading notebook submissions…</p>';
  try{
@@ -17,9 +17,9 @@ async function refresh(){
 }
 function draw(){
  const el=document.getElementById('teacher-tests-content');if(!el)return;
- if(error){el.innerHTML='<p class="notice">Submissions unavailable: '+E(error)+'. Verify Firebase Storage and Firestore rules are published.</p>';return}
+ if(error){el.innerHTML='<p class="notice">Submissions unavailable: '+E(error)+'. Verify the Supabase project and Edge Function are configured.</p>';return}
  const library='<section class="tp-card"><h3>Published tests</h3><p class="muted">Copy the original questions and AI correction instructions for notebook checking.</p>'+(tests.length?tests.map(t=>'<div class="teacher-test-row"><strong>'+E(t.title)+'</strong> <button type="button" class="btn" data-teacher-copy="'+E(t.id)+'">Copy questions for AI</button></div>').join(''):'<p>No tests published yet.</p>')+'</section>';
- const cards=submissions.length?submissions.map(s=>'<article class="tp-card teacher-submission"><div class="teacher-submission-title"><div><span class="tp-kicker">NOTEBOOK SUBMISSION</span><h3>'+E(tests.find(t=>t.id===s.testId)?.title||s.testId)+'</h3><p>'+E(s.studentEmail||'Student')+' · '+E(s.pageCount||0)+' photo(s) · '+E(s.submittedAt?.toDate?.()?.toLocaleString()||'Recently submitted')+'</p></div><button class="btn" data-teacher-copy="'+E(s.testId)+'">Copy questions for AI</button></div><div class="teacher-submission-photos" data-teacher-photos="'+E(s.id)+'"><button type="button" class="btn" data-teacher-view="'+E(s.id)+'">View notebook photos</button></div></article>').join(''):'<section class="tp-card"><p>No notebook photo submissions yet.</p></section>';
+ const cards=submissions.length?submissions.map(s=>'<article class="tp-card teacher-submission"><div class="teacher-submission-title"><div><span class="tp-kicker">NOTEBOOK SUBMISSION</span><h3>'+E(tests.find(t=>t.id===s.testId)?.title||s.testId)+'</h3><p>'+E(s.studentEmail||'Student')+' · '+E(s.pageCount||0)+' photo(s) · '+E(s.submittedAt?.seconds?new Date(s.submittedAt.seconds*1000).toLocaleString():'Recently submitted')+'</p></div><button class="btn" data-teacher-copy="'+E(s.testId)+'">Copy questions for AI</button></div><div class="teacher-submission-photos" data-teacher-photos="'+E(s.id)+'"><button type="button" class="btn" data-teacher-view="'+E(s.id)+'">View notebook photos</button></div></article>').join(''):'<section class="tp-card"><p>No notebook photo submissions yet.</p></section>';
  el.innerHTML='<div class="teacher-tests-toolbar"><h3>Notebook submissions ('+submissions.length+')</h3><button class="btn" type="button" data-teacher-tests-refresh>Refresh submissions</button></div>'+cards+library;
 }
 window.addEventListener('classroom-test-uploads-ready',()=>{if(document.getElementById('teacher-tests-content'))refresh()});
