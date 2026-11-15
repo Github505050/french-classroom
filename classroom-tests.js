@@ -26,7 +26,7 @@ async function load(){
  try{const r=await fetch('./tests.json',{cache:'no-store'});if(!r.ok)throw Error('Unavailable');const d=await r.json();tests=Array.isArray(d.tests)?d.tests.filter(x=>x&&typeof x.id==='string'&&typeof x.title==='string'&&Array.isArray(x.questions)):[];loaded=true;draw()}
  catch{loaded=true;const el=document.getElementById('classroom-tests-root');if(el)el.innerHTML='<div class="notice">Tests could not be loaded. Please refresh this page.</div>'}
 }
-async function history(id){const el=document.getElementById('test-upload-history'),api=window.classroomTestUploads;if(!el)return;if(!api){el.textContent='Photo uploads require Firebase Storage setup.';return}try{const rows=await api.mine(id);if(el.isConnected&&active?.id===id)el.textContent=rows.length?rows.length+' notebook submission(s) received.':'No notebook photos submitted yet.'}catch(e){if(el.isConnected)el.textContent='Submissions unavailable: '+api.error(e)}}
+async function history(id){const el=document.getElementById('test-upload-history'),api=window.classroomTestUploads;if(!el)return;if(!api){el.textContent='Photo uploads require the Supabase notebook service.';return}try{const rows=await api.mine(id);if(el.isConnected&&active?.id===id)el.textContent=rows.length?rows.length+' notebook submission(s) received.':'No notebook photos submitted yet.'}catch(e){if(el.isConnected)el.textContent='Submissions unavailable: '+api.error(e)}}
 window.addEventListener('classroom-test-uploads-ready',()=>{if(active)history(active.id)});
 window.classroomTestsView=function(){active=null;queueMicrotask(()=>{if(!loaded)load();else draw()});return '<div id="classroom-tests-root" aria-live="polite"><p class="muted">Loading tests…</p></div>'};
 document.addEventListener('change',e=>{if(e.target.id==='test-photo-input'){const el=document.getElementById('test-photo-count');if(el)el.textContent=(e.target.files?.length||0)+' selected photo(s)'}});
@@ -38,7 +38,7 @@ document.addEventListener('click',async e=>{
 if(btn.hasAttribute('data-test-copy')&&active){copyToClipboard(copyText(active),btn);return}
 if(btn.hasAttribute('data-test-upload')&&active){
  const api=window.classroomTestUploads,input=document.getElementById('test-photo-input'),label=document.getElementById('test-upload-status');
- if(!api){label.textContent='Firebase Storage is not ready.';return}
+ if(!api){label.textContent='Supabase notebook service is not ready.';return}
  if(!input?.files?.length){label.textContent='Please select your notebook photos.';return}
  btn.disabled=true;label.textContent='Uploading…';
  try{const result=await api.upload(active.id,input.files,(n,total)=>{label.textContent='Uploaded '+n+' of '+total+' photos…'});label.textContent='✓ '+result.pageCount+' notebook photos submitted.';input.value='';history(active.id)}
