@@ -151,3 +151,33 @@ html[data-theme="dark"] body>.classroom-notice-popover .classroom-notice-descrip
  body>.classroom-notice-popover .classroom-push-settings{flex:0 0 auto!important;max-height:min(35dvh,240px)!important;overflow:auto!important}
  body>.classroom-notice-popover .classroom-notice-foot{flex:0 0 auto!important;padding:9px 15px!important}
 }
+
+/* Notification inbox -> full announcement detail, on mobile and desktop. */
+body>.classroom-notice-popover .classroom-notice-item{
+ grid-template-columns:8px minmax(0,1fr) 15px!important;
+ align-items:start!important;
+}
+body>.classroom-notice-popover .classroom-notice-row-title{display:flex;align-items:flex-start;justify-content:space-between;gap:9px}
+body>.classroom-notice-popover .classroom-notice-row-title strong{min-width:0;line-height:1.32;font-size:.9rem}
+body>.classroom-notice-popover .classroom-notice-new{flex-shrink:0;color:#0b7a86;background:#dcf8f6;padding:2px 6px;border-radius:6px;font-weight:850;font-size:.64rem}
+body>.classroom-notice-popover .classroom-notice-preview{display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden!important;line-height:1.45}
+body>.classroom-notice-popover .classroom-notice-chevron{align-self:center;font-size:1.65rem;font-weight:400;color:#81a1b2}
+body>.classroom-notice-popover .classroom-notice-detail-header{display:flex;justify-content:space-between;align-items:center}
+body>.classroom-notice-popover .classroom-notice-back{border:0;background:transparent;color:#155f7b;font-size:.9rem;font-weight:850;min-width:0;display:flex;align-items:center;gap:6px;padding:8px 10px}
+body>.classroom-notice-popover .classroom-notice-back:hover{background:#edf6fa}
+body>.classroom-notice-popover .classroom-notice-detail{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:23px 21px 29px;background:#fff;min-height:0;display:block}
+body>.classroom-notice-popover .classroom-notice-detail-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:9px;color:#708b9b;font-size:.78rem;margin-bottom:16px}
+body>.classroom-notice-popover .classroom-notice-detail-type{background:#e8f6f6;color:#24717d;border-radius:999px;padding:5px 10px;font-weight:850;font-size:.74rem}
+body>.classroom-notice-popover .classroom-notice-detail h2{font-size:clamp(1.18rem,4.5vw,1.5rem);font-weight:850;line-height:1.3;color:#183d56;margin:0 0 18px}
+body>.classroom-notice-popover .classroom-notice-detail-message{font-size:.98rem;line-height:1.75;color:#425f72;white-space:normal;overflow-wrap:anywhere;min-height:88px}
+body>.classroom-notice-popover .classroom-notice-detail-actions{margin-top:28px}
+body>.classroom-notice-popover .classroom-notice-detail-actions button{width:100%;background:#1c7284;border:0;border-radius:12px;min-height:48px;color:white;font-weight:800;padding:11px 15px;text-align:center}
+body>.classroom-notice-popover .classroom-notice-detail-actions button:hover{background:#145766}
+html[data-theme="dark"] body>.classroom-notice-popover .classroom-notice-detail{background:#192e40}
+html[data-theme="dark"] body>.classroom-notice-popover .classroom-notice-detail h2{color:#e8f5fc}
+html[data-theme="dark"] body>.classroom-notice-popover .classroom-notice-detail-message{color:#c0d5e0}
+html[data-theme="dark"] body>.classroom-notice-popover .classroom-notice-back{color:#a7d5e9}
+@media(max-width:850px){
+ body>.classroom-notice-popover .classroom-notice-detail{padding:25px 20px 35px}
+ body>.classroom-notice-popover .classroom-notice-detail-message{font-size:.97rem;line-height:1.75}
+}
