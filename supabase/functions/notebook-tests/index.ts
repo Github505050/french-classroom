@@ -57,6 +57,26 @@ Deno.serve(async req=>{
    const {data,error}=await client.from('notebook_submissions').select('id,owner_uid,student_email,test_id,page_count,submitted_at').eq('owner_uid',uid).eq('test_id',testId).order('submitted_at',{ascending:false}).limit(100);
    if(error)throw error;return reply({submissions:(data||[]).map(s=>({id:s.id,ownerUid:s.owner_uid,studentEmail:s.student_email,testId:s.test_id,pageCount:s.page_count,submittedAt:{seconds:Math.floor(new Date(s.submitted_at).getTime()/1000)}}))});
   }
+  if(action==='myResults'){
+   // One authenticated read for the student's own submissions and published grades.
+   // Draft grades and other students' records are deliberately excluded.
+   const [submissionRows,gradeRows]=await Promise.all([
+    client.from('notebook_submissions').select('id,test_id,page_count,submitted_at').eq('owner_uid',uid).order('submitted_at',{ascending:false}).limit(300),
+    client.from('notebook_test_results').select('test_id,section_scores,total,feedback,published_at').eq('owner_uid',uid).eq('status','published').limit(300)
+   ]);
+   if(submissionRows.error)throw submissionRows.error;
+   if(gradeRows.error)throw gradeRows.error;
+   const counts:Record<string,{count:number,pages:number,latestSubmittedAt:string}>={};
+   for(const row of submissionRows.data||[]){
+    if(!counts[row.test_id])counts[row.test_id]={count:0,pages:0,latestSubmittedAt:row.submitted_at};
+    counts[row.test_id].count++;
+    counts[row.test_id].pages+=row.page_count;
+   }
+   return reply({submissions:counts,results:(gradeRows.data||[]).map(g=>({
+    testId:g.test_id,sectionScores:g.section_scores,total:g.total,
+    feedback:g.feedback,publishedAt:g.published_at,status:'published'
+   }))});
+  }
   if(action==='result'){
    if(!allowed.test(testId))return reply({error:'Invalid test'},400);
    const {data,error}=await client.from('notebook_test_results')
