@@ -2,7 +2,7 @@
 (function(){
 'use strict';
 const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let items=[],open=false,loading=false,lastFetch=0,ready=false,lastUid=null;
+let items=[],open=false,loading=false,lastFetch=0,ready=false,lastUid=null,selectedNoticeId=null;
 const node=()=>document.getElementById('classroom-notice-popover');
 // Render the panel at the document root so page cards, header transforms, and
 // mobile stacking contexts cannot paint on top of or clip notifications.
@@ -105,17 +105,43 @@ async function togglePhonePush(){
 
 const time=v=>{const d=new Date(v);return Number.isNaN(d.getTime())?'':d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})};
 function draw(){
- const box=node(),badge=document.getElementById('classroom-notice-count'),bell=document.getElementById('classroom-notice-button');if(!box||!bell)return;
+ const box=node(),badge=document.getElementById('classroom-notice-count'),bell=document.getElementById('classroom-notice-button');
+ if(!box||!bell)return;
  const unread=items.filter(n=>!n.read).length;
  if(badge){badge.textContent=unread>99?'99+':String(unread);badge.hidden=!unread}
  bell.setAttribute('aria-label',unread?unread+' unread classroom notifications':'Classroom notifications');
- bell.setAttribute('aria-expanded',String(open));updateNoticeLayer();box.hidden=!open;
+ bell.setAttribute('aria-expanded',String(open));
+ updateNoticeLayer();
+ box.hidden=!open;
  if(!open)return;
- box.innerHTML='<div class="classroom-notice-header"><div><strong>Notifications</strong><small>'+unread+' unread</small></div><button type="button" data-notice-close aria-label="Close notifications">×</button></div>'+
- (items.length?'<div class="classroom-notice-items">'+items.map(n=>'<button type="button" class="classroom-notice-item '+(n.read?'is-read':'is-unread')+'" data-notice-open="'+E(n.id)+'"><span class="classroom-notice-marker"></span><span class="classroom-notice-copy"><strong>'+E(n.title)+'</strong><span class="classroom-notice-description">'+E(n.body)+'</span><span class="classroom-notice-when">'+E(time(n.createdAt))+'</span><span class="classroom-notice-action-label">Tap to '+(n.destination==='tests'?'open Tests':n.destination==='myresults'?'view My Results':'open Home')+' →</span></span></button>').join('')+'</div>':'<div class="classroom-notice-empty"><strong>All caught up</strong><p>New classroom updates and published results will appear here.</p></div>')+
- '<div class="classroom-push-settings" id="classroom-push-settings"></div><div class="classroom-notice-foot">Notifications stay here, and phone alerts can be enabled on supported devices.</div>';
- renderPushSettings();
+ const selected=items.find(n=>n.id===selectedNoticeId);
+ if(selected){
+  box.innerHTML='<div class="classroom-notice-header classroom-notice-detail-header">'+
+   '<button type="button" class="classroom-notice-back" data-notice-back aria-label="Back to all notifications">← <span>Notifications</span></button>'+
+   '<button type="button" data-notice-close aria-label="Close notifications">×</button></div>'+
+   '<article class="classroom-notice-detail">'+
+    '<div class="classroom-notice-detail-meta"><span class="classroom-notice-detail-type">'+E(selected.kind==='result'?'Test results':selected.kind==='test'?'Assessment':selected.kind==='reminder'?'Reminder':'Teacher announcement')+'</span>'+
+    '<span>'+E(time(selected.createdAt))+'</span></div>'+
+    '<h2>'+E(selected.title)+'</h2>'+
+    '<div class="classroom-notice-detail-message">'+E(selected.body).replace(/\n/g,'<br>')+'</div>'+
+    '<div class="classroom-notice-detail-actions"><button type="button" data-notice-destination="'+E(selected.id)+'">Go to '+(selected.destination==='tests'?'Tests':selected.destination==='myresults'?'My Results':'Home')+' →</button></div>'+
+   '</article>';
+ }else{
+  box.innerHTML='<div class="classroom-notice-header"><div><strong>Notifications</strong><small>'+unread+' unread</small></div><button type="button" data-notice-close aria-label="Close notifications">×</button></div>'+
+   (items.length?'<div class="classroom-notice-items">'+items.map(n=>
+    '<button type="button" class="classroom-notice-item '+(n.read?'is-read':'is-unread')+'" data-notice-open="'+E(n.id)+'">'+
+    '<span class="classroom-notice-marker"></span><span class="classroom-notice-copy">'+
+    '<span class="classroom-notice-row-title"><strong>'+E(n.title)+'</strong>'+(n.read?'':'<span class="classroom-notice-new">New</span>')+'</span>'+
+    '<span class="classroom-notice-description classroom-notice-preview">'+E(n.body.length>98?n.body.slice(0,98).trimEnd()+'…':n.body)+'</span>'+
+    '<span class="classroom-notice-when">'+E(time(n.createdAt))+'</span>'+
+    '</span><span class="classroom-notice-chevron" aria-hidden="true">›</span></button>').join('')+'</div>':
+    '<div class="classroom-notice-empty"><strong>All caught up</strong><p>New classroom updates and published results will appear here.</p></div>')+
+   '<div class="classroom-push-settings" id="classroom-push-settings"></div>'+
+   '<div class="classroom-notice-foot">Phone alerts follow your device sound, lock-screen and Focus settings.</div>';
+  renderPushSettings();
+ }
 }
+
 async function load(force=false){
  const api=window.classroomTestUploads;if(!api||loading||(!force&&Date.now()-lastFetch<60000))return;
  loading=true;try{
@@ -126,14 +152,16 @@ async function load(force=false){
  // the exact notice ID. A successful authenticated load marks it read.
  const target=new URLSearchParams(window.location.search).get('notice');
  if(target&&items.some(n=>n.id===target)){
+  if(!open){open=true;selectedNoticeId=target;draw()}
+  else{selectedNoticeId=target;draw()}
   await markRead(target);
   const url=new URL(window.location.href);url.searchParams.delete('notice');
   window.history.replaceState(window.history.state,'',url.pathname+url.search+url.hash);
  }
 }catch(err){if(open&&node())node().innerHTML='<div class="classroom-notice-empty"><strong>Notifications unavailable</strong><p>'+E(api.error(err))+'</p><button data-notice-retry type="button">Retry</button></div>'}finally{loading=false}
 }
-function toggle(){open=!open;draw();if(open){node()?.querySelector('[data-notice-close]')?.focus();load(true);pushStatus()}}
-function close(){if(open){open=false;draw();document.getElementById('classroom-notice-button')?.focus()}}
+function toggle(){open=!open;if(open)selectedNoticeId=null;draw();if(open){node()?.querySelector('[data-notice-close]')?.focus();load(true);pushStatus()}}
+function close(){if(open){open=false;selectedNoticeId=null;draw();document.getElementById('classroom-notice-button')?.focus()}}
 async function markRead(id){
  const n=items.find(x=>x.id===id);if(!n||n.read)return true;
  try{
@@ -143,27 +171,30 @@ async function markRead(id){
   return true;
  }catch(err){console.warn('Unable to mark notice read',err);return false}
 }
-async function navigate(id){
- const n=items.find(x=>x.id===id);if(!n)return;
- const destination=n.destination||'home';
- // One tap opens the destination and persists its read receipt—no second step.
- // Prevent double taps while the server acknowledges the read receipt.
- if(n.opening)return;
- n.opening=true;
- try{await markRead(id)}
- finally{
-  n.opening=false;
-  close();
-  window.classroomSetSection?.(destination);
- }
+async function showNoticeDetail(id){
+ const notice=items.find(n=>n.id===id);if(!notice)return;
+ selectedNoticeId=id;
+ draw();
+ node()?.querySelector('[data-notice-back]')?.focus();
+ // Opening the message is the read event. No manual read action is required.
+ if(!notice.read)await markRead(id);
 }
+function openNoticeDestination(id){
+ const notice=items.find(n=>n.id===id);if(!notice)return;
+ const destination=notice.destination||'home';
+ close();
+ window.classroomSetSection?.(destination);
+}
+
 document.addEventListener('click',e=>{
- const btn=e.target.closest('[data-push-toggle],[data-notice-open],[data-notice-close],[data-notice-retry],#classroom-notice-button');
+ const btn=e.target.closest('[data-push-toggle],[data-notice-open],[data-notice-back],[data-notice-destination],[data-notice-close],[data-notice-retry],#classroom-notice-button');
  if(btn){if(btn.hasAttribute('data-push-toggle')){togglePhonePush();return}
  if(btn.id==='classroom-notice-button'){toggle();return}
  if(btn.hasAttribute('data-notice-close')){close();return}
  if(btn.hasAttribute('data-notice-retry')){load(true);return}
- if(btn.hasAttribute('data-notice-open')){navigate(btn.dataset.noticeOpen);return}}
+ if(btn.hasAttribute('data-notice-back')){selectedNoticeId=null;draw();return}
+ if(btn.hasAttribute('data-notice-destination')){openNoticeDestination(btn.dataset.noticeDestination);return}
+ if(btn.hasAttribute('data-notice-open')){showNoticeDetail(btn.dataset.noticeOpen);return}}
  if(open&&!node()?.contains(e.target)&&!e.target.closest('#classroom-notice-button'))close();
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
@@ -171,7 +202,7 @@ window.addEventListener('classroom-test-uploads-ready',()=>load(true));
 window.addEventListener('classroom-auth-ready',()=>load(true));
 window.addEventListener('classroom-auth-state',event=>{
  const next=event.detail?.uid||null;
- if(next!==lastUid){lastUid=next;items=[];lastFetch=0;ready=false;open=false;pushEnabled=false;draw()}
+ if(next!==lastUid){lastUid=next;items=[];lastFetch=0;ready=false;open=false;selectedNoticeId=null;pushEnabled=false;draw()}
  if(next){load(true);pushStatus()}
 });
 window.addEventListener('classroom-auth-ready',()=>pushStatus());
