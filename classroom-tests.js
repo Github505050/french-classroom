@@ -32,20 +32,35 @@ function section(s){
 }
 function detail(t){
  const sections=sectionList(t);
- return '<section class="classroom-tests classroom-notebook-test"><div class="classroom-notebook-actions"><button class="btn" type="button" data-test-back>← All tests</button><button class="btn" type="button" data-test-print>Print questions</button></div><div class="classroom-tests-hero"><div class="eyebrow">A1 ASSESSMENT · '+sections.length+' SECTIONS</div><h2>'+esc(t.title)+'</h2><p>'+allQuestions(t).length+' questions · '+esc(t.maxMarks||'')+' marks</p></div><div class="hint"><strong>Test instructions:</strong> '+esc(t.studentInstructions||'Write all answers in your notebook and use the exact question numbers.')+'<p class="small">'+esc(t.recommendedMode||'')+'</p></div><nav class="classroom-test-section-nav" aria-label="Test sections">'+sections.map((s,i)=>'<a href="#classroom-test-section-'+esc(s.id)+'">'+(i+1)+'. '+esc(s.title)+'</a>').join('')+'</nav>'+sections.map(section).join('')+'<div class="classroom-notebook-end">End of test · Submit the photos of your numbered notebook answers to your teacher.</div><section class="classroom-test-upload"><h3>Submit notebook photos</h3><p>Upload 1–8 clear photos of your numbered answers (JPEG, PNG or WebP; up to 8 MB each). You can send additional pages in another submission.</p><input class="field" type="file" id="test-photo-input" accept="image/jpeg,image/png,image/webp" multiple><p id="test-photo-count" class="muted"></p><button class="btn primary" type="button" data-test-upload>Upload my notebook</button><p role="status" id="test-upload-status" class="muted"></p><div id="test-upload-history"></div></section><button class="btn" type="button" data-test-copy>Copy all questions and AI correction instructions</button></section>';
+ return '<section class="classroom-tests classroom-notebook-test"><div class="classroom-notebook-actions"><button class="btn" type="button" data-test-back>← All tests</button></div><div class="classroom-tests-hero"><div class="eyebrow">A1 ASSESSMENT · '+sections.length+' SECTIONS</div><h2>'+esc(t.title)+'</h2><p>'+allQuestions(t).length+' questions · '+esc(t.maxMarks||'')+' marks</p></div><div class="hint"><strong>Test instructions:</strong> '+esc(t.studentInstructions||'Write all answers in your notebook and use the exact question numbers.')+'<p class="small">'+esc(t.recommendedMode||'')+'</p></div><nav class="classroom-test-section-nav" aria-label="Test sections">'+sections.map((s,i)=>'<a href="#classroom-test-section-'+esc(s.id)+'">'+(i+1)+'. '+esc(s.title)+'</a>').join('')+'</nav>'+sections.map(section).join('')+'<div class="classroom-notebook-end">End of test · Submit the photos of your numbered notebook answers to your teacher.</div><section class="classroom-test-upload"><h3>Submit notebook photos</h3><p>Upload 1–8 clear photos of your numbered answers (JPEG, PNG or WebP; up to 8 MB each). You can send additional pages in another submission.</p><input class="field" type="file" id="test-photo-input" accept="image/jpeg,image/png,image/webp" multiple><p id="test-photo-count" class="muted"></p><button class="btn primary" type="button" data-test-upload>Upload my notebook</button><p role="status" id="test-upload-status" class="muted"></p><div id="test-upload-history"></div></section><section id="test-student-result" class="classroom-student-result" aria-live="polite"><p class="muted">Checking for a published result…</p></section></section>';
 }
-function draw(){const el=document.getElementById('classroom-tests-root');if(el){el.innerHTML=active?detail(active):list();if(active)history(active.id)}}
+function draw(){const el=document.getElementById('classroom-tests-root');if(el){el.innerHTML=active?detail(active):list();if(active){history(active.id);showResult(active)}}}
 async function load(){try{const r=await fetch('./tests.json',{cache:'no-store'});if(!r.ok)throw Error('Unavailable');const d=await r.json();tests=Array.isArray(d.tests)?d.tests.filter(x=>x&&typeof x.id==='string'&&typeof x.title==='string'&&(Array.isArray(x.sections)||Array.isArray(x.questions))):[];loaded=true;draw()}catch{loaded=true;const el=document.getElementById('classroom-tests-root');if(el)el.innerHTML='<div class="notice">Tests could not be loaded. Please refresh.</div>'}}
 async function history(id){const el=document.getElementById('test-upload-history'),api=window.classroomTestUploads;if(!el)return;if(!api){el.textContent='The private upload service is unavailable.';return}try{const rows=await api.mine(id);if(el.isConnected&&active?.id===id)el.textContent=rows.length?rows.length+' notebook submission(s) received.':'No notebook photos submitted yet.'}catch(e){if(el.isConnected)el.textContent='Submissions unavailable: '+api.error(e)}}
-window.addEventListener('classroom-test-uploads-ready',()=>{if(active)history(active.id)});
+async function showResult(test){
+ const box=document.getElementById('test-student-result');if(!box)return;
+ const api=window.classroomTestUploads;
+ if(!api){box.innerHTML='<p class="muted">Your results will appear here after teacher review.</p>';return}
+ try{
+  const result=await api.result(test.id);
+  if(!box.isConnected||active?.id!==test.id)return;
+  if(!result||result.status!=='published'){
+   box.innerHTML='<div class="classroom-result-pending"><span class="classroom-result-icon">◷</span><div><strong>Teacher review pending</strong><p>Your verified marks will appear here after your teacher publishes them.</p></div></div>';return
+  }
+  const sections=sectionList(test);
+  const max=test.maxMarks||sections.reduce((n,s)=>n+(s.maxMarks||0),0);
+  const percentage=max?Math.round(result.total/max*100):0;
+  box.innerHTML='<div class="classroom-result-published"><span class="classroom-test-meta">TEACHER-VERIFIED RESULTS</span><h3>Your test results</h3><div class="classroom-result-score"><strong>'+esc(result.total)+' / '+esc(max)+'</strong><span>'+percentage+'%</span></div><div class="classroom-result-rows">'+sections.map(s=>'<div><span>'+esc(s.title)+'</span><strong>'+esc(result.sectionScores?.[s.id]??'—')+' / '+esc(s.maxMarks)+'</strong></div>').join('')+'</div>'+(result.feedback?'<div class="classroom-result-feedback"><strong>Teacher feedback</strong><p>'+esc(result.feedback).replace(/\\n/g,'<br>')+'</p></div>':'')+'<p class="muted small">Published by your teacher.</p></div>';
+ }catch(err){if(box.isConnected)box.innerHTML='<p class="muted">Results are unavailable right now. '+esc(api.error(err))+'</p>'}
+}
+window.addEventListener('classroom-test-uploads-ready',()=>{if(active){history(active.id);showResult(active)}});
+
 window.classroomTestsView=function(){active=null;queueMicrotask(()=>{if(!loaded)load();else draw()});return '<div id="classroom-tests-root" aria-live="polite"><p class="muted">Loading tests…</p></div>'};
 document.addEventListener('change',e=>{if(e.target.id==='test-photo-input'){const el=document.getElementById('test-photo-count');if(el)el.textContent=(e.target.files?.length||0)+' selected photo(s)'}});
 document.addEventListener('click',async e=>{
- const btn=e.target.closest('[data-test-open],[data-test-back],[data-test-print],[data-test-copy],[data-test-upload]');if(!btn||!btn.closest('#classroom-tests-root'))return;
+ const btn=e.target.closest('[data-test-open],[data-test-back],[data-test-upload]');if(!btn||!btn.closest('#classroom-tests-root'))return;
  if(btn.hasAttribute('data-test-back')){active=null;draw();return}
  if(btn.hasAttribute('data-test-open')){active=tests.find(t=>t.id===btn.dataset.testOpen)||null;draw();return}
- if(btn.hasAttribute('data-test-print')){window.print();return}
- if(btn.hasAttribute('data-test-copy')&&active){copyToClipboard(copyText(active),btn);return}
  if(btn.hasAttribute('data-test-upload')&&active){
   const api=window.classroomTestUploads,input=document.getElementById('test-photo-input'),status=document.getElementById('test-upload-status');
   if(!api){status.textContent='The private upload service is not ready.';return}
