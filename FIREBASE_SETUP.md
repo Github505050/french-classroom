@@ -16,18 +16,28 @@ GitHub Pages remains public. Authentication secures **private progress records**
 Security notes: Authenticated progress is protected by rules **only after you publish the rules**. Do not use Firestore test mode. Signing in does not retroactively make previously entered guest progress private. Never share service-account keys.
 
 
-## Notebook-test photo submissions (requires Firebase Storage)
+## Notebook tests: Supabase Free (not Firebase Storage)
 
-The website now includes a student notebook-photo upload area inside Tests, and a teacher-only **Tests & Submissions** tab. The GitHub code alone does not create a Storage bucket or publish Firebase security rules.
+Student authentication and lesson progress remain on Firebase. Notebook photos and submission metadata now use **Supabase**. No Firebase Storage billing upgrade is needed.
 
-1. In [Firebase Console](https://console.firebase.google.com/project/french-classroom/storage), open **Storage** and create/confirm the bucket for `french-classroom`.
-2. Firebase requires the **Blaze pay-as-you-go billing plan** to use Cloud Storage. Check pricing and set a Google Cloud billing budget/alerts before enabling it; usage may incur costs even though some usage can be no-charge.
-3. In **Storage → Rules**, replace the Storage rules with the repository file [storage.rules](storage.rules) and **Publish**.
-4. In **Firestore Database → Rules**, publish the repository's updated [firestore.rules](firestore.rules) (preserving the existing profiles/progress permissions and adding `testSubmissions`).
-5. Sign in as a verified student; open a test and upload a small sample notebook photo. Verify the success message.
-6. Sign in as the authorized teacher; open **Teacher Portal → Tests & Submissions**, refresh, and open the sample notebook photo.
-7. Test that Student A cannot view Student B's photos. Do not place notebook images in the public GitHub repository.
+The Supabase backend must be deployed before the photo upload and teacher submission viewer are operational:
 
-**Important:** Test questions are public website content, but notebook images and submission metadata must stay in Firebase Storage and Firestore. Teacher-only status depends on the published Firebase security rules. The current feature does not automatically grade or score notebook photos. The Copy Questions for AI button copies test questions plus instructions to wait for all notebook photos before checking; upload photos to your chosen AI separately.
+1. Create a Supabase Free project at https://supabase.com/dashboard (or connect Supabase through ChatGPT). Check the current Free storage and function limits before use.
+2. Run [supabase/setup.sql](supabase/setup.sql) in the project's SQL Editor. This creates a private `notebook-tests` bucket, protected submission records, and an administrator-maintained `teacher_roles` table. Browser clients cannot directly access those tables.
+3. Find your teacher account's **Firebase Authentication UID** in Firebase Console. In Supabase's SQL Editor, run:
+   `insert into public.teacher_roles(firebase_uid,role) values ('YOUR_REAL_FIREBASE_UID','teacher');`
+   Do not use an email address or a student's UID.
+4. Deploy [supabase/functions/notebook-tests/index.ts](supabase/functions/notebook-tests/index.ts) as Edge Function `notebook-tests` with JWT gateway verification **disabled** (see [supabase/config.toml](supabase/config.toml)). The function independently validates Firebase-signed ID tokens using Google's public keys, the expected Firebase project and verified email status.
+5. Set the Edge Function secret `FIREBASE_PROJECT_ID=french-classroom`. Supabase provides its server URL and secret key to the deployed function; **never** commit or paste a service-role secret into GitHub HTML, JavaScript, or `supabase-config.json`.
+6. Update [supabase-config.json](supabase-config.json) with the Supabase Project URL, e.g. `https://YOUR_PROJECT_REF.supabase.co`. The project URL is public; it is **not** a secret.
+7. Verify both student and teacher email addresses are verified in Firebase Authentication.
+8. Test uploading one sample notebook page as a student, then viewing it via Teacher Portal → Tests & Submissions as the teacher. Verify one student cannot read another student's submissions. Test on a phone and desktop before collecting real student work.
 
-Uploads accept 1–8 JPEG/PNG/WebP photos up to 8 MB each. Students can make multiple submissions; uploaded photos are not overwritten. The teacher portal shows the account email, test and images. Image download URLs can be shared, so do not forward them to unauthorized people. Review your data-retention/deletion policy before collecting student work.
+### Notes
+
+- Questions stay in `tests.json`; notebook answers are stored privately in Supabase, not in GitHub.
+- Student page allows 1–8 JPEG/PNG/WebP photos up to 8 MB each. Only the teacher and the owner student can read their submissions through short-lived signed image URLs.
+- The teacher reviews manually; no answers or answer keys are revealed to students. The Copy Questions button gives AI correction instructions but **does not send photos to AI automatically**.
+- Teacher authorization uses the `teacher_roles` table in Supabase. Only the administrator should maintain this table. It must match the authorized teacher's UID in Firebase.
+- Free projects can pause for inactivity, and Free quotas apply. Review data retention, backups, and privacy policies before collecting student notebook photos.
+- Old `storage.rules` and the `testSubmissions` section in `firestore.rules` relate to the superseded Firebase Storage design and are no longer used by notebook photo uploads.
