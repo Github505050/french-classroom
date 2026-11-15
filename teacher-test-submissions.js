@@ -30,7 +30,7 @@ document.addEventListener('click',async e=>{
  if(b.hasAttribute('data-teacher-copy')){
   const test=tests.find(t=>t.id===b.dataset.teacherCopy);if(!test){alert('Test questions are not published.');return}
   const make=window.classroomTestCopyText;
-  const copy=make?make(test):['Notebook test: '+test.title,'Wait until ALL PHOTOS UPLOADED before correcting. Compare numbered notebook answers to the questions; correct errors and give targeted feedback.',...test.questions.map((q,i)=>(i+1)+'. '+q.prompt)].join('\n');
+  const copy=make?make(test):['Notebook test: '+test.title,'Wait until ALL PHOTOS UPLOADED before correcting. Compare numbered notebook answers to the questions; correct errors and give targeted feedback.',...(test.sections||[{questions:test.questions||[]}]).flatMap(s=>[s.title||'Questions',s.instructions||'',...(s.questions||[]).map((q,i)=>(q.id||i+1)+'. '+q.prompt)])].join('\n');
   try{await navigator.clipboard.writeText(copy);b.textContent='✓ Copied'}catch{alert('Clipboard permission unavailable.')}
   return;
  }
