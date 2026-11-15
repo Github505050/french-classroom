@@ -2,7 +2,7 @@
 import { firebaseConfig } from './firebase-config.js';
 import { getApp, getApps, initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
-import { getFirestore, collection, doc, setDoc, getDocs, getDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+import { getFirestore, collection, doc, setDoc, getDocs, getDoc, query, where, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js';
 const app=getApps().length?getApp():initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
 const studentPath=(uid,test,submission,file)=>'notebookTests/'+uid+'/'+test+'/'+submission+'/'+file;
@@ -37,7 +37,7 @@ async function upload(testId,files,onProgress){
  }
 }
 async function mine(testId){
- const u=ready(),snap=await getDocs(collection(db,'testSubmissions'));
+ const u=ready(),snap=await getDocs(query(collection(db,'testSubmissions'),where('ownerUid','==',u.uid)));
  return snap.docs.map(d=>({id:d.id,...d.data()})).filter(s=>s.ownerUid===u.uid&&s.testId===testId).sort((a,b)=>(b.submittedAt?.seconds||0)-(a.submittedAt?.seconds||0));
 }
 async function teacherList(){
