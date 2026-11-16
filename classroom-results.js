@@ -4,6 +4,7 @@
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const bounded=(n,a,b)=>Math.min(b,Math.max(a,n));
 let tests=[],submissions={},grades={},selected=null,busy=false,loaded=false,error='',requestSerial=0;
+let correctedOpen=false,correctedFilter='all';
 const testFor=id=>tests.find(t=>t.id===id);
 const points=t=>Number(t.maxMarks)||((t.sections||[]).reduce((n,s)=>n+(Number(s.maxMarks)||0),0));
 const stamp=d=>{if(!d)return 'Date unavailable';const date=new Date(d);return Number.isNaN(date.getTime())?'Date unavailable':date.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'})};
@@ -39,6 +40,29 @@ function overview(){
  (latest?'<div class="my-results-latest"><div class="my-results-latest-details"><span class="my-results-latest-tag">'+icon('spark')+' MOST RECENT RESULT</span><h3>'+E(latest.title)+'</h3><p>Published '+E(stamp(grade(latest.id).publishedAt))+'</p><button type="button" class="my-results-latest-link" data-results-open="'+E(latest.id)+'">Open my report '+icon('arrow')+'</button></div><div class="my-results-latest-score"><strong>'+percentage(grade(latest.id).total,points(latest))+'%</strong><span>'+E(grade(latest.id).total)+' / '+E(points(latest))+' marks</span></div></div>':'')+
  (tests.length?'<div class="my-results-test-grid">'+tests.map(testCard).join('')+'</div>':'<div class="my-results-empty"><div class="my-results-empty-icon">'+icon('file')+'</div><h3>No assessments published yet</h3><p>Your teacher will add tests here. When results are released, you’ll be able to review every section.</p></div>')+'</div>';
 }
+function correctedTest(t,r){
+ const report=r.questionReviews;
+ if(!report||!Array.isArray(report.questions)||!report.questions.length)return '';
+ const filters='<div class="my-corrected-filter"><button type="button" data-review-filter="all" class="'+(correctedFilter==='all'?'active':'')+'">All questions</button><button type="button" data-review-filter="mistakes" class="'+(correctedFilter==='mistakes'?'active':'')+'">Mistakes only</button><button type="button" data-review-filter="correct" class="'+(correctedFilter==='correct'?'active':'')+'">Correct only</button></div>';
+ const sections=(t.sections||[]).map(section=>{
+  const rows=report.questions.filter(q=>q.sectionId===section.id&&(correctedFilter==='all'||(correctedFilter==='correct'?q.status==='Correct':q.status!=='Correct')));
+  if(!rows.length)return '';
+  return '<div class="my-corrected-section"><h4>'+E(section.title)+'</h4>'+rows.map(q=>{
+   const good=q.status==='Correct',caution=q.status==='Teacher review',tag=good?'✓':caution?'?':q.awarded===0?'✕':'◐';
+   return '<article class="my-corrected-question '+(good?'is-correct':'needs-correction')+'"><div class="my-corrected-question-header"><strong>'+E(tag)+' '+E(q.id)+'</strong><span>'+E(q.awarded)+' / '+E(q.maximum)+' · '+E(q.status)+'</span></div>'+
+    '<p class="my-corrected-original">'+E(q.question).replace(/\\n/g,'<br>')+'</p>'+
+    '<div class="my-corrected-student"><strong>Student wrote</strong><p>'+E(q.studentAnswer).replace(/\\n/g,'<br>')+'</p></div>'+
+    (good?'':'<div class="my-corrected-explanation">'+(q.correctAnswer?'<strong>Correct answer</strong><p>'+E(q.correctAnswer).replace(/\\n/g,'<br>')+'</p>':'')+(q.explanation?'<strong>Why</strong><p>'+E(q.explanation)+'</p>':'')+'</div>')+
+   '</article>';
+  }).join('')+'</div>';
+ }).join('');
+ let story='';
+ if(correctedFilter!=='correct'&&Array.isArray(report.correctedStory)&&report.correctedStory.length)
+  story='<section class="my-corrected-story"><h4>Complete corrected story</h4>'+report.correctedStory.map(paragraph=>'<p>'+E(paragraph)+'</p>').join('')+'</section>';
+ return '<section class="my-results-report-panel my-corrected-test"><div class="my-results-panel-heading"><h3>My Corrected Test</h3><p>See the original questions, your handwritten answers, and clear corrections beside the mistakes.</p></div>'+
+  '<button type="button" class="my-results-download-button" data-review-toggle aria-expanded="'+String(correctedOpen)+'">'+(correctedOpen?'Hide corrected test':'View all marked questions →')+'</button>'+
+  (correctedOpen?'<div class="my-corrected-content">'+filters+sections+story+'</div>':'')+'</section>';
+}
 function detailed(t){
  const r=grade(t.id),info=submission(t.id),max=points(t),sections=t.sections||[];
  const pct=r?percentage(r.total,max):null;
@@ -48,7 +72,7 @@ function detailed(t){
  }).join(''):'';
  const weakest=r?sections.map(s=>({title:s.title,percent:percentage(Number(r.sectionScores?.[s.id]??0),s.maxMarks)})).sort((a,b)=>a.percent-b.percent).slice(0,2):[];
  return '<div class="my-results-detail"><button type="button" class="my-results-back" data-results-back>'+icon('left')+' All results</button><header class="my-results-detail-head"><div><span class="my-results-kicker">PERSONAL ASSESSMENT REPORT</span><h2>'+E(t.title)+'</h2><p>'+E(sections.length)+' sections · '+E(max)+' possible marks</p></div><span class="my-results-status '+cardState(t)+'">'+stateLabel(cardState(t))+'</span></header>'+
- (r?'<section class="my-results-grade-hero"><div class="my-results-grade-copy"><span>YOUR VERIFIED SCORE</span><div class="my-results-grade-numbers"><strong>'+E(r.total)+' <small>/ '+E(max)+'</small></strong><b>'+pct+'%</b></div><p>Published '+E(stamp(r.publishedAt))+' by your teacher</p></div><div class="my-results-grade-gauge" role="img" aria-label="'+pct+' percent" style="--result-percent:'+pct+'"><div><strong>'+pct+'%</strong><span>Overall</span></div></div></section>'+(r.hasReport?'<section class="my-results-report-panel my-results-download-panel"><div class="my-results-panel-heading"><h3>Assessment Report</h3><p>Read your teacher-approved corrections first, then download your report if you want to keep a copy.</p></div><button type="button" class="my-results-download-button" data-results-view="'+E(t.id)+'">View assessment report →</button><div class="my-results-report-viewer" id="my-results-report-viewer" hidden></div><p class="my-results-report-filename">'+E(r.reportName||'Teacher correction report')+'</p></section>':'')+'<section class="my-results-report-panel"><div class="my-results-panel-heading"><h3>Section-by-section marks</h3><p>See exactly where you earned marks across the assessment.</p></div><div class="my-results-break-list">'+breakdown+'</div></section><section class="my-results-report-panel my-results-feedback-panel"><div class="my-results-panel-heading"><h3>Feedback from your teacher</h3><p>Review the comments from your marked assessment.</p></div>'+(r.feedback?'<div class="my-results-teacher-feedback">'+E(r.feedback).replace(/\\n/g,'<br>')+'</div>':'<p class="my-results-no-feedback">Your teacher has not added written feedback for this result.</p>')+'</section>'+(weakest.length?'<section class="my-results-revise"><span>'+icon('spark')+'</span><div><strong>Suggested revision focus</strong><p>Based on your lowest-scoring sections: '+weakest.map(x=>E(x.title)).join(' and ')+'. Practise these areas before your next assessment.</p></div></section>':''):
+ (r?'<section class="my-results-grade-hero"><div class="my-results-grade-copy"><span>YOUR VERIFIED SCORE</span><div class="my-results-grade-numbers"><strong>'+E(r.total)+' <small>/ '+E(max)+'</small></strong><b>'+pct+'%</b></div><p>Published '+E(stamp(r.publishedAt))+' by your teacher</p></div><div class="my-results-grade-gauge" role="img" aria-label="'+pct+' percent" style="--result-percent:'+pct+'"><div><strong>'+pct+'%</strong><span>Overall</span></div></div></section>'+(r.hasReport?'<section class="my-results-report-panel my-results-download-panel"><div class="my-results-panel-heading"><h3>Assessment Report</h3><p>Read your teacher-approved corrections first, then download your report if you want to keep a copy.</p></div><button type="button" class="my-results-download-button" data-results-view="'+E(t.id)+'">View assessment report →</button><div class="my-results-report-viewer" id="my-results-report-viewer" hidden></div><p class="my-results-report-filename">'+E(r.reportName||'Teacher correction report')+'</p></section>':'')+'<section class="my-results-report-panel"><div class="my-results-panel-heading"><h3>Section-by-section marks</h3><p>See exactly where you earned marks across the assessment.</p></div><div class="my-results-break-list">'+breakdown+'</div></section><section class="my-results-report-panel my-results-feedback-panel"><div class="my-results-panel-heading"><h3>Feedback from your teacher</h3><p>Review the comments from your marked assessment.</p></div>'+(r.feedback?'<div class="my-results-teacher-feedback">'+E(r.feedback).replace(/\\n/g,'<br>')+'</div>':'<p class="my-results-no-feedback">Your teacher has not added written feedback for this result.</p>')+'</section>'+correctedTest(t,r)+(weakest.length?'<section class="my-results-revise"><span>'+icon('spark')+'</span><div><strong>Suggested revision focus</strong><p>Based on your lowest-scoring sections: '+weakest.map(x=>E(x.title)).join(' and ')+'. Practise these areas before your next assessment.</p></div></section>':''):
  '<section class="my-results-pending-panel"><span>'+icon('clock')+'</span><h3>'+(info?.count?'Teacher review in progress':'No notebook submitted yet')+'</h3><p>'+(info?.count?E(info.count)+' submission(s) received. Your teacher will publish your marks when the review is complete.':'Once you complete and upload this assessment, its marks will appear here after teacher review.')+'</p><button type="button" class="my-results-go-test" data-results-go-test>Open Tests '+icon('arrow')+'</button></section>')+
  '</div>';
 }
@@ -103,11 +127,13 @@ async function downloadCorrectionReport(id,btn){
  finally{if(btn.isConnected){btn.disabled=false;btn.textContent=previous}}
 }
 document.addEventListener('click',event=>{
- const btn=event.target.closest('[data-results-open],[data-results-back],[data-results-reload],[data-results-go-test],[data-results-report],[data-results-view]');
+ const btn=event.target.closest('[data-results-open],[data-results-back],[data-results-reload],[data-results-go-test],[data-results-report],[data-results-view],[data-review-toggle],[data-review-filter]');
  if(!btn||!btn.closest('#classroom-results-root'))return;
+ if(btn.hasAttribute('data-review-toggle')){correctedOpen=!correctedOpen;render();return}
+ if(btn.hasAttribute('data-review-filter')){correctedFilter=btn.dataset.reviewFilter;render();return}
  if(btn.hasAttribute('data-results-view')){viewAssessmentReport(btn.dataset.resultsView,btn);return}
  if(btn.hasAttribute('data-results-report')){downloadCorrectionReport(btn.dataset.resultsReport,btn);return}
- if(btn.hasAttribute('data-results-open')){selected=btn.dataset.resultsOpen;render();document.getElementById('classroom-results-root')?.scrollIntoView({block:'start',behavior:'smooth'});return}
+ if(btn.hasAttribute('data-results-open')){selected=btn.dataset.resultsOpen;correctedOpen=false;correctedFilter='all';render();document.getElementById('classroom-results-root')?.scrollIntoView({block:'start',behavior:'smooth'});return}
  if(btn.hasAttribute('data-results-back')){selected=null;render();return}
  if(btn.hasAttribute('data-results-reload')){error='';load();return}
  if(btn.hasAttribute('data-results-go-test'))window.classroomSetSection?.('tests');
