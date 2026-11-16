@@ -75,7 +75,7 @@ function renderPushSettings(){
  if(!pushAvailable())body='<p>Phone push is not available in this browser. You can still use the in-app notifications above.</p>';
  else if(isApplePhone()&&!installed())body='<p>'+mobileTip+'</p>';
  else if(Notification.permission==='denied')body='<p>Notifications are blocked for this website. Allow them in your phone or browser notification settings.</p>';
- else body='<p>'+(pushEnabled?'Phone alerts are enabled on this device.':mobileTip)+'</p><button type="button" class="classroom-push-toggle" data-push-toggle '+(pushBusy?'disabled':'')+'>'+(pushBusy?'Updating…':pushEnabled?'Turn off phone alerts':'Enable phone notifications')+'</button>';
+ else body='<p>'+(pushEnabled?'Phone alerts are enabled on this device.':mobileTip)+'</p><button type="button" class="classroom-push-toggle" data-push-toggle '+(pushBusy?'disabled':'')+'>'+(pushBusy?'Updating…':pushEnabled?'Turn off phone alerts':'Enable phone notifications')+'</button>'+(pushEnabled?'<button type="button" class="classroom-push-toggle" data-push-test '+(pushBusy?'disabled':'')+'>Send test notification</button><p class="classroom-push-test-status" id="classroom-push-test-status" role="status">To test lock-screen alerts, tap this button and then lock your phone.</p>':'');
  area.innerHTML='<div class="classroom-push-heading"><span aria-hidden="true">🔔</span><strong>Phone notifications</strong></div>'+body;
 }
 async function togglePhonePush(){
@@ -103,6 +103,17 @@ async function togglePhonePush(){
  finally{pushBusy=false;renderPushSettings()}
 }
 
+async function testPhoneAlert(){
+ if(!pushEnabled||pushBusy)return;
+ const api=window.classroomTestUploads;
+ if(!api)return;
+ const status=document.getElementById('classroom-push-test-status');
+ if(status)status.textContent='Sending a test notification…';
+ try{
+  const result=await api.testPhonePush();
+  if(status)status.textContent=result.delivered>0?'Push sent to '+result.delivered+' registered device(s). Check your phone notifications.':'No phone alert was accepted for delivery. Re-enable phone notifications or check Android app settings.';
+ }catch(err){if(status)status.textContent='Test failed: '+api.error(err)}
+}
 const time=v=>{const d=new Date(v);return Number.isNaN(d.getTime())?'':d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})};
 function draw(){
  const box=node(),badge=document.getElementById('classroom-notice-count'),bell=document.getElementById('classroom-notice-button');
@@ -187,8 +198,9 @@ function openNoticeDestination(id){
 }
 
 document.addEventListener('click',e=>{
- const btn=e.target.closest('[data-push-toggle],[data-notice-open],[data-notice-back],[data-notice-destination],[data-notice-close],[data-notice-retry],#classroom-notice-button');
- if(btn){if(btn.hasAttribute('data-push-toggle')){togglePhonePush();return}
+ const btn=e.target.closest('[data-push-toggle],[data-push-test],[data-notice-open],[data-notice-back],[data-notice-destination],[data-notice-close],[data-notice-retry],#classroom-notice-button');
+ if(btn){if(btn.hasAttribute('data-push-test')){testPhoneAlert();return}
+ if(btn.hasAttribute('data-push-toggle')){togglePhonePush();return}
  if(btn.id==='classroom-notice-button'){toggle();return}
  if(btn.hasAttribute('data-notice-close')){close();return}
  if(btn.hasAttribute('data-notice-retry')){load(true);return}
