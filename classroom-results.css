@@ -148,3 +148,27 @@
 .assessment-photo-download-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:12px 0}
 .assessment-photo-download-bar p{margin:0;font-size:.83rem;color:#607d8d}
 @media(max-width:650px){.classroom-my-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.assessment-photo-download-bar .btn{width:100%}}
+
+/* Student digital corrected test (private question-by-question feedback). */
+.my-corrected-content{margin-top:16px}
+.my-corrected-filter{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.my-corrected-filter button{border:1px solid #d5e4eb;border-radius:9px;padding:9px 12px;min-height:39px;background:#f5f9fb;color:#476478;font-weight:800;cursor:pointer;font-size:.82rem}
+.my-corrected-filter button.active{background:#176f82;color:#fff;border-color:#176f82}
+.my-corrected-section{margin:15px 0 21px}
+.my-corrected-section h4{font-size:1rem;color:#1a5367;font-weight:850;margin:14px 0 11px}
+.my-corrected-question{border-radius:12px;border:1px solid #dce8ed;border-left:4px solid #1d9b6e;background:#fbfefc;margin-bottom:10px;padding:13px 15px;overflow-wrap:anywhere}
+.my-corrected-question.needs-correction{border-left-color:#ca7959;background:#fff9f5}
+.my-corrected-question-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:7px;margin-bottom:10px}
+.my-corrected-question-header strong{font-weight:850;color:#1b5b50}
+.my-corrected-question.needs-correction .my-corrected-question-header strong{color:#9c4d2d}
+.my-corrected-question-header span{font-size:.76rem;font-weight:800;color:#607e8c}
+.my-corrected-original{font-size:.87rem;line-height:1.6;font-weight:750;color:#224253;margin:0 0 9px}
+.my-corrected-student{background:#f1f7fa;border-radius:8px;padding:10px 11px}
+.my-corrected-student strong,.my-corrected-explanation strong{display:block;font-size:.75rem;color:#688194;margin-bottom:5px}
+.my-corrected-student p,.my-corrected-explanation p{margin:0 0 7px;font-size:.87rem;line-height:1.65;overflow-wrap:anywhere}
+.my-corrected-explanation{margin-top:10px;border-top:1px solid #e9dacf;padding:10px 5px 0}
+.my-corrected-explanation p{margin-bottom:11px}
+.my-corrected-story{background:#f4fafc;border:1px solid #d8e9ee;border-radius:14px;padding:18px;margin-top:16px}
+.my-corrected-story h4{font-size:1.02rem;font-weight:850;color:#16516a;margin:0 0 12px}
+.my-corrected-story p{font-size:.91rem;line-height:1.85;margin:0 0 14px;overflow-wrap:anywhere}
+@media(max-width:650px){.my-corrected-question{padding:11px}.my-corrected-filter button{flex:1 1 auto}.my-corrected-story{padding:13px}}
