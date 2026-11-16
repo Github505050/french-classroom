@@ -119,7 +119,7 @@ function instructionsForAI(t){
   '',
   '====== ORIGINAL TEST QUESTIONS ======',
   base
- ].join('\\n');
+ ].join('\n');
 }
 async function copy(btn,id){
  const t=test(id),val=t&&instructionsForAI(t);
