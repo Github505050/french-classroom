@@ -22,12 +22,12 @@ function list(){
 }
 function grade(s,t){
  const scores=s.result?.sectionScores||{},max=t.maxMarks;
- return '<section class="assessment-grading"><div class="assessment-section-heading"><h3>Section marking</h3><p>Enter marks for the original eight sections. Save a private draft or publish the verified result.</p></div><div class="assessment-marks">'+t.sections.map(section=>'<label class="assessment-mark"><span>'+E(section.title)+'</span><span><input type="number" inputmode="numeric" min="0" max="'+E(section.maxMarks)+'" step="1" data-grade-section="'+E(section.id)+'" value="'+E(scores[section.id]??'')+'" placeholder="—"> <strong>/ '+E(section.maxMarks)+'</strong></span></label>').join('')+'</div><div class="assessment-report-upload"><h3>Student correction report</h3><p>Attach the AI-checked report as a PDF, Word document or TXT file (up to 10 MB). The student can download it after you publish the grade.</p><label class="assessment-report-picker" for="assessment-report-file">Choose correction report</label><input id="assessment-report-file" type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"><div id="assessment-report-name" class="assessment-report-name">'+E(pendingReport?.name||(s.result?.hasReport?(s.result.reportName||'Correction report already attached'):'No report selected'))+'</div>'+(s.result?.hasReport?'<button type="button" class="btn" data-assessment-report-download>Download current report</button>':'')+'</div><label class="assessment-feedback-label" for="assessment-feedback">Feedback for student</label><textarea class="field" id="assessment-feedback" rows="5" maxlength="5000" placeholder="Strengths, recurring errors and what to revise…">'+E(s.result?.feedback||'')+'</textarea><div class="assessment-grade-footer"><div><small>Total marks</small><strong id="assessment-total">'+E(s.result?.total??0)+' / '+E(max)+'</strong></div><div><button type="button" class="btn" data-assessment-save="draft">Save draft</button><button type="button" class="btn primary" data-assessment-save="published">Publish result</button></div></div><p id="assessment-save-status" role="status" class="assessment-message"></p>'+(status(s)==='published'?'<p class="small muted">Publishing again updates the visible student result.</p>':'')+'</section>';
+ return '<section class="assessment-grading"><div class="assessment-section-heading"><h3>Section marking</h3><p>Enter marks for the original eight sections. Save a private draft or publish the verified result.</p></div><div class="assessment-marks">'+t.sections.map(section=>'<label class="assessment-mark"><span>'+E(section.title)+'</span><span><input type="number" inputmode="numeric" min="0" max="'+E(section.maxMarks)+'" step="0.5" data-grade-section="'+E(section.id)+'" value="'+E(scores[section.id]??'')+'" placeholder="—"> <strong>/ '+E(section.maxMarks)+'</strong></span></label>').join('')+'</div><div class="assessment-report-upload"><h3>Student correction report</h3><p>Attach the AI-checked report as a PDF, Word document or TXT file (up to 10 MB). The student can download it after you publish the grade.</p><label class="assessment-report-picker" for="assessment-report-file">Choose correction report</label><input id="assessment-report-file" type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"><div id="assessment-report-name" class="assessment-report-name">'+E(pendingReport?.name||(s.result?.hasReport?(s.result.reportName||'Correction report already attached'):'No report selected'))+'</div>'+(s.result?.hasReport?'<button type="button" class="btn" data-assessment-report-download>Download current report</button>':'')+'</div><label class="assessment-feedback-label" for="assessment-feedback">Feedback for student</label><textarea class="field" id="assessment-feedback" rows="5" maxlength="5000" placeholder="Strengths, recurring errors and what to revise…">'+E(s.result?.feedback||'')+'</textarea><div class="assessment-grade-footer"><div><small>Total marks</small><strong id="assessment-total">'+E(s.result?.total??0)+' / '+E(max)+'</strong></div><div><button type="button" class="btn" data-assessment-save="draft">Save draft</button><button type="button" class="btn primary" data-assessment-save="published">Publish result</button></div></div><p id="assessment-save-status" role="status" class="assessment-message"></p>'+(status(s)==='published'?'<p class="small muted">Publishing again updates the visible student result.</p>':'')+'</section>';
 }
 function review(){
  const s=current();if(!s)return '<section class="assessment-review assessment-placeholder"><h3>Select a submission</h3><p>Choose a student to review notebook photographs and record assessment marks.</p></section>';
  const t=test(s.testId);
- const photos=photoUrls[s.id]?'<div class="assessment-photo-grid">'+photoUrls[s.id].map((u,i)=>'<a href="'+E(u)+'" target="_blank" rel="noopener noreferrer"><img src="'+E(u)+'" loading="lazy" alt="Notebook photo '+(i+1)+'"><span>Page '+(i+1)+' · Open full size</span></a>').join('')+'</div>':'<div class="assessment-photo-prompt"><span>'+E(s.pageCount)+' pages available</span><button class="btn primary" data-assessment-view="'+E(s.id)+'" type="button">Open notebook photos</button></div>';
+ const photos=photoUrls[s.id]?'<div class="assessment-photo-download-bar"><p>Download every submitted notebook page together, or open individual pages below.</p><button type="button" class="btn primary" data-assessment-photo-zip="'+E(s.id)+'">↓ Download all photos (ZIP)</button></div><div class="assessment-photo-grid">'+photoUrls[s.id].map((u,i)=>'<a href="'+E(u)+'" target="_blank" rel="noopener noreferrer"><img src="'+E(u)+'" loading="lazy" alt="Notebook photo '+(i+1)+'"><span>Page '+(i+1)+' · Open full size</span></a>').join('')+'</div>':'<div class="assessment-photo-prompt"><span>'+E(s.pageCount)+' pages available</span><button class="btn primary" data-assessment-view="'+E(s.id)+'" type="button">Open notebook photos</button><button class="btn" data-assessment-photo-zip="'+E(s.id)+'" type="button">↓ Download all photos (ZIP)</button></div>';
  return '<section class="assessment-review"><div class="assessment-review-head"><span class="tp-kicker">SUBMISSION REVIEW</span><h3>'+E(s.studentEmail||'Student')+'</h3><p>'+E(t?.title||s.testId)+'</p><div class="assessment-review-meta"><span>'+E(date(s))+'</span><span>'+E(s.pageCount)+' photos</span>'+chip(s)+'</div></div><div class="assessment-section"><div class="assessment-section-heading"><h3>Handwritten answers</h3><p>Review each submitted page at full resolution.</p></div>'+photos+'</div><div class="assessment-ai-panel"><div><h3>Check with AI</h3><p>Copy the original questions and marking guidance. Attach notebook photos separately to your AI checker.</p></div><button type="button" class="btn" data-assessment-copy="'+E(s.testId)+'">Copy questions + AI instructions</button></div>'+(t?grade(s,t):'<div class="notice">This test is not available for marking.</div>')+'</section>';
 }
 function catalogue(){
@@ -61,7 +61,7 @@ async function mark(btn,gradeStatus){
   if(field.value.trim()==='')continue;
   const max=t.sections.find(x=>x.id===field.dataset.gradeSection)?.maxMarks;
   const n=Number(field.value);
-  if(!Number.isInteger(n)||n<0||n>max){msg.textContent='Enter whole-number marks from 0 to '+max+' for '+field.dataset.gradeSection+'.';return}
+  if(!Number.isFinite(n)||n<0||n>max||Math.round(n*2)!==n*2){msg.textContent='Enter marks in 0.5 increments from 0 to '+max+' for '+field.dataset.gradeSection+'.';return}
   score[field.dataset.gradeSection]=n;
  }
  if(gradeStatus==='published'&&Object.keys(score).length!==t.sections.length){msg.textContent='Mark every section before publishing.';return}
@@ -87,6 +87,19 @@ async function openPhotos(btn,id){
  btn.disabled=true;btn.textContent='Loading pages…';
  try{photoUrls[id]=await window.classroomTestUploads.urls(s);if(selected===id)draw()}
  catch(e){btn.disabled=false;btn.textContent='Retry opening pages';alert('Cannot view pages: '+window.classroomTestUploads.error(e))}
+}
+async function downloadPhotosZip(btn,id){
+ const api=window.classroomTestUploads;
+ const s=submissions.find(v=>v.id===id);if(!s)return;
+ btn.disabled=true;const previous=btn.textContent;btn.textContent='Preparing ZIP…';
+ try{
+  const blob=await api.photoZip(id);
+  const url=URL.createObjectURL(blob);
+  const name='French_Notebook_'+s.testId+'_'+id.slice(0,8)+'.zip';
+  const link=document.createElement('a');link.href=url;link.download=name;document.body.appendChild(link);link.click();link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),120000);
+ }catch(e){alert('Unable to download notebook photos: '+api.error(e))}
+ finally{if(btn.isConnected){btn.disabled=false;btn.textContent=previous}}
 }
 async function downloadReport(){
  const s=current();if(!s)return;
@@ -127,12 +140,13 @@ async function copy(btn,id){
  try{await navigator.clipboard.writeText(val);const old=btn.textContent;btn.textContent='✓ Copied';setTimeout(()=>{if(btn.isConnected)btn.textContent=old},2300)}catch{alert('Clipboard access unavailable.')}
 }
 document.addEventListener('click',event=>{
- const btn=event.target.closest('[data-assessment-select],[data-assessment-refresh],[data-assessment-filter],[data-assessment-save],[data-assessment-view],[data-assessment-copy],[data-assessment-report-download]');
+ const btn=event.target.closest('[data-assessment-select],[data-assessment-refresh],[data-assessment-filter],[data-assessment-save],[data-assessment-view],[data-assessment-copy],[data-assessment-report-download],[data-assessment-photo-zip]');
  if(!btn||!btn.closest('#teacher-portal')||!window.classroomIsTeacher)return;
  if(btn.hasAttribute('data-assessment-refresh')){ready=false;refresh();return}
  if(btn.hasAttribute('data-assessment-select')){selected=btn.dataset.assessmentSelect;pendingReport=null;draw();return}
  if(btn.hasAttribute('data-assessment-filter')){filter=btn.dataset.assessmentFilter;draw();return}
  if(btn.hasAttribute('data-assessment-view')){openPhotos(btn,btn.dataset.assessmentView);return}
+ if(btn.hasAttribute('data-assessment-photo-zip')){downloadPhotosZip(btn,btn.dataset.assessmentPhotoZip);return}
  if(btn.hasAttribute('data-assessment-copy')){copy(btn,btn.dataset.assessmentCopy);return}
  if(btn.hasAttribute('data-assessment-report-download')){downloadReport();return}
  if(btn.hasAttribute('data-assessment-save'))mark(btn,btn.dataset.assessmentSave);
