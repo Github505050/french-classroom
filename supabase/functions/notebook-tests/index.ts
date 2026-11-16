@@ -93,12 +93,12 @@ Deno.serve(async req=>{
   const teacher=roleDocument?.fields?.role?.stringValue==='teacher';
   if(!teacher&&payload.email_verified!==true)return reply({error:'Verify your student email before accessing tests'},403);
   const contentType=req.headers.get('content-type')||'';
-  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';let reportPath='',reportName='',reportMode='download';let reportFile:File|null=null;let photoIndex=-1;
+  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';let reportPath='',reportName='',reportMode='download';let reportFile:File|null=null;let photoIndex=-1;let questionReviews:unknown=null;
   if(contentType.includes('multipart/form-data')){
    const form=await req.formData();action=String(form.get('action')||'');testId=String(form.get('testId')||'');
    files=form.getAll('photos').filter((f):f is File=>f instanceof File);submissionId=String(form.get('submissionId')||'');reportFile=form.get('report') instanceof File?form.get('report') as File:null;
   }else{
-   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');reportPath=String(body.reportPath||'');reportName=String(body.reportName||'');reportMode=String(body.reportMode||'download');photoIndex=Number(body.photoIndex);
+   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');reportPath=String(body.reportPath||'');reportName=String(body.reportName||'');reportMode=String(body.reportMode||'download');photoIndex=Number(body.photoIndex);questionReviews=body.questionReviews??null;
   }
   if(action==='pushConfig'){
    const publicKey=await pushPublicKey();
@@ -258,7 +258,7 @@ Deno.serve(async req=>{
    // Draft grades and other students' records are deliberately excluded.
    const [submissionRows,gradeRows]=await Promise.all([
     client.from('notebook_submissions').select('id,test_id,page_count,submitted_at').eq('owner_uid',uid).order('submitted_at',{ascending:false}).limit(300),
-    client.from('notebook_test_results').select('test_id,section_scores,total,feedback,published_at,report_path,report_name').eq('owner_uid',uid).eq('status','published').limit(300)
+    client.from('notebook_test_results').select('test_id,section_scores,total,feedback,published_at,report_path,report_name,question_reviews').eq('owner_uid',uid).eq('status','published').limit(300)
    ]);
    if(submissionRows.error)throw submissionRows.error;
    if(gradeRows.error)throw gradeRows.error;
@@ -270,16 +270,16 @@ Deno.serve(async req=>{
    }
    return reply({submissions:counts,results:(gradeRows.data||[]).map(g=>({
     testId:g.test_id,sectionScores:g.section_scores,total:g.total,
-    feedback:g.feedback,publishedAt:g.published_at,status:'published',hasReport:!!g.report_path,reportName:g.report_name||null
+    feedback:g.feedback,publishedAt:g.published_at,status:'published',hasReport:!!g.report_path,reportName:g.report_name||null,questionReviews:g.question_reviews||null
    }))});
   }
   if(action==='result'){
    if(!allowed.test(testId))return reply({error:'Invalid test'},400);
    const {data,error}=await client.from('notebook_test_results')
-     .select('test_id,section_scores,total,feedback,published_at,status,report_path,report_name')
+     .select('test_id,section_scores,total,feedback,published_at,status,report_path,report_name,question_reviews')
      .eq('owner_uid',uid).eq('test_id',testId).eq('status','published').maybeSingle();
    if(error)throw error;
-   return reply({result:data?{testId:data.test_id,sectionScores:data.section_scores,total:data.total,feedback:data.feedback,publishedAt:data.published_at,status:'published',hasReport:!!data.report_path,reportName:data.report_name||null}:null});
+   return reply({result:data?{testId:data.test_id,sectionScores:data.section_scores,total:data.total,feedback:data.feedback,publishedAt:data.published_at,status:'published',hasReport:!!data.report_path,reportName:data.report_name||null,questionReviews:data.question_reviews||null}:null});
   }
   if(action==='grade'){
    if(!teacher)return reply({error:'Teacher access required'},403);
@@ -302,7 +302,7 @@ Deno.serve(async req=>{
    if(feedback.length>5000)return reply({error:'Feedback is too long'},400);
    const status=action==='grade'&&gradeStatus==='published'?'published':'draft';
    if(status==='published'&&given.length!==Object.keys(limits).length)return reply({error:'Mark every section before publishing'},400);
-   const {data:existing,error:exErr}=await client.from('notebook_test_results').select('status,report_path,report_name').eq('owner_uid',sub.owner_uid).eq('test_id',sub.test_id).maybeSingle();
+   const {data:existing,error:exErr}=await client.from('notebook_test_results').select('status,report_path,report_name,question_reviews').eq('owner_uid',sub.owner_uid).eq('test_id',sub.test_id).maybeSingle();
    if(exErr)throw exErr;
    if(existing?.status==='published'&&status!=='published')return reply({error:'Published grades can only be changed by publishing an updated result'},409);
    let finalPath=existing?.report_path||null,finalName=existing?.report_name||null;
@@ -314,22 +314,49 @@ Deno.serve(async req=>{
     if(storedError||!stored)return reply({error:'Uploaded correction report not found'},400);
     finalPath=reportPath;finalName=reportName;
    }
-   const record={owner_uid:sub.owner_uid,test_id:sub.test_id,section_scores:sectionScores,feedback,status,total,graded_by:uid,graded_at:new Date().toISOString(),published_at:status==='published'?new Date().toISOString():null,report_path:finalPath,report_name:finalName};
+   let finalReviews=(existing as any)?.question_reviews??null;
+   if(questionReviews!==null){
+    const data=questionReviews as any;
+    if(!data||typeof data!=='object'||Array.isArray(data)||data.testId!==sub.test_id||
+       !Array.isArray(data.questions)||data.questions.length<1||data.questions.length>250||
+       JSON.stringify(data).length>180000)
+     return reply({error:'Invalid digital correction report'},400);
+    const reviewed=new Set<string>();
+    const tallies:Record<string,number>={};
+    for(const q of data.questions){
+     if(!q||typeof q!=='object'||!/^[A-Z]+-\\d{2}$/.test(String(q.id||''))||
+       typeof q.studentAnswer!=='string'||q.studentAnswer.length>3000||
+       !['Correct','Partially correct','Incorrect','Missing','Teacher review'].includes(q.status)||
+       typeof q.awarded!=='number'||typeof q.maximum!=='number'||q.maximum<0||q.maximum>25||
+       q.awarded<0||q.awarded>q.maximum||Math.round(q.awarded*2)!==q.awarded*2||
+       typeof q.sectionId!=='string'||!(q.sectionId in limits)||reviewed.has(q.id))
+      return reply({error:'Invalid question review: please check all IDs and marks'},400);
+     reviewed.add(q.id);
+     tallies[q.sectionId]=(tallies[q.sectionId]||0)+q.awarded;
+    }
+    if(status==='published'){
+     if(Object.keys(tallies).length!==Object.keys(limits).length||
+        Object.keys(limits).some(s=>Math.abs((tallies[s]||0)-Number(sectionScores[s]||0))>0.001))
+      return reply({error:'Digital report question scores do not match section marks'},400);
+    }
+    finalReviews=data;
+   }
+   const record={owner_uid:sub.owner_uid,test_id:sub.test_id,section_scores:sectionScores,feedback,status,total,graded_by:uid,graded_at:new Date().toISOString(),published_at:status==='published'?new Date().toISOString():null,report_path:finalPath,report_name:finalName,question_reviews:finalReviews};
    const {error}=await client.from('notebook_test_results').upsert(record,{onConflict:'owner_uid,test_id'});
    if(error)throw error;
    if(status==='published'){
     try{await sendPush(sub.owner_uid,{title:'Your French test results are ready',body:'Your teacher has published your marks and feedback. Tap to view My Results.',destination:'myresults',tag:'result:'+sub.test_id})}
     catch(pushError){console.error('Grades published but push delivery failed',pushError)}
    }
-   return reply({result:{status,total,sectionScores,feedback,hasReport:!!finalPath,reportName:finalName}});
+   return reply({result:{status,total,sectionScores,feedback,hasReport:!!finalPath,reportName:finalName,hasDigitalCorrections:!!finalReviews}});
   }
   if(action==='teacherList'){
    if(!teacher)return reply({error:'Teacher access required'},403);
    const {data,error}=await client.from('notebook_submissions').select('id,owner_uid,student_email,test_id,page_count,submitted_at').order('submitted_at',{ascending:false}).limit(200);
    if(error)throw error;
-   const {data:grades,error:gradeErr}=await client.from('notebook_test_results').select('owner_uid,test_id,section_scores,feedback,total,status,published_at,report_path,report_name');
+   const {data:grades,error:gradeErr}=await client.from('notebook_test_results').select('owner_uid,test_id,section_scores,feedback,total,status,published_at,report_path,report_name,question_reviews');
    if(gradeErr)throw gradeErr;
-   const results=new Map((grades||[]).map(g=>[g.owner_uid+'|'+g.test_id,{sectionScores:g.section_scores,feedback:g.feedback,total:g.total,status:g.status,publishedAt:g.published_at,hasReport:!!g.report_path,reportName:g.report_name||null}]));
+   const results=new Map((grades||[]).map(g=>[g.owner_uid+'|'+g.test_id,{sectionScores:g.section_scores,feedback:g.feedback,total:g.total,status:g.status,publishedAt:g.published_at,hasReport:!!g.report_path,reportName:g.report_name||null,hasDigitalCorrections:!!g.question_reviews}]));
    return reply({submissions:(data||[]).map(s=>({id:s.id,ownerUid:s.owner_uid,studentEmail:s.student_email,testId:s.test_id,pageCount:s.page_count,submittedAt:{seconds:Math.floor(new Date(s.submitted_at).getTime()/1000)},result:results.get(s.owner_uid+'|'+s.test_id)||null}))});
   }
   if(action==='removePhoto'){
