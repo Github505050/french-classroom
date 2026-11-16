@@ -172,3 +172,9 @@
 .my-corrected-story h4{font-size:1.02rem;font-weight:850;color:#16516a;margin:0 0 12px}
 .my-corrected-story p{font-size:.91rem;line-height:1.85;margin:0 0 14px;overflow-wrap:anywhere}
 @media(max-width:650px){.my-corrected-question{padding:11px}.my-corrected-filter button{flex:1 1 auto}.my-corrected-story{padding:13px}}
+
+/* Teacher attachments: compact removable pending-file chips. */
+.assessment-selected-file{display:flex;align-items:center;gap:9px;max-width:100%;min-width:0;flex-wrap:wrap}
+.assessment-selected-file .assessment-report-name{flex:0 1 auto;min-width:0;overflow-wrap:anywhere}
+.assessment-file-clear{display:inline-flex;align-items:center;justify-content:center;flex:0 0 27px;width:27px;height:27px;padding:0;border:1px solid #e2bdc0;border-radius:50%;background:#fff4f4;color:#a12d40;font-size:19px;font-weight:700;line-height:1;cursor:pointer}
+.assessment-file-clear:hover,.assessment-file-clear:focus-visible{background:#f8dce0;border-color:#cd737c;outline-offset:2px}
