@@ -92,10 +92,10 @@ Deno.serve(async req=>{
   const teacher=roleDocument?.fields?.role?.stringValue==='teacher';
   if(!teacher&&payload.email_verified!==true)return reply({error:'Verify your student email before accessing tests'},403);
   const contentType=req.headers.get('content-type')||'';
-  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';let reportPath='',reportName='';
+  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';let reportPath='',reportName='';let reportFile:File|null=null;
   if(contentType.includes('multipart/form-data')){
    const form=await req.formData();action=String(form.get('action')||'');testId=String(form.get('testId')||'');
-   files=form.getAll('photos').filter((f):f is File=>f instanceof File);submissionId=String(form.get('submissionId')||'');
+   files=form.getAll('photos').filter((f):f is File=>f instanceof File);submissionId=String(form.get('submissionId')||'');reportFile=form.get('report') instanceof File?form.get('report') as File:null;
   }else{
    const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');reportPath=String(body.reportPath||'');reportName=String(body.reportName||'');
   }
@@ -189,8 +189,7 @@ Deno.serve(async req=>{
    const {data:sub,error:subErr}=await client.from('notebook_submissions').select('owner_uid,test_id').eq('id',submissionId).maybeSingle();
    if(subErr)throw subErr;
    if(!sub)return reply({error:'Submission not found'},404);
-   const form=await req.clone().formData().catch(()=>null);
-   const file=form?.get('report');
+   const file=reportFile;
    if(!(file instanceof File))return reply({error:'Choose a report PDF, Word document or TXT file'},400);
    const kind=file.type,filename=String(file.name||'').slice(0,150);
    const extension=filename.toLowerCase().split('.').pop();
