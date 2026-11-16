@@ -124,3 +124,27 @@
 .my-results-download-button:disabled{opacity:.65;cursor:wait}
 .my-results-report-filename{font-size:.78rem;color:#617d90;overflow-wrap:anywhere;margin:8px 0 0}
 @media(max-width:650px){.my-results-download-button{width:100%;text-align:center}}
+
+/* Read-first assessment report, then download a private copy. */
+.my-results-report-viewer{margin-top:15px;padding:14px;border:1px solid #d6e5ed;border-radius:14px;background:#fff;min-width:0}
+.my-results-report-viewer[hidden]{display:none!important}
+.my-results-report-viewer-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px;overflow-wrap:anywhere}
+.my-results-report-viewer-head strong{font-size:.87rem;color:#244b61}
+.my-results-report-viewer-head .my-results-download-button{font-size:.82rem;min-height:40px;padding:9px 12px}
+.my-results-report-viewer iframe{display:block;min-height:540px;height:min(75vh,790px);width:100%;border:1px solid #d5e5ee;border-radius:10px;background:#fff}
+.my-results-report-external{display:inline-block;margin-top:10px;color:#18708d;text-decoration:underline;font-size:.85rem;font-weight:800}
+@media(max-width:650px){.my-results-report-viewer{padding:10px}.my-results-report-viewer iframe{height:65dvh;min-height:400px}.my-results-report-viewer-head .my-results-download-button{width:100%}}
+/* Student private uploaded photo gallery and remaining upload slots. */
+.classroom-upload-history-head{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;margin:17px 0 8px;color:#21485d}
+.classroom-my-photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(115px,1fr));gap:11px;max-width:100%;margin:13px 0}
+.classroom-my-photo{display:flex;flex-direction:column;min-width:0;background:#f7fafc;border:1px solid #dce9ef;border-radius:12px;overflow:hidden;color:#25637b;text-decoration:none}
+.classroom-my-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#edf3f8}
+.classroom-my-photo span{padding:9px;font-size:.8rem;font-weight:800;text-align:center}
+.classroom-my-photo:hover{border-color:#5f9eb2}
+/* Teacher private ZIP downloads and per-photo permanent removal */
+.assessment-photo-tile{display:flex;flex-direction:column;gap:7px;min-width:0}
+.assessment-photo-tile>a{display:flex;flex-direction:column;min-width:0}
+.assessment-remove-photo{font-size:.76rem!important;color:#a33d42!important;border:1px solid #f0cfd1!important;background:#fff5f5!important;min-height:35px}
+.assessment-photo-download-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:12px 0}
+.assessment-photo-download-bar p{margin:0;font-size:.83rem;color:#607d8d}
+@media(max-width:650px){.classroom-my-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.assessment-photo-download-bar .btn{width:100%}}
