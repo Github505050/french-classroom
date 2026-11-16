@@ -67,6 +67,7 @@ window.classroomTestUploads={
  registerPush:async pushSubscription=>call('registerPush',{pushSubscription}),
  unregisterPush:async pushEndpoint=>call('unregisterPush',{pushEndpoint}),
  pushStatus:async()=>call('pushStatus'),
+ testPhonePush:async()=>call('testPhonePush'),
  readNotification:async noticeId=>call('readNotification',{noticeId}),
  publishAnnouncement:async(title,body,kind,destination)=>call('publishAnnouncement',{title,body,kind,destination}),
  teacherAnnouncements:async()=>call('teacherAnnouncements'),
