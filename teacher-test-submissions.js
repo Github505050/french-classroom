@@ -27,7 +27,7 @@ function grade(s,t){
 function review(){
  const s=current();if(!s)return '<section class="assessment-review assessment-placeholder"><h3>Select a submission</h3><p>Choose a student to review notebook photographs and record assessment marks.</p></section>';
  const t=test(s.testId);
- const photos=photoUrls[s.id]?'<div class="assessment-photo-download-bar"><p>Download every submitted notebook page together, or open individual pages below.</p><button type="button" class="btn primary" data-assessment-photo-zip="'+E(s.id)+'">↓ Download all photos (ZIP)</button></div><div class="assessment-photo-grid">'+photoUrls[s.id].map((u,i)=>'<a href="'+E(u)+'" target="_blank" rel="noopener noreferrer"><img src="'+E(u)+'" loading="lazy" alt="Notebook photo '+(i+1)+'"><span>Page '+(i+1)+' · Open full size</span></a>').join('')+'</div>':'<div class="assessment-photo-prompt"><span>'+E(s.pageCount)+' pages available</span><button class="btn primary" data-assessment-view="'+E(s.id)+'" type="button">Open notebook photos</button><button class="btn" data-assessment-photo-zip="'+E(s.id)+'" type="button">↓ Download all photos (ZIP)</button></div>';
+ const photos=photoUrls[s.id]?'<div class="assessment-photo-download-bar"><p>Download every submitted notebook page together, or open individual pages below.</p><button type="button" class="btn primary" data-assessment-photo-zip="'+E(s.id)+'">↓ Download all photos (ZIP)</button></div><div class="assessment-photo-grid">'+photoUrls[s.id].map((u,i)=>'<div class="assessment-photo-tile"><a href="'+E(u)+'" target="_blank" rel="noopener noreferrer"><img src="'+E(u)+'" loading="lazy" alt="Notebook photo '+(i+1)+'"><span>Page '+(i+1)+' · Open full size</span></a><button type="button" class="btn assessment-remove-photo" data-assessment-remove-photo="'+i+'" data-assessment-remove-submission="'+E(s.id)+'">Remove page '+(i+1)+'</button></div>').join('')+'</div>':'<div class="assessment-photo-prompt"><span>'+E(s.pageCount)+' pages available</span><button class="btn primary" data-assessment-view="'+E(s.id)+'" type="button">Open notebook photos</button><button class="btn" data-assessment-photo-zip="'+E(s.id)+'" type="button">↓ Download all photos (ZIP)</button></div>';
  return '<section class="assessment-review"><div class="assessment-review-head"><span class="tp-kicker">SUBMISSION REVIEW</span><h3>'+E(s.studentEmail||'Student')+'</h3><p>'+E(t?.title||s.testId)+'</p><div class="assessment-review-meta"><span>'+E(date(s))+'</span><span>'+E(s.pageCount)+' photos</span>'+chip(s)+'</div></div><div class="assessment-section"><div class="assessment-section-heading"><h3>Handwritten answers</h3><p>Review each submitted page at full resolution.</p></div>'+photos+'</div><div class="assessment-ai-panel"><div><h3>Check with AI</h3><p>Copy the original questions and marking guidance. Attach notebook photos separately to your AI checker.</p></div><button type="button" class="btn" data-assessment-copy="'+E(s.testId)+'">Copy questions + AI instructions</button></div>'+(t?grade(s,t):'<div class="notice">This test is not available for marking.</div>')+'</section>';
 }
 function catalogue(){
@@ -88,6 +88,16 @@ async function openPhotos(btn,id){
  try{photoUrls[id]=await window.classroomTestUploads.urls(s);if(selected===id)draw()}
  catch(e){btn.disabled=false;btn.textContent='Retry opening pages';alert('Cannot view pages: '+window.classroomTestUploads.error(e))}
 }
+async function teacherRemovePhoto(btn,id,index){
+ if(!Number.isInteger(index)||index<0)return;
+ if(!confirm('Permanently remove page '+(index+1)+' from this student submission? This cannot be undone. The student will regain one upload slot.'))return;
+ btn.disabled=true;btn.textContent='Removing…';
+ try{
+  await window.classroomTestUploads.removePhoto(id,index);
+  delete photoUrls[id];
+  await refresh();
+ }catch(e){alert('Unable to remove page: '+window.classroomTestUploads.error(e));if(btn.isConnected){btn.disabled=false;btn.textContent='Remove page '+(index+1)}}
+}
 async function downloadPhotosZip(btn,id){
  const api=window.classroomTestUploads;
  const s=submissions.find(v=>v.id===id);if(!s)return;
@@ -140,13 +150,14 @@ async function copy(btn,id){
  try{await navigator.clipboard.writeText(val);const old=btn.textContent;btn.textContent='✓ Copied';setTimeout(()=>{if(btn.isConnected)btn.textContent=old},2300)}catch{alert('Clipboard access unavailable.')}
 }
 document.addEventListener('click',event=>{
- const btn=event.target.closest('[data-assessment-select],[data-assessment-refresh],[data-assessment-filter],[data-assessment-save],[data-assessment-view],[data-assessment-copy],[data-assessment-report-download],[data-assessment-photo-zip]');
+ const btn=event.target.closest('[data-assessment-select],[data-assessment-refresh],[data-assessment-filter],[data-assessment-save],[data-assessment-view],[data-assessment-copy],[data-assessment-report-download],[data-assessment-photo-zip],[data-assessment-remove-photo]');
  if(!btn||!btn.closest('#teacher-portal')||!window.classroomIsTeacher)return;
  if(btn.hasAttribute('data-assessment-refresh')){ready=false;refresh();return}
  if(btn.hasAttribute('data-assessment-select')){selected=btn.dataset.assessmentSelect;pendingReport=null;draw();return}
  if(btn.hasAttribute('data-assessment-filter')){filter=btn.dataset.assessmentFilter;draw();return}
  if(btn.hasAttribute('data-assessment-view')){openPhotos(btn,btn.dataset.assessmentView);return}
  if(btn.hasAttribute('data-assessment-photo-zip')){downloadPhotosZip(btn,btn.dataset.assessmentPhotoZip);return}
+ if(btn.hasAttribute('data-assessment-remove-photo')){teacherRemovePhoto(btn,btn.dataset.assessmentRemoveSubmission,Number(btn.dataset.assessmentRemovePhoto));return}
  if(btn.hasAttribute('data-assessment-copy')){copy(btn,btn.dataset.assessmentCopy);return}
  if(btn.hasAttribute('data-assessment-report-download')){downloadReport();return}
  if(btn.hasAttribute('data-assessment-save'))mark(btn,btn.dataset.assessmentSave);
