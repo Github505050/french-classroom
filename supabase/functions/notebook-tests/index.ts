@@ -92,12 +92,12 @@ Deno.serve(async req=>{
   const teacher=roleDocument?.fields?.role?.stringValue==='teacher';
   if(!teacher&&payload.email_verified!==true)return reply({error:'Verify your student email before accessing tests'},403);
   const contentType=req.headers.get('content-type')||'';
-  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';
+  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';let reportPath='',reportName='';
   if(contentType.includes('multipart/form-data')){
    const form=await req.formData();action=String(form.get('action')||'');testId=String(form.get('testId')||'');
-   files=form.getAll('photos').filter((f):f is File=>f instanceof File);
+   files=form.getAll('photos').filter((f):f is File=>f instanceof File);submissionId=String(form.get('submissionId')||'');
   }else{
-   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');
+   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');reportPath=String(body.reportPath||'');reportName=String(body.reportName||'');
   }
   if(action==='pushConfig'){
    const publicKey=await pushPublicKey();
@@ -183,6 +183,48 @@ Deno.serve(async req=>{
    const {data,error}=await client.from('classroom_announcements').select('id,title,body,kind,destination,created_at,active').order('created_at',{ascending:false}).limit(100);
    if(error)throw error;return reply({posts:data||[]});
   }
+  if(action==='uploadReport'){
+   if(!teacher)return reply({error:'Teacher access required'},403);
+   if(!/^[0-9a-f-]{36}$/.test(submissionId))return reply({error:'Invalid submission'},400);
+   const {data:sub,error:subErr}=await client.from('notebook_submissions').select('owner_uid,test_id').eq('id',submissionId).maybeSingle();
+   if(subErr)throw subErr;
+   if(!sub)return reply({error:'Submission not found'},404);
+   const form=await req.clone().formData().catch(()=>null);
+   const file=form?.get('report');
+   if(!(file instanceof File))return reply({error:'Choose a report PDF, Word document or TXT file'},400);
+   const kind=file.type,filename=String(file.name||'').slice(0,150);
+   const extension=filename.toLowerCase().split('.').pop();
+   const formats:Record<string,string>={
+    pdf:'application/pdf',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    txt:'text/plain'
+   };
+   if(!extension||!formats[extension]||file.size<1||file.size>10*1024*1024)return reply({error:'Upload a PDF, DOCX or TXT report under 10 MB'},400);
+   if(kind&&kind!=='application/octet-stream'&&kind!==formats[extension]&&!(extension==='txt'&&kind==='text/plain'))return reply({error:'File format does not match extension'},400);
+   const bytes=new Uint8Array(await file.arrayBuffer());
+   if(extension==='pdf'&&new TextDecoder('ascii').decode(bytes.slice(0,5))!=='%PDF-')return reply({error:'Invalid PDF file'},400);
+   if(extension==='docx'&&!(bytes[0]===80&&bytes[1]===75))return reply({error:'Invalid Word document'},400);
+   const path='reports/'+sub.owner_uid+'/'+sub.test_id+'/'+crypto.randomUUID()+'.'+extension;
+   const {error}=await client.storage.from(bucket).upload(path,bytes,{contentType:formats[extension],upsert:false});
+   if(error)throw error;
+   return reply({path,name:filename});
+  }
+  if(action==='reportUrl'){
+   if(!allowed.test(testId))return reply({error:'Invalid test'},400);
+   let query=client.from('notebook_test_results').select('owner_uid,report_path,report_name,status').eq('test_id',testId);
+   if(teacher){
+    if(!/^[0-9a-f-]{36}$/.test(submissionId))return reply({error:'Choose a student submission'},400);
+    const {data:sub,error:subErr}=await client.from('notebook_submissions').select('owner_uid,test_id').eq('id',submissionId).maybeSingle();
+    if(subErr)throw subErr;
+    if(!sub||sub.test_id!==testId)return reply({error:'Submission not found'},404);
+    query=query.eq('owner_uid',sub.owner_uid);
+   }else query=query.eq('owner_uid',uid).eq('status','published');
+   const {data:result,error}=await query.maybeSingle();
+   if(error)throw error;
+   if(!result?.report_path)return reply({error:'No correction report available'},404);
+   const {data:signed,error:signError}=await client.storage.from(bucket).createSignedUrl(result.report_path,120,{download:result.report_name||'French-correction-report.pdf'});
+   if(signError||!signed?.signedUrl)throw signError||new Error('Unable to prepare download');
+   return reply({url:signed.signedUrl,name:result.report_name||'Correction report'});
+  }
   if(action==='upload'){
    if(teacher)return reply({error:'Student account required'},403);
    if(!allowed.test(testId))return reply({error:'Invalid test ID'},400);
@@ -210,7 +252,7 @@ Deno.serve(async req=>{
    // Draft grades and other students' records are deliberately excluded.
    const [submissionRows,gradeRows]=await Promise.all([
     client.from('notebook_submissions').select('id,test_id,page_count,submitted_at').eq('owner_uid',uid).order('submitted_at',{ascending:false}).limit(300),
-    client.from('notebook_test_results').select('test_id,section_scores,total,feedback,published_at').eq('owner_uid',uid).eq('status','published').limit(300)
+    client.from('notebook_test_results').select('test_id,section_scores,total,feedback,published_at,report_path,report_name').eq('owner_uid',uid).eq('status','published').limit(300)
    ]);
    if(submissionRows.error)throw submissionRows.error;
    if(gradeRows.error)throw gradeRows.error;
@@ -222,16 +264,16 @@ Deno.serve(async req=>{
    }
    return reply({submissions:counts,results:(gradeRows.data||[]).map(g=>({
     testId:g.test_id,sectionScores:g.section_scores,total:g.total,
-    feedback:g.feedback,publishedAt:g.published_at,status:'published'
+    feedback:g.feedback,publishedAt:g.published_at,status:'published',hasReport:!!g.report_path,reportName:g.report_name||null
    }))});
   }
   if(action==='result'){
    if(!allowed.test(testId))return reply({error:'Invalid test'},400);
    const {data,error}=await client.from('notebook_test_results')
-     .select('test_id,section_scores,total,feedback,published_at,status')
+     .select('test_id,section_scores,total,feedback,published_at,status,report_path,report_name')
      .eq('owner_uid',uid).eq('test_id',testId).eq('status','published').maybeSingle();
    if(error)throw error;
-   return reply({result:data?{testId:data.test_id,sectionScores:data.section_scores,total:data.total,feedback:data.feedback,publishedAt:data.published_at,status:'published'}:null});
+   return reply({result:data?{testId:data.test_id,sectionScores:data.section_scores,total:data.total,feedback:data.feedback,publishedAt:data.published_at,status:'published',hasReport:!!data.report_path,reportName:data.report_name||null}:null});
   }
   if(action==='grade'){
    if(!teacher)return reply({error:'Teacher access required'},403);
@@ -254,25 +296,34 @@ Deno.serve(async req=>{
    if(feedback.length>5000)return reply({error:'Feedback is too long'},400);
    const status=action==='grade'&&gradeStatus==='published'?'published':'draft';
    if(status==='published'&&given.length!==Object.keys(limits).length)return reply({error:'Mark every section before publishing'},400);
-   const {data:existing,error:exErr}=await client.from('notebook_test_results').select('status').eq('owner_uid',sub.owner_uid).eq('test_id',sub.test_id).maybeSingle();
+   const {data:existing,error:exErr}=await client.from('notebook_test_results').select('status,report_path,report_name').eq('owner_uid',sub.owner_uid).eq('test_id',sub.test_id).maybeSingle();
    if(exErr)throw exErr;
    if(existing?.status==='published'&&status!=='published')return reply({error:'Published grades can only be changed by publishing an updated result'},409);
-   const record={owner_uid:sub.owner_uid,test_id:sub.test_id,section_scores:sectionScores,feedback,status,total,graded_by:uid,graded_at:new Date().toISOString(),published_at:status==='published'?new Date().toISOString():null};
+   let finalPath=existing?.report_path||null,finalName=existing?.report_name||null;
+   if(reportPath){
+    if(!/^reports\/[A-Za-z0-9_-]{1,150}\/[A-Za-z0-9_-]{1,75}\/[0-9a-f-]{36}\.(pdf|docx|txt)$/.test(reportPath)||
+       !reportPath.startsWith('reports/'+sub.owner_uid+'/'+sub.test_id+'/')||!reportName||reportName.length>150)
+      return reply({error:'Invalid correction report'},400);
+    const {data:stored,error:storedError}=await client.storage.from(bucket).info(reportPath);
+    if(storedError||!stored)return reply({error:'Uploaded correction report not found'},400);
+    finalPath=reportPath;finalName=reportName;
+   }
+   const record={owner_uid:sub.owner_uid,test_id:sub.test_id,section_scores:sectionScores,feedback,status,total,graded_by:uid,graded_at:new Date().toISOString(),published_at:status==='published'?new Date().toISOString():null,report_path:finalPath,report_name:finalName};
    const {error}=await client.from('notebook_test_results').upsert(record,{onConflict:'owner_uid,test_id'});
    if(error)throw error;
    if(status==='published'){
     try{await sendPush(sub.owner_uid,{title:'Your French test results are ready',body:'Your teacher has published your marks and feedback. Tap to view My Results.',destination:'myresults',tag:'result:'+sub.test_id})}
     catch(pushError){console.error('Grades published but push delivery failed',pushError)}
    }
-   return reply({result:{status,total,sectionScores,feedback}});
+   return reply({result:{status,total,sectionScores,feedback,hasReport:!!finalPath,reportName:finalName}});
   }
   if(action==='teacherList'){
    if(!teacher)return reply({error:'Teacher access required'},403);
    const {data,error}=await client.from('notebook_submissions').select('id,owner_uid,student_email,test_id,page_count,submitted_at').order('submitted_at',{ascending:false}).limit(200);
    if(error)throw error;
-   const {data:grades,error:gradeErr}=await client.from('notebook_test_results').select('owner_uid,test_id,section_scores,feedback,total,status,published_at');
+   const {data:grades,error:gradeErr}=await client.from('notebook_test_results').select('owner_uid,test_id,section_scores,feedback,total,status,published_at,report_path,report_name');
    if(gradeErr)throw gradeErr;
-   const results=new Map((grades||[]).map(g=>[g.owner_uid+'|'+g.test_id,{sectionScores:g.section_scores,feedback:g.feedback,total:g.total,status:g.status,publishedAt:g.published_at}]));
+   const results=new Map((grades||[]).map(g=>[g.owner_uid+'|'+g.test_id,{sectionScores:g.section_scores,feedback:g.feedback,total:g.total,status:g.status,publishedAt:g.published_at,hasReport:!!g.report_path,reportName:g.report_name||null}]));
    return reply({submissions:(data||[]).map(s=>({id:s.id,ownerUid:s.owner_uid,studentEmail:s.student_email,testId:s.test_id,pageCount:s.page_count,submittedAt:{seconds:Math.floor(new Date(s.submitted_at).getTime()/1000)},result:results.get(s.owner_uid+'|'+s.test_id)||null}))});
   }
   if(action==='photoUrls'){
