@@ -26,11 +26,18 @@ async function shrinkPhoto(file){
   return new File([blob],file.name.replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'});
  }finally{URL.revokeObjectURL(url)}
 }
-async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint}={},onProgress){
+async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName,reportFile}={},onProgress){
  const user=auth.currentUser;if(!user)throw Error('Sign in to upload notebook photos.');
  const token=await user.getIdToken();const url=await endpoint();
  const request={method:'POST',headers:{Authorization:'Bearer '+token}};
- if(action==='upload'){
+ if(action==='uploadReport'){
+  if(!(reportFile instanceof File))throw Error('Choose a correction report.');
+  const extension=reportFile.name.split('.').pop()?.toLowerCase();
+  if(!['pdf','docx','txt'].includes(extension)||reportFile.size<1||reportFile.size>10*1024*1024)throw Error('Use a PDF, DOCX or TXT report smaller than 10 MB.');
+  if(!/^[0-9a-f-]{36}$/.test(submissionId||''))throw Error('Choose a student submission.');
+  const form=new FormData();form.append('action',action);form.append('submissionId',submissionId);form.append('report',reportFile);
+  request.body=form;
+ }else if(action==='upload'){
   const photos=Array.from(files||[]);if(!/^[A-Za-z0-9_-]{1,75}$/.test(testId||''))throw Error('Invalid test ID.');
   if(!photos.length||photos.length>8)throw Error('Choose 1 to 8 photos.');
   for(const f of photos){if(!['image/jpeg','image/png','image/webp'].includes(f.type)||f.size>8*1024*1024)throw Error('Use JPEG, PNG or WebP images smaller than 8 MB each.')}
@@ -40,7 +47,7 @@ async function call(action,{testId,files,submissionId,sectionScores,feedback,gra
   const form=new FormData();form.append('action',action);form.append('testId',testId);optimized.forEach(f=>form.append('photos',f));
   request.body=form;
  }else{
-  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint});
+  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName});
  }
  const result=await fetch(url,request);
  const data=await result.json().catch(()=>({error:'Invalid server response'}));
@@ -64,7 +71,9 @@ window.classroomTestUploads={
  publishAnnouncement:async(title,body,kind,destination)=>call('publishAnnouncement',{title,body,kind,destination}),
  teacherAnnouncements:async()=>call('teacherAnnouncements'),
  retireAnnouncement:async noticeId=>call('retireAnnouncement',{noticeId}),
- grade:async(submissionId,sectionScores,feedback,gradeStatus)=> (await call('grade',{submissionId,sectionScores,feedback,gradeStatus})).result,
+ uploadReport:async(submissionId,reportFile)=>call('uploadReport',{submissionId,reportFile}),
+ reportUrl:async(testId,submissionId)=>call('reportUrl',{testId,submissionId}),
+ grade:async(submissionId,sectionScores,feedback,gradeStatus,reportPath,reportName)=> (await call('grade',{submissionId,sectionScores,feedback,gradeStatus,reportPath,reportName})).result,
  error
 };
 window.dispatchEvent(new Event('classroom-test-uploads-ready'));
