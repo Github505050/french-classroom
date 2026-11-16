@@ -48,7 +48,7 @@ function detailed(t){
  }).join(''):'';
  const weakest=r?sections.map(s=>({title:s.title,percent:percentage(Number(r.sectionScores?.[s.id]??0),s.maxMarks)})).sort((a,b)=>a.percent-b.percent).slice(0,2):[];
  return '<div class="my-results-detail"><button type="button" class="my-results-back" data-results-back>'+icon('left')+' All results</button><header class="my-results-detail-head"><div><span class="my-results-kicker">PERSONAL ASSESSMENT REPORT</span><h2>'+E(t.title)+'</h2><p>'+E(sections.length)+' sections · '+E(max)+' possible marks</p></div><span class="my-results-status '+cardState(t)+'">'+stateLabel(cardState(t))+'</span></header>'+
- (r?'<section class="my-results-grade-hero"><div class="my-results-grade-copy"><span>YOUR VERIFIED SCORE</span><div class="my-results-grade-numbers"><strong>'+E(r.total)+' <small>/ '+E(max)+'</small></strong><b>'+pct+'%</b></div><p>Published '+E(stamp(r.publishedAt))+' by your teacher</p></div><div class="my-results-grade-gauge" role="img" aria-label="'+pct+' percent" style="--result-percent:'+pct+'"><div><strong>'+pct+'%</strong><span>Overall</span></div></div></section>'+(r.hasReport?'<section class="my-results-report-panel my-results-download-panel"><div class="my-results-panel-heading"><h3>Download your correction report</h3><p>See the questions you missed, correct answers and simple explanations approved by your teacher.</p></div><button type="button" class="my-results-download-button" data-results-report="'+E(t.id)+'">↓ Download correction report</button><p class="my-results-report-filename">'+E(r.reportName||'Teacher correction report')+'</p></section>':'')+'<section class="my-results-report-panel"><div class="my-results-panel-heading"><h3>Section-by-section marks</h3><p>See exactly where you earned marks across the assessment.</p></div><div class="my-results-break-list">'+breakdown+'</div></section><section class="my-results-report-panel my-results-feedback-panel"><div class="my-results-panel-heading"><h3>Feedback from your teacher</h3><p>Review the comments from your marked assessment.</p></div>'+(r.feedback?'<div class="my-results-teacher-feedback">'+E(r.feedback).replace(/\\n/g,'<br>')+'</div>':'<p class="my-results-no-feedback">Your teacher has not added written feedback for this result.</p>')+'</section>'+(weakest.length?'<section class="my-results-revise"><span>'+icon('spark')+'</span><div><strong>Suggested revision focus</strong><p>Based on your lowest-scoring sections: '+weakest.map(x=>E(x.title)).join(' and ')+'. Practise these areas before your next assessment.</p></div></section>':''):
+ (r?'<section class="my-results-grade-hero"><div class="my-results-grade-copy"><span>YOUR VERIFIED SCORE</span><div class="my-results-grade-numbers"><strong>'+E(r.total)+' <small>/ '+E(max)+'</small></strong><b>'+pct+'%</b></div><p>Published '+E(stamp(r.publishedAt))+' by your teacher</p></div><div class="my-results-grade-gauge" role="img" aria-label="'+pct+' percent" style="--result-percent:'+pct+'"><div><strong>'+pct+'%</strong><span>Overall</span></div></div></section>'+(r.hasReport?'<section class="my-results-report-panel my-results-download-panel"><div class="my-results-panel-heading"><h3>Assessment Report</h3><p>Read your teacher-approved corrections first, then download your report if you want to keep a copy.</p></div><button type="button" class="my-results-download-button" data-results-view="'+E(t.id)+'">View assessment report →</button><div class="my-results-report-viewer" id="my-results-report-viewer" hidden></div><p class="my-results-report-filename">'+E(r.reportName||'Teacher correction report')+'</p></section>':'')+'<section class="my-results-report-panel"><div class="my-results-panel-heading"><h3>Section-by-section marks</h3><p>See exactly where you earned marks across the assessment.</p></div><div class="my-results-break-list">'+breakdown+'</div></section><section class="my-results-report-panel my-results-feedback-panel"><div class="my-results-panel-heading"><h3>Feedback from your teacher</h3><p>Review the comments from your marked assessment.</p></div>'+(r.feedback?'<div class="my-results-teacher-feedback">'+E(r.feedback).replace(/\\n/g,'<br>')+'</div>':'<p class="my-results-no-feedback">Your teacher has not added written feedback for this result.</p>')+'</section>'+(weakest.length?'<section class="my-results-revise"><span>'+icon('spark')+'</span><div><strong>Suggested revision focus</strong><p>Based on your lowest-scoring sections: '+weakest.map(x=>E(x.title)).join(' and ')+'. Practise these areas before your next assessment.</p></div></section>':''):
  '<section class="my-results-pending-panel"><span>'+icon('clock')+'</span><h3>'+(info?.count?'Teacher review in progress':'No notebook submitted yet')+'</h3><p>'+(info?.count?E(info.count)+' submission(s) received. Your teacher will publish your marks when the review is complete.':'Once you complete and upload this assessment, its marks will appear here after teacher review.')+'</p><button type="button" class="my-results-go-test" data-results-go-test>Open Tests '+icon('arrow')+'</button></section>')+
  '</div>';
 }
@@ -75,6 +75,22 @@ async function load(){
 }
 window.classroomMyResultsView=()=>{selected=null;queueMicrotask(()=>load());return '<div id="classroom-results-root"><div class="my-results-loading">Loading your test results…</div></div>'};
 window.addEventListener('classroom-test-uploads-ready',()=>{if(document.getElementById('classroom-results-root')&&!loaded)load()});
+async function viewAssessmentReport(id,btn){
+ const api=window.classroomTestUploads,container=document.getElementById('my-results-report-viewer');
+ if(!api||!container)return;
+ btn.disabled=true;btn.textContent='Opening report…';
+ try{
+  const info=await api.reportUrl(id,null,'view');
+  if(!container.isConnected)return;
+  const url=E(info.url),name=E(info.name||'Assessment report');
+  container.hidden=false;
+  container.innerHTML='<div class="my-results-report-viewer-head"><strong>'+name+'</strong><button type="button" class="my-results-download-button" data-results-report="'+E(id)+'">↓ Download report</button></div>'+
+   (info.previewable?'<iframe title="Assessment report preview" src="'+url+'" loading="lazy"></iframe><p class="muted">If your phone cannot display the PDF here, choose Open in browser.</p><a href="'+url+'" target="_blank" rel="noopener noreferrer" class="my-results-report-external">Open PDF in browser</a>':
+   '<p class="muted">This report is a Word or text document. Open or download it to read the complete corrections.</p><a href="'+url+'" target="_blank" rel="noopener noreferrer" class="my-results-report-external">Open report</a>');
+  btn.textContent='Assessment report open';
+ }catch(e){alert('Unable to open assessment report: '+api.error(e));btn.textContent='View assessment report →'}
+ finally{if(btn.isConnected)btn.disabled=false}
+}
 async function downloadCorrectionReport(id,btn){
  const api=window.classroomTestUploads;if(!api)return;
  btn.disabled=true;
@@ -87,8 +103,9 @@ async function downloadCorrectionReport(id,btn){
  finally{if(btn.isConnected){btn.disabled=false;btn.textContent=previous}}
 }
 document.addEventListener('click',event=>{
- const btn=event.target.closest('[data-results-open],[data-results-back],[data-results-reload],[data-results-go-test],[data-results-report]');
+ const btn=event.target.closest('[data-results-open],[data-results-back],[data-results-reload],[data-results-go-test],[data-results-report],[data-results-view]');
  if(!btn||!btn.closest('#classroom-results-root'))return;
+ if(btn.hasAttribute('data-results-view')){viewAssessmentReport(btn.dataset.resultsView,btn);return}
  if(btn.hasAttribute('data-results-report')){downloadCorrectionReport(btn.dataset.resultsReport,btn);return}
  if(btn.hasAttribute('data-results-open')){selected=btn.dataset.resultsOpen;render();document.getElementById('classroom-results-root')?.scrollIntoView({block:'start',behavior:'smooth'});return}
  if(btn.hasAttribute('data-results-back')){selected=null;render();return}
