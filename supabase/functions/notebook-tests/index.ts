@@ -1,6 +1,7 @@
 import { createClient } from 'npm:@supabase/supabase-js@2';
 import { createRemoteJWKSet, jwtVerify } from 'npm:jose@5';
 import webpush from 'npm:web-push@3.6.7';
+import JSZip from 'npm:jszip@3.10.1';
 const googleKeys=createRemoteJWKSet(new URL('https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com'));
 const PROJECT_ID=Deno.env.get('FIREBASE_PROJECT_ID')||'french-classroom';
 const ORIGIN='https://github505050.github.io';
@@ -92,12 +93,12 @@ Deno.serve(async req=>{
   const teacher=roleDocument?.fields?.role?.stringValue==='teacher';
   if(!teacher&&payload.email_verified!==true)return reply({error:'Verify your student email before accessing tests'},403);
   const contentType=req.headers.get('content-type')||'';
-  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';let reportPath='',reportName='';let reportFile:File|null=null;
+  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';let reportPath='',reportName='',reportMode='download';let reportFile:File|null=null;
   if(contentType.includes('multipart/form-data')){
    const form=await req.formData();action=String(form.get('action')||'');testId=String(form.get('testId')||'');
    files=form.getAll('photos').filter((f):f is File=>f instanceof File);submissionId=String(form.get('submissionId')||'');reportFile=form.get('report') instanceof File?form.get('report') as File:null;
   }else{
-   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');reportPath=String(body.reportPath||'');reportName=String(body.reportName||'');
+   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');reportPath=String(body.reportPath||'');reportName=String(body.reportName||'');reportMode=String(body.reportMode||'download');
   }
   if(action==='pushConfig'){
    const publicKey=await pushPublicKey();
@@ -220,9 +221,9 @@ Deno.serve(async req=>{
    const {data:result,error}=await query.maybeSingle();
    if(error)throw error;
    if(!result?.report_path)return reply({error:'No correction report available'},404);
-   const {data:signed,error:signError}=await client.storage.from(bucket).createSignedUrl(result.report_path,120,{download:result.report_name||'French-correction-report.pdf'});
+   const {data:signed,error:signError}=await client.storage.from(bucket).createSignedUrl(result.report_path,300,reportMode==='view'?{}:{download:result.report_name||'French-correction-report.pdf'});
    if(signError||!signed?.signedUrl)throw signError||new Error('Unable to prepare download');
-   return reply({url:signed.signedUrl,name:result.report_name||'Correction report'});
+   return reply({url:signed.signedUrl,name:result.report_name||'Correction report',previewable:/\.pdf$/i.test(result.report_name||result.report_path)});
   }
   if(action==='upload'){
    if(teacher)return reply({error:'Student account required'},403);
@@ -288,7 +289,7 @@ Deno.serve(async req=>{
    const given=Object.keys(sectionScores);
    if(given.some(key=>!(key in limits)))return reply({error:'Unknown grading section'},400);
    for(const [section,points] of Object.entries(sectionScores)){
-    if(!Number.isInteger(points)||Number(points)<0||Number(points)>limits[section])return reply({error:'Score out of range for '+section},400);
+    if(typeof points!=='number'||!Number.isFinite(points)||points<0||points>limits[section]||Math.round(points*2)!==points*2)return reply({error:'Enter marks in 0.5 increments for '+section},400);
    }
    const total=Object.values(sectionScores).reduce((n,p)=>n+Number(p),0);
    if(total>def.max_marks)return reply({error:'Score exceeds test maximum'},400);
@@ -324,6 +325,28 @@ Deno.serve(async req=>{
    if(gradeErr)throw gradeErr;
    const results=new Map((grades||[]).map(g=>[g.owner_uid+'|'+g.test_id,{sectionScores:g.section_scores,feedback:g.feedback,total:g.total,status:g.status,publishedAt:g.published_at,hasReport:!!g.report_path,reportName:g.report_name||null}]));
    return reply({submissions:(data||[]).map(s=>({id:s.id,ownerUid:s.owner_uid,studentEmail:s.student_email,testId:s.test_id,pageCount:s.page_count,submittedAt:{seconds:Math.floor(new Date(s.submitted_at).getTime()/1000)},result:results.get(s.owner_uid+'|'+s.test_id)||null}))});
+  }
+  if(action==='photoZip'){
+   if(!teacher)return reply({error:'Teacher access required'},403);
+   if(!/^[0-9a-f-]{36}$/.test(submissionId))return reply({error:'Invalid submission'},400);
+   const {data:sub,error:subError}=await client.from('notebook_submissions').select('images,test_id').eq('id',submissionId).maybeSingle();
+   if(subError)throw subError;
+   if(!sub||!Array.isArray(sub.images)||sub.images.length===0||sub.images.length>8)return reply({error:'Submission has no available photos'},404);
+   const zip=new JSZip();
+   let totalBytes=0;
+   for(let i=0;i<sub.images.length;i++){
+    const path=String(sub.images[i]);
+    if(!/^[-_a-zA-Z0-9/]+\.(jpg|jpeg|png|webp)$/i.test(path))return reply({error:'Invalid photo path'},400);
+    const {data:file,error}=await client.storage.from(bucket).download(path);
+    if(error||!file)throw error||new Error('Unable to read notebook photo');
+    totalBytes+=file.size;
+    if(totalBytes>60*1024*1024)return reply({error:'Notebook photo archive is too large to download together. Open each photo individually.'},413);
+    const ext=path.split('.').pop()?.toLowerCase()||'jpg';
+    zip.file('Notebook_Page_'+String(i+1).padStart(2,'0')+'.'+ext,await file.arrayBuffer(),{binary:true,compression:'STORE'});
+   }
+   const binary=await zip.generateAsync({type:'uint8array',compression:'STORE'});
+   return new Response(binary,{status:200,headers:{...cors,'Content-Type':'application/zip',
+    'Content-Disposition':'attachment; filename="French_Notebook_Photos.zip"','Cache-Control':'no-store'}});
   }
   if(action==='photoUrls'){
    if(!/^[0-9a-f-]{36}$/.test(submissionId))return reply({error:'Invalid submission'},400);
