@@ -26,7 +26,7 @@ async function shrinkPhoto(file){
   return new File([blob],file.name.replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'});
  }finally{URL.revokeObjectURL(url)}
 }
-async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName,reportFile}={},onProgress){
+async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName,reportFile,reportMode}={},onProgress){
  const user=auth.currentUser;if(!user)throw Error('Sign in to upload notebook photos.');
  const token=await user.getIdToken();const url=await endpoint();
  const request={method:'POST',headers:{Authorization:'Bearer '+token}};
@@ -47,7 +47,7 @@ async function call(action,{testId,files,submissionId,sectionScores,feedback,gra
   const form=new FormData();form.append('action',action);form.append('testId',testId);optimized.forEach(f=>form.append('photos',f));
   request.body=form;
  }else{
-  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName});
+  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName,reportMode});
  }
  const result=await fetch(url,request);
  const data=await result.json().catch(()=>({error:'Invalid server response'}));
@@ -72,7 +72,16 @@ window.classroomTestUploads={
  teacherAnnouncements:async()=>call('teacherAnnouncements'),
  retireAnnouncement:async noticeId=>call('retireAnnouncement',{noticeId}),
  uploadReport:async(submissionId,reportFile)=>call('uploadReport',{submissionId,reportFile}),
- reportUrl:async(testId,submissionId)=>call('reportUrl',{testId,submissionId}),
+ reportUrl:async(testId,submissionId,reportMode='download')=>call('reportUrl',{testId,submissionId,reportMode}),
+ photoZip:async submissionId=>{
+  const user=auth.currentUser;if(!user)throw Error('Sign in to download notebook photos.');
+  const token=await user.getIdToken();
+  const response=await fetch(await endpoint(),{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({action:'photoZip',submissionId})});
+  if(!response.ok){const info=await response.json().catch(()=>({}));throw Error(info.error||'Photo download failed.');}
+  const blob=await response.blob();
+  if(blob.type!=='application/zip'||blob.size<1)throw Error('Invalid notebook photo archive received.');
+  return blob;
+ },
  grade:async(submissionId,sectionScores,feedback,gradeStatus,reportPath,reportName)=> (await call('grade',{submissionId,sectionScores,feedback,gradeStatus,reportPath,reportName})).result,
  error
 };
