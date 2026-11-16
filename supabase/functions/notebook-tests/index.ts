@@ -324,7 +324,7 @@ Deno.serve(async req=>{
     const reviewed=new Set<string>();
     const tallies:Record<string,number>={};
     for(const q of data.questions){
-     if(!q||typeof q!=='object'||!/^[A-Z]+-\\d{2}$/.test(String(q.id||''))||
+     if(!q||typeof q!=='object'||!/^[A-Z]+-\d{2}$/.test(String(q.id||''))||
        typeof q.studentAnswer!=='string'||q.studentAnswer.length>3000||
        !['Correct','Partially correct','Incorrect','Missing','Teacher review'].includes(q.status)||
        typeof q.awarded!=='number'||typeof q.maximum!=='number'||q.maximum<0||q.maximum>25||
