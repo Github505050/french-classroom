@@ -104,3 +104,23 @@
 .my-results-teacher-note{display:flex;flex-wrap:wrap;gap:7px 14px;align-items:center;background:#eef7fa;border:1px solid #bedce8;border-left:4px solid #377f9c;border-radius:11px;padding:13px 16px;margin-bottom:15px;color:#335e75;font-size:.84rem;line-height:1.55}
 .my-results-teacher-note strong{font-size:.86rem;color:#1c5573;white-space:nowrap}
 .my-results-teacher-note span{flex:1;min-width:170px}
+
+/* Teacher PDF/Word/TXT correction report attachment */
+.assessment-report-upload{margin:19px 0 16px;padding:18px;border:1px solid #dae8ef;border-radius:14px;background:#f7fbfd;display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-width:0}
+.assessment-report-upload h3{margin:0;color:#21495f;font-size:1.05rem;font-weight:840}
+.assessment-report-upload p{margin:0;color:#617f91;font-size:.83rem;line-height:1.55}
+.assessment-report-picker{display:inline-flex;align-items:center;justify-content:center;background:#1b6c7e;color:#fff;border-radius:10px;font-weight:800;padding:11px 15px;min-height:43px;cursor:pointer;font-size:.85rem}
+.assessment-report-picker:hover{background:#14546a}
+.assessment-report-upload input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.assessment-report-upload input[type=file]:focus-visible+.assessment-report-name{outline:2px solid #267d9d}
+.assessment-report-name{color:#536f82;font-size:.8rem;max-width:100%;overflow-wrap:anywhere}
+.assessment-report-upload .btn{font-size:.8rem}
+@media(max-width:650px){.assessment-report-upload{padding:15px}}
+
+/* Published correction report for student's private My Results page */
+.my-results-download-panel{background:#f3fbfd;border-color:#cae5ef}
+.my-results-download-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#176b82;color:#fff;border:0;border-radius:12px;padding:13px 18px;min-height:48px;font-size:.92rem;font-weight:850;cursor:pointer;max-width:100%;white-space:normal}
+.my-results-download-button:hover{background:#10536a}
+.my-results-download-button:disabled{opacity:.65;cursor:wait}
+.my-results-report-filename{font-size:.78rem;color:#617d90;overflow-wrap:anywhere;margin:8px 0 0}
+@media(max-width:650px){.my-results-download-button{width:100%;text-align:center}}
