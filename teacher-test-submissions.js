@@ -22,7 +22,7 @@ function list(){
 }
 function grade(s,t){
  const scores=s.result?.sectionScores||{},max=t.maxMarks;
- return '<section class="assessment-grading"><div class="assessment-section-heading"><h3>Section marking</h3><p>Enter marks for the original eight sections. Save a private draft or publish the verified result.</p></div><div class="assessment-marks">'+t.sections.map(section=>'<label class="assessment-mark"><span>'+E(section.title)+'</span><span><input type="number" inputmode="numeric" min="0" max="'+E(section.maxMarks)+'" step="0.5" data-grade-section="'+E(section.id)+'" value="'+E(scores[section.id]??'')+'" placeholder="—"> <strong>/ '+E(section.maxMarks)+'</strong></span></label>').join('')+'</div><div class="assessment-report-upload"><h3>Student correction report</h3><p>Attach the AI-checked report as a PDF, Word document or TXT file (up to 10 MB). The student can download it after you publish the grade.</p><label class="assessment-report-picker" for="assessment-report-file">Choose correction report</label><input id="assessment-report-file" type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"><div id="assessment-report-name" class="assessment-report-name">'+E(pendingReport?.name||(s.result?.hasReport?(s.result.reportName||'Correction report already attached'):'No report selected'))+'</div>'+(s.result?.hasReport?'<button type="button" class="btn" data-assessment-report-download>Download current report</button>':'')+'</div><div class="assessment-report-upload"><h3>Digital marked test · all questions</h3><p>Optional: upload the complete correction JSON. Students will see ticks and explanations beside the original questions in My Results.</p><label class="assessment-report-picker" for="assessment-digital-file">Choose marked test (.json)</label><input id="assessment-digital-file" type="file" accept=".json,application/json"><div class="assessment-report-name" id="assessment-digital-name">'+E(pendingDigital?"Ready: "+pendingDigital.filename:s.result?.hasDigitalCorrections?"Digital correction already attached":"No digital test selected")+'</div></div><label class="assessment-feedback-label" for="assessment-feedback">Feedback for student</label><textarea class="field" id="assessment-feedback" rows="5" maxlength="5000" placeholder="Strengths, recurring errors and what to revise…">'+E(s.result?.feedback||'')+'</textarea><div class="assessment-grade-footer"><div><small>Total marks</small><strong id="assessment-total">'+E(s.result?.total??0)+' / '+E(max)+'</strong></div><div><button type="button" class="btn" data-assessment-save="draft">Save draft</button><button type="button" class="btn primary" data-assessment-save="published">Publish result</button></div></div><p id="assessment-save-status" role="status" class="assessment-message"></p>'+(status(s)==='published'?'<p class="small muted">Publishing again updates the visible student result.</p>':'')+'</section>';
+ return '<section class="assessment-grading"><div class="assessment-section-heading"><h3>Section marking</h3><p>Enter marks for the original eight sections. Save a private draft or publish the verified result.</p></div><div class="assessment-marks">'+t.sections.map(section=>'<label class="assessment-mark"><span>'+E(section.title)+'</span><span><input type="number" inputmode="numeric" min="0" max="'+E(section.maxMarks)+'" step="0.5" data-grade-section="'+E(section.id)+'" value="'+E(scores[section.id]??'')+'" placeholder="—"> <strong>/ '+E(section.maxMarks)+'</strong></span></label>').join('')+'</div><div class="assessment-report-upload"><h3>Student correction report</h3><p>Attach the AI-checked report as a PDF, Word document or TXT file (up to 10 MB). The student can download it after you publish the grade.</p><label class="assessment-report-picker" for="assessment-report-file">Choose correction report</label><input id="assessment-report-file" type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"><div class="assessment-selected-file"><div id="assessment-report-name" class="assessment-report-name">'+E(pendingReport?.name||(s.result?.hasReport?(s.result.reportName||'Correction report already attached'):'No report selected'))+'</div>'+(pendingReport?'<button type="button" class="assessment-file-clear" data-assessment-clear-file="pdf" aria-label="Remove selected correction PDF or document" title="Remove selected file">×</button>':'')+'</div>'+(s.result?.hasReport?'<button type="button" class="btn" data-assessment-report-download>Download current report</button>':'')+'</div><div class="assessment-report-upload"><h3>Digital marked test · all questions</h3><p>Optional: upload the complete correction JSON. Students will see ticks and explanations beside the original questions in My Results.</p><label class="assessment-report-picker" for="assessment-digital-file">Choose marked test (.json)</label><input id="assessment-digital-file" type="file" accept=".json,application/json"><div class="assessment-selected-file"><div class="assessment-report-name" id="assessment-digital-name">'+E(pendingDigital?"Ready: "+pendingDigital.filename:s.result?.hasDigitalCorrections?"Digital correction already attached":"No digital test selected")+'</div>'+(pendingDigital?'<button type="button" class="assessment-file-clear" data-assessment-clear-file="json" aria-label="Remove selected JSON file" title="Remove selected file">×</button>':'')+'</div></div><label class="assessment-feedback-label" for="assessment-feedback">Feedback for student</label><textarea class="field" id="assessment-feedback" rows="5" maxlength="5000" placeholder="Strengths, recurring errors and what to revise…">'+E(s.result?.feedback||'')+'</textarea><div class="assessment-grade-footer"><div><small>Total marks</small><strong id="assessment-total">'+E(s.result?.total??0)+' / '+E(max)+'</strong></div><div><button type="button" class="btn" data-assessment-save="draft">Save draft</button><button type="button" class="btn primary" data-assessment-save="published">Publish result</button></div></div><p id="assessment-save-status" role="status" class="assessment-message"></p>'+(status(s)==='published'?'<p class="small muted">Publishing again updates the visible student result.</p>':'')+'</section>';
 }
 function review(){
  const s=current();if(!s)return '<section class="assessment-review assessment-placeholder"><h3>Select a submission</h3><p>Choose a student to review notebook photographs and record assessment marks.</p></section>';
@@ -152,7 +152,7 @@ async function copy(btn,id){
  try{await navigator.clipboard.writeText(val);const old=btn.textContent;btn.textContent='✓ Copied';setTimeout(()=>{if(btn.isConnected)btn.textContent=old},2300)}catch{alert('Clipboard access unavailable.')}
 }
 document.addEventListener('click',event=>{
- const btn=event.target.closest('[data-assessment-select],[data-assessment-refresh],[data-assessment-filter],[data-assessment-save],[data-assessment-view],[data-assessment-copy],[data-assessment-report-download],[data-assessment-photo-zip],[data-assessment-remove-photo]');
+ const btn=event.target.closest('[data-assessment-select],[data-assessment-refresh],[data-assessment-filter],[data-assessment-save],[data-assessment-view],[data-assessment-copy],[data-assessment-report-download],[data-assessment-photo-zip],[data-assessment-remove-photo],[data-assessment-clear-file]');
  if(!btn||!btn.closest('#teacher-portal')||!window.classroomIsTeacher)return;
  if(btn.hasAttribute('data-assessment-refresh')){ready=false;refresh();return}
  if(btn.hasAttribute('data-assessment-select')){selected=btn.dataset.assessmentSelect;pendingReport=null;pendingDigital=null;draw();return}
@@ -161,6 +161,18 @@ document.addEventListener('click',event=>{
  if(btn.hasAttribute('data-assessment-photo-zip')){downloadPhotosZip(btn,btn.dataset.assessmentPhotoZip);return}
  if(btn.hasAttribute('data-assessment-remove-photo')){teacherRemovePhoto(btn,btn.dataset.assessmentRemoveSubmission,Number(btn.dataset.assessmentRemovePhoto));return}
  if(btn.hasAttribute('data-assessment-copy')){copy(btn,btn.dataset.assessmentCopy);return}
+ if(btn.hasAttribute('data-assessment-clear-file')){
+  const kind=btn.dataset.assessmentClearFile;
+  if(kind==='pdf'){pendingReport=null;const input=document.getElementById('assessment-report-file');if(input)input.value='';}
+  if(kind==='json'){pendingDigital=null;const input=document.getElementById('assessment-digital-file');if(input)input.value='';}
+  // Only reset the pending selection; never remove an already saved report or change marks.
+  const row=btn.closest('.assessment-selected-file');
+  if(row){const name=row.querySelector('.assessment-report-name');const saved=current()?.result;
+   if(name)name.textContent=kind==='pdf'?(saved?.hasReport?(saved.reportName||'Correction report already attached'):'No report selected'):(saved?.hasDigitalCorrections?'Digital correction already attached':'No digital test selected');
+   btn.remove();
+  }
+  return;
+ }
  if(btn.hasAttribute('data-assessment-report-download')){downloadReport();return}
  if(btn.hasAttribute('data-assessment-save'))mark(btn,btn.dataset.assessmentSave);
 });
@@ -187,6 +199,8 @@ document.addEventListener('change',async event=>{
    }
    pendingDigital={data,filename:file.name};
    if(out)out.textContent='Ready: '+file.name+' · '+data.questions.length+' questions · '+Object.values(tallies).reduce((a,b)=>a+b,0)+' marks';
+   const row=out?.closest('.assessment-selected-file');
+   if(row&&!row.querySelector('[data-assessment-clear-file]'))row.insertAdjacentHTML('beforeend','<button type="button" class="assessment-file-clear" data-assessment-clear-file="json" aria-label="Remove selected JSON file" title="Remove selected file">×</button>');
   }catch(err){event.target.value='';if(out)out.textContent='Cannot use this file: '+err.message}
   return;
  }
@@ -201,6 +215,8 @@ document.addEventListener('change',async event=>{
  }
  pendingReport=file;
  if(display)display.textContent='Ready to upload: '+file.name;
+ const row=display?.closest('.assessment-selected-file');
+ if(row&&!row.querySelector('[data-assessment-clear-file]'))row.insertAdjacentHTML('beforeend','<button type="button" class="assessment-file-clear" data-assessment-clear-file="pdf" aria-label="Remove selected correction PDF or document" title="Remove selected file">×</button>');
 });
 document.addEventListener('input',event=>{
  if(!event.target.closest('#teacher-tests-content'))return;
