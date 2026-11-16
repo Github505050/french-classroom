@@ -3,7 +3,7 @@
 'use strict';
 const E=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let submissions=[],tests=[],ready=false,loading=false,error='',selected='',filter='all',search='',photoUrls={};
-let pendingReport=null;
+let pendingReport=null,pendingDigital=null;
 const test=id=>tests.find(t=>t.id===id);
 const current=()=>submissions.find(s=>s.id===selected);
 const date=s=>s.submittedAt?.seconds?new Date(s.submittedAt.seconds*1000).toLocaleString():'Date unavailable';
@@ -22,7 +22,7 @@ function list(){
 }
 function grade(s,t){
  const scores=s.result?.sectionScores||{},max=t.maxMarks;
- return '<section class="assessment-grading"><div class="assessment-section-heading"><h3>Section marking</h3><p>Enter marks for the original eight sections. Save a private draft or publish the verified result.</p></div><div class="assessment-marks">'+t.sections.map(section=>'<label class="assessment-mark"><span>'+E(section.title)+'</span><span><input type="number" inputmode="numeric" min="0" max="'+E(section.maxMarks)+'" step="0.5" data-grade-section="'+E(section.id)+'" value="'+E(scores[section.id]??'')+'" placeholder="—"> <strong>/ '+E(section.maxMarks)+'</strong></span></label>').join('')+'</div><div class="assessment-report-upload"><h3>Student correction report</h3><p>Attach the AI-checked report as a PDF, Word document or TXT file (up to 10 MB). The student can download it after you publish the grade.</p><label class="assessment-report-picker" for="assessment-report-file">Choose correction report</label><input id="assessment-report-file" type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"><div id="assessment-report-name" class="assessment-report-name">'+E(pendingReport?.name||(s.result?.hasReport?(s.result.reportName||'Correction report already attached'):'No report selected'))+'</div>'+(s.result?.hasReport?'<button type="button" class="btn" data-assessment-report-download>Download current report</button>':'')+'</div><label class="assessment-feedback-label" for="assessment-feedback">Feedback for student</label><textarea class="field" id="assessment-feedback" rows="5" maxlength="5000" placeholder="Strengths, recurring errors and what to revise…">'+E(s.result?.feedback||'')+'</textarea><div class="assessment-grade-footer"><div><small>Total marks</small><strong id="assessment-total">'+E(s.result?.total??0)+' / '+E(max)+'</strong></div><div><button type="button" class="btn" data-assessment-save="draft">Save draft</button><button type="button" class="btn primary" data-assessment-save="published">Publish result</button></div></div><p id="assessment-save-status" role="status" class="assessment-message"></p>'+(status(s)==='published'?'<p class="small muted">Publishing again updates the visible student result.</p>':'')+'</section>';
+ return '<section class="assessment-grading"><div class="assessment-section-heading"><h3>Section marking</h3><p>Enter marks for the original eight sections. Save a private draft or publish the verified result.</p></div><div class="assessment-marks">'+t.sections.map(section=>'<label class="assessment-mark"><span>'+E(section.title)+'</span><span><input type="number" inputmode="numeric" min="0" max="'+E(section.maxMarks)+'" step="0.5" data-grade-section="'+E(section.id)+'" value="'+E(scores[section.id]??'')+'" placeholder="—"> <strong>/ '+E(section.maxMarks)+'</strong></span></label>').join('')+'</div><div class="assessment-report-upload"><h3>Student correction report</h3><p>Attach the AI-checked report as a PDF, Word document or TXT file (up to 10 MB). The student can download it after you publish the grade.</p><label class="assessment-report-picker" for="assessment-report-file">Choose correction report</label><input id="assessment-report-file" type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"><div id="assessment-report-name" class="assessment-report-name">'+E(pendingReport?.name||(s.result?.hasReport?(s.result.reportName||'Correction report already attached'):'No report selected'))+'</div>'+(s.result?.hasReport?'<button type="button" class="btn" data-assessment-report-download>Download current report</button>':'')+'</div><div class="assessment-report-upload"><h3>Digital marked test · all questions</h3><p>Optional: upload the complete correction JSON. Students will see ticks and explanations beside the original questions in My Results.</p><label class="assessment-report-picker" for="assessment-digital-file">Choose marked test (.json)</label><input id="assessment-digital-file" type="file" accept=".json,application/json"><div class="assessment-report-name" id="assessment-digital-name">'+E(pendingDigital?"Ready: "+pendingDigital.filename:s.result?.hasDigitalCorrections?"Digital correction already attached":"No digital test selected")+'</div></div><label class="assessment-feedback-label" for="assessment-feedback">Feedback for student</label><textarea class="field" id="assessment-feedback" rows="5" maxlength="5000" placeholder="Strengths, recurring errors and what to revise…">'+E(s.result?.feedback||'')+'</textarea><div class="assessment-grade-footer"><div><small>Total marks</small><strong id="assessment-total">'+E(s.result?.total??0)+' / '+E(max)+'</strong></div><div><button type="button" class="btn" data-assessment-save="draft">Save draft</button><button type="button" class="btn primary" data-assessment-save="published">Publish result</button></div></div><p id="assessment-save-status" role="status" class="assessment-message"></p>'+(status(s)==='published'?'<p class="small muted">Publishing again updates the visible student result.</p>':'')+'</section>';
 }
 function review(){
  const s=current();if(!s)return '<section class="assessment-review assessment-placeholder"><h3>Select a submission</h3><p>Choose a student to review notebook photographs and record assessment marks.</p></section>';
@@ -76,8 +76,8 @@ async function mark(btn,gradeStatus){
    uploaded=await window.classroomTestUploads.uploadReport(s.id,pendingReport);
   }
   msg.textContent='Saving assessment…';
-  const result=await window.classroomTestUploads.grade(s.id,score,feedback,gradeStatus,uploaded?.path,uploaded?.name);
-  pendingReport=null;
+  const result=await window.classroomTestUploads.grade(s.id,score,feedback,gradeStatus,uploaded?.path,uploaded?.name,pendingDigital?.data);
+  pendingReport=null;pendingDigital=null;
   submissions.forEach(row=>{if(row.ownerUid===s.ownerUid&&row.testId===s.testId)row.result={...result}});
   draw();const label=document.getElementById('assessment-save-status');if(label)label.textContent=gradeStatus==='published'?'✓ Result published to student.':'✓ Private draft saved.';
  }catch(e){btn.disabled=false;msg.textContent='Save failed: '+window.classroomTestUploads.error(e)}
@@ -155,7 +155,7 @@ document.addEventListener('click',event=>{
  const btn=event.target.closest('[data-assessment-select],[data-assessment-refresh],[data-assessment-filter],[data-assessment-save],[data-assessment-view],[data-assessment-copy],[data-assessment-report-download],[data-assessment-photo-zip],[data-assessment-remove-photo]');
  if(!btn||!btn.closest('#teacher-portal')||!window.classroomIsTeacher)return;
  if(btn.hasAttribute('data-assessment-refresh')){ready=false;refresh();return}
- if(btn.hasAttribute('data-assessment-select')){selected=btn.dataset.assessmentSelect;pendingReport=null;draw();return}
+ if(btn.hasAttribute('data-assessment-select')){selected=btn.dataset.assessmentSelect;pendingReport=null;pendingDigital=null;draw();return}
  if(btn.hasAttribute('data-assessment-filter')){filter=btn.dataset.assessmentFilter;draw();return}
  if(btn.hasAttribute('data-assessment-view')){openPhotos(btn,btn.dataset.assessmentView);return}
  if(btn.hasAttribute('data-assessment-photo-zip')){downloadPhotosZip(btn,btn.dataset.assessmentPhotoZip);return}
@@ -164,7 +164,32 @@ document.addEventListener('click',event=>{
  if(btn.hasAttribute('data-assessment-report-download')){downloadReport();return}
  if(btn.hasAttribute('data-assessment-save'))mark(btn,btn.dataset.assessmentSave);
 });
-document.addEventListener('change',event=>{
+document.addEventListener('change',async event=>{
+ if(event.target.id==='assessment-digital-file'&&event.target.closest('#teacher-tests-content')){
+  const file=event.target.files?.[0],out=document.getElementById('assessment-digital-name');
+  pendingDigital=null;
+  if(!file){if(out)out.textContent='No digital test selected';return}
+  try{
+   if(!file.name.toLowerCase().endsWith('.json')||file.size>180000)throw Error('Choose a marked-test JSON file under 180 KB.');
+   const data=JSON.parse(await file.text()),t=test(current()?.testId);
+   if(!t||data.testId!==t.id||!Array.isArray(data.questions)||data.questions.length!==t.sections.reduce((n,s)=>n+s.questions.length,0))throw Error('This digital correction file does not match the selected test.');
+   const ids=t.sections.flatMap(s=>s.questions.map(q=>q.id));
+   if(data.questions.some((q,i)=>q.id!==ids[i]))throw Error('Question IDs or order do not match the original test.');
+   const tallies=Object.fromEntries(t.sections.map(s=>[s.id,0]));
+   for(const q of data.questions){
+    if(typeof q.awarded!=='number'||!Number.isFinite(q.awarded)||typeof q.sectionId!=='string'||!(q.sectionId in tallies))throw Error('Invalid question scores in this file.');
+    tallies[q.sectionId]+=q.awarded;
+   }
+   for(const section of t.sections){
+    const f=document.querySelector('#teacher-tests-content [data-grade-section="'+section.id+'"]');
+    if(f&&f.value.trim()!==''&&Math.abs(Number(f.value)-tallies[section.id])>0.001)
+     throw Error('Question marks disagree with the '+section.title+' section score.');
+   }
+   pendingDigital={data,filename:file.name};
+   if(out)out.textContent='Ready: '+file.name+' · '+data.questions.length+' questions · '+Object.values(tallies).reduce((a,b)=>a+b,0)+' marks';
+  }catch(err){event.target.value='';if(out)out.textContent='Cannot use this file: '+err.message}
+  return;
+ }
  if(event.target.id!=='assessment-report-file'||!event.target.closest('#teacher-tests-content'))return;
  const file=event.target.files?.[0]||null,display=document.getElementById('assessment-report-name');
  if(!file){pendingReport=null;if(display)display.textContent='No report selected';return}
