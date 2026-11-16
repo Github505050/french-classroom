@@ -26,7 +26,7 @@ async function shrinkPhoto(file){
   return new File([blob],file.name.replace(/\.[^.]+$/,'')+'.jpg',{type:'image/jpeg'});
  }finally{URL.revokeObjectURL(url)}
 }
-async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName,reportFile,reportMode,photoIndex}={},onProgress){
+async function call(action,{testId,files,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName,reportFile,reportMode,photoIndex,questionReviews}={},onProgress){
  const user=auth.currentUser;if(!user)throw Error('Sign in to upload notebook photos.');
  const token=await user.getIdToken();const url=await endpoint();
  const request={method:'POST',headers:{Authorization:'Bearer '+token}};
@@ -47,7 +47,7 @@ async function call(action,{testId,files,submissionId,sectionScores,feedback,gra
   const form=new FormData();form.append('action',action);form.append('testId',testId);optimized.forEach(f=>form.append('photos',f));
   request.body=form;
  }else{
-  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName,reportMode,photoIndex});
+  request.headers['Content-Type']='application/json';request.body=JSON.stringify({action,testId,submissionId,sectionScores,feedback,gradeStatus,noticeId,title,body,kind,destination,pushSubscription,pushEndpoint,reportPath,reportName,reportMode,photoIndex,questionReviews});
  }
  const result=await fetch(url,request);
  const data=await result.json().catch(()=>({error:'Invalid server response'}));
@@ -83,7 +83,7 @@ window.classroomTestUploads={
   if(blob.type!=='application/zip'||blob.size<1)throw Error('Invalid notebook photo archive received.');
   return blob;
  },
- grade:async(submissionId,sectionScores,feedback,gradeStatus,reportPath,reportName)=> (await call('grade',{submissionId,sectionScores,feedback,gradeStatus,reportPath,reportName})).result,
+ grade:async(submissionId,sectionScores,feedback,gradeStatus,reportPath,reportName,questionReviews)=> (await call('grade',{submissionId,sectionScores,feedback,gradeStatus,reportPath,reportName,questionReviews})).result,
  error
 };
 window.dispatchEvent(new Event('classroom-test-uploads-ready'));
