@@ -93,12 +93,12 @@ Deno.serve(async req=>{
   const teacher=roleDocument?.fields?.role?.stringValue==='teacher';
   if(!teacher&&payload.email_verified!==true)return reply({error:'Verify your student email before accessing tests'},403);
   const contentType=req.headers.get('content-type')||'';
-  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';let reportPath='',reportName='',reportMode='download';let reportFile:File|null=null;
+  let action='',testId='',submissionId='',files:File[]=[], sectionScores:Record<string,unknown>={}, feedback='',gradeStatus='draft',noticeId='',noticeTitle='',noticeBody='',noticeKind='general',noticeDestination='home';let pushSubscription:any=null,pushEndpoint='';let reportPath='',reportName='',reportMode='download';let reportFile:File|null=null;let photoIndex=-1;
   if(contentType.includes('multipart/form-data')){
    const form=await req.formData();action=String(form.get('action')||'');testId=String(form.get('testId')||'');
    files=form.getAll('photos').filter((f):f is File=>f instanceof File);submissionId=String(form.get('submissionId')||'');reportFile=form.get('report') instanceof File?form.get('report') as File:null;
   }else{
-   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');reportPath=String(body.reportPath||'');reportName=String(body.reportName||'');reportMode=String(body.reportMode||'download');
+   const body=await req.json();action=String(body.action||'');testId=String(body.testId||'');submissionId=String(body.submissionId||'');sectionScores=body.sectionScores||{};feedback=String(body.feedback||'');gradeStatus=String(body.gradeStatus||'draft');noticeId=String(body.noticeId||'');noticeTitle=String(body.title||'');noticeBody=String(body.body||'');noticeKind=String(body.kind||'general');noticeDestination=String(body.destination||'home');pushSubscription=body.pushSubscription||null;pushEndpoint=String(body.pushEndpoint||'');reportPath=String(body.reportPath||'');reportName=String(body.reportName||'');reportMode=String(body.reportMode||'download');photoIndex=Number(body.photoIndex);
   }
   if(action==='pushConfig'){
    const publicKey=await pushPublicKey();
@@ -229,6 +229,12 @@ Deno.serve(async req=>{
    if(teacher)return reply({error:'Student account required'},403);
    if(!allowed.test(testId))return reply({error:'Invalid test ID'},400);
    if(files.length<1||files.length>8)return reply({error:'Choose 1–8 photos'},400);
+   const {data:previous,error:previousError}=await client.from('notebook_submissions').select('page_count')
+    .eq('owner_uid',uid).eq('test_id',testId).limit(200);
+   if(previousError)throw previousError;
+   const count=(previous||[]).reduce((sum,row)=>sum+(Number(row.page_count)||0),0);
+   if(count+files.length>8)return reply({error:'You have '+count+' of 8 photos already. You may add '+Math.max(0,8-count)+' more. Ask your teacher to remove old photos to free space.'},409);
+
    if(files.some(f=>!['image/jpeg','image/png','image/webp'].includes(f.type)||f.size<1||f.size>8*1024*1024))return reply({error:'Each image must be a JPEG, PNG or WebP smaller than 8 MB'},400);
    const id=crypto.randomUUID(),images:string[]=[];
    for(let i=0;i<files.length;i++){
@@ -325,6 +331,27 @@ Deno.serve(async req=>{
    if(gradeErr)throw gradeErr;
    const results=new Map((grades||[]).map(g=>[g.owner_uid+'|'+g.test_id,{sectionScores:g.section_scores,feedback:g.feedback,total:g.total,status:g.status,publishedAt:g.published_at,hasReport:!!g.report_path,reportName:g.report_name||null}]));
    return reply({submissions:(data||[]).map(s=>({id:s.id,ownerUid:s.owner_uid,studentEmail:s.student_email,testId:s.test_id,pageCount:s.page_count,submittedAt:{seconds:Math.floor(new Date(s.submitted_at).getTime()/1000)},result:results.get(s.owner_uid+'|'+s.test_id)||null}))});
+  }
+  if(action==='removePhoto'){
+   if(!teacher)return reply({error:'Teacher access required'},403);
+   if(!/^[0-9a-f-]{36}$/.test(submissionId)||!Number.isInteger(photoIndex)||photoIndex<0||photoIndex>7)
+    return reply({error:'Invalid photo selection'},400);
+   const {data:sub,error:subError}=await client.from('notebook_submissions')
+    .select('id,images,owner_uid,test_id,page_count').eq('id',submissionId).maybeSingle();
+   if(subError)throw subError;
+   if(!sub||!Array.isArray(sub.images)||photoIndex>=sub.images.length)return reply({error:'Notebook photo no longer exists'},404);
+   const removed=String(sub.images[photoIndex]),remaining=sub.images.filter((_:string,i:number)=>i!==photoIndex);
+   if(remaining.length){
+    const {error}=await client.from('notebook_submissions').update({images:remaining,page_count:remaining.length})
+      .eq('id',submissionId).eq('owner_uid',sub.owner_uid);
+    if(error)throw error;
+   }else{
+    const {error}=await client.from('notebook_submissions').delete().eq('id',submissionId).eq('owner_uid',sub.owner_uid);
+    if(error)throw error;
+   }
+   const {error:storageError}=await client.storage.from(bucket).remove([removed]);
+   if(storageError)console.error('Orphaned deleted notebook image path',storageError);
+   return reply({ok:true,remaining:remaining.length,testId:sub.test_id});
   }
   if(action==='photoZip'){
    if(!teacher)return reply({error:'Teacher access required'},403);
