@@ -120,6 +120,13 @@ Deno.serve(async req=>{
    if(error)throw error;
    return reply({ok:true});
   }
+  if(action==='testPhonePush'){
+   const {data:devices,error:devicesError}=await client.from('classroom_push_subscriptions').select('endpoint').eq('owner_uid',uid).limit(20);
+   if(devicesError)throw devicesError;
+   if(!devices?.length)return reply({ok:false,delivered:0,error:'No phone registered. Enable phone notifications in the classroom bell first.'},400);
+   const delivered=await sendPush(uid,{title:'French Classroom test notification',body:'Phone alerts are working. Your test results are available in My Results.',destination:'myresults',tag:'test-phone:'+crypto.randomUUID()});
+   return reply({ok:true,delivered,registered:devices.length});
+  }
   if(action==='pushStatus'){
    const {count,error}=await client.from('classroom_push_subscriptions').select('endpoint',{head:true,count:'exact'}).eq('owner_uid',uid);
    if(error)throw error;
