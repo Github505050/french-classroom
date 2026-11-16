@@ -65,6 +65,9 @@ async function history(id){
  }catch(e){if(el.isConnected)el.textContent='Submissions unavailable: '+api.error(e)}
 }
 window.addEventListener('classroom-test-uploads-ready',()=>{if(active)history(active.id)});
+window.addEventListener('focus',()=>{if(active&&document.getElementById('test-upload-history'))history(active.id)});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&active&&document.getElementById('test-upload-history'))history(active.id)});
+
 
 window.classroomTestsView=function(){active=null;queueMicrotask(()=>{if(!loaded)load();else draw()});return '<div id="classroom-tests-root" aria-live="polite"><p class="muted">Loading tests…</p></div>'};
 async function uploadSelectedPhotos(input){
