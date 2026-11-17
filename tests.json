@@ -530,7 +530,7 @@
     {
       "id": "week2-day14-test2-active-recall",
       "schemaVersion": "1.0",
-      "title": "Test 2 — Week 2 Final Review (50 Questions)",
+      "title": "Test 2 — Week 2 Day 14: Targeted Mastery (50 Marks)",
       "language": "fr",
       "instructionLanguage": "en",
       "coverage": {
@@ -547,331 +547,324 @@
       "maxMarks": 50,
       "totalQuestions": 50,
       "recommendedMode": "Independent notebook test, 50 marks; teacher-reviewed speaking and story",
-      "studentInstructions": "Answer all 50 questions without notes, word banks, AI or translation tools. Write question IDs clearly. Think independently and check articles, verb forms, prepositions and negation. Speaking must be performed aloud to the teacher. Upload your numbered written answers as notebook photos.",
+      "studentInstructions": "50 questions, 50 marks. No notes, word bank or translation tools. Write numbered answers in your notebook. For independent-production prompts, write the requested number of complete sentences. Speaking prompts are assessed as written responses, consistent with Test 1. Teacher assesses the story holistically.",
       "sections": [
         {
           "id": "recall",
-          "title": "Vocabulary and articles",
-          "type": "teacher_review",
+          "title": "Active recall: words, articles and forms",
+          "instructions": "Recall exactly, with accents. No word bank.",
           "maxMarks": 8,
-          "instructions": "Recall without word banks. Include the correct article with nouns.",
           "questions": [
             {
               "id": "RECALL-01",
-              "prompt": "RECALL · the key",
+              "prompt": "Write the French for: the piece of furniture (with article).",
               "marks": 1
             },
             {
               "id": "RECALL-02",
-              "prompt": "RECALL · the question",
+              "prompt": "Write the French for: the floor/storey of a building (with article).",
               "marks": 1
             },
             {
               "id": "RECALL-03",
-              "prompt": "RECALL · the receipt",
+              "prompt": "Write the French for: the wall (with article).",
               "marks": 1
             },
             {
               "id": "RECALL-04",
-              "prompt": "RECALL · the card",
+              "prompt": "Write the French for: behind.",
               "marks": 1
             },
             {
               "id": "RECALL-05",
-              "prompt": "RECALL · the wall",
+              "prompt": "Write the French for: the receipt (with article).",
               "marks": 1
             },
             {
               "id": "RECALL-06",
-              "prompt": "RECALL · the meat",
+              "prompt": "Write the French for: the card (with article).",
               "marks": 1
             },
             {
               "id": "RECALL-07",
-              "prompt": "OLD REVIEW · We speak French.",
+              "prompt": "Write the French for: she answers.",
               "marks": 1
             },
             {
               "id": "RECALL-08",
-              "prompt": "OLD REVIEW · I live in an apartment.",
+              "prompt": "Write the French for: we finish.",
               "marks": 1
             }
           ]
         },
         {
           "id": "verbs",
-          "title": "Mixed conjugation",
-          "type": "teacher_review",
-          "maxMarks": 8,
-          "instructions": "Write the complete correct present-tense form, including subject and reflexive pronoun where needed.",
+          "title": "Week 2 verbs: mixed persons",
+          "instructions": "Conjugate without a table. Write subject + correct present-tense form.",
+          "maxMarks": 10,
           "questions": [
             {
               "id": "VERBS-01",
-              "prompt": "Conjugate étudier with nous.",
+              "prompt": "Ils + utiliser (an app). Write a complete French sentence.",
               "marks": 1
             },
             {
               "id": "VERBS-02",
-              "prompt": "Conjugate aider with nous.",
+              "prompt": "Nous + étudier (French). Write a complete French sentence.",
               "marks": 1
             },
             {
               "id": "VERBS-03",
-              "prompt": "Conjugate manger with nous.",
+              "prompt": "Vous + trouver (the notebook). Write a complete French sentence.",
               "marks": 1
             },
             {
               "id": "VERBS-04",
-              "prompt": "Conjugate acheter with je.",
+              "prompt": "Je + donner (a book). Write a complete French sentence.",
               "marks": 1
             },
             {
               "id": "VERBS-05",
-              "prompt": "nous + payer",
+              "prompt": "Nous + aider (our friend). Write a complete French sentence.",
               "marks": 1
             },
             {
               "id": "VERBS-06",
-              "prompt": "elle + appeler",
+              "prompt": "Je + penser (about my class). Write a complete French sentence.",
               "marks": 1
             },
             {
               "id": "VERBS-07",
-              "prompt": "je + se lever",
+              "prompt": "Nous + payer (at the checkout). Write a complete French sentence.",
               "marks": 1
             },
             {
               "id": "VERBS-08",
-              "prompt": "Conjugate commander with ils.",
+              "prompt": "Elle + appeler (her friend). Write a complete French sentence.",
+              "marks": 1
+            },
+            {
+              "id": "VERBS-09",
+              "prompt": "Nous + se lever (in the morning). Write a complete French sentence.",
+              "marks": 1
+            },
+            {
+              "id": "VERBS-10",
+              "prompt": "Vous + expliquer (the lesson). Write a complete French sentence.",
               "marks": 1
             }
           ]
         },
         {
           "id": "translate",
-          "title": "Sentence translation",
-          "type": "teacher_review",
+          "title": "Meaning-first translation",
+          "instructions": "Translate into complete natural French sentences; choose articles and prepositions yourself.",
           "maxMarks": 8,
-          "instructions": "Translate each complete sentence into natural French without help.",
           "questions": [
             {
               "id": "TRANSLATE-01",
-              "prompt": "Translate: I study French.",
+              "prompt": "My two sisters are happy.",
               "marks": 1
             },
             {
               "id": "TRANSLATE-02",
-              "prompt": "Translate: I help my friend.",
+              "prompt": "He gives a message to his friend.",
               "marks": 1
             },
             {
               "id": "TRANSLATE-03",
-              "prompt": "Translate: I think about my class.",
+              "prompt": "I am looking for my keys under the table.",
               "marks": 1
             },
             {
               "id": "TRANSLATE-04",
-              "prompt": "Translate: I eat an apple.",
+              "prompt": "We listen to the teacher in class.",
               "marks": 1
             },
             {
               "id": "TRANSLATE-05",
-              "prompt": "Translate: She answers the question.",
+              "prompt": "The student explains the lesson.",
               "marks": 1
             },
             {
               "id": "TRANSLATE-06",
-              "prompt": "Translate: We finish the class.",
+              "prompt": "My family watches television in the evening.",
               "marks": 1
             },
             {
               "id": "TRANSLATE-07",
-              "prompt": "Translate: I do not like cheese.",
+              "prompt": "She answers the question and finishes her work.",
               "marks": 1
             },
             {
               "id": "TRANSLATE-08",
-              "prompt": "Translate: I never watch television.",
+              "prompt": "I buy fruit and vegetables at the grocery store.",
               "marks": 1
             }
           ]
         },
         {
           "id": "repair",
-          "title": "Find and correct errors",
-          "type": "teacher_review",
+          "title": "Diagnose Test 1 error patterns",
+          "instructions": "Each sentence contains one or more errors. Rewrite it fully and correctly; do not copy Test 1's exact corrections.",
           "maxMarks": 10,
-          "instructions": "Rewrite the complete sentence correctly. Focus on grammar patterns also tested in Test 1.",
           "questions": [
             {
               "id": "REPAIR-01",
-              "prompt": "Nous parlez français.",
+              "prompt": "Mes amis sont contente.",
               "marks": 1
             },
             {
               "id": "REPAIR-02",
-              "prompt": "J’habite dans une appartement.",
+              "prompt": "Il utilise pour son ordinateur.",
               "marks": 1
             },
             {
               "id": "REPAIR-03",
-              "prompt": "Elle aide soeur.",
+              "prompt": "J’ai trois bouteille dans mon appartement.",
               "marks": 1
             },
             {
               "id": "REPAIR-04",
-              "prompt": "Je cherche pour mon téléphone.",
+              "prompt": "Je donne un cahier à s’ami.",
               "marks": 1
             },
             {
               "id": "REPAIR-05",
-              "prompt": "Nous mangons des pommes.",
+              "prompt": "Le professeur explique le cour.",
               "marks": 1
             },
             {
               "id": "REPAIR-06",
-              "prompt": "Elle se léve à sept heures.",
+              "prompt": "Elle cherche pour la carte.",
               "marks": 1
             },
             {
               "id": "REPAIR-07",
-              "prompt": "Je ne aime pas le fromage.",
+              "prompt": "Nous écoutons à notre professeur.",
               "marks": 1
             },
             {
               "id": "REPAIR-08",
-              "prompt": "Je commande pas une pizza.",
+              "prompt": "Je me lève à six heure.",
               "marks": 1
             },
             {
               "id": "REPAIR-09",
-              "prompt": "Nous écoutons à la musique.",
+              "prompt": "Chaque jours, mon frère étudie.",
               "marks": 1
             },
             {
               "id": "REPAIR-10",
-              "prompt": "Ils regarde la télévision.",
+              "prompt": "Ma sœur travaille dans à un restaurant.",
               "marks": 1
             }
           ]
         },
         {
           "id": "negation",
-          "title": "Negation and transformations",
-          "type": "teacher_review",
+          "title": "Negation and transfer",
+          "instructions": "Transform the complete sentence. Use ne…pas or ne…jamais as instructed.",
           "maxMarks": 6,
-          "instructions": "Write the complete transformed sentence. Check ne/n’, pas/jamais and articles.",
           "questions": [
             {
               "id": "NEGATION-01",
-              "prompt": "Make negative: Je mange une pomme.",
+              "prompt": "Make negative: J’ai une clé.",
               "marks": 1
             },
             {
               "id": "NEGATION-02",
-              "prompt": "Make negative: Nous regardons la télévision.",
+              "prompt": "Make negative: Elle achète des pommes.",
               "marks": 1
             },
             {
               "id": "NEGATION-03",
-              "prompt": "Use NEVER: Je travaille le dimanche.",
+              "prompt": "Use NEVER: Nous commandons une pizza.",
               "marks": 1
             },
             {
               "id": "NEGATION-04",
-              "prompt": "Change to negative: Elle commande une pizza.",
+              "prompt": "Make negative: Je regarde la télévision.",
               "marks": 1
             },
             {
               "id": "NEGATION-05",
-              "prompt": "Fix: Je ne aime pas le fromage.",
+              "prompt": "Use NEVER: Ils travaillent le dimanche.",
               "marks": 1
             },
             {
               "id": "NEGATION-06",
-              "prompt": "Change je to nous: J’achète un sac.",
+              "prompt": "Change to negative and then to nous: J’aime le fromage.",
               "marks": 1
             }
           ]
         },
         {
           "id": "thinking",
-          "title": "Real-life independent production",
-          "type": "teacher_review",
-          "maxMarks": 5,
-          "instructions": "Write ONE original complete French sentence for each situation. No copying examples.",
+          "title": "Independent production",
+          "instructions": "Write TWO complete, different sentences for each scenario; avoid copying any model sentences.",
+          "maxMarks": 4,
           "questions": [
             {
               "id": "THINKING-01",
-              "prompt": "You lost your key. Explain where you look for it.",
+              "prompt": "Describe two objects in a room, including their location. Use correct plurals.",
               "marks": 1
             },
             {
               "id": "THINKING-02",
-              "prompt": "Tell a friend what you study and where.",
+              "prompt": "Explain what you use your phone for and what another person uses a computer for.",
               "marks": 1
             },
             {
               "id": "THINKING-03",
-              "prompt": "Describe something you never eat or order.",
+              "prompt": "Explain where you look for something and where you find it, in two separate sentences.",
               "marks": 1
             },
             {
               "id": "THINKING-04",
-              "prompt": "Explain what you do to help a family member.",
-              "marks": 1
-            },
-            {
-              "id": "THINKING-05",
-              "prompt": "Describe your morning using a reflexive verb.",
+              "prompt": "Describe two activities in your day using two different Week 2 verbs.",
               "marks": 1
             }
           ]
         },
         {
           "id": "oral",
-          "title": "Spontaneous speaking",
-          "type": "teacher_review_oral",
-          "maxMarks": 4,
-          "instructions": "Answer aloud in a full French sentence without reading or notes. Teacher assesses spontaneous language; no written answer can substitute for oral evidence.",
+          "title": "Spontaneous French: assessed as written",
+          "instructions": "Answer each question in TWO complete original French sentences, as in Test 1's writing-based assessment. No copied model answers.",
+          "maxMarks": 3,
           "questions": [
             {
               "id": "ORAL-01",
-              "prompt": "Qu’est-ce que tu étudies ?",
+              "prompt": "Qu’est-ce que tu étudies et pourquoi utilises-tu un cahier ?",
               "marks": 1
             },
             {
               "id": "ORAL-02",
-              "prompt": "Qui est-ce que tu aides ?",
+              "prompt": "Qu’est-ce que tu achètes à l’épicerie et qu’est-ce que tu ne commandes jamais ?",
               "marks": 1
             },
             {
               "id": "ORAL-03",
-              "prompt": "Qu’est-ce que tu commandes ?",
-              "marks": 1
-            },
-            {
-              "id": "ORAL-04",
-              "prompt": "Tu commandes toujours une pizza ? Réponds JAMAIS.",
+              "prompt": "À quelle heure te lèves-tu et que fais-tu ensuite ?",
               "marks": 1
             }
           ]
         },
         {
           "id": "story",
-          "title": "Mini-story challenge",
-          "type": "teacher_review_story",
+          "title": "Integrated story: independent writing",
+          "instructions": "Translate the short story into French. This is one holistic question worth one mark; teacher checks articles, verbs, prepositions and sentence structure.",
           "maxMarks": 1,
-          "instructions": "Translate the entire mini-story into French without notes. One holistic mark for meaning and correct basic structure.",
           "questions": [
             {
               "id": "STORY-01",
-              "prompt": "I live in an apartment. Every morning I get up at seven. I study French, but I never watch television in the morning. I help my brother and we eat an apple.",
+              "prompt": "My family lives in an apartment with two bedrooms. Every morning, my sister gets up at six o’clock. She studies French and listens to her teacher. In the afternoon, she looks for her keys and finds them on the table. In the evening, we do not watch television.",
               "marks": 1
             }
           ]
         }
-      ]
+      ],
+      "description": "Curated from Week 2 Day 14 and actual Test 1 report weaknesses: furniture/storey/wall, accents, possessives, direct objects, prepositions, agreement, plural hours, sentence boundaries and coherent writing. New contexts avoid repeating Test 1 question wording."
     }
   ]
 }
