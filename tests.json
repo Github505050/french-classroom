@@ -852,13 +852,13 @@
         },
         {
           "id": "story",
-          "title": "Integrated story: independent writing",
-          "instructions": "Translate the short story into French. This is one holistic question worth one mark; teacher checks articles, verbs, prepositions and sentence structure.",
+          "title": "A day in Léa's family — extended story translation",
+          "instructions": "Translate the FULL connected English story into French in complete paragraphs, without notes. Use only familiar Week 1–2 vocabulary and grammar. Pay special attention to articles, plurals, possessives, direct objects, prepositions, present-tense verbs, and ne…pas / ne…jamais. This is one integrated question worth 1 mark, graded holistically.",
           "maxMarks": 1,
           "questions": [
             {
               "id": "STORY-01",
-              "prompt": "My family lives in an apartment with two bedrooms. Every morning, my sister gets up at six o’clock. She studies French and listens to her teacher. In the afternoon, she looks for her keys and finds them on the table. In the evening, we do not watch television.",
+              "prompt": "STORY — A DAY WITH LÉA AND HER FAMILY\n\nLéa lives in an apartment with her mother, her brother and her two sisters. Their apartment is on the second floor. There is a living room, two bedrooms, a table and three chairs. The telephone is on a piece of furniture, near the wall. Every morning, Léa gets up at six o’clock. Her brother gets up at seven o’clock. Her sisters are happy because they study French together.\n\nAt eight o’clock, Léa goes to school. She listens to her teacher and uses her notebook. The teacher explains the lesson and asks a question. Léa answers the question. Then she gives a book to her friend. Her friend cannot find his key. Léa looks for the key under the table, but she does not find it. Finally, her friend finds the key behind a chair.\n\nIn the afternoon, Léa helps her mother at home. Her mother calls a customer and writes a message. Léa uses the computer to study French. Her brother does not use the computer; he watches television. Léa never watches television in the afternoon because she studies and finishes her homework.\n\nIn the evening, the family goes to the grocery store. They buy apples, vegetables, meat and a bottle of water. Léa chooses a shopping basket and her mother pays at the checkout. They do not buy a pizza, and they never order food on Mondays. At home, Léa helps her sisters and they eat together. Before going to bed, she looks for her telephone. It is behind the furniture. She finds it and calls her friend. It is a busy day, but Léa likes spending time with her family.",
               "marks": 1
             }
           ]
