@@ -103,3 +103,37 @@ body.teacher-mode .sidebar .panel{box-shadow:0 8px 28px #0a304009;border-color:#
  .teacher-portal .tp-hero-action{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start;align-items:center}
  .teacher-portal .tp-hero-action small{flex-basis:100%}
 }
+
+/* Announcement composer: equal-width template actions and a dedicated publish row. */
+#teacher-announcements-root .teacher-notices-tools{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
+  gap:10px;
+  margin-top:18px;
+}
+#teacher-announcements-root .teacher-notices-tools .btn{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  min-width:0;
+  min-height:48px;
+  padding:10px 8px;
+  text-align:center;
+  white-space:normal;
+  line-height:1.3;
+}
+#teacher-announcements-root .teacher-notices-tools .btn[type="submit"]{
+  grid-column:1/-1;
+  min-height:46px;
+}
+@media(max-width:600px){
+  #teacher-announcements-root .teacher-notices-tools{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+  #teacher-announcements-root .teacher-notices-tools .btn[type="submit"]{
+    grid-column:auto;
+  }
+}
